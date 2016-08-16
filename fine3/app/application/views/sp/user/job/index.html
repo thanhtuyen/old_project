@@ -1,0 +1,218 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+  <section class="header_box">
+      <h1>国内最大級の保育士求人サイト</h1>
+      <section class="header_area_box">
+		<h2><a href="../index.html"><img src="{%$static_url%}user/img/header_logo.png" width="170" height="50" alt="FINE！"/></a></h2>
+		<h3>国内最大級の保育士求人サイト</h3>
+		<p class="header_area">東京</p>
+      </section>
+        <div class="header_right">
+          <div class="login_button">
+            <a href="../mypage/index.html" class="header_mypage_button">マイページ</a>
+            <a href="../serch/indexss.html" class="header_logout_button">ログアウト</a>
+          </div>
+          <div class="CountJob">
+          		<p>掲載中の求人<span>8</span>件</p>
+          </div>
+        </div>
+  </section>
+</header>
+
+<!--main_content-->
+<div class="main">
+
+	<h4 class="title_pink_bar">検索結果を絞り込む</h4>
+    <!--serch_menu more-->    
+    <div class="nav_serch_sec menu">
+    <label for="Panel1" class="area_menu">勤務地（エリア）</label>
+    <input type="checkbox" id="Panel1" class="on-off" />
+    <ul class="checkbox_serch area_serch_sec">
+    		<li>
+                <select name="area">
+                <option value="選択してください">選択してください</option>
+                <option value="中央区">中央区</option>
+                <option value="中野区">中野区</option>
+                <option value="杉並区">杉並区</option>
+                </select>
+        </li>
+        <li><label for="area1"><input type="checkbox" id="area1" />地域１</label></li>
+        <li><label for="area2"><input type="checkbox" id="area2" />地域２</label></li>
+        <li><label for="area3"><input type="checkbox" id="area3" />地域３</label></li>
+        <li><label for="area4"><input type="checkbox" id="area4" />地域４</label></li>
+        <li><label for="area5"><input type="checkbox" id="area5" />地域５</label></li>
+        <li><label for="area6"><input type="checkbox" id="area6" />地域６</label></li>
+    </ul>
+    </div>
+    <div class="nav_serch_sec menu">
+    <label for="Panel2" class="area_menu">職種</label>
+    <input type="checkbox" id="Panel2" class="on-off" />
+    <ul class="checkbox_serch job">
+        <li><label for="shokushu1"><input type="checkbox" id="shokushu1" />地域１</label></li>
+        <li><label for="shokushu2"><input type="checkbox" id="shokushu2" />地域２</label></li>
+        <li><label for="shokushu3"><input type="checkbox" id="shokushu3" />地域３</label></li>
+        <li><label for="shokushu4"><input type="checkbox" id="shokushu4" />地域４</label></li>
+        <li><label for="shokushu5"><input type="checkbox" id="shokushu5" />地域５</label></li>
+        <li><label for="shokushu6"><input type="checkbox" id="shokushu6" />地域６</label></li>
+    </ul>
+    </div>
+    <div class="nav_serch_sec menu">
+    <label for="Panel3" class="area_menu">施設形態</label>
+    <input type="checkbox" id="Panel3" class="on-off" />
+    <ul class="checkbox_serch job">
+        <li><label for="sehisetsu"><input type="checkbox" id="sehisetsu" />地域１</label></li>
+        <li><label for="sehisetsu2"><input type="checkbox" id="sehisetsu2" />地域２</label></li>
+        <li><label for="sehisetsu3"><input type="checkbox" id="sehisetsu3" />地域３</label></li>
+        <li><label for="sehisetsu4"><input type="checkbox" id="sehisetsu4" />地域４</label></li>
+        <li><label for="sehisetsu5"><input type="checkbox" id="sehisetsu5" />地域５</label></li>
+        <li><label for="sehisetsu6"><input type="checkbox" id="sehisetsu6" />地域６</label></li>
+    </ul>
+    </div>
+    <div class="nav_serch_sec menu">
+    <label for="Panel4" class="area_menu">勤務形態</label>
+    <input type="checkbox" id="Panel4" class="on-off" />
+    <ul class="checkbox_serch job">
+        <li><label for="kinmu1"><input type="checkbox" id="kinmu1" />地域１</label></li>
+        <li><label for="kinmu2"><input type="checkbox" id="kinmu2" />地域２</label></li>
+        <li><label for="kinmu3"><input type="checkbox" id="kinmu3" />地域３</label></li>
+        <li><label for="kinmu4"><input type="checkbox" id="kinmu4" />地域４</label></li>
+        <li><label for="kinmu5"><input type="checkbox" id="kinmu5" />地域５</label></li>
+        <li><label for="kinmu6"><input type="checkbox" id="kinmu6" />地域６</label></li>
+    </ul>
+    </div>
+    <div class="nav_serch_sec menu">
+    <label for="Panel5" class="area_menu">こだわり条件</label>
+    <input type="checkbox" id="Panel5" class="on-off" />
+    <ul class="checkbox_serch">
+        <li><label for="joken"><input type="checkbox" id="joken1" />地域１</label></li>
+        <li><label for="joken2"><input type="checkbox" id="joken2" />地域２</label></li>
+        <li><label for="joken3"><input type="checkbox" id="joken3" />地域３</label></li>
+        <li><label for="joken4"><input type="checkbox" id="joken4" />地域４</label></li>
+        <li><label for="joken5"><input type="checkbox" id="joken5" />地域５</label></li>
+        <li><label for="joken6"><input type="checkbox" id="joken6" />地域６</label></li>
+    </ul>
+    </div>
+    <div class="serch_count_top">
+        <p>この条件が該当する求人は<span>2</span>件ありました。</p>
+        <p class="form_button"><a href="../job/index.html">この条件で検索する</a></p>
+    </div>
+    
+    <!--serch count-->
+    <div class="serch_count_top">
+    		<p>検索結果<span>15</span>件</p>
+        	<p class="serch_count">2件中1〜2件を表示</p>
+    </div>
+
+    <!--job detail-->
+    <section class="job_list_box">  
+        <section class="job_list">  
+                <a href="../job/detail.html" class="job_linkarea">
+                <div class="job_linkarea_inbox">
+                <h4 class="job_list_title">私たちと一緒に保育の仕事を始めませんか？</h4>
+                <p class="job_list_img"><img src="{%$static_url%}user/img/dummy/dummy_job_detail02.jpg" alt=""/></p>
+                <p class="job_list_txt">ゆらりん東大泉保育園の周辺には、公園がたくさんあります。広い戸外で元気に遊び、元気な身体とたくさんのお友達との関わりの中で生まれる社会性の芽生えを育んでいます。定員25名の少人数ですが、少人数ならではの、あたたかな関わりを活かせる保育園ですよ。お子様の心と身体の健やかな成長を応援しています。子どもたちや親御さんが安心できるあたたかい保育園を目指しましょう!子どもたちや親御さんが安心できるあたたかい保育園を目指しましょう!子どもたちや親御さんが安心できるあたたかい保育園を目指しましょう!子どもたちや親御さんが安心できるあたたかい保育園を目指しましょう!</p>
+                <div class="job_detail_table_s">
+                    <dl>
+                            <dt>勤務地</dt>
+                         <dd>あおぞら保育園 / 東京都練馬区東大泉1-35-14 貫井ビルディング3F </dd>
+                    </dl>
+                    <dl>
+                            <dt>雇用形態</dt>
+                         <dd>パート </dd>
+                    </dl>
+                    <dl>
+                            <dt>職種</dt>
+                         <dd>保育士</dd>
+                    </dl>
+                    <dl>
+                            <dt>勤務時間</dt>
+                         <dd>8:00〜17:00</dd>
+                    </dl>
+                    <dl>
+                            <dt>給与</dt>
+                         <dd>月給186,000円～250,000円 ※保育士経験加算あり</dd>
+                    </dl>
+               </div>
+           <ul class="job_tag">
+                <li>未経験者歓迎</li>
+                <li>ブランク歓迎</li>
+                <li>ブランク歓迎</li>
+                <li>ブランク歓迎</li>
+           </ul>
+                </div>
+            </a>
+            <p class="apply_button"><a href="../entry/index.html">今すぐ応募する</a></p>
+            <p class="telapply_button"><a href="tel:xxxxxxxxxxx">電話で応募する</a></p>
+            <p class="clip_button"><a href="#">お気に入り</a></p>
+         </section>
+      </section>
+         <!--more button-->
+     <p class="continue_link"><a href="#">次の10件を表示する<br/><span>100件中10件を表示しています</span></a></p>
+
+    <!--Recommend job-->
+    <section class="job_new user_job">
+    		<h4 class="title_joblist_user title_redbar">あなたにオススメの求人</h4>
+         <!--job1--> 
+         <a href="../job/detail.html">
+         <section class="job_detail_box">
+             <div class="job_detail_img"><img src="{%$static_url%}user/img/dummy/dummy_job_img.jpg" alt=""/></div>
+ 			<div class="job_detail">
+                 <h5 class="job_detail_title">自転車通勤OK！午後からの短時間パートさ集・・・</h5>
+                 <dl>
+                    <dt>勤務地</dt>
+                    <dd>あおぞら保育園 / 東京都練馬区</dd>
+                 </dl>
+                 <dl>
+                    <dt>雇用形態</dt>
+                    <dd>パート</dd>
+                 </dl>
+             </div>
+             <i class="icon_arrow"></i>
+         </section>
+         </a>
+         <!--job2--> 
+         <a href="../job/detail.html">
+         <section class="job_detail_box">
+             <div class="job_detail_img"><img src="{%$static_url%}user/img/dummy/dummy_job_img.jpg" alt=""/></div>
+ 			<div class="job_detail">
+                 <h5 class="job_detail_title">自転車通勤OK！午後からの短時間自転車通勤OK！</h5>
+                 <dl>
+                    <dt>勤務地</dt>
+                    <dd>あおぞら保育園 / 東京都練馬区</dd>
+                 </dl>
+                 <dl>
+                    <dt>雇用形態</dt>
+                    <dd>パート</dd>
+                 </dl>
+             </div>
+             <i class="icon_arrow"></i>
+         </section>
+         </a>
+         <!--job3--> 
+         <a href="../job/detail.html">
+         <section class="job_detail_box">
+             <div class="job_detail_img"><img src="{%$static_url%}user/img/dummy/dummy_job_img.jpg" alt=""/></div>
+ 			<div class="job_detail">
+                 <h5 class="job_detail_title">自転車通勤OK！午後からの短時間パートさ集・・・</h5>
+                 <dl>
+                    <dt>勤務地</dt>
+                    <dd>あおぞら保育園 / 東京都練馬区</dd>
+                 </dl>
+                 <dl>
+                    <dt>雇用形態</dt>
+                    <dd>パート</dd>
+                 </dl>
+             </div>
+             <i class="icon_arrow"></i>
+         </section>
+         </a>
+         <!--more button-->
+         <a href="#"><p class="button_more">もっと見る</p></a>
+    </section>
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+</body>
+</html>

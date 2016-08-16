@@ -1,0 +1,29 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">求人応募用URLの生成</h4>
+<!-- widget-head --></div>
+<div class="separator"></div>
+<table class="plan_form">
+<tr>
+<th>送信用URL</th>
+<td>{%$url%}
+</td>
+</tr>
+</table>
+<div class="separator"></div>
+<!-- widget --></div>
+
+<div class="form-group">
+<a href="{%base_url()%}manager/session/generate_url" class="btn btn-primary">続けてURL生成する</a>
+</div>
+
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}

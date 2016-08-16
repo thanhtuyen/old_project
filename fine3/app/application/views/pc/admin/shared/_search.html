@@ -1,0 +1,31 @@
+<div class="col-md-3 form-horizontal">
+<div  class="dataTables_length form-group margin-none">
+<label class="col-md-4 control-label"> Show</label>
+<div class="col-md-8">
+{%form_open(current_url(), ['method' => 'get', 'id' => 'search_form'])%}
+{%foreach search_condition($condition, array('limit')) as $key => $value%}
+<input type="hidden" name="q[{%$key%}]" value="{%$value%}">
+{%/foreach%}
+<select id="select-limit" class="form-control .selectpicker"  name="limit">
+{%if empty($show)%}
+{%$show = 10%}
+{%/if%}
+<option value="10" {%if $show == 10%}selected{%/if%}>10</option>
+<option value="25" {%if $show == 25%}selected{%/if%}>25</option>
+<option value="50" {%if $show == 50%}selected{%/if%}>50</option>
+<option value="100" {%if $show == 100%}selected{%/if%}>100</option>
+</select>
+{%form_close()%}
+</div></div></div><div class="col-md-4 form-horizontal">
+<div class="dataTables_filter form-group margin-none">
+<label class="col-md-4 control-label">Search: </label>
+<div class="col-md-8">
+{%form_open(current_url(), ['method' => 'get'])%}
+{%foreach search_condition($condition, array('keyword')) as $key => $value%}
+<input type="hidden" name="q[{%$key%}]" value="{%$value%}">
+{%/foreach%}
+<input type="text" name="q[keyword]" class="form-control" value="{%if !empty($condition['keyword'])%}{%$condition['keyword']%}{%/if%}">
+<input type="submit" style="display:none">
+{%form_close()%}
+</div>
+</div></div></div>

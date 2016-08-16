@@ -1,0 +1,183 @@
+.w20x{
+	width: 20%;
+}
+.underline{
+	text-decoration: underline;
+}
+.clean5{
+	clear: both;height: 5px;
+}
+.margin20{
+	margin-right: 20px;
+}
+.margin10{
+	margin-right: 10px;
+}
+.boder_button{
+	border: 1px solid;
+	border-radius: 4px;
+	width: 50px;
+}
+.margindiv{
+	margin-top: 20px;
+}
+.botton_center{
+	text-align: center;
+}
+.height_control1{
+	height: 25px;
+}
+.bg_white{
+    background-color: white;
+    border: 1px solid #999;
+}
+.black_text{
+    color: black;
+}
+
+
+.style-buttom{
+	width: 30px;
+}
+
+.clear5{
+	clear: both;height: 5px;
+}
+.clear10{
+	clear: both;height: 10px;
+
+} 
+.clear15{
+	clear: both;height: 15px;
+} 
+.clear20{
+	clear: both;height: 20px;
+}
+.margin-top5{
+	margin-top: 5px;
+}
+.margin-top3{
+	margin-top: 3px;
+}
+.margin-top10{
+	margin-top: 10px;
+}
+.margin-top15{
+	margin-top: 15px;
+}
+.margin-top20{
+	margin-top: 20px;
+}
+.margin-left5{
+	margin-left: 5px;
+}
+.margin-left10{
+	margin-left: 10px;
+}
+.margin-left15{
+	margin-left: 15px;
+}
+.margin-left20{
+	margin-left: 20px;
+}
+.text-center{
+	text-align: center;
+}
+.padding-top0{
+	padding-top: 0px;
+}
+.margin-top5{
+	padding-top:5px;
+}
+.margin-top-5{
+	margin-top:-5px;
+}
+.margin-top-10{
+	margin-top:-10px;
+}
+.margin-top-15{
+	margin-top:-15px;
+}
+.margin-top-20{
+	margin-top:-20px;
+}
+.float-lf{
+	float: left;
+}
+.margin-right5{
+	margin-right: 5px;
+}
+.margin-right10{
+	margin-right: 10px;
+}
+.margin-right15{
+	margin-right: 15px;
+}
+.margin-right20{
+	margin-right: 20px;
+}
+.select-w75{
+	width: 75px;
+	padding: 0px 12px;
+	border-radius: 3px;
+}
+.select-w100{
+	width: 100px;
+	padding: 0px 12px;
+	border-radius: 3px;
+}
+.select-w150{
+	width: 150px;
+	padding: 0px 12px;
+	border-radius: 3px;
+}
+.select-w300{
+	width: 300px;
+	padding: 0px 12px;
+	border-radius: 3px;
+}
+.margin-lf15{
+	margin-left: 15px;
+}
+.margin-lf10{
+	margin-left: 10px;
+}
+.margin-lf5{
+	margin-left: 5px;
+}
+.margin-lf120{
+	margin-left: 20px;
+}
+.margin-top-15{
+	margin-top: -15px;
+}
+.margin-lf0{
+	margin-left: 0px;
+}
+.padding-lf0{
+	padding-left: 0px;
+}
+.padding-lf30{
+	padding-left: 30px;
+}
+.padding-lf35{
+	padding-left: 35px;
+}
+.margin-right-50{
+	margin-right: -50px;
+}
+.margin-lf-15{
+	margin-left: -15px;
+}
+.border-radi3{
+	border-radius: 3px;
+}
+.border-radi5{
+	border-radius: 5px;
+}
+.border-radi7{
+	border-radius: 7px;
+}
+.border-radi9{
+	border-radius: 9px;
+}

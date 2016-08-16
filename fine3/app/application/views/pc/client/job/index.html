@@ -1,0 +1,124 @@
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<div class="main">
+{%include file="pc/client/common/left_nav.html"%}
+
+<div class="contents inner">
+<h2 class="tit_01">求人票管理<span>：求人票一覧</span></h2>
+{%form_open($base_url|cat:'client/job', ['id'=>'search_form', 'method'=>'get'])%}
+  <div class="searchbox">
+  <p class="tit_05">▼表示する求人票を絞り込む</p>
+  <p>
+    フリーワード：<input type="text" name="key_words" value="{%$params['key_words']%}">&#12288;<span>作成日：<input
+      type="text" name="start_time" class="search-date-calendar" value="{%$params['start_time']%}" placeholder="{%date('Y-m-d')%}"> ～ <input type="text" class="search-date-calendar" name="end_time" value="{%$params['end_time']%}" placeholder="{%date('Y-m-d')%}"></span>&#12288;
+      <select name="status">
+        <option value="">公開状態を選択してください</option>
+        <option value="draft" {%if $params['status']=='draft'%}selected="true"{%/if%}>下書き</option>
+        <option value="public"{%if $params['status']=='public'%}selected="true"{%/if%}>公開</option>
+        <option value="closed"{%if $params['status']=='closed'%}selected="true"{%/if%}>公開終了</option>
+      </select>
+
+      <select name="employ_tag">
+        <option value="">雇用形態を選択してください</option>
+        {%foreach $employ_tags as $value%}
+          <option value="{%$value['tag_id']%}" {%if $params['employ_tag']==$value['tag_id']%}selected="true"{%/if%}>{%html_escape($value['name'])%}</option>
+        {%/foreach%}
+      </select>
+
+      <select name="job_tag">
+        <option value="">募集職種を選択してください</option>
+        {%foreach $job_tags as $value%}
+          <option value="{%$value['tag_id']%}" {%if $params['job_tag']==$value['tag_id']%}selected="true"{%/if%}>{%html_escape($value['name'])%}</option>
+        {%/foreach%}
+      </select>
+
+      <a class="btn_white btn_auto" href="javascript:void(0);" id="search_button">検索</a>
+  </p>
+  </div>
+{%form_close()%}
+<p class="count_box"> {%$result['job_count']%}件中 {%$result['start']+1%}～{%if $params['page_size']*$params['page']>$result['job_count']%}{%$result['job_count']%}{%else%}{%$params['page_size']*$params['page']%}{%/if%}件を表示</p>
+<p class="newbtn"><a href="{%$base_url%}client/job/input" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>求人票を作成する</a></p>
+<div class="box">
+<p class="before_table01">▼チェックした求人を<a href="javascript:void(0);" class="btn_pink btn_160" id="copy_button">コピーして新規作成</a><a href="javascript:void(0);" class="btn_white btn_160" id="export_csv">CSV出力</a></p>
+  {%form_open('client/job/copy_job', ['id' => 'copy_check'])%}
+    <table class="table01" id="job_table">
+    <tbody>
+    <tr>
+      <th nowrap><input type="checkbox" id="check_all" value=""></th>
+      <th nowrap>求人ID</th>
+      <th>求人タイトル　<span class="txt_small">園名</span></th>
+      <th nowrap>雇用形態</th>
+      <th nowrap>公開</th>
+      <th nowrap>操作</th>
+    </tr>
+
+    {%foreach $result['job_list'] as $job%}
+    <tr>
+      <td nowrap><input type="checkbox" value="{%$job['job_id']%}" name="job_ids[]"></td>
+      <td nowrap>{%$job['job_id']%}</td>
+      <td><a href="{%$base_url%}client/job/edit/{%$job['job_id']%}" target="_blank">{%html_escape($job['title']|truncate:38:"...")%}</a>
+      <p class="txt_small">{%html_escape($job['nursery_name']|truncate:38:"...")%}</p></td>
+      <td>{%if !empty($job['tags'])%}{%get_job_tag_text($job['tags'], 'type_employ')%}{%/if%}</td>
+      <td nowrap>{%status_text($job['status'])%}</td>
+      <td nowrap><a href="{%$base_url%}client/job/edit/{%$job['job_id']%}" class="btn_white btn_auto">編集</a><a href="javascript:void(0);" data-job-id="{%$job['job_id']%}" class="btn_gray btn_auto">削除</a></td>
+    </tr>
+    {%/foreach%}
+
+    </tbody>
+    </table>
+  {%form_close()%}
+<!-- /.box --></div>
+<p class="pagenation">{%$pagination%}</p>
+<!-- /.contents --></div>
+<!-- /.main --></div>
+
+
+{%include file="pc/client/common/footer.html"%}
+{%include file="pc/client/common/_calendar.html"%}
+
+<script type="text/javascript">
+  //delete
+  $('a[data-job-id]').on('click', function(e){
+    var target = $(e.target)
+    if(confirm('本当によろしいですか？')){
+      window.location.href = "{%$base_url%}" + 'client/job/delete/' + target.attr('data-job-id')
+    }
+  })
+
+  //search
+  $('#search_button').on('click', function(){
+    $('#search_form').submit()
+  })
+
+  //export
+  $('#check_all').on('click', function(){
+    $("#job_table input[type='checkbox']").attr("checked", this.checked)
+  })
+
+  //copy
+  $('#copy_button').on('click', function(){
+    $('#copy_check').submit()
+  })
+
+  //export csv
+  $('#export_csv').on('click', function(){
+    var ids = '';
+    var checked_job = $("#job_table input[type='checkbox']:checked")
+    if(checked_job.length > 0) {
+      checked_job.each(function(){
+        val = this.value
+        if(val){
+          ids += ('_' + val)
+        }
+        console.log(ids)
+        if(ids){
+          window.location.href = "{%$base_url%}client/job/export_csv?fromat=csv&job_ids=" + ids
+        }
+      })
+    } else {
+      console.log('ids is empty')
+      return;
+    }
+  })
+</script>

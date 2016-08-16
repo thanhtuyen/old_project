@@ -1,0 +1,100 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			プラン確認・変更<span>：プラン詳細</span>
+		</h2>
+		<p class="newbtn">
+			<a class="btn_white btn_190" href="javascript:history.go(-1)"><span
+				class="ico_arrow02">&gt;</span>前のページに戻る</a>
+		</p>
+		<div class="box">
+			<p class="tit_04">{%html_escape($plan_detail['name'])%}</p>
+			<table class="table02 mb20">
+				<tbody>
+					<tr>
+						<th>ID</th>
+						<td>{%html_escape($plan_detail['client_plan_group_relation_id'])%}</td>
+					</tr>
+					<tr>
+						<th>プラン名</th>
+						<td>{%html_escape($plan_detail['name'])%}</td>
+					</tr>
+					<tr>
+						<th>最低契約期間</th>
+						<td>
+						{%$created = explode(' ',$plan_detail['created'])%}
+						{%html_escape($created[0])%} 〜 {%html_escape($plan_detail['expire_month'])%}</td>
+					</tr>
+					<tr>
+						<th>プラン内容</th>
+						<td>
+						{%foreach $plan_detail['plan'] as $plan %}
+							<dt><span class="ico_arrow01"></span>{%$plan['plan_name']%}</dt>
+								<dd><p class="txt_small">{%$plan['description']%}</p></dd>
+						{%/foreach%}
+						</td>
+					</tr>
+					<tr>
+						<th>自動延長</th>
+						<td>{%if $plan_detail['auto_extend_flg'] == 1%}{%if $plan_detail['extend_period'] > 0%}{%$plan_detail['extend_period']%}ヶ月{%/if%}
+						{%else%}なし{%/if%}</td>
+					</tr>
+					<tr>
+						<th>料金</th>
+						<td>{%html_escape(number_format($plan_detail['result_price']))%}円(税込)</td>
+					</tr>
+				</tbody>
+			</table>
+			{%form_open($base_url|cat:"client/plan/stop/",["id"=>"delete_form"])%}
+			{%if $plan_detail['delete_flg'] == 1%}
+			<!-- 申請済み、終了申請中の場合 -->
+			<p class="txt_center mt20">
+				<span class="btn_gray btn_280">契約終了</span>
+			</p>
+			<p class="txt_center txt_attention mt5">※すでに契約が終了したプランです</p>
+			<!-- /申請済み、終了申請中の場合 -->
+
+			{%else%}
+			{%if $status === 'applied'%}
+			<input id="apply_id" name="apply_id" value="{%html_escape($plan_detail['client_plan_group_relation_id'])%}" type="hidden">
+			<!-- 申し込み済みの場合 -->
+			<p class="txt_center mt20">
+				<a href="javascript:void(0)" id="form_submit" class="btn_pink btn_280"><span class="ico_arrow03">&gt;</span>終了申請する</a>
+			</p>
+			<p class="txt_center txt_attention mt5">※現在このプランに申し込み中です。</p>
+			<!-- /申し込み済みの場合 -->
+			{%/if%}
+			{%if $status === 'closed'%}
+			<!-- 申請済み、終了申請中の場合 -->
+			<p class="txt_center mt20">
+				<span class="btn_gray btn_280">終了申請済</span>
+			</p>
+			<p class="txt_center txt_attention mt5">※現在このプランに申し込み中です。</p>
+			<!-- /申請済み、終了申請中の場合 -->
+			{%/if%}
+			{%/if%}
+			<!-- /.box -->
+		</div>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+
+<script>
+
+var err;
+$("#form_submit").on("click",function(){
+    err = false;
+    if(!err)$("#delete_form").submit();
+
+});
+</script>
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

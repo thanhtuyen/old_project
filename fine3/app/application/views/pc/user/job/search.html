@@ -1,0 +1,82 @@
+
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%include file="pc/user/common/loading.html"%}
+{%display_breadcrumb($breadcrumb)%}
+
+<div class="content_wrapper">
+<div class="content">
+<h1 class="tit_01">求人を探す</h1>
+{%include file="pc/user/job/_searchbox.html"%}
+{%if $job_all_count !== 0%}
+<p class="tit_01 search_result">検索結果<span>{%$job_all_count%}</span><span>件</span></p>
+<div class="count_box"><p>{%$job_all_count%}件中 {%$limit_from + 1%}～{%$limit_to%}件を表示</p><p class="count_area light_m search_cond_word_detail" data-tooltip="">今回の検索条件：<span class="search_cond_word">全検索</span></p></div>
+{%if $job_list !== false%}
+{%include file="pc/user/common/_job_list.html"%}
+<div class="count_box mt10 mb15"><p>{%$job_all_count%}件中 {%$limit_from + 1%}～{%$limit_to%}件を表示</p><p class="count_area">今回の検索条件：<span class="search_cond_word">全検索</span></p></div>
+<p class="pagenation">{%$pagination%}</p>
+{%/if%}
+{%/if%}
+{%if $job_recommend_list !== false%}
+<p class="tit_02"><span class="ico_folder01">▽</span>あなたにオススメの求人</p>
+<div class="box jobbox_users">
+<div class="clear">
+{%foreach $job_recommend_list as $job%}
+<a class="jobbox" href="{%$base_url%}detail_{%$job['job_detail']['job']['job_id']%}">
+<p class="tit_boxjob">{%if $job['job_detail']['job']['title']%}{%html_escape($job['job_detail']['job']['title'])%}{%/if%}</p>
+<p class="custom_job_img"><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt="" width="94"></p>
+<ul class="job_s_list">{%if $job['nursery_detail']['display_address']%}<li><span class="ico_arrow01">&gt;</span>{%html_escape($job['nursery_detail']['display_address'])%}
+{%if $job['nursery_detail']['station_name']%}
+/{%html_escape($job['nursery_detail']['station_name'])%}
+{%/if%}
+{%if $job['nursery_detail']['direction']%}
+{%html_escape($job['nursery_detail']['direction'])%}
+{%/if%}
+</li>{%/if%}
+
+{%if !empty($job['job_detail']['tags']['type_employ'])%}
+<li><span class="ico_arrow01">&gt;</span>{%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</li>
+{%/if%}
+
+{%if !empty($job['job_detail']['tags']['type_job'])%}
+<li><span class="ico_arrow01">&gt;</span>
+{%foreach $job['job_detail']['tags']['type_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</li>
+{%/if%}
+</ul>
+</a>
+{%/foreach%}
+<!-- /.clear --></div>
+
+<!-- /.box --></div>
+{%/if%}
+<!-- /.content --></div>
+
+{%include file="pc/user/common/right_nav.html"%}
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+<script src="{%$static_url%}user/js/apply.js"></script>
+<script src="{%$static_url%}common/js/jquery.darktooltip.js"></script>
+<script>
+$('.light_m').darkTooltip({size:"medium"});
+if(select_str.length >= 24){
+    $(".search_cond_word_detail").attr('data-tooltip',"検索条件詳細：<br>"+select_str);
+    $(".search_cond_word").text(select_str.substr(0,22) + "...");
+}else if(select_str.length === 0){
+    $(".search_cond_word").text("全検索");
+}else{
+    $(".search_cond_word").text(select_str);
+}
+$(".apply_btn").on("click",function(e){apply_for_job($(this),"apply");});
+
+$(".bookmark_btn").on("click",function(e){apply_for_job($(this),"bookmark");});
+</script>
+</body>
+</html>

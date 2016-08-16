@@ -1,0 +1,57 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar_logged.html"%}
+<!--main_content-->
+<div class="main">
+
+{%include file="sp/user/common/mypagemenu.html"%}
+
+    <!--mypage top-->
+     <section>
+     	<h4 class="title_pink_bar">{%$user_name%}さんのマイページ</h4>
+     </section>
+
+    <!--Recommend job-->
+    <section class="job_new user_job">
+    		<h4 class="title_joblist_user title_redbar">あなたにおすすめの求人</h4>
+
+{%if $job_list !== false%}
+{%foreach $job_list as $job%}
+         <!--job--> 
+         <a href="{%$base_url%}detail_{%$job["job_detail"]["job"]["job_id"]%}">
+         <section class="job_detail_box">
+             <div class="job_detail_img"><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt=""/></div>
+ 			<div class="job_detail">
+                 <h5 class="job_detail_title">{%if $job['job_detail']['job']['title']%}{%html_escape($job['job_detail']['job']['title'])%}{%/if%}</h5>
+                 <dl>
+                 
+                    <dt>勤務地</dt>
+                    <dd>{%if !empty($job['nursery_detail']['name'])%}
+                    {%html_escape($job['nursery_detail']['name'])%}
+                    {%/if%}
+                    {%if $job['nursery_detail']['display_address']%}
+                     / 
+                     {%html_escape($job['nursery_detail']['display_address'])%}
+                     {%/if%}</dd>
+                 </dl>
+                {%if !empty($job['job_detail']['tags']['type_employ'])%}
+                 <dl>
+                    <dt>雇用形態</dt>
+                    <dd>{%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+                            {%html_escape($data['tag_detail']['name'])%}
+                            {%/foreach%}
+                    </dd>
+                 </dl>
+                 {%/if%}
+             </div>
+             <i class="icon_arrow"></i>
+         </section>
+         </a>
+{%/foreach%}
+{%/if%}
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+</body>
+</html>

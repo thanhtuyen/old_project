@@ -1,0 +1,70 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="manager/accounts/shared/_account_top.tpl"%}
+
+
+
+
+
+
+
+
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+
+<table class="dynamicTable_ tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ID</th>
+
+<th>ログインメールアドレス</th>
+
+<th>  </th>
+</tr>
+</thead>
+<tbody>
+{%foreach from=$result key=k item=list%}
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox"></label></div></td>
+<td>D{%$list['id']%}</td>
+
+<td>{%$list['email']%}</td>
+
+<td><a href="{%base_url('manager/accounts/del')%}/{%$list['id']%}'"><button type="button" class="btn btn-default" onClick="return confirmDelete()">削除</button></a></td>
+</tr>
+{%/foreach%}
+
+
+</tbody>
+</table>
+
+<div class="row"><div class="col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info">Showing {%$quantity['start']%} to {%$quantity['end']%} of {%$quantity['total']%} entries</div></div><div class="col-md-6"><div class="dataTables_paginate paging_bootstrap">
+
+{%$pagerfantaHtml%}
+
+</div></div></div>
+
+
+
+
+
+
+</div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}

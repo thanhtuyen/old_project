@@ -1,0 +1,78 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--password reset-->
+     <section>
+     	<h4 class="title_pink_bar">パスワードを忘れた方	</h4>
+        <p class="form_txt">ログインパスワードをお忘れの方はこちらから問い合わせることができます。<br>ご登録時にご入力いただきましたメールアドレスをご入力後、「送信する」ボタンを押してください。</p>
+        <p class="form_txt">ご登録のメールアドレス宛に新しいパスワードを記載したメールが送信されます。<br>ログイン後、マイページのパスワード再設定画面よりご希望のものに再設定してください。<br>なお、パスワードの個別のお問い合わせには対応しておりませんので、予めご了承ください。</p>
+{%form_open($base_url|cat:"password/forgot_execute",["id"=>"password_forget"])%}
+<input id="user_id" name="user_id" type="hidden" value="">
+<input id="user_name" name="user_name" type="hidden" value="">
+        <dl class="job_detail_table form_table">
+        		<dt>ご登録のメールアドレス</dt>
+        		<dd><input id="mail_form" name="mail" type="text" size="40" placeholder="例）info@hoiku-hiroba.jp">
+                <div class="message">
+		<div id="mail_form_err" class="display_none error">正しくメールアドレスを入力してください。</div>
+		<div id="account_not_exist" class="display_none error">このメールアドレスは登録されていません。</div>
+                </div>
+            </dd>
+        </dl>
+        <div class="form_button_area">
+            <p class="form_button"><a href="javascript:void(0)" id="submit">送信する</a></p>
+         </div>
+{%form_close()%}
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+
+<script>
+$("html").keypress(function(e){if(e.which==13){mail_valid();return false;}});
+$("#submit").on("click",function(){mail_valid()});
+function mail_valid(){
+    mail = $("#mail_form").val();
+    if(mail_style_valid(mail)){
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: BASE_URL+"user/ajax/check_user_exist",
+            data: {
+                mail: mail,
+                unique: true,
+                {%$csrf_token_name%}: "{%$csrf_token_value%}"
+            },
+            success:function(data){
+                if(data["code"] === 0){
+                    $(location).attr("href",Base_URL+"server_error");
+                }else{
+                    if(typeof(data["result"][0]) === "undefined"){
+                        $("#mail_form_err").addClass("display_none");
+                        $("#account_not_exist").removeClass("display_none");
+                    }else{
+                    	$("#user_name").val(data["result"][0]["name"]);
+                        $("#user_id").val(data["result"][0]["user_id"]);
+                        $("#password_forget").submit();
+                    }
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                $(location).attr("href",Base_URL+"server_error");
+            }
+        });
+
+    }else{
+        $("#account_not_exist").addClass("display_none");
+        $("#mail_form_err").removeClass("display_none");
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<head>
+<title>Fine!管理画面｜スカウトする</title>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<link rel="stylesheet" href="../assets/css/admin/module.admin.stylesheet-complete.min.css" />
+
+<script src="../assets/library/jquery/jquery.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/library/jquery/jquery-migrate.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/library/modernizr/modernizr.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_less-js/less.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/charts_flot/excanvas.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_browser/ie/ie.prototype.polyfill.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>    <script>if (/*@cc_on!@*/false && document.documentMode === 10) { document.documentElement.className+=' ie ie10'; }</script>
+
+</head>
+<body class="">
+<div class="container-fluid menu-hidden">
+<div id="menu" class="hidden-print hidden-xs">
+<div id="sidebar-fusion-wrapper">
+
+<div id="logoWrapper">
+<div class="media">
+<div class="media-body">
+<a href="" class="name">[agent_name]</a>
+<!-- media-body --></div>
+<!-- media --></div>
+<div class="widget-body">
+<textarea type="text" placeholder="[opinion|text]ご意見・ご要望をお聞かせください" class="form-control" rows="5"></textarea>
+<button class="btn btn-success">送信</button>
+<!-- widget --></div>
+<!-- logoWrapper --></div>
+<ul class="menu list-unstyled agent">
+<li class=""><a href="top.html" class="index"><i class="fa fa-home"></i><span>管理画面TOP</span></a></li>
+<li class=""><a href="job.html" class="pricing"><i class="fa fa-money"></i><span>求人管理</span></a></li>
+<li class=""><a href="nursary.html" class="pricing"><i class="fa fa-money"></i><span>運営園</span></a></li>
+<li class=""><a href="entry.html" class="pricing"><i class="fa fa-money"></i><span>応募管理</span></a></li>
+<li class=""><a href="regist.html" class="pricing"><i class="fa fa-pencil"></i><span>一括登録管理</span></a></li>
+<li class=""><a href="except-entry.html" class="pricing"><i class="fa fa-lock"></i><span>除外申請</span></a></li>
+<li class="hasSubmenu"><a href="#menu-32a39330e6c01f03d8a882833562cf27" data-toggle="collapse"><i class="fa fa-lock"></i><span>スカウト</span></a>
+<ul class="collapse" id="menu-32a39330e6c01f03d8a882833562cf27">
+<li class=""><a href="scout.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>スカウト履歴</span></a></li>
+<li class="active"><a href="scout-search.html" class="no-ajaxify"><i class="fa fa-lock"></i><span>スカウトする</span></a></li>
+<li class=""><a href="scout-mail.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>スカウトメール編集</span></a></li>
+</ul>
+<li class="hasSubmenu"><a href="#menu-8ce3cf7ce8bcfb3b9fd3a702c33e0993" data-toggle="collapse"><i class="fa fa-lock"></i><span>登録情報</span></a>
+<ul class="collapse" id="menu-8ce3cf7ce8bcfb3b9fd3a702c33e0993">
+<li class=""><a href="agent.html" class="no-ajaxify"><i class="fa fa-lock"></i><span>企業情報</span></a></li>
+<li class=""><a href="ca.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>キャリアアドバイザー</span></a></li>
+<li class=""><a href="plan.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>利用プラン確認・申請</span></a></li>
+</ul>
+</ul>
+</div>
+<!-- sidebar --></div>
+
+<div id="content">
+<div class="navbar hidden-print main navbar-default" role="navigation">
+<div class="user-action user-action-btn-navbar pull-right">
+<button class="btn btn-sm btn-navbar btn-inverse btn-stroke hidden-lg hidden-md"><i class="fa fa-bars fa-2x"></i></button>
+</div>
+<a href="top.html" class="logo">
+<img src="../assets/images/logo/logo.jpg" width="32" alt="SMART" />
+<span class="hidden-xs hidden-sm inline-block"><span>mosaic</span>pro</span>
+</a>
+<ul class="main pull-right">
+<li class="hidden-xs hidden-sm"><a href="inquiry.html" class="btn btn-info" data-toggle="modal">お問い合わせ<i class="fa fa-fw icon-compose"></i></a></li>
+<li class="dropdown username hidden-xs ">
+<a href="" class="dropdown-toggle" data-toggle="dropdown">[agent_name] <span class="caret"></span></a>
+
+<ul class="dropdown-menu pull-right">
+<li><a href="agent.html" class="glyphicons user"><i></i>登録情報</a></li>
+<li><a href="login.html" class="glyphicons lock no-ajaxify"><i></i>ログアウト</a></li>
+</ul>
+</li>
+</ul> 
+</div>
+<!-- // END navbar -->
+
+<div class="innerLR">
+<h3>Step1 求人とユーザーを選ぶ</h3>
+
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">求人の選択</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>園名</th>
+<td>
+<input type="text" placeholder="[nursary_name|auto input]" class="middle inline form-control plan_form" />
+</td>
+</tr>
+<tr>
+<th>求人タイトル</th>
+<td>
+<input type="text" placeholder="[job title|auto input]" class="middle inline form-control plan_form" />
+</td>
+</tr>
+</table>
+<!-- widget --></div>
+
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">条件を指定してユーザーを探す</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>最終更新日</th>
+<td>
+<input class="small inline form-control datepicker1" type="text" />〜<input class="small inline form-control datepicker1" type="text" />
+</td>
+</tr>
+<tr>
+<th>居住地</th>
+<td><select class="selectpicker col-md-6" data-style="btn-primary">
+<option>[pref]</option>
+<option>[pref]</option>
+<option>[pref]</option>
+</select><br>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox" checked="checked"><i class="fa fa-fw fa-square-o checked"></i>[city]　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>[city]　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>[city]　</label></div>
+</td>
+</tr>
+<tr>
+<th>保有資格</th>
+<td><div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox" checked="checked"><i class="fa fa-fw fa-square-o checked"></i>保育士　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>幼稚園教諭1種　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>幼稚園教諭2種　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>栄養士　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>調理師　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>看護師　</label></div>
+</tr>
+<tr>
+<th>希望雇用形態</th>
+<td><div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox" checked="checked"><i class="fa fa-fw fa-square-o checked"></i>正社員　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>契約社員　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>パート　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>派遣　</label></div>
+<div class="checkbox"><label class="checkbox-custom"><input type="checkbox" name="checkbox"><i class="fa fa-fw fa-square-o"></i>短期・単発　</label></div>
+</tr>
+</table>
+<div class="form-group">
+<input class="btn btn-warning" type="submit" value="絞り込み検索">
+</div>
+<!-- widget --></div>
+
+<a href="scout-confirm.html"><button class="btn btn-success">チェックした人をスカウトする</button></a>
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ユーザーID</th>
+<th>居住地</th>
+<th>保有資格</th>
+<th>年齢</th>
+<th>希望雇用形態</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="user-detail.html">[user|user_id]</a></td>
+<td>[addinfo|pref][addinfo|city]</td>
+<td>[user|licence]</td>
+<td>[user|birthday]</td>
+<td>[tag|name]</td>
+<td><a href="scout-confirm.html"><button class="btn btn-primary">この人をスカウトする</button></a></td>
+</tr>
+
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="user-detail.html">U345456</a></td>
+<td>東京都港区</td>
+<td>保育士</td>
+<td>23</td>
+<td>正社員</td>
+<td><a href="scout-confirm.html"><button class="btn btn-primary">この人をスカウトする</button></a></td>
+</tr>
+
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="user-detail.html">U123456</a></td>
+<td>愛知県岡崎市</td>
+<td>看護師</td>
+<td>44</td>
+<td>パート</td>
+<td><a href="scout-confirm.html"><button class="btn btn-primary">この人をスカウトする</button></a></td>
+</tr>
+
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="user-detail.html">U345456</a></td>
+<td>北海道札幌市</td>
+<td>保育士</td>
+<td>33</td>
+<td>契約社員</td>
+<td><a href="scout-confirm.html"><button class="btn btn-primary">この人をスカウトする</button></a></td>
+</tr>
+</table>
+</div>
+<!-- widget --></div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+<div id="footer" class="hidden-print">
+<div class="copy">&copy; Copyright (C) Neo Career CO., LTD. All Rights Reserved.</div>
+<!-- footer --></div>
+
+</div>
+<!-- // Main Container Fluid END -->
+
+<!-- Global -->
+<script data-id="App.Config">
+var App = {};        var basePath = '',
+    commonPath = '../assets/',
+    rootPath = '../',
+    DEV = false,
+    componentsPath = '../assets/components/';
+
+var primaryColor = '#c72a25',
+    dangerColor = '#b55151',
+    successColor = '#609450',
+    infoColor = '#4a8bc2',
+    warningColor = '#ab7a4b',
+    inverseColor = '#45484d';
+
+var themerPrimaryColor = primaryColor;
+
+</script>
+
+<script src="../assets/library/bootstrap/js/bootstrap.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_nicescroll/jquery.nicescroll.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_breakpoints/breakpoints.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_preload/pace.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/core_preload/preload.pace.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/tables_datatables/js/jquery.dataTables.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/tables_datatables/extras/TableTools/media/js/TableTools.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/tables_datatables/extras/ColVis/media/js/ColVis.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/tables_datatables/js/DT_bootstrap.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/tables_datatables/js/datatables.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_fuelux-checkbox/fuelux-checkbox.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/forms_elements_bootstrap-select/js/bootstrap-select.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_bootstrap-select/bootstrap-select.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/tables_datatables/extras/FixedHeader/FixedHeader.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/tables_datatables/extras/ColReorder/media/js/ColReorder.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/tables/tables-classic.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/forms_elements_bootstrap-datepicker/js/bootstrap-datepicker.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_bootstrap-datepicker/bootstrap-datepicker.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/ui_modals/bootbox.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/ui_modals/modals.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/admin_notifications_gritter/js/jquery.gritter.min.js?v=v1.0.0-rc1"></script>
+<script src="../assets/components/admin_notifications_gritter/gritter.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/core/core.init.js?v=v1.0.0-rc1"></script>
+</body>
+</html>
+

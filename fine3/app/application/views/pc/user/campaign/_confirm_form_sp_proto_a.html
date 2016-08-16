@@ -1,0 +1,33 @@
+<!-- Render form -->
+{%form_open('user/campaign/confirm',['class' => 'form-control', 'id' =>
+'formSP', 'ENCTYPE' => 'multipart/form-data'])%}
+<!-- End -->
+
+	{%include file="pc/user/campaign/_confirm_form.html"%}
+
+		<tr>
+			<!-- consultant Begin -->
+			<th>
+				<p class="consult">
+					<img src="{%$static_url%}lp/img/value_resource.png" alt="コンサルタント" />
+					<input name="checked" type="checkbox" value="1" checked>
+				</p> <br>
+				<p style="font-size: 9px; line-height: 1.5em; text-align: left;">
+					チェックを入れると、表示した企業の保育専門のコンサルタントから連絡が入ります。<br>ご登録になった個人情報の修正や削除等のご連絡は、表示の企業までお願いします。
+				</p> <!-- consultant End -->
+			</th>
+		</tr>
+		<tr>
+			<th valign="top" style="text-align: center;" class="list" nowrap><span
+				style="margin: 10px; font-size: 14px; font-weight: normal;"><a
+					href="https://fineday.me/lp/proto_b1/kiyaku" style="color: #333333;"
+					target="_blank">利用規約</a></span></th>
+		</tr>
+		<tr>
+			<td class="at"><p style="padding: 10px 0 10px 0;">
+					<input id="YourbuttonId" name="submit" type="image"
+						src="{%$static_url%}lp/img/sec1_form_btn_sp.png" value="確認画面へ">
+				</p></td>
+		</tr>
+	</table>
+</form>

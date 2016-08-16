@@ -1,0 +1,13 @@
+<p id="agencylist_top" class="mb15"><span class="ico_check02">▲</span>50音順に並んでおります。保育施設名をクリックし、詳細情報をご覧ください。</p>
+<ul class="agencylist_tab"><!--
+-->{%if $consonant_exist['a']['count'] > 0%}<li {%if $consonant == "a"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/a/">{%else%}<li class="none">{%/if%}あ</a></li><!--
+-->{%if $consonant_exist['ka']['count'] > 0%}<li {%if $consonant == "ka"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/ka/">{%else%}<li class="none">{%/if%}か</a></li><!--
+-->{%if $consonant_exist['sa']['count'] > 0%}<li {%if $consonant == "sa"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/sa/">{%else%}<li class="none">{%/if%}さ</a></li><!--
+-->{%if $consonant_exist['ta']['count'] > 0%}<li {%if $consonant == "ta"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/ta/">{%else%}<li class="none">{%/if%}た</a></li><!--
+-->{%if $consonant_exist['na']['count'] > 0%}<li {%if $consonant == "na"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/na/">{%else%}<li class="none">{%/if%}な</a></li><!--
+-->{%if $consonant_exist['ha']['count'] > 0%}<li {%if $consonant == "ha"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/ha/">{%else%}<li class="none">{%/if%}は</a></li><!--
+-->{%if $consonant_exist['ma']['count'] > 0%}<li {%if $consonant == "ma"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/ma/">{%else%}<li class="none">{%/if%}ま</a></li><!--
+-->{%if $consonant_exist['ya']['count'] > 0%}<li {%if $consonant == "ya"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/ya/">{%else%}<li class="none">{%/if%}や</a></li><!--
+-->{%if $consonant_exist['ra']['count'] > 0%}<li {%if $consonant == "ra"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/ra/">{%else%}<li class="none">{%/if%}ら</a></li><!--
+-->{%if $consonant_exist['wa']['count'] > 0%}<li {%if $consonant == "wa"%}class="current"{%/if%}><a href="{%$base_url%}shisetsu/wa/">{%else%}<li class="none">{%/if%}わ</a></li><!--
+--></ul>

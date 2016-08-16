@@ -1,0 +1,53 @@
+{%if $job_list && ! empty($job_list)%}
+
+<link rel="stylesheet" href="{%$static_url%}common/css/slick.css" type="text/css" />
+<link rel="stylesheet" href="{%$static_url%}common/css/slick-theme.css" type="text/css" />
+
+<div class="area_new main">
+    <div class="area_new_inner single-item">
+    	{%foreach $job_list as $job%}
+    		<!-- View Image Job -->
+            {%$job_image = $static_url|cat:'user/images/dummy/dummy_job.png'%}
+            {%if isset($job['job_detail']['images']) && isset($job['job_detail']['images'][0]) && ! empty($job['job_detail']['images']) && ! empty($job['job_detail']['images'][0])%}
+            	{%$job_image = getImageUrlFromS3($job['job_detail']['images'][0]['account_id'], $job['job_detail']['images'][0]['type'], $job['job_detail']['images'][0]['name'])%}
+           	{%/if%}                   	
+          		
+    		<div class="area_new_box">
+	        	<a href="{%$base_url%}detail_{%$job["job_detail"]["job"]["job_id"]%}/">
+		            <p><img src="{%$job_image%}" alt="" width="200"/></p>
+		            <p>{%shortenString(html_escape($job["job_detail"]["job"]["title"]), 28)%}</p>
+		            <ul>
+		                <li><span class="ico_arrow01">&gt;</span>{%shortenString(html_escape($job["nursery_detail"]["address"]),15)%}</li>
+		                <li><span class="ico_arrow01">&gt;</span>{%shortenString($job["job_detail"]["job"]["salary"],15)%}</li>
+		            </ul>
+	        	</a>
+	        </div>
+	        
+		{%/foreach%}
+		
+    </div>
+    <ul class="area_new_carouselbtn">
+        <li><a id="carousel_prev" href="javascript:void(0)"><img src="{%$static_url%}user/images/carousel_prev.png" width="18" height="78" alt=""></a></li>
+        <li><a id="carousel_next" href="javascript:void(0)"><img src="{%$static_url%}user/images/carousel_next.png" width="18" height="78" alt=""></a></li>
+    </ul>
+</div>
+<script src="{%$static_url%}common/js/slick.min.js"></script>
+<script src="{%$static_url%}user/js/jquery.darktooltip.js"></script>
+<script>
+	$(document).ready(function() {
+		//Basic
+		/*$('.light_m').darkTooltip({
+		 size:"medium"
+		 });*/
+		$('.single-item').slick({
+			infinite : true,
+			autoplay : true,
+			slidesToShow : 3,
+			slidesToScroll : 3,
+			prevArrow : $('#carousel_prev'),
+			nextArrow : $('#carousel_next'),
+		});
+	});
+</script>
+
+{%/if%}

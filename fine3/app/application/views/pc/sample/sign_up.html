@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {%display_tdk($tdk_array)%}
+  <script type="text/javascript" src="{%$static_url%}user/library/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="{%$static_url%}user/library/jquery-form_v3.51.0/jquery.form.js"></script>
+
+  <script type="text/javascript" src="{%$static_url%}user/library/jquery-validation_v1.13.2-pre/delegate.js"></script>
+  <script type="text/javascript" src="{%$static_url%}user/library/jquery-validation_v1.13.2-pre/core.js"></script>
+  <script type="text/javascript" src="{%$static_url%}user/library/jquery-validation_v1.13.2-pre/localization/messages_ja.js"></script>
+</head>
+<body>
+{%display_breadcrumb($breadcrumb)%}
+{%form_open_multipart('sample/ajax_sign_up', ['id' => 'sign_up_form'])%}
+
+<div>
+  <label>name</label>
+  <input name="name" type="text" />
+</div>
+
+<div>
+  <label>email</label>
+  <input name="email" type="text" />
+</div>
+
+<div>
+  <label>password</label>
+  <input name="password" type="password" />
+</div>
+
+<div>
+  <label>photo</label>
+  <input name="photo" type="file" />
+</div>
+
+<div>
+  <input type="submit" />
+</div>
+
+
+{%form_close()%}
+
+<div id="result"></div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    var result = $('#result');
+
+    $("#sign_up_form").ajaxForm({
+      dataType: 'json',
+      beforeSubmit: function(arr, $form, options) {
+        return $form.valid();
+      },
+      beforeSend: function() {
+        result.empty();
+      },
+      success: function(data) {
+        var html = '';
+        if(data.photo_url != ''){
+          html += '<img src="' + data.photo_url + '" />';
+          html += '<br/>';
+        }
+
+        html += JSON.stringify(data)
+        
+        result.html(html);
+      },
+      error: function(xhr) {
+        result.html(JSON.stringify(xhr.responseText));
+      }
+    })
+
+
+    $("#sign_up_form").validate({
+      rules: {
+        name: "required",
+        email: {
+          required: true,
+          email: true
+        },
+        password: "required",
+        photo: "required"
+      }
+    });
+
+  })
+</script>
+
+</body>
+</html>
+
+
+
+
+

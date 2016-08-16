@@ -1,0 +1,52 @@
+
+<div class="search_s_box">
+    <p class="tit_02 mt10" id="condition">追加条件</p>
+    <p class="search_tit"><span class="ico_search04">&gt;</span>職種</p>
+    <p class="toggle btn_60 btn_white_s2">変更する</p>
+    <div class="accordion_inbox search_box">
+        <ul>{%foreach $tags["job"] as $job%}<!--
+--><li><label><input type="checkbox" class="select_job" name="select_job" value="{%$job['tag_id']%}" {%if !empty($selecter["job"][$job['tag_id']])%}checked{%/if%}>{%$job["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+        <p>【選択された項目】<span class="select_job_list">未選択</span></p>
+    </div><!--//area-->
+    <p class="search_txt select_job_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+    <p class="search_tit"><span class="ico_search05">&gt;</span>施設形態</p>
+    <p class="toggle btn_60 btn_white_s2">変更する</p>
+
+    <div class="accordion_inbox search_box">
+        <ul>{%foreach $tags["nursery"] as $nursery%}<!--
+--><li><label><input type="checkbox" class="select_nursery" name="select_nursery" value="{%$nursery['tag_id']%}" {%if !empty($selecter["nursery"][$nursery['tag_id']])%}checked{%/if%}>{%$nursery["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+        <p>【選択された項目】<span class="select_nursery_list">未選択</span></p>
+    </div><!--//area-->
+    <p class="search_txt select_nursery_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+    <p class="search_tit"><span class="ico_search07">&gt;</span>勤務形態</p>
+    <p class="toggle btn_60 btn_white_s2">変更する</p>
+
+    <div class="accordion_inbox search_box">
+        <ul>{%foreach $tags["employee"] as $employee%}<!--
+--><li><label><input type="checkbox" class="select_employee" name="select_employee" value="{%$employee['tag_id']%}" {%if !empty($selecter["employee"][$employee['tag_id']])%}checked{%/if%}>{%$employee["name"]%}</li><!--
+-->{%/foreach%}</ul>
+        <p>【選択された項目】<span class="select_employee_list">未選択</span></p>
+    </div><!--//area-->
+    <p class="search_txt select_employee_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+    <p class="search_tit"><span class="ico_search08">&gt;</span>こだわり条件</p>
+    <p class="toggle btn_60 btn_white_s2">変更する</p>
+
+    <div class="accordion_inbox search_box">
+        <ul>{%foreach $tags["tag"] as $tag%}<!--
+--><li><label><input type="checkbox" class="select_tag" name="select_ag" value="{%$tag['tag_id']%}" {%if !empty($selecter["tag"][$tag['tag_id']])%}checked{%/if%}>{%$tag["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+        <p>【選択された項目】<span class="select_tag_list">未選択</span></p>
+    </div><!--//area-->
+    <p class="search_txt select_tag_list">未選択</p>
+</div>

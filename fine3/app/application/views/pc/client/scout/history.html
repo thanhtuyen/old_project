@@ -1,0 +1,64 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			スカウト<span>：スカウト履歴</span>
+		</h2>
+		{%if $total > 0%}
+			<p class="count_box">{%$total%}件中 {%$from_item%}～{%$to_item%}件を表示</p>
+		{%else%}
+				<p class="count_box"></p>
+{%/if%}
+<div class="box">
+<table class="table01">
+<tbody>
+<tr>
+
+<th nowrap="">スカウトID<br><span class="txt_small">(ユーザーID)</span></th>
+ <th nowrap="">居住地</th>
+ <th nowrap="">保有資格</th>
+ <th nowrap="">年齢</th>
+ <th nowrap="">希望雇用形態</th>
+<th nowrap="">求人タイトル　<span class="txt_small">園名</span></th>
+<th nowrap="">スカウト日</th>
+<th nowrap="">詳細</th>
+</tr>
+
+{%foreach from=$scouts key=k item=scout%}
+<tr>
+<td nowrap="">{%$scout['scout_id']%}<p class="txt_small">({%$scout['user_id']%})</p></td>
+<td>{%html_escape($scout['address']|truncate:27:"...")%}</td>
+<td>{%$scout['license_tags']%}</td>
+<td nowrap="">{%$scout['age']%}</td>
+<td >{%$scout['employ_tags']%}</td>
+<td><a href="{%$scout['edit_job_url']%}">{%html_escape($scout['job_title']|truncate:27:"...")%}</a>
+<p class="txt_small"><a href="{%$scout['edit_nursery_url']%}">{%html_escape($scout['nursery_name']|truncate:27:"...")%}</a></p></td>
+<td>{%$scout['created']%}</td>
+<td nowrap=""><a class="btn_white btn_auto"
+href="{%$scout['scout_url']%}">詳細</a></td>
+</tr>
+{%foreachelse%}
+<tr>
+<td colspan="7">スカウト履歴はありません。</td>
+</tr>
+{%/foreach%}
+
+</tbody>
+</table>
+<!-- /.box -->
+</div>
+{%$pagination%}
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

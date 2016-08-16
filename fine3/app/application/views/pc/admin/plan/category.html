@@ -1,0 +1,61 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+{%getFlashInfo()%}
+<h2 style="margin-bottom:10px;">パッケージプランの一覧</h2>
+<a href="{%base_url('manager/plan_group/add')%}"><button class="btn btn-success">新しいパッケージプランの追加</button></a>
+<a href="{%base_url('manager/plan')%}"><button class="btn btn-primary">プラン内容の編集・新規作成</button></a>
+<div class="separator"></div>
+
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+{%foreach $categories as $category%}
+{%if isset($category['plans']) %}
+{%$num=count($category['plans'])+1%}
+{%else%}
+{%$num=1%}
+{%/if%}
+<table class="master">
+<tbody>
+<tr>
+<th rowspan="{%$num%}">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox"></label>
+</div>
+{%$category['name']%} {%$category['price']%}円<br><br>
+<a href="{%base_url('manager/plan_group/edit')%}/{%$category['plan_group_id']%}">
+<button type="button" class="btn btn-primary">編集</button></a>
+<a href="{%base_url('manager/plan_group/del')%}/{%$category['plan_group_id']%}">
+<button type="button" class="btn btn-default" onClick="return confirmDelete()">削除</button></a>
+
+</th>
+{%foreach $category['plans'] as $plan%}
+<tr>
+<td><div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox"></label></div>
+{%$plan['plan_name']%}</td>
+<!-- <td>{$plan['price']}円</td> -->
+<td>
+<a href="{%base_url('manager/plan/edit')%}/{%$plan['plan_id']%}"><button type="button" class="btn btn-primary">編集</button></a>
+<a href="{%base_url('manager/plan_group_plan/del')%}/{%$category['plan_group_id']%}/{%$plan['plan_id']%}"><button type="button" class="btn btn-default" onClick="return confirmDelete()">削除</button></a>
+</td>
+</tr>
+{%/foreach%}
+
+</tbody></table>
+<div class="sepatetor master"></div>
+{%/foreach%}
+
+<!-- div.widget --></div>
+<!-- form-group --></div>
+
+
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}

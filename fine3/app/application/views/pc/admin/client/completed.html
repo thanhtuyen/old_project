@@ -1,0 +1,35 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+{%getFlashInfo()%}
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">
+事業所アカウント作成完了
+</h4>
+<!-- widget-head --></div>
+<div style="margin:10px;">
+<h4>
+新しいパスワードは{%$password%}です。
+</h4>
+<p>
+先ほどご登録いただいたメールアドレスに、
+作成したアカウントのパスワードと、アカウントを有効化するURLをお送りしました。
+メール内のURLをクリックしてログインしていただくようご連絡ください。
+</p>
+</div>
+
+<table class="plan_form">
+<tr>
+<th>確認メール送信先</th>
+<td>{%$mail%}</td>
+</tr>
+</table>
+<!-- widget --></div>
+
+<div class="separator"></div>
+<div class="form-group">
+<a href="{%base_url()%}manager/client/add" class="btn btn-primary">続けて事業所アカウントを作成する</a></div>
+
+<!-- innerLR --></div>
+{%include file="pc/admin/shared/_footer.html"%}

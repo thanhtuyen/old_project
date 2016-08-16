@@ -1,0 +1,67 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+<!--main_content-->
+<div class="main">
+
+    <section class="sub_container" id="contents">
+        <article id="member_regist">
+
+            <h1 class="toptitle"><span>会員情報登録</span></h1>
+
+            <p class="form_ph">以下の項目を入力して「入力内容を確認する」ボタンを押してください。</p>
+
+            {%form_open("user/signup/register",["id"=>"register_form"])%}
+                {%include file="sp/user/signup/_signup_form.html"%}
+                <section class="form_chk">
+                    <h2 class="subtitle thin">無料転職サポート</h2>
+                    <!--<ul class="list c2 inset">-->
+                        <!--<li><input type="checkbox" id="suport" class="form_checkbox validate[required]">-->
+                            <!--<label for="app_option1000a" class=""> 一括登録をする</label></li>-->
+                    <!--</ul>-->
+                    <p class="orm_caption"><label for="suport"><input type="checkbox" id="suport">一括登録をする</label></p>
+                    <p class="form_caption">チェックを入れると、会員時登録で入力した情報をFINE！に登録している、転職支援会社に同時登録ができます。</p>
+                    <div class="privacy_box">
+                        <h2>無料転職サポートとは？</h2>
+                            <p>キャリアコンサルタントがあなたの転職活動をサポート。非公開求人のご紹介や、応募書類や面接に対するサポートを受けながら、転職活動を進められます。</p>
+                    </div>
+                </section>
+
+                <section class="btn">
+                    <input type="button" value="クリア">
+                    <a href="javascript:void(0)" class="form_submit register_member">会員登録をする</a>
+
+                </section>
+            {%form_close()%}
+        </article>
+    </section>
+
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script src="{%$static_url%}common/js/jpostal.js"></script>
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script src="{%$static_url%}common/js/jquery.autoKana.js"></script>
+<script src="{%$static_url%}common/js/date_format.js"></script>
+<script src="{%$static_url%}user/js/signup.js"></script>
+
+   <style>
+       .btn .register_member{
+           -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+           -moz-border-radius: 4px;
+           border: 1px solid #E13938;
+            background: -webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+           background: -moz-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+            background: linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+           background-color: #FF4C5D;
+            background-size: 15px 15px;
+            color: #FFF;
+            -webkit-box-shadow: 0px 2px 3px #CCC;
+           -moz-box-shadow: 0px 2px 3px #CCC;
+           text-shadow: -1px -1px 1px #c11a24;
+           width: 68%;
+       }
+   </style>
+</body>
+</html>

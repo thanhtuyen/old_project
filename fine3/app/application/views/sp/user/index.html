@@ -1,0 +1,315 @@
+<?php $tdk_array['description'] = '全国の保育士求人／転職／募集情報を掲載するポータルサイトFINE!。あなたにぴったりの保育士・幼稚園の求人や募集情報を探せます。保育士転職やお仕事に役立つ情報も満載！'; ?>
+
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<section class="top_container">
+<article id="top_contents">
+<h1><p class="top_new"><img src="{%$static_url%}user/images_sp/top.png" alt="顧客満足度ランキング 保育業界シェア No.1！ 国内最大級の保育士求人サイト「FINE!」"></p></h1>
+<div class="top_tab" id="search">
+<h2 class="select"><span class="ico_area">▼</span>エリアから探す</h2><!--
+--><h2><span class="ico_train">■</span>駅・路線から探す</h2>
+<!-- /.top_tab --></div>
+
+<div class="top_searchbox">
+<div class="top_searchbox_inner">
+<div id="first_window">
+<form>
+<nav id="top">
+<ul class="chbox list c1" id="selectarea">
+<li id="1" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>北海道・<br>東北</label></div>
+</li>
+<li id="2" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関東</label></div>
+</li>
+<li id="3" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>信越・<br>北陸</label></div>
+</li>
+<li id="4" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>東海</label></div>
+</li>
+<li id="5" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関西</label></div>
+</li>
+<li id="6" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>中国・<br>四国</label></div>
+</li>
+<li id="7" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>九州・<br>沖縄</label></div>
+</li>
+</ul>
+</nav>
+</form>
+<!-- /#first_window --></div>
+
+<div id="second_window1" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 7 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window1 --></div>
+
+<div id="second_window2" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 14 && $val['pref_id'] >= 8 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window2 --></div>
+
+<div id="second_window3" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 20 && $val['pref_id'] >= 15 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window3 --></div>
+
+<div id="second_window4" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 24 && $val['pref_id'] >= 21 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window4 --></div>
+
+<div id="second_window5" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 30 && $val['pref_id'] >= 25 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window5 --></div>
+
+<div id="second_window6" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 39 && $val['pref_id'] >= 31 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window6 --></div>
+
+<div id="second_window7" class="second_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] >= 40 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window7 --></div>
+<!-- /.top_searchbox_inner --></div>
+
+<!-- ここから駅・路線用 -->
+<div class="top_searchbox_inner hide">
+<div id="third_window">
+<form name="form2" method="post" action="/">
+<nav id="top">
+<ul class="chbox list c1" id="selectarea">
+<li id="1" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>北海道・<br>東北</label></div>
+</li>
+<li id="2" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関東</label></div>
+</li>
+<li id="3" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>信越・<br>北陸</label></div>
+</li>
+<li id="4" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>東海</label></div>
+</li>
+<li id="5" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関西</label></div>
+</li>
+<li id="6" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>中国・<br>四国</label></div>
+</li>
+<li id="7" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>九州・<br>沖縄</label></div>
+</li>
+</ul>
+</nav>
+</form>
+<!-- /#first_window --></div>
+
+<div id="fourth_window1" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 7 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window1 --></div>
+
+<div id="fourth_window2" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] >= 8 && $val['pref_id'] <= 14 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window2 --></div>
+
+<div id="fourth_window3" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] >= 15 && $val['pref_id'] <= 20 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window3 --></div>
+
+<div id="fourth_window4" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] >= 21 && $val['pref_id'] <= 24 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window4 --></div>
+
+<div id="fourth_window5" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] >= 25 && $val['pref_id'] <= 30 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window5 --></div>
+
+<div id="fourth_window6" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] <= 39 && $val['pref_id'] >= 31 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window6 --></div>
+
+<div id="fourth_window7" class="fourth_window" style="width:100%">
+<form id="pref">
+<ul id="selectarea" class="chbox list c1">
+{%foreach from=$area item=val key=key%}
+{%if $val['pref_id'] >= 40 %}
+<li class="arrow">
+<div class="clearfix"><input id="pref" name="pref" value="{%$val['romaji']%}" type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab rail_cd_tab">{%$val['name']%}（{%$area_count[$val['pref_id']]%}）</label>
+</div>
+</li>
+{%/if%}
+{%/foreach%}
+</ul>
+</form>
+<!-- /#second_window7 --></div>
+
+<!-- /.top_searchbox_inner --></div>
+
+<!-- /.top_searchbox --></div>
+
+<!-- /#top_contents --></article>
+<!-- ./top_container --></section>
+
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}user/js_sp/top_area.js" type="text/javascript"></script>
+<script src="{%$static_url%}user/js_sp/top_line.js" type="text/javascript"></script>
+<script src="{%$static_url%}user/js_sp/top_tab.js" type="text/javascript"></script>
+</body>
+</html>

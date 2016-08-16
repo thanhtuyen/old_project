@@ -1,0 +1,46 @@
+{%include file="pc/admin/shared/_header.html"%}
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">登録情報の編集</h4>
+<!-- widget-head --></div>
+{%form_open('manager/admins/update-email')%}
+<table class="plan_form">
+<tr>
+<th>ID</th><td>{%$data['id']%}</td>
+</tr>
+<tr>
+<th>名前</th>
+<td>{%$data['email']%}</td>
+</tr>
+<tr>
+<th>ログイン用<br>メールアドレス</th>
+<td><input type="text" name="email" placeholder="xxxx@xxxx.com" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　ログインメールアドレス用を入力してください。</span>" /></td>
+</tr>
+</table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+<input class="btn btn-default" type="reset" value="キャンセル"></div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}
+
+
+<script>
+
+  $.validate({
+    modules : 'location, date, security, file',
+    onModulesLoaded : function() {
+      $('#country').suggestCountry();
+    }
+
+  });
+</script>

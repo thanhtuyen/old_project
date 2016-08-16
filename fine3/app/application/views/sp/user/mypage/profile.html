@@ -1,0 +1,58 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar_logged.html"%}
+<!-- main_content -->
+<div class="main">
+{%include file="sp/user/common/mypagemenu.html"%}
+    <!--profile confirm-->
+     <section>
+     	<h4 class="title_pink_bar">登録情報確認</h4>
+        <dl class="job_detail_table form_table">
+        		<dt>メールアドレス<span class="tag_hissu">必須</span></dt>
+        		<dd>{%$user_data["mail"]%}</dd>
+        		<dt>パスワード変更<span class="tag_hissu">必須</span></dt>
+        		<dd class="pw_reset_button">●●●●●●●●●●●●●●●<p class="form_cancel_button mt10"><a href="{%$base_url%}mypage/change_password/">変更する</a></p></dd>
+        		<dt>氏名<span class="tag_hissu">必須</span></dt>
+        		<dd>{%$user_data['name']%}</dd>
+        		<dt>氏名カナ<span class="tag_hissu">必須</span></dt>
+        		<dd>{%$user_data['name_kana']%}</dd>
+        		<dt>生年月日<span class="tag_hissu">必須</span></dt>
+        		<dd>{%date("Y年 m月 d日",strtotime($user_data["birthdate"]))%}</dd>
+        		<dt>性別<span class="tag_hissu">必須</span></dt>
+        		<dd>{%if $user_data["gender"] === "1"%}女性{%else%}男性{%/if%}</dd>
+        		<dt>現住所<span class="tag_hissu">必須</span></dt>
+        		<dd>{%$user_data["zip_code"]%}<br>{%$user_data["area"]|cat:$user_data["address"]%}</dd>
+        		<dt>電話番号<span class="tag_hissu">必須</span></dt>
+        		<dd>{%$user_data["phone"]%} </dd>
+        		<dt>資格<span class="tag_hissu">必須</span></dt>
+        		<dd>
+                    <ul>
+                        {%if !empty($user_data["tag"]["license"])%}
+                        {%foreach $user_data["tag"]["license"] as $license%}
+                        <li>{%$license%}</li>
+                        {%/foreach%}
+                        {%/if%}
+                    </ul>
+                </dd>
+        		<dt>希望する雇用形態<span class="tag_hissu">必須</span></dt>
+        		<dd><ul>
+                        {%if !empty($user_data["tag"]["employee"])%}
+                        {%foreach $user_data["tag"]["employee"] as $employee%}
+                        <li>{%$employee%}</li>
+                        {%/foreach%}
+                        {%/if%}
+                    </ul>
+                </dd>
+        </dl>
+        <div class="form_button_area">
+            <p class="form_button"><a href="{%$base_url%}mypage/profile_edit">登録内容を変更する</a></p>
+            <p class="delete_button"><a href="{%$base_url%}mypage/withdraw">退会する</a></p>
+         </div>
+     </section>
+{%include file="sp/user/common/sub_content.html"%}
+        
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+
+</body>
+</html>

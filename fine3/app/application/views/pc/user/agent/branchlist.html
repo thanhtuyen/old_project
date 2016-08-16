@@ -1,0 +1,40 @@
+{%include file="pc/user/common/headbar.html"%} {%include
+file="pc/user/common/navbar.html"%} {%display_breadcrumb($breadcrumb)%}
+
+<script><!--serch-->
+$(function () {
+var b = $('.search_s_box');
+    $(".accordion .toggle").click(function () {
+    $(this).toggleClass("open");
+    $(this).next("div.accordion_inbox").slideToggle();
+    $(this).nextAll("p.search_txt:first").toggle();
+    });
+});
+</script>
+<script src="js/jquery.darktooltip.js"></script>
+<script>
+$(document).ready( function(){
+//Basic
+$('.light_m').darkTooltip({
+    size:"medium"
+});
+});
+</script>
+<div class="content_wrapper">
+<div class="content">
+
+<h1 class="tit_01">紹介会社一覧</h1>
+<!--<div class="area_intro">
+<p>ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。</p>
+</div>-->
+{%include file="pc/user/agent/_agent_list.html"%}
+
+<!-- /.content --></div>
+
+    {%include file="pc/user/common/right_nav.html"%}
+<!-- /.right_nav -->
+<!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

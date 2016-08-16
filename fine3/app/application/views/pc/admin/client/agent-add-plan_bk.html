@@ -1,0 +1,117 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+
+<h2>プランのお申し込み</h2>
+
+<div class="widget widget-heading-simple widget-body-white">
+{%form_open('manager/plan/create')%}
+<table class="plan_form">
+<tbody><tr>
+<th>ご利用プラン</th>
+<!-- <td>Package name</td> -->
+<td>
+<input type="hidden" name="client_id" value="" />
+<select name="package_id" class="selectpicker col-md-6 select-package" data-style="btn-success" style="display: none;">
+<option selected>料金タイプ名を選択</option>
+{foreach from=$packages key=k item=package}
+<option value="{$package['package_id']}">{$package['name']}</option>
+{/foreach}
+</select>
+</td>
+</tr>
+<tr>
+<th>料金プラン名</th>
+<td><input id="fee_name" name="name" class="form-control" type="text" data-validation = "required" data-validation-error-msg="<span style='color:red'>　料金プラン名は必須項目です.</span>"></td>
+</tr>
+<tr>
+<th>料金</th>
+<td><input id="fee" name="total" class="form-control" type="text" data-validation = "required" data-validation-error-msg="<span style='color:red'>　料金は必須項目です.</span>"></td>
+</tr>
+<tr>
+<th>開始日</th>
+<td><input id="start_date" name="start_date" class="form-control datepicker1" type="text" data-validation = "required" data-validation-error-msg="<span style='color:red'>　開始日は必須項目です.</span>"></td>
+</tr>
+<tr>
+<th>利用期間</th>
+<td>
+<div class="radio lined_div"><input class="select-month" name="quantity" type="radio" value="1">1ヶ月</div>
+<div class="radio lined_div"><input class="select-month" name="quantity" type="radio" value="2">2ヶ月</div>
+<div class="radio lined_div"><input class="select-month" name="quantity" type="radio" value="3">3ヶ月</div>
+<div class="radio lined_div"><input class="select-month" name="quantity" type="radio" value="6">半年</div>
+<div class="radio lined_div"><input class="select-month" name="quantity" type="radio" value="12">1年</div>
+</td>
+</tr>
+<tr>
+<th>更新予定日</th>
+<td><input id="end_date" name="end_date" class="form-control" type="text" data-validation = "required" data-validation-error-msg="<span style='color:red'>　更新予定日は必須項目です.</span>"></td>
+</tr>
+<tr>
+<th>課金タイプ</th>
+<!-- <td>plan Charge type</td> -->
+<td><div class="make-switch" data-on="success" data-off="default"><input type="radio" name="charge_type" checked></div></td>
+</tr>
+</tbody></table>
+<p>
+※プランは更新予定日になりますと自動延長されます。<br>
+延長されない場合は、マイページ「プランの確認」画面から更新日の7日前までに終了申請をしてください。
+</p>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<a href="plan-comp.html"><input class="btn btn-primary" type="submit" value="この内容で申し込む"></a>
+　<a href="package.html"><button class="btn btn-default">戻る</button></a></div>
+{%form_close()%}
+</div>
+
+<!-- Content --></div>
+<script>
+jQuery(function(){
+
+    jQuery('.select-package').change(function(){
+        var package_id = parseInt( jQuery(this).val() );
+        jQuery.ajax({
+            type: "POST",
+            url: "{%base_url('manager/packages/ajax_row')%}",
+            data: {package_id: package_id},
+            cache: false,
+            dataType: "html",
+            success: function (response) {
+                response = jQuery.parseJSON(response);
+                jQuery('#fee').val(response.fee);
+                jQuery('#fee_name').val(response.name);
+            },
+        });
+
+    });
+
+    jQuery('.select-month').change(function(){
+        jQuery('#end_date').val('');
+        jQuery('#fee').val('');
+
+        var month = parseInt( jQuery(this).val() );
+        var package_id = jQuery('.select-package').val();
+        var start_date = jQuery('#start_date').val();
+
+        if(! jQuery.isNumeric(month) || ! jQuery.isNumeric(1) || start_date == ''){
+            return;
+        }
+
+        jQuery.ajax({
+            type: "POST",
+            url: "{%base_url('manager/plans/ajax_plan')%}",
+            data: {month:month, package_id:package_id, start_date:start_date},
+            cache: false,
+            dataType: "html",
+           success: function (response) {
+            response = jQuery.parseJSON(response);
+            jQuery('#end_date').val(response.end_date);
+            jQuery('#fee').val(response.fee);
+           },
+        });
+    });
+});
+</script>
+
+
+{%include file="pc/admin/shared/_footer.html"%}

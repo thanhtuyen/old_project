@@ -1,0 +1,161 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+<script type="text/javascript">
+    $(function() {
+        //クリックしたときのファンクションをまとめて指定
+        $('.index_maptab li').click(function() {
+
+            //.index()を使いクリックされたタブが何番目かを調べ、
+            //indexという変数に代入します。
+            var index = $('.index_maptab li').index(this);
+
+            //コンテンツを一度すべて非表示にし、
+            $('.index_map div').css('display','none');
+
+            //クリックされたタブと同じ順番のコンテンツを表示します。
+            $('.index_map div').eq(index).css('display','block');
+
+            //一度タブについているクラスselectを消し、
+            $('.index_maptab li').removeClass('select');
+
+            //クリックされたタブのみにクラスselectをつけます。
+            $(this).addClass('select')
+        });
+    });
+</script>
+<div class="breadcrumbs">
+<p>国内最大級の保育士求人サイト FINE！（ファイン） TOP</p>
+<!-- /.breadcrumbs --></div>
+
+<div class="content_wrapper">
+<div class="content">
+<h1 id="map" class="tit_07">保育士求人・募集サイトFine!</h1>
+<ul class="index_maptab">
+<li class="select"><h2><span class="ico_location02">▼</span>エリアから探す</h2></li><!--
+--><li><h2><span class="ico_train03">■</span>駅・路線から探す</h2></li>
+</ul>
+
+<div class="box index_map">
+<div class="index_map_area">
+{%$link = "`$base_url`p_"%}
+{%include file="pc/user/common/_pref_map.html"%}
+<!-- /.index_map --></div>
+<div class="index_map_station hide" style="display: none;">
+{%$link = "`$base_url`railway/"%}
+{%include file="pc/user/common/_pref_map.html"%}
+<!-- /.index_map --></div>
+<!-- /.box --></div>
+
+{%if $job_list !== false%}
+<h2 class="tit_02"><span class="ico_check01">！</span>新着保育士求人・募集情報</h2>
+<!-- ///////////////////////////////// -->
+<!-- Include item job with slide slick layout -->
+{%include file="pc/user/common/_slide_job_list.html"%}
+<!-- End Include -->
+<!-- ///////////////////////////////// -->
+
+        {%/if%} {%if !empty($job_content_upper_name) &&
+        !empty($job_content_upper_content)%}
+        <p class="tit_02">
+            <span class="ico_folder01">▽</span>{%$job_content_upper_name%}
+        </p>
+        <div class="box jobbox_users">
+            <div class="clear">
+                {%foreach from=$job_content_upper_content key=count item=job%}
+                    <a class="jobbox" href="{%$base_url%}detail_{%$job.job_detail.job.job_id%}/">
+                        <p class="tit_boxjob">{%$job.job_detail.job.title%}</p>
+                        {%if $job['job_detail']['images']%}
+                        <p class="custom_job_img">
+                            <img
+                                src="{%getImageUrlFromS3($job['job_detail']['images'][0]['account_id'], $job['job_detail']['images'][0]['type'], $job['job_detail']['images'][0]['name'])%}"
+                                alt="" width="94">
+                        </p>
+                        {%/if%}
+
+                        <ul class="job_s_list">
+                            {%if !empty($job.nursery_detail.display_address)%}
+                                <li><span class="ico_arrow01">&gt;</span>{%$job.nursery_detail.display_address%}</li>
+                            {%/if%}
+                            {%if !empty($upper_job_type_employ_{%$count%})%}
+                                <li><span class="ico_arrow01">&gt;</span>{%foreach from=$upper_job_type_employ_{%$count%} key=index item=typeemploy%}{%if $index > 0%},&nbsp{%/if%}{%$typeemploy.tag_detail.name%}{%/foreach%}</li>
+                            {%/if%}
+                            {%if !empty($upper_job_type_job_{%$count%})%}
+                                <li><span class="ico_arrow01">&gt;</span>{%foreach from=$upper_job_type_job_{%$count%} key=increment item=tagjob%}{%if $increment > 0%},&nbsp{%/if%}{%$tagjob.tag_detail.name%}{%/foreach%}</li>
+                            {%/if%}
+                        </ul>
+                    </a>
+                {%/foreach%}
+                <!-- /.clear -->
+            </div>
+            <!-- /.box -->
+        </div>
+        {%/if%} {%if !empty($job_content_lower_name) &&
+        !empty($job_content_lower_content) %}
+        <p class="tit_02">
+            <span class="ico_folder01">▽</span>{%$job_content_lower_name%}
+        </p>
+        <div class="box jobbox_users">
+            <div class="clear">
+                {%foreach from=$job_content_lower_content key=count item=job%} <a
+                    class="jobbox"
+                    href="{%$base_url%}detail_{%$job.job_detail.job.job_id%}/">
+                    <p class="tit_boxjob">{%$job.job_detail.job.title%}</p> {%if
+                    $job['job_detail']['images']%}
+                    <p class="custom_job_img">
+                        <img
+                            src="{%getImageUrlFromS3($job['job_detail']['images'][0]['account_id'], $job['job_detail']['images'][0]['type'], $job['job_detail']['images'][0]['name'])%}"
+                            alt="" width="94"> {%/if%}
+                    </p>
+                    <ul class="job_s_list">
+                        {%if !empty($job.nursery_detail.display_address)%}
+                        <li><span class="ico_arrow01">&gt;</span>{%$job.nursery_detail.display_address%}</li>{%/if%}
+                        {%if !empty($lower_job_type_employ_{%$count%})%}
+                        <li><span class="ico_arrow01">&gt;</span>{%foreach from=$lower_job_type_employ_{%$count%} key=index item=typeemploy%}{%if $index > 0%},&nbsp{%/if%}{%$typeemploy.tag_detail.name%}{%/foreach%}</li>
+                        {%/if%}
+                        {%if !empty($lower_job_type_job_{%$count%})%}
+                        <li><span class="ico_arrow01">&gt;</span>{%foreach from=$lower_job_type_job_{%$count%} key=increment item=tagjob%}{%if $increment > 0%},&nbsp{%/if%}{%$tagjob.tag_detail.name%}{%/foreach%}</li>
+                        {%/if%}
+                    </ul>
+                </a> {%/foreach%}
+                <!-- /.clear -->
+            </div>
+            <!-- /.box -->
+        </div>
+        {%/if%}
+
+        <ul class="content_banner">
+            {%if !empty($content_upper_banner_path)%}
+            <li><a href="{%$content_upper_banner_url%}"><img
+                    src="{%$content_upper_banner_path%}" alt=""></a></li> {%/if%} {%if
+            !empty($content_lower_banner_path)%}
+            <li><a href="{%$content_lower_banner_url%}"><img
+                    src="{%$content_lower_banner_path%}" alt=""></a></li> {%/if%}
+        </ul>
+
+        <!-- ///////////////////////////// -->
+        <!-- Include Search box conditions -->
+        <h2 class="tit_02"><span class="ico_search01">◎</span>詳細条件で保育士の求人を探す</h2>
+        {%include file="pc/user/job/_searchbox.html"%}
+
+        <script src="{%$static_url%}common/js/jquery.darktooltip.js"></script>
+        <script type="text/javascript">
+        CSRF_TOKEN_NAME = '{%$csrf_token_name%}';
+        CSRF_TOKEN_VALUE = '{%$csrf_token_value%}';
+        BASE_URL = '{%$base_url%}';
+        </script>
+        <!-- Move code js search and all function into file user/js/search.js -->
+        <script src="{%$static_url%}user/js/search.js"></script>
+        <!-- End Include -->
+        <!-- ///////////////////////////// -->
+
+        <!-- /.content -->
+    </div>
+
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content --></div>
+
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>
+

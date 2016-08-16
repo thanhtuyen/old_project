@@ -1,0 +1,123 @@
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+<div class="main">
+    {%include file="pc/client/common/left_nav.html"%}
+
+    <div class="contents inner">
+        <h2 class="tit_01">
+            紹介への応募<span>：応募詳細</span>
+        </h2>
+        <p class="newbtn">
+            <a class="btn_white btn_190" href="{%$base_url%}client/agent_apply/index"><span
+                class="ico_arrow02">&gt;</span>紹介への応募一覧</a>
+        </p>
+        <div class="box">
+
+            {%if $success %}
+            <div class="msg-success">{%$success%}</div>
+            {%/if%}
+
+            {%if $error %}
+            <div class="msg-error">{%$error%}</div>
+            {%/if%}
+
+            <!-- ========================================= -->
+            <!-- View Client -->
+            <p class="tit_04">応募詳細</p>
+            <table class="table02 mb20">
+                <tbody>
+                    <tr>
+                        <th>エントリーID</th>
+                        <td>{%$detailUserApplied['applied']['applicant_agency_id']%}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="tit_04">応募者詳細</p>
+            <table class="table02 mb20">
+                <tbody>
+                    <tr>
+                        <th>応募者ID</th>
+                        <td>{%$detailUserApplied['user']['user_id']%}</td>
+                    </tr>
+                    <tr>
+                        <th>応募者名</th>
+                        <td>{%$detailUserApplied['user']['name']%}</td>
+                    </tr>
+                    <tr>
+                        <th>フリガナ</th>
+                        <td>{%$detailUserApplied['user']['name_kana']%}</td>
+                    </tr>
+                    <tr>
+                        <th>生年月日</th>
+                        <td>{%$detailUserApplied['user']['display_birthdate']%}</td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td>{%$detailUserApplied['user']['mail']%}</td>
+                    </tr>
+                    <tr>
+                        <th>保有資格</th>
+                        <td>
+                            {%if isset($detailUserApplied['tag']) && ! empty($detailUserApplied['tag'])%}
+                                <ul>
+                                    <li>{%$arg = array()%}
+                                    {%foreach from=$detailUserApplied['tag'] key=kTag item=vTag%}
+                                        {%$arg[] = $vTag['name']%}
+                                    {%/foreach%}
+                                    {%implode('</li><li>', $arg)%}</li>
+                                </ul>
+                            {%/if%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>性別</th>
+                        <td>
+                            {%$detailUserApplied['user']['user_gender']%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td>
+                            {%if isset($detailUserApplied['area']) && ! empty($detailUserApplied['area']) %}
+                                {%if isset($detailUserApplied['area']['prefname']) && ! empty($detailUserApplied['area']['prefname']) %}
+                                    {%$detailUserApplied['area']['prefname']%}
+                                {%/if%}
+
+                                {%if isset($detailUserApplied['area']['cname']) && ! empty($detailUserApplied['area']['cname']) %}
+                                    {%$detailUserApplied['area']['cname']%}
+                                {%/if%}
+                            {%/if%}
+
+                            {%$detailUserApplied['user']['address']%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td>{%$detailUserApplied['user']['phone']%}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {%if $detailUserApplied['applied']['status'] == 0%}
+                {%include file="pc/client/agent/valid_item.html"%}
+            {%else if $detailUserApplied['applied']['status'] == 1%}
+                {%include file="pc/client/agent/pending_item.html"%}
+            {%else if $detailUserApplied['applied']['status'] == 3%}
+                {%include file="pc/client/agent/confirmed_item.html"%}
+            {%else if $detailUserApplied['applied']['status'] == 4%}
+                {%include file="pc/client/agent/overlap_item.html"%}
+            {%else%}
+                {%include file="pc/client/agent/invalid_item.html"%}
+            {%/if%}
+
+            <!-- /.box -->
+        </div>
+        <!-- /.contents -->
+    </div>
+
+    <link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+    <!-- /.main -->
+</div>
+{%include file="pc/client/common/footer.html"%}

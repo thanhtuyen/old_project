@@ -1,0 +1,68 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+<!-- Left nav -->
+{%include file="pc/client/common/left_nav.html"%}
+
+<div class="contents inner">
+<h2 class="tit_01">キャリアアドバイザー</h2>
+{%if $total > 0%}
+<p class="count_box">{%$total%}件中 {%$limit_from%}～{%$limit_to%}件を表示</p>
+{%else%}
+<p class="count_box"></p>
+{%/if%}
+
+
+<p class="newbtn">
+<a class="btn_pink btn_190" href="{%base_url()%}client/profile/create_career_adviser"><span
+class="ico_arrow03">&gt;</span>アドバイザーを追加</a>
+</p>
+<div class="box">
+{%form_open('/client/profile/delete_career_adviser', ['method' => 'POST', 'class' => 'delete_career_adviser', 'id' => 'delete_career_adviser', 'enctype'=>"multipart/form-data"])%}
+
+<table class="table01">
+<tbody>
+<tr>
+
+<th nowrap>ID</th>
+<th class="width80">名前</th>
+<th nowrap>写真</th>
+<th nowrap>メッセージ</th>
+<th nowrap>操作</th>
+</tr>
+{%foreach $agent_list as $data%}
+<tr>
+
+<td nowrap>{%if !empty($data['career_adviser_id'])%}{%$data['career_adviser_id']%}{%/if%}</td>
+<td>{%if !empty($data['name'])%}<a class="edit_agent" onClick="submit({%$data['career_adviser_id']%})">{%$data['name']%}</a>{%/if%}</td>
+<td class="adviserimg"><img src="{%getImageUrlFromS3($data['career_adviser_id'], $image_type, $data['file_name'])%}"></td>
+<td>{%if !empty($data['message'])%}{%$data['message']%}{%/if%}</td>
+<td nowrap>
+<a class="btn_white btn_auto" href="{%$base_url%}client/profile/agent_edit/{%$data['career_adviser_id']%}">編集</a>
+<a class="btn_gray btn_auto delete-ca" href="javascript:void(0)" data-id="{%$data['career_adviser_id']%}" data-name="{%$data['name']%}">削除</a>
+
+</td>
+</tr>
+{%foreachelse%}
+<tr><td colspan="7">キャリアアドバイザーが見つかりません。</td></tr>
+{%/foreach%}
+
+</tbody>
+</table>
+</form>
+<!-- /.box -->
+</div>
+{%$pagination%}
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+</div>
+<!-- BEGIN SCRIPT -->
+
+<script src="{%$static_url%}client/career-adviser/js/delete.js"></script>
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

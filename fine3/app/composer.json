@@ -1,0 +1,13 @@
+{
+    "require": {
+        "filp/whoops": "dev-master",
+        "monolog/monolog": "dev-master",
+        "jakeasmith/http_build_url": "~0.1.2",
+        "pagerfanta/pagerfanta": "dev-master",
+        "knplabs/gaufrette": "0.2.*@dev",
+        "guzzlehttp/psr7": "0.1.*@dev",
+        "guzzlehttp/guzzle": "6.*@dev",
+        "aws/aws-sdk-php": "3.x-dev#74f8c50c0bde2ef8d8ec57b195c4a20857056f9f",
+        "phpoffice/phpexcel": "dev-master"
+    }
+}

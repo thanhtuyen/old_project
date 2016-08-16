@@ -1,0 +1,190 @@
+<input id="area_id" name="area_id" type="hidden" value="">
+<section class="form_text">
+    <h2 class="subtitle thin">メールアドレス（ログインID）<span>必須</span></h2>
+    <div class="form_text_box">
+        <input type="text" size="50" id="mail"  name="mail" maxlength="200" class="form_pink validate[required,maxSize[200],custom[email]]" placeholder="例） mail@example.com">
+        <p class="text_small">※携帯電話のメールアドレスで登録する場合は「@fine.me」のドメインを「受信許可」に設定してください。</p>
+        <div class="mt5">
+            <div class="message msgerror_mail">
+                <div id="mail_err" class="display_none">※メールアドレスを正しく入力してください。</div>
+                <div id="mail_exist" class="display_none">※このメールアドレスは既に登録されています。</div>
+                <div id ="mail_check_length" class="display_none">255文字以下で入力してください。</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="form_text">
+    <h2 class="subtitle thin">パスワード<span>必須</span></h2>
+    <div class="form_text_box" id="member_regist_pass">
+        <input type="password" size="10" id="password" name="password"  class="form_pink validate[required,minSize[4],maxSize[255],custom[onlyLetterNumber]]" style="ime-mode:disabled;">
+        <p class="text_small regist_pass01">※6文字以上の半角英数字と記号で入力してください。</p>
+        <div class="message msgerror_password">
+            <div id="password_err" class="display_none">※パスワードを正しく入力してください。</div>
+            <div id ="password_check_length" class="display_none">255文字以下で入力してください。</div>
+        </div>
+        <input type="password" size="10" id="passconf"  name="passconf"  class="form_pink validate[required,minSize[4],maxSize[255],custom[onlyLetterNumber]]" style="ime-mode:disabled;">
+        <p class="text_small">※確認用にもう一度同じパスワードを入力してください。</p>
+        <div class="message msgerror_passconf">
+            <div id="passconf_err" class="display_none">※確認用のパスワードを入力してください。</div>
+            <div id="passconf_incorrect" class="display_none">※入力した内容が一致していません</div>
+            <div id ="passconf_check_length" class="display_none">255文字以下で入力してください。</div>
+        </div>
+    </div>
+</section>
+<section class="form_text">
+    <h2 class="subtitle thin">氏名<span>必須</span></h2>
+    <div class="form_text_box">
+        <input type="text" id="name" name="name"  size="20" maxlength="200" class="form_pink validate[required,maxSize[200]]" placeholder="例） 保育 育美">
+    </div>
+    <div class="mt5">
+        <div class="message msgerror_name">
+            <div id="name_err" class="display_none">※氏名を正しく入力してください。</div>
+            <div id="japanese_name_err" class="display_none">※氏名は全角のみで入力してください</div>
+            <div id ="name_check_length" class="display_none">255文字以下で入力してください。</div>
+        </div>
+    </div>
+</section>
+<section class="form_text">
+    <h2 class="subtitle thin">氏名カナ<span>必須</span></h2>
+    <div class="form_text_box">
+        <input type="text" id="kana" name="kana" class="form_pink" size="20" maxlength="200" class="validate[required,maxSize[200]]" placeholder="例） ホイク イクミ">
+    </div>
+    <div class="mt5">
+        <div class="message msgerror_kana">
+            <div id="kana_err" class="display_none">※フリカナを正しく入力してください。</div>
+            <div id="kana_except_err" class="display_none">※氏名はカタカナのみで入力してください</div>
+            <div id ="kana_check_length" class="display_none">255文字以下で入力してください。</div>
+        </div>
+    </div>
+</section>
+
+<section class="form_select">
+    <h2 class="subtitle thin">生年月日<span>必須</span></h2>
+    <div class="form_select_box">
+        <section class="dateyear_box">
+            <select  name="birth_year" id="birth_year" class="year validate[required]">
+                {%foreach $year as $val%}
+                <option {%if $val==1990%} selected="selected" {%/if%}value="{%$val%}">{%$val%}</option>
+                {%/foreach%}
+            </select>年
+            <select name="birth_month" id="birth_month" class="month validate[required]">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            月
+            <select name="birth_day" id="birth_day" class="day validate[required]">
+                {%for $i=1 to 31%}
+                <option value="{%$i%}">{%$i%}</option>
+                {%/for%}
+            </select>
+            日
+            <div class="mt5">
+                <div class="message msgerror_birth_day">
+                    <div id="birth_err" class="error | success | warning display_none">生年月日を入力してください。</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<section class="form_radio">
+    <h2 class="subtitle thin">性別<span>必須</span></h2>
+    <ul class="list c2 inset">
+        <li><input type="radio" name="gender"  id="s_2" class="form_radio validate[required]" value="1" checked><label for="s_2" class="form_radio_label">女性</label></li>
+        <li><input type="radio" name="gender"  id="s_1" class="form_radio validate[required]" value="2" ><label for="s_1" class="form_radio_label">男性</label></li>
+        <div class="mt5">
+            <div class="message msgerror_gender">
+                <div id="gender_err" class="display_none">性別を選択してください。</div>
+            </div>
+        </div>
+    </ul>
+</section>
+<section>
+    <h2 class="subtitle thin"> 現住所<span>必須</span></h2>
+    <div class="form_address_box">
+        <dl class="form_address_postalcode"><dt>郵便番号</dt>
+            <dd><input type="text" id="zip1" class="form_pink" name="zip1"> - <input type="text" class="form_pink" id="zip2" name="zip2">
+                <p class="text_small">※半角数字（0～9）で入力してください。</p>
+            </dd>
+            <div class="message msgerror_zip1">
+                <div id="zip_err" class="display_none">郵便番号を正しく入力してください。</div>
+            </div>
+        </dl>
+        <dl><dt>都道府県</dt>
+            <dd><select id="address_pref" name="address_pref" class="form_pink year validate[required]">
+                <option value="">--選択してください--</option>
+                {%foreach $area["pref"] as $pref%}
+                <option value="{%$pref['name']%}" data-pref_id="{%$pref['pref_id']%}">{%$pref['name']%}</option>
+                {%/foreach%}
+                </select>
+            </dd>
+            <div class="message msgerror_address_pref">
+                <div id="address_pref_err" class="display_none">※選択してください</div>
+            </div>
+        </dl>
+        <dl><dt>市区町村</dt>
+            <dd><select id="address_city" name="address_city" class="form_pink year validate[required]">
+                <option value="">--選択してください--</option>
+                {%foreach $area["city"] as $city%}
+                <option class="city_pref_id_{%$city['pref_id']%}" value="{%$city['name']%}" data-city_area_id="{%$city['area_id']%}" data-pref_id="{%$city['city_id']%}">{%$city['name']%}</option>
+                {%/foreach%}
+            </select></dd>
+            <div class="message msgerror_address_city">
+                <div id="address_city_err" class="display_none">※選択してください</div>
+            </div>
+        </dl>
+        <dl>
+            <dt>以下</dt>
+            <dd><input type="text" size="30" id="address_detail"  name="address_detail">
+            </dd>
+            <div class="message msgerror_address_detail">
+                <div id="address_detail_err" class="display_none">番地、マンション名等を入力してください。</div>
+                <div id ="address_detail_check_length" class="display_none">255文字以下で入力してください。</div>
+            </div>
+        </dl>
+    </div>
+</section>
+<section class="form_text">
+    <h2 class="subtitle thin"> 電話番号<span>必須</span></h2>
+    <div class="form_text_box">
+        <input type="text" name="tel" id="tel" size="30" maxlength="11" class="form_pink validate[required,maxSize[11]]">
+        <p class="text_small">※半角数字（0～9）で入力してください。ハイフン（-）は要りません。</p>
+        <div class="mt5">
+            <div class="message msgerror_tel">
+                <div id="tel_err" class="error | success | warning display_none">電話番号は数字のみで入力してください</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="form_chk">
+    <h2 class="subtitle thin">資格<span>必須</span></h2>
+    <ul class="list c2 inset">
+        {%foreach $license item=name key=key%}
+        <li><input type="checkbox" value="{%$key%}" class="license" name="license[]" id="mem_option{%$key%}" class="form_checkbox validate[required]">
+            <label for="mem_option{%$key%}" class="form_checkbox_label"> {%$name%}</label>
+        </li>
+        {%/foreach%}
+    </ul>
+    <div class="message">
+        <div id="license_err" class="display_none">※選択してください</div>
+    </div>
+</section>
+<section class="form_select">
+    <h2 class="subtitle thin">希望する雇用形態<span>必須</span></h2>
+    <div class="form_select_box select_employee">
+        {%html_options id=employee name=employee options=$employee%}
+        <div class="message">
+            <div id="employee_err" class="display_none">希望する雇用形態を選択してください。</div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+app/application/views/templates/*
+app/application/views/templates_c/*
+app/application/logs/*
+!app/application/logs/.gitkeep
+app/vendor/*
+!app/vendor/.keep
+app/application/config/development/*.php
+*.swp

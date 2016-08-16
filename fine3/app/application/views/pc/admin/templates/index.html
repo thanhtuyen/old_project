@@ -1,0 +1,76 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="manager/contacts/_nav.tpl"%}
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>送信メールID</th>
+<th>宛先</th>
+<th>件名</th>
+<th>内容</th>
+<th>送信日時</th>
+<th>  </th>
+</tr>
+</thead>
+<tbody>
+
+
+{%foreach from=$result key=k item=v%}
+<tr id="item{%$v['template_id']%}" class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="{%base_url('manager/templates/detail')%}/{%$v['template_id']%}">{%$v['template_id']%}</a></td>
+<td>{%$v['name']%}</td>
+<td><a href="{%base_url('manager/templates/detail')%}/{%$v['template_id']%}">{%$v['title']%}</a></td>
+<td><a href="{%base_url('manager/templates/detail')%}/{%$v['template_id']%}">{%$v['content']%}</a></td>
+<td>{%$v['created']%}</td>
+<td><button class="btn btn-default" onClick="deleteContact({%$v['template_id']%})">削除</button></td>
+</tr>
+{%/foreach%}
+
+
+</tbody>
+</table>
+<div class="row"><div class="col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info">Showing {%$quantity['start']%} to {%$quantity['end']%} of {%$quantity['total']%} entries</div></div><div class="col-md-6"><div class="dataTables_paginate paging_bootstrap">
+
+{%$pagerfantaHtml%}
+</div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+<script>
+    function deleteContact(id)
+    {
+        var strconfirm = confirm("Are you sure you want to delete?");
+        if (strconfirm == true) {
+            jQuery(function(){
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "{%base_url('manager/templates/delete')%}",
+                        data: {template_id: id},
+                        cache: false,
+                        success: function (response) {
+                            if (response == 'success') {
+                                jQuery('#item'+id).remove();
+                            }
+                        },
+                    });
+                });
+        }
+
+    }
+
+</script>
+{%include file="pc/admin/shared/_footer.html"%}

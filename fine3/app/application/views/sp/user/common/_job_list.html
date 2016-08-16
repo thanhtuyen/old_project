@@ -1,0 +1,111 @@
+{%foreach $job_list as $job%}
+{%if !empty($job)%}
+
+<article class="res_box">
+<section class="detail_copyC">
+<a href="{%$base_url%}detail_{%$job["job_detail"]["job"]["job_id"]%}/">
+
+<div class="list_title">
+
+{%if !empty($job['job_detail']['tags']['recommend'])%}
+<span class="new_icon">オススメ！</span>
+{%/if%}
+{%if $job["job_detail"]["job"]["updated"] > $new_date%}
+<span class="new_icon">NEW</span>
+{%/if%}
+<h2>{%html_escape($job["job_detail"]["job"]["title"])%}</h2>
+</div>
+
+<div class="res_body">
+<div class="res_job_inner">
+<div class="res_job_innertop">
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<th>勤務地</th>
+<td>{%html_escape($job["nursery_detail"]["name"])%} / {%html_escape($job["nursery_detail"]["address"])%}</td>
+</tr>
+<tr>
+<th>最寄駅</th>
+<td>{%$job["nursery_detail"]["station_name"]%}</td>
+</tr>
+<tr>
+<th>雇用形態</th>
+<td>
+{%if isset($job['job_detail']['tags']['type_employ'])%}
+{%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+{%/if%}
+</td>
+</tr>
+<tr>
+<th>職種</th>
+<td>
+{%if isset($job['job_detail']['tags']['type_job'])%}
+{%foreach $job['job_detail']['tags']['type_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+{%/if%}
+</td>
+</tr>
+<tr>
+<th>給与</th>
+<td>{%html_escape($job["job_detail"]["job"]["salary"])%}</td>
+</tr>
+</tbody>
+</table>
+
+<div class="list_photo">
+<img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt="{%$job['job_detail']['job']['title']%}" class="res_job_photo">
+</div>
+
+<p class="spec">{%nl2br($job["job_detail"]["job"]["pr"])%}</p>
+
+</div>
+</div>
+</div>
+</a>
+
+{%if !$job["user_info"]["apply_status"]%}
+
+<p class="entry_attention">タップすると応募が即完了します。完了後は園または求人の紹介会社から連絡させて頂きます。</p>
+
+{%/if%}
+
+<nav class="oubo2 oubo_middle">
+
+{%if $job["user_info"]["apply_status"]%}
+<p class="done">応募済み</p>
+{%else%}
+<p class="mail apply_button apply_job_{%$job['job_detail']['job']['job_id']%}">
+<a href="javascript:void(0)" class="apply_btn"
+data-job_id="{%$job['job_detail']['job']['job_id']%}">
+応募する
+</a>
+</p>
+<p class="done applied_button apply_finished_job_{%$job['job_detail']['job']['job_id']%} display_none">応募済み</p>
+{%/if%}
+
+
+<div class="extra clipkeisai">
+
+{%if $job["user_info"]["bookmark_status"]%}
+<p class="done">お気に入り追加済み</p>
+{%else%}
+<p class="clip clip_button bookmark_box btn_litegray bookmark_job_{%$job['job_detail']['job']['job_id']%}">
+<a href="javascript:void(0)"
+class="bookmark_btn"
+id="operate_bookmark" data-job_id="{%$job['job_detail']['job']['job_id']%}">お気に入りに追加する</a>
+</p>
+<p class="done bookmark_box btn_litegray bookmark_finished_job_{%$job['job_detail']['job']['job_id']%} display_none">
+お気に入り追加済み
+</p>
+{%/if%}
+
+</div>
+</nav>
+</section>
+</article>
+{%/if%}
+{%/foreach%}

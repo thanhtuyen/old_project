@@ -1,0 +1,15 @@
+<header id="global_header">
+<div id="sub_global">
+<p class="logo_back"><a href="{%$base_url%}"><img src="{%$static_url%}user/images_sp/index_back.png" width="155" alt="全国TOP" ></a></p>
+<div id="globalNavi">
+<ul id="nav">
+{%if $login%}
+ログインしてる時に入るやつ
+{%else%}
+<li class="regist hd_regist"><a href="account/login.html"><img width="72" alt="お気に入り" src="{%$static_url%}user/images_sp/okini_btn.png"></a></li>
+<li class="regist hd_regist"><a href="account/login.html"><img width="72" alt="ログイン" src="{%$static_url%}user/images_sp/regist_btn.png"></a></li>
+{%/if%}
+</ul>
+<!-- /#globalNavi --></div>
+<!-- /#sub_global --></div>
+</header>

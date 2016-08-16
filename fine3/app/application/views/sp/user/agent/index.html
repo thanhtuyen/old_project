@@ -1,0 +1,75 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--agency list-->  
+     <section>
+     	<h4 class="title_pink_bar">紹介会社別に園を探す</h4>
+     	
+     	{%if isset($agent_list) && ! empty($agent_list)%}
+			{%foreach $agent_list as $agent%}
+				<div  class="job_adviser job_detail_box agency_listbox">
+				
+					<a href="{%$base_url%}agent/{%$agent['client_id']%}" title="{%$agent["display_name"]%}">
+						{%$images = getImageFromS3({%$agent['client_id']%},{%$config_image_client%})%}
+						<img src="{%$images['path']%}" alt="{%$agent["image_name"]%}">
+						
+						<div class="job_adviser_st agency">
+			                <p class="job_adviser_name">{%$agent["display_name"]|truncate:18:"..."%}</p>
+			                <p>得意エリア：{%foreach $agent["relation_area"] as $relation_area%}
+											{%$relation_area["name"]%}
+										{%/foreach%}
+							</p>
+			                <p>{%$agent["description"]|truncate:18:"..."%}</p>
+			            </div>
+					</a>
+				
+				</div>
+			{%/foreach%}
+		{%/if%}
+     	
+     </section>
+    
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+
+<!--flexslider-->
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+<script src="{%$static_url%}user/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+	$("document").ready(function(){
+		$('.flexslider').flexslider({
+				animation: "slide",              //"fade"か"slide"を選択
+				slideDirection: "horizontal",   //"horizontal"で横移動、"vertical"で縦移動
+				slideshow: true,                //trueで自動でスライドショーに
+				slideshowSpeed: 3000,           //スライドショーの間隔
+				animationDuration: 500,         //アニメーションのスピード
+				directionNav: true,             //trueで前へ、次へを表示
+				controlNav: true,               //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
+				keyboardNav: true,              //trueでキーボードの右、左で操作できるように
+				mousewheel: false,              //trueでマウスホイールで前に戻ることができるように
+				prevText: "前へ",           //前に戻るボタンのテキストを指定
+				nextText: "次へ",               //次に進むボタンのテキストを指定
+				pausePlay: false,               //trueで停止ボタンを表示
+				pauseText: 'Pause',             //停止ボタンのテキストを指定
+				playText: 'Play',               //停止ボタンを押した後のテキストを指定
+				randomize: true,               //スライドをランダムに並び替えて表示
+				slideToStart: 0,                //最初のスライドを指定(0で一番目のスライド)
+				animationLoop: false,            //trueでスライドをループさせる
+				pauseOnAction: false,            //？？
+				pauseOnHover: true,            //trueでマウスオーバーでスライドを停止に設定
+				controlsContainer: ".flex-container",          //要素を指定すると、その直下にナビゲーション、コントロールの表示される、指定しないとこの場合.flexsliderとなる
+				manualControls: "",             //スライドの数になるセレクタを指定とのことだが、省略で問題なし
+				start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide
+				before: function(){},           //Callback: function(slider) - Fires asynchronously with each slider animation
+				after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
+				end: function(){}               //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
+		});
+	});
+</script>
+</body>
+</html>

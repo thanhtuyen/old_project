@@ -1,0 +1,81 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+<link href="{%$static_url%}user/css/mailtip.css" rel="stylesheet" media="screen,print">
+<!--main_content-->
+<div class="main">
+
+    <!--entry-->
+     <section>
+         <h4 class="title_pink_bar">{%if empty($bookmark_flg)%}応募する求人{%else%}お気に入り登録する求人{%/if%}</h4>
+        <div class="job_list_sec">
+                    <p class="job_list_title_black">{%$select_job["job_detail"]["job"]["title"]%}</p>
+            <ul class="job_tag">
+                {%if !empty($select_job['job_detail']['tags']['tag_job'])%}
+                {%foreach $select_job['job_detail']['tags']['tag_job'] as $data%}
+                <a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/"><li>{%html_escape($data['tag_detail']['name'])%}</li></a>
+                {%/foreach%}
+                {%/if%}
+                {%if !empty($select_job['nursery_detail']['tags']['tag_nursery'])%}
+                {%foreach $select_job['nursery_detail']['tags']['tag_nursery'] as $data%}
+                <a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/"><li>{%html_escape($data['tag_detail']['name'])%}</li></a>
+                {%/foreach%}
+                {%/if%}
+            </ul>
+                <div class="job_detail_table_s">
+                    {%if !empty($select_job['job_detail']['tags']['type_job'])%}
+                    <dl>
+                            <dt>職種</dt>
+                         <dd>{%foreach $select_job['job_detail']['tags']['type_job'] as $data%}
+                             {%html_escape($data['tag_detail']['name'])%}
+                             {%/foreach%}
+                         </dd>
+                    </dl>
+                    {%/if%}
+                    {%if !empty($select_job['job_detail']['tags']['type_employ'])%}
+                    <dl>
+                         <dt>勤務形態</dt>
+                         <dd>{%foreach $select_job['job_detail']['tags']['type_employ'] as $data%}
+                             {%html_escape($data['tag_detail']['name'])%}
+                             {%/foreach%}
+                         </dd>
+                    </dl>
+                    {%/if%}
+               </div>
+        </div>
+                <div class="form_txt">
+                    <p><span class="tag_hissu">必須</span>マークのついている項目は会員登録に入力が必須の項目です。</p>
+                    <p>こちらのページで登録した情報はマイページから確認できます。 次回からこちらの情報を編集して応募できます。</p>
+                </div>
+         {%form_open("user/signup/register",["id"=>"register_form"])%}
+            {%include file="sp/user/signup/_signup_form.html"%}
+
+        <input id="area_id" name="area_id" type="hidden" value="">
+        <input name="job_id" type="hidden" value="{%if !empty($select_job['job_detail']['job']['job_id'])%}{%$select_job['job_detail']['job']['job_id']%}{%/if%}">
+        <input name="added_job_id" type="hidden" value="{%if !empty($select_job['job_detail']['job']['job_id'])%}{%$select_job['job_detail']['job']['job_id']%}{%/if%}">
+        <input name="added_job_type" type="hidden" value="{%if empty($bookmark_flg)%}apply{%else%}bookmark{%/if%}">
+        <div class="form_button_area">
+        <!--facebook-->
+
+            <p class="form_button"><a class="form_submit btn_190 btn_pink ml10" href="javascript:void(0)"><span class="ico_arrow03"></span>{%if empty($bookmark_flg)%}応募する{%else%}お気に入り登録する{%/if%}</a></p>
+        <!--<input type="submit" class="form_button" value="応募する">-->
+            <p class="form_cancel_button"><a class="btn_190 btn_gray"  onClick="history.back(); return false;"><span class="ico_arrow05"></span>戻る</a></p>
+        <!--<input type="reset" class="form_cancel_button" value="戻る">-->
+         </div>
+
+     </section>
+
+        {%form_close()%}
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script src="{%$static_url%}common/js/jpostal.js"></script>
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script src="{%$static_url%}common/js/jquery.autoKana.js"></script>
+<script src="{%$static_url%}common/js/date_format.js"></script>
+<script src="{%$static_url%}user/js/signup.js"></script>
+</body>
+</html>

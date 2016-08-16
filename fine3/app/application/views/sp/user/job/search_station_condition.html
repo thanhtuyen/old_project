@@ -1,0 +1,225 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+<section class="top_container">
+    <article id="top_contents">
+
+        <h1 class="station_title">{%if $pref%}{%$pref['name']%}{%/if%}の駅・路線から探す</h1>
+
+        <h2 class="station_addcondition_selected"><span>選択した駅：</span>{%foreach $stations_list as $key=>$station%}{%$station['station_name']%}{%if $key < count($stations_list)-1%},{%/if%}{%/foreach%}</h2>
+        <ul class="accordion">
+            <li><p><span><img src="{%$static_url%}user/images_sp/ico_jobtype.png" alt="" width="20">職種</span></p>
+                <ul><!--
+            -->
+                    {%foreach $tags["job"] as $job%}<!--
+                        --><li><label><input type="checkbox" class="select_job" name="select_job" value="{%$job['tag_id']%}" {%if !empty($selecter["job"][$job['tag_id']])%}checked{%/if%}>{%$job["name"]%}</label></li><!--
+                    -->{%/foreach%}
+                    <!--
+            --></ul>
+            </li>
+            <li><p><span><img src="{%$static_url%}user/images_sp/ico_facility.png" alt="" width="20">施設形態</span>
+            </p>
+                <ul>
+                    {%foreach $tags["nursery"] as $nursery%}<!--
+                    --><li><label><input type="checkbox" class="select_nursery" name="select_nursery" value="{%$nursery['tag_id']%}" {%if !empty($selecter["nursery"][$nursery['tag_id']])%}checked{%/if%}>{%$nursery["name"]%}</label></li><!--
+                    -->{%/foreach%}
+                    </ul>
+            </li>
+            <li><p><span><img src="{%$static_url%}user/images_sp/ico_employtype.png" alt=""
+                              width="20">勤務形態</span></p>
+                <ul><!--
+    -->
+                    {%foreach $tags["employee"] as $employee%}<!--
+                    --><li><label><input type="checkbox" class="select_employee" name="select_employee" value="{%$employee['tag_id']%}" {%if !empty($selecter["employee"][$employee['tag_id']])%}checked{%/if%}>{%$employee["name"]%}</li><!--
+                    -->{%/foreach%}
+                    <!--
+                    --></ul>
+            </li>
+            <li><p><span><img src="{%$static_url%}user/images_sp/ico_condition.png" alt=""
+                              height="20">こだわり条件</span></p>
+                <ul><!--
+    -->
+                    {%foreach $tags["tag"] as $tag%}<!--
+                    --><li><label><input type="checkbox" class="select_tag" name="select_ag" value="{%$tag['tag_id']%}" {%if !empty($selecter["tag"][$tag['tag_id']])%}checked{%/if%}>{%$tag["name"]%}</label></li><!--
+                    -->{%/foreach%}
+                    <!--
+                    --></ul>
+            </li>
+        </ul>
+
+        <div class="searchbtn_station">
+            <p class="btn btn02"><a href="javascript:void(0)" id="job_search_submit">検索</a></p><!--
+--><p class="jobnumber">該当求人：<span>0</span>件</p>
+        </div>
+
+    </article>
+</section>
+
+{%include file="sp/user/common/footer.html"%}
+
+<script>
+    var select = {
+        select_station: "{%$station_id_str%}",
+        select_job: "",
+        select_nursery: "",
+        select_employee: "",
+        select_tag: ""
+    };
+    var select_str = "";
+
+    common_search_selecter("select_job");
+    common_search_selecter("select_nursery");
+    common_search_selecter("select_employee");
+    common_search_selecter("select_tag");
+
+    function update_search_condition_str() {
+
+        select_str = "";
+        var unselect = "未選択";
+        var select_station_list = $(".station_name_list").text();
+        var select_job = $($(".select_job_list").get(0)).text();
+        var select_nursery = $($(".select_nursery_list").get(0)).text();
+        var select_employee = $($(".select_employee_list").get(0)).text();
+        var select_tag = $($(".select_tag_list").get(0)).text();
+        if (select_station_list.trim() !== "") {
+            select_str += select_station_list.trim();
+        }
+        if (select_job.trim() !== unselect) {
+            select_str += "," + select_job;
+        }
+        if (select_nursery.trim() !== unselect) {
+            select_str += "," + select_nursery;
+        }
+        if (select_employee.trim() !== unselect) {
+            select_str += "," + select_employee;
+        }
+        if (select_tag.trim() !== unselect) {
+            select_str += "," + select_tag;
+        }
+        if (select_str.length >= 24) {
+            $(".search_cond_word_detail").attr('data-tooltip', "検索条件詳細：<br>" + select_str);
+            $(".search_cond_word").text(select_str.substr(0, 22) + "...");
+        } else if (select_str.length === 0) {
+            $(".search_cond_word").text("全検索");
+        } else {
+            $(".search_cond_word").text(select_str);
+        }
+    }
+    update_search_condition_str();
+    get_job_count();
+
+    function check_single_url() {
+        return (select["select_station"].split(",").length == 1 ) && !(
+                (select["select_job"] != "" && select["select_job"].split(",").length > 1)
+                || (select["select_nursery"] != "" && select["select_nursery"].split(",").length > 1)
+                || (select["select_employee"] != "" && select["select_employee"].split(",").length > 1)
+                || (select["select_tag"] != "" && select["select_tag"].split(",").length > 1)
+
+                )
+    }
+
+    $("#job_search_submit").on("click", function () {
+
+        var url = "search_by_station?station=" + select["select_station"] + "&job=" + select["select_job"] + "&nursery=" + select["select_nursery"] + "&employee=" + select["select_employee"] + "&tag=" + select["select_tag"];
+        if (check_single_url()) {
+            url = "railway/list_station" + select["select_station"];
+            if (select["select_job"] != "") url += "/job_" + select["select_job"];
+            if (select["select_nursery"] != "") url += "/nursery_" + select["select_nursery"];
+            if (select["select_employee"] != "") url += "/employee_" + select["select_employee"];
+            if (select["select_tag"] != "") url += "/tag_" + select["select_tag"];
+        }
+        $(location).attr("href", BASE_URL + url);
+    });
+
+    $(".select_job").on("click", function () {
+        common_search_selecter("select_job");
+        get_job_count();
+        update_search_condition_str();
+    });
+    $(".select_nursery").on("click", function () {
+        common_search_selecter("select_nursery");
+        get_job_count();
+        update_search_condition_str();
+    });
+    $(".select_employee").on("click", function () {
+        common_search_selecter("select_employee");
+        get_job_count();
+        update_search_condition_str();
+    });
+    $(".select_tag").on("click", function () {
+        common_search_selecter("select_tag");
+        get_job_count();
+        update_search_condition_str();
+    });
+
+    $(".apply_btn").on("click", function (e) {
+        apply_for_job($(this), "apply");
+    });
+
+    $(".bookmark_btn").on("click", function (e) {
+        apply_for_job($(this), "bookmark");
+    });
+
+
+    function common_search_selecter(selecter) {
+        var common_list = "";
+        select[selecter] = "";
+        $("." + selecter + ":checked").map(function () {
+            if (common_list === "") {
+                select[selecter] = $(this).val();
+                common_list = $(this).parent("label").text();
+            } else {
+                select[selecter] += "," + $(this).val();
+                common_list += " , " + $(this).parent("label").text();
+            }
+        });
+        if (common_list === "") {
+            common_list = "未選択";
+        } else {
+            select_str = select_str + " , " + common_list;
+        }
+        $("." + selecter + "_list").html(common_list);
+    }
+
+    function get_job_count() {
+        $.ajax({
+            type: "POST",
+            url: "{%$base_url%}user/ajax/get_job_count",
+            dataType: "json",
+            data: {
+                select: select,
+        {%$csrf_token_name %}
+    :
+        "{%$csrf_token_value%}"
+    }
+    ,
+    success: function (res) {
+        $(".jobnumber span").html(res);
+    }
+    ,
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+        /*alert(XMLHttpRequest+textStatus+errorThrown)*/
+    }
+    })
+    ;
+    }
+
+    function text_abbreviation() {
+        var text_str = $(".title_text").text();
+        if (text_str.length >= 30) {
+            $(".title_text").text(text_str.substr(0, 27) + "...");
+        }
+    }
+    text_abbreviation();
+
+</script>
+<script>
+$(".select_job,.select_nursery,.select_employee,.select_tag").on("click",function(){
+    if($(this).prop("checked")){
+        $(this).parent().css("background","rgb(255,204,217)");
+    }else{
+        $(this).parent().css("background","rgb(255,255,255)");
+    }
+});
+</script>
+</body>
+</html>

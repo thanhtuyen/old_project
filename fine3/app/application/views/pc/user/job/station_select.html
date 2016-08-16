@@ -1,0 +1,263 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+<link rel="stylesheet" href="{%$static_url%}common/css/slick.css" type="text/css"/>
+<link rel="stylesheet" href="{%$static_url%}common/css/slick-theme.css" type="text/css"/>
+<div class="content_wrapper">
+    <div class="content">
+
+
+        <h1 class="tit_01">{%$pref['name']%}の駅・路線から保育士求人・募集を探す</h1>
+
+        <h2 id="search" class="tit_02 mt30"><span class="ico_train01">■</span><span class="title_text">{%foreach $list_lines as $key=>$line%} {%$line['line_name_h']%} {%if $key<count($list_lines)-1%},{%/if%} {%/foreach%}</span></h2>
+        <ul class="station_searchflow"><!--
+        --><li class="done"><p><span>1</span><a href="{%$top_page%}#search">路線を選択</a></p><span class="ico_arrow09">&gt;</span></li><!--
+        --><li class="current"><p><span>2</span>駅を選択</p><span class="ico_arrow09">&gt;</span></li><!--
+        --><li><p><span>3</span>求人票を見る</p></li><!--
+        --></ul>
+
+        <div class="box serch_pink_box">
+            <div class="accordion">
+                <p class="search_tit"><span class="ico_train02">&gt;</span>駅</p>
+
+                <div class="search_box clear mb0">
+                    <ul class="search_stationlist"><!--
+                    -->{%foreach $list_lines as $line%}<li><span class="ico_arrow08">▼</span><a href="#line_{%$line['line_id']%}">{%$line['line_name_h']%}</a></li>{%/foreach%}
+                    </ul>
+                    {%foreach $list_lines as $line%}
+                    <div class="search_box_station" id="line_{%$line['line_id']%}">
+                        <p class="tit_03">{%$line['line_name_h']%}</p>
+
+                        <ul><!--
+                        -->{%foreach $line['stations'] as $station%}
+                            <li class="{%if $station["total_job"] == 0%}search_nostation{%/if%}">
+                                <input type="checkbox" value="{%$station['station_id']%}" class="select_station" {%if $station["total_job"] == 0%} disabled="disabled" {%/if%}>
+                                {%if $station["total_job"] != 0%}
+                                    <a href="{%$base_url%}railway/list_station{%$station['station_id']%}">
+                                {%/if%}
+                                    {%$station['station_name']%}<span>（{%$station['total_job']%}）</span>
+                                {%if $station["total_job"] != 0%}
+                                    </a>
+                                {%/if%}
+                            </li>
+                            {%/foreach%}
+                        </ul>
+
+                        <!-- /.search_box_station -->
+                    </div>
+                    {%/foreach%}
+                </div>
+                <!-- .search_box -->
+
+                <div class="accordion_inbox_condition" style="display:none;">
+                {%include file="pc/user/job/_addition_condition.html"%}
+                </div>
+
+                <!-- /.accordion -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <!-- /.content --></div>
+    {%include file="pc/user/common/right_nav.html"%}
+    <!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+<div class="station_btnarea" style="display:none;">
+    <ul><!--
+--><li><a class="btn_pink btn_270" id="job_search_submit" href="javascript:void(0)"><span class="ico_search06">▼</span>この条件で検索する</a></li><!--
+--><li><a class="btn_white btn_270" href="#condition"><span class="ico_arrow02">&gt;</span>駅以外の条件を追加</a></li><!--
+--><li><a class="btn_white btn_270" href="{%$top_page%}#search"><span class="ico_arrow02">&gt;</span>路線を選択しなおす</a></li><!--
+--></ul>
+    <!-- /.station_btnarea --></div>
+<script src="{%$static_url%}common/js/slick.min.js"></script>
+
+<script><!--serch-->
+$(function () {
+    var b = $('.search_s_box');
+});
+</script>
+<script src="js/jquery.darktooltip.js"></script>
+<script type="text/javascript">
+    history.navigationMode = 'compatible';
+    $(document).ready(function () {
+        $('.single-item').slick({
+            infinite: true,
+            autoplay: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            prevArrow: $('#carousel_prev'),
+            nextArrow: $('#carousel_next'),
+        });
+
+        $(".show-more").click(function(){
+            var div= $(this).parent().parent().find(".show_less_div");
+            var subDiv = div.find("ul");
+            var lessHeight = 90;
+            if (div.height()==subDiv.height()){
+                div.animate({
+                    height: lessHeight
+                });
+                newText = "▼もっと路線を表示";
+            }else {
+                div.animate({
+                    height: subDiv.height()
+                });
+                newText = "▲表示を戻す";
+            }
+            $(this).text(newText);
+            return false;
+        });
+    });
+
+    var select = { select_pref : "" , select_station : "" , select_job : "" , select_nursery : "" , select_employee : "" , select_tag : "" };
+    var select_str = "";
+    if ($(".select_station:checked").length!=0){
+
+        getCheckboxesValue();
+
+    }
+    common_search_selecter("select_job");
+    common_search_selecter("select_nursery");
+    common_search_selecter("select_employee");
+    common_search_selecter("select_tag");
+
+    if(select_str.length >= 24){
+        $(".search_cond_word_detail").attr('data-tooltip',"検索条件詳細：<br>"+select_str);
+        $(".search_cond_word").text(select_str.substr(0,22) + "...");
+    }else if(select_str.length === 0){
+        $(".search_cond_word").text("全検索");
+    }else{
+        $(".search_cond_word").text(select_str);
+    }
+
+    $("#job_search_submit").on("click",function(){
+        var pref = select["select_pref"] === "" ? "" :select["select_pref"] * 1000;
+        var get_params = "station="+select["select_station"]+"&job="+select["select_job"]+"&nursery="+select["select_nursery"]+"&employee="+select["select_employee"]+"&tag="+select["select_tag"];
+        $(location).attr("href",BASE_URL+"search_by_station?"+get_params);
+    });
+
+    $(".select_station").on("click",function(){
+        //check if we have no station is checked
+        // then disable the bottom div
+        getCheckboxesValue();
+
+    });
+
+    function getCheckboxesValue(){
+
+        if ($(".select_station:checked").length==0){
+            $(".station_btnarea").slideUp("fast");
+            $(".accordion_inbox_condition").slideUp("fast");
+        }else {
+            $(".station_btnarea").slideDown("fast");
+            $(".accordion_inbox_condition").slideDown("fast");
+        }
+        select_station();
+        //get_job_count();
+    }
+
+    $(".select_job").on("click",function(){
+        common_search_selecter("select_job");
+        get_job_count();
+    });
+    $(".select_nursery").on("click",function(){
+        common_search_selecter("select_nursery");
+        get_job_count();
+    });
+    $(".select_employee").on("click",function(){
+        common_search_selecter("select_employee");
+        get_job_count();
+    });
+    $(".select_tag").on("click",function(){
+        common_search_selecter("select_tag");
+        get_job_count();
+    });
+
+    $(".apply_btn").on("click",function(e){apply_for_job($(this),"apply");});
+
+    $(".bookmark_btn").on("click",function(e){apply_for_job($(this),"bookmark");});
+
+    $(".accordion").map(function() {
+        var accordion = $(this);
+        accordion.find(".toggle").click(function(){
+            $("p.search_txt").removeClass("display_none");
+            var accordion_inbox = $(this).next("div.accordion_inbox");
+            if(accordion_inbox.css("display") === "none" ){
+                accordion.find("div.accordion_inbox").slideUp().find(".toggle.open").removeClass("open");
+                $(this).parent().children("p.search_txt").addClass("display_none");
+            }
+            accordion_inbox.slideToggle().toggleClass("open");
+        });
+        
+    });
+
+
+    function select_station(){
+        var select_station_list = "";
+        select["select_station"] = "";
+        $(".select_station:checked").map(function(){
+            if(select_station_list === ""){
+                select["select_station"] = $(this).val();
+                select_station_list = $(this).parent().find("a").text();
+            }else{
+                select["select_station"] += ","+$(this).val();
+                select_station_list += " , " + $(this).parent().find("a").text();
+            }
+        });
+        if(select_station_list !== ""){
+            select_str = select_station_list ;
+            select_station_list  = "：《 "+select_station_list +" 》";
+        }
+        //$(".select_area_list").html($("#select_pref option:selected").text() + select_city_list);
+    }
+
+    function common_search_selecter(selecter){
+        var common_list = "";
+        select[selecter] = "";
+        $("."+selecter+":checked").map(function(){
+            if(common_list === ""){
+                select[selecter] = $(this).val();
+                common_list = $(this).parent("label").text();
+            }else{
+                select[selecter] += ","+$(this).val();
+                common_list += " , " + $(this).parent("label").text();
+            }
+        });
+        if(common_list === ""){
+            common_list = "未選択";
+        }else{
+            select_str = select_str + " , "+common_list;
+        }
+        $("."+selecter+"_list").html(common_list);
+    }
+
+    function get_job_count(){
+
+        $.ajax({
+            type: "POST",
+            url : "{%$base_url%}user/ajax/get_job_count",
+            dataType : "json",
+            data: {
+                select: select,
+        {%$csrf_token_name%}: "{%$csrf_token_value%}"
+    },
+    success: function(res) {
+        $(".job_all_count").html(res);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        /*alert(XMLHttpRequest+textStatus+errorThrown)*/
+    }
+    });
+    }
+    
+    function text_abbreviation(){
+        var text_str =$(".title_text").text();
+        if(text_str.length >= 30){
+            $(".title_text").text(text_str.substr(0,27) + "...");
+        }
+    }
+    text_abbreviation();
+</script>
+</body>
+</html>

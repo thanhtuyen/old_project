@@ -1,0 +1,28 @@
+{%include file="pc/user/common/headbar.html"%} {%include
+file="pc/user/common/navbar.html"%} {%display_breadcrumb($breadcrumb)%}
+
+<div class="content_wrapper">
+    <div class="content">
+    <!-- word -->
+    {%foreach from=$nursery_list key=k item=v%}
+    <p>{%$k%}</p>
+    <ul>
+    {%foreach from $v item=n%}
+    <li>
+    {%if !empty($n['display_name'])%}
+    <a href="{%$base_url%}shisetsu/{%$n['nursery_id']%}/">
+    {%$n['display_name']%}
+    </a>
+    {%/if%}
+    </li>
+    {%/foreach%}
+    </ul>
+    {%/foreach%}
+    <!-- word end -->
+    </div>
+    {%include file="pc/user/common/right_nav.html"%}
+    <!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

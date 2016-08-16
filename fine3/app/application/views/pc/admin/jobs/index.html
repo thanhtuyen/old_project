@@ -1,0 +1,90 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+<button class="btn btn-success" id="deleteAll">チェックした求人を削除</button>
+<div class="separator"></div>
+
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+
+{%form_open('manager/jobs', ['method' => 'get'])%}
+{%foreach search_condition($condition, array('account_type', 'status', 'plan_group')) as $key => $value%}
+<input type="hidden" name="{%if $key neq 'limit'%}q[{%$key%}]{%else%}{%$key%}{%/if%}" value="{%$value%}">
+{%/foreach%}
+  <select name="q[account_type]">
+    <option value="">事業所種別</option>
+    <option value="1" {%if isset($condition['account_type']) and $condition['account_type']=='1'%}selected="true"{%/if%}>園法人</option>
+    <option value="2" {%if isset($condition['account_type']) and $condition['account_type']=='2'%}selected="true"{%/if%}>紹介会社</option>
+  </select>
+
+  <select name="q[plan_group]">
+    <option value="">選択してください</option>
+    {%foreach $plan_group as $group%}
+    <option value="{%$group['plan_group_id']%}" {%if isset($condition['plan_group']) and $condition['plan_group']==$group['plan_group_id']%}selected="true"{%/if%}>{%$group['name']%}</option>
+    {%/foreach%}
+  </select>
+  <select name="q[status]">
+    <option value="">選択してください</option>
+    <option value="0" {%if isset($condition['status']) and $condition['status']=='0'%}selected="true"{%/if%}>下書き</option>
+    <option value="1" {%if isset($condition['status']) and $condition['status']=='1'%}selected="true"{%/if%}>公開</option>
+    <option value="2" {%if isset($condition['status']) and $condition['status']=='2'%}selected="true"{%/if%}>非公開</option>
+    <option value="9" {%if isset($condition['status']) and $condition['status']=='9'%}selected="true"{%/if%}>強制非公開</option>
+  </select>
+  <input type="submit" value="検索">
+{%form_close()%}
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom" for="checkAll">
+<i class="fa fa-fw fa-square-o checkAll" for="checkAll"></i>
+<input type="checkbox" id="checkAll" class="checkAll">
+</label>
+</div>
+</th>
+<th>求人ID</th>
+<th>求人タイトル</th>
+<th>施設ID</th>
+<th>施設名</th>
+<th>法人ID</th>
+<th>法人名</th>
+<th>ステータス</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+
+
+{%foreach $jobs as $row%}
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom" class="job_id" for="job{%$row['job_id']%}" >
+<i class="fa fa-fw fa-square-o job" ></i><input class="job" type="checkbox" value="{%$row['job_id']%}" id="job{%$row['job_id']%}" name="job_id[]" ></label></div></td>
+<td><a href="{%base_url('manager/jobs/detail')%}/{%$row['job_id']%}">{%$row['job_id']%}</a></td>
+<td><a href="{%base_url('manager/jobs/detail')%}/{%$row['job_id']%}">{%$row['title']%}</a></td>
+<td><a href="{%base_url('manager/nursery/detail')%}/{%$row['client_id']%}">{%$row['client_id']%}</a></td>
+<td><a href="{%base_url('manager/nursery/detail')%}/{%$row['client_id']%}">{%$row['client_name']%}</a></td>
+<td><a href="{%base_url('manager/nursery/detail')%}/{%$row['client_id']%}">{%$row['client_id']%}</a></td>
+<td><a href="{%base_url('manager/nursery/detail')%}/{%$row['client_id']%}">{%$row['client_name']%}</a></td>
+<td>{%job_status($row['status'])%}</td>
+<td><a href="{%base_url()%}manager/jobs/detail/{%$row['job_id']%}">
+<button type="button" class="btn btn-primary">詳細</button></a>
+<a href="{%base_url('manager/jobs/delete')%}/{%$row['job_id']%}">
+<button class="btn btn-default" type="button" onClick="return confirmDelete()">削除</button></a></td>
+</tr>
+{%/foreach%}
+
+
+</tbody>
+</table>
+<script type="text/javascript">
+	var deleteUrl = "{%base_url('manager/jobs/delete')%}/";
+</script>
+<script src="{%$static_url%}admin/js/job.js"></script>
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+{%include file="pc/admin/shared/_footer.html"%}
+
+

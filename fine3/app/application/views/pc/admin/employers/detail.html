@@ -1,0 +1,192 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="manager/shared/_client_menu.tpl"%}
+
+
+<h2>{%$nursery['nursery_name']%}の詳細情報</h2>
+<div class="innerLR">
+<div class="form-group">
+<a href="agent.html"><input class="btn btn-default" type="submit" value="戻る"></a>
+　<a href="agent.html"><input class="btn btn-default" type="submit" value="削除"></a></div>
+<div class="row">
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">企業情報</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>ID</th><td>{%$nursery['nursery_id']%}</td>
+</tr>
+<tr>
+<th>社内ID</th><td>{%$nursery['neo_id']%}</td>
+</tr>
+<th>企業名</th><td>{%$nursery['nursery_name']%}</td>
+</tr>
+<tr>
+<th>部署名</th><td>{%$nursery['department']%}</td>
+</tr>
+<tr>
+<th>担当者名</th><td>{%$nursery['person_name']%}</td>
+</tr>
+<tr>
+<th>担当者メール</th><td>{%$nursery['person_email']%}</td>
+</tr>
+<tr>
+<th>電話番号</th><td>{%$nursery['nursery_phone']%}</td>
+</tr>
+<tr>
+<th>住所</th><td>{%$nursery['nursery_postal_code']%}<br>
+{%$nursery['nursery_address']%}</td>
+</tr>
+<tr>
+<th>企業URL</th><td>{%$nursery['nursery_url']%}</td>
+</tr>
+<tr>
+<th>ステータス</th><td>{%status_num_to_string($nursery['nursery_status'])%}</td>
+</tr>
+<tr>
+<th> </th><td> </td>
+</tr>
+</table>
+<div class="form-group">
+<a href="{%base_url('manager/employers/edit')%}/{%$nursery['nursery_id']%}"><input class="btn btn-primary" type="submit" value="編集"></a>
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">PR情報</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+
+<tr>
+<th>創業</th><td>{%$pr['establish_date']%}</td>
+</tr>
+<tr>
+<th>PR</th><td>{%$pr['description']%}</td>
+</tr>
+<tr>
+<th>選考の流れ</th><td>{%$pr['process']%}</td>
+</tr>
+
+<tr>
+<th>備考</th><td>{%$pr['note']%}</td>
+</tr>
+{%foreach from=$pr['photo'] key=k item=photo%}
+<tr>
+<th>画像({%$photo['ordered']%})</th><td>
+{%if !empty($photo['name'])%}
+<img src="/uploads/avatar/{%$photo['name']%}" width="100" height="100px">
+{%/if%}
+</td>
+</tr>
+{%/foreach%}
+
+</table>
+<div class="form-group">
+<a href="{%base_url('manager/employers/edit')%}/{%$nursery['nursery_id']%}"><input class="btn btn-primary" type="submit" value="編集"></a>
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">請求先情報</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>請求先企業名</th><td>{%$invoice['name']%}</td>
+</tr>
+<tr>
+<th>請求先住所</th><td>{%$invoice['postal_code']%}<br>{%$invoice['address']%}</td>
+</tr>
+<tr>
+<th>請求先担当者名</th><td>{%$invoice['name']%}</td>
+</tr>
+<tr>
+<th>（かな）</th><td>{%$invoice['kana']%}</td>
+</tr>
+<tr>
+<th>担当者メール</th><td>{%$invoice['email']%}</td>
+</tr>
+<tr>
+<th>電話番号</th><td>{%$invoice['phone']%}</td>
+</tr>
+<tr>
+<th>備考</th><td>{%$invoice['note']%}</td>
+</tr>
+</table>
+<div class="form-group">
+<a href="{%base_url('manager/employers/edit')%}/{%$nursery['nursery_id']%}"><input class="btn btn-primary" type="submit" value="編集"></a>
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+<!-- div.row --></div>
+
+
+
+<div class="widget innerAll widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">利用プラン</h4>
+<!-- widget-head --></div>
+
+<link rel="stylesheet" type="text/css" href="{%assets_path()%}/plugins/datatables/css/dataTables.bootstrap.css">
+<div class="widget-body">
+<div class="row separator bottom">
+<div class="col-md-5">
+<div class="DTTT btn-group">
+<a class="btn btn-primary DTTT_button_copy" id="ToolTables_DataTables_Table_0_0"><span>Copy</span></a>
+<a class="btn btn-primary DTTT_button_csv" id="ToolTables_DataTables_Table_0_1" href="{%base_url('manager/accounts/export?format=csv')%}"><span>CSV</span></a>
+</div>
+</div>
+<table id="plan-table" class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>料金タイプ名</th>
+<th>開始日</th>
+<th>終了日</th>
+<th>ステータス</th>
+<th>　</th>
+</tr>
+</thead>
+
+
+
+
+
+
+</table>
+</div>
+<div class="form-group">
+<a href="{%base_url('manager/plans/add')%}?id={%$nursery['headhunter_id']%}"><button class="btn btn-success">新しいプランを登録する</button></a>
+<!-- form-group --></div>
+<!-- widget --></div>
+
+<!-- Content --></div>
+<script type="text/javascript" src="{%assets_path()%}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{%assets_path()%}/plugins/datatables/js/dataTables.bootstrap.js"></script>
+
+<script type="text/javascript">
+        $('#plan-table').dataTable( {
+          "ajax": {
+            'url': "{%base_url('manager/plans/index')%}",
+            'type': 'POST',
+            'data': {'headhunter_id': "{%$nursery['headhunter_id']%}"},
+          }
+        });
+
+</script>
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+

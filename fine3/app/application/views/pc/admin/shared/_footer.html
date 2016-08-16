@@ -1,0 +1,71 @@
+
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+<div id="footer" class="hidden-print">
+<div class="copy">&copy; Copyright (C) Neo Career CO., LTD. All Rights Reserved.</div>
+<!-- footer --></div>
+
+</div>
+<!-- // Main Container Fluid END -->
+
+
+<!-- Global -->
+<script data-id="App.Config">
+var App = {};        var basePath = '',
+    commonPath = '{%$static_url%}admin/',
+    rootPath = '/',
+    DEV = false,
+    componentsPath = '{%$static_url%}admin/components/';
+
+var primaryColor = '#c72a25',
+    dangerColor = '#b55151',
+    successColor = '#609450',
+    infoColor = '#4a8bc2',
+    warningColor = '#ab7a4b',
+    inverseColor = '#45484d';
+
+var themerPrimaryColor = primaryColor;
+
+var confirmDelete = function () {
+    return confirm('削除しますか?');
+};
+
+jQuery('#select-limit').change(function(){
+    $("#search_form").trigger("submit");
+});
+
+</script>
+<script>
+$.validate();
+
+$("[name='occupation[]']:eq(0)").valAttr('','validate_checkbox_group').valAttr('qty','min1').valAttr('error-msg',"<span style='color:red'>得意職種は必須項目です</span>");
+$("[name='state[]']:eq(0)").valAttr('','validate_checkbox_group').valAttr('qty','min1').valAttr('error-msg',"<span style='color:red'>得意エリア必須項目です</span>");
+
+</script>
+
+<script src="{%$static_url%}admin/library/bootstrap/js/bootstrap.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/core_nicescroll/jquery.nicescroll.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/core_breakpoints/breakpoints.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/core_preload/pace.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/core_preload/preload.pace.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_fuelux-checkbox/fuelux-checkbox.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_bootstrap-select/js/bootstrap-select.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_bootstrap-select/bootstrap-select.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_bootstrap-datepicker/js/bootstrap-datepicker.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_bootstrap-datepicker/bootstrap-datepicker.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/ui_modals/bootbox.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/ui_modals/modals.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/admin_notifications_gritter/js/jquery.gritter.min.js?v=v1.0.0-rc1"></script>
+<script src="{%$static_url%}admin/components/admin_notifications_gritter/gritter.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_bootstrap-switch/js/bootstrap-switch.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_bootstrap-switch/bootstrap-switch.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_fuelux-radio/fuelux-radio.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_multiselect/js/jquery.multi-select.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_multiselect/multiselect.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/core/core.init.js?v=v1.0.0-rc1"></script>
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-form_v3.51.0/jquery.form.js"></script>
+
+
+</body>
+</html>

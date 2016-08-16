@@ -1,0 +1,118 @@
+/*override*/
+.table{
+	margin-bottom: 0;
+}
+
+.title_h3{
+	border: 1px solid #656565;
+	color: #333;
+}
+
+.br_table{
+	border-top: none;
+}
+
+.linear_select{
+	color: #333;
+	padding: 5px 5px 5px 10px;
+}
+
+.ibox-content{
+	color: #333;
+}
+
+/*.table > tbody > tr > td.hasTbl{
+	padding: 0
+}*/
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+	vertical-align: middle;
+}
+
+.tblchart > thead > tr > th, .tblchart > tbody > tr > th, .tblchart > tfoot > tr > th, .tblchart > thead > tr > td, .tblchart > tbody > tr > td, .tblchart > tfoot > tr > td{
+	border:0;
+	padding: 5px;
+	text-align: right;
+}
+.tblchart th:first-child,.tblchart td:first-child { text-align: left }
+/*for calendar*/
+.fc th{
+	height: 48px;
+	vertical-align:middle;
+}
+.fc-center h2{
+	font-weight: bold;
+}
+
+.btn-default{
+	color: #333;
+}
+/*//end override*/
+
+.bg_dgrey{
+	background: #999;
+}
+.bg_grey{
+	background: #CCC;
+}
+.bg_lgrey{
+	background: #f5f5f5;
+}
+
+.bg_lorange{
+	background: #FFF2CC;
+}
+
+.cell3{
+	width: 15%;
+}
+
+.def-w{
+	width: auto;
+}
+
+.m0{
+	margin: 0;
+}
+
+/*for side graph*/
+/*.h31-c > *{
+	height: 31px;
+}*/
+
+.mt5{
+	margin-top:5px;
+}
+
+.mt10{
+	margin-top: 10px;
+}
+
+.b{
+	font-weight:bold;
+}
+
+.mt23{
+	margin-top: 23px;
+}
+
+.color_blue{
+	color:#5b8ed8;
+}
+
+label{
+	margin-right: 15px;
+}
+
+.tdu{
+	text-decoration:underline;
+}
+
+.dib{
+	display: inline-block; /*margin: 0 -0.125em;*/
+}
+
+.select_width{
+	width:200px;
+	margin-bottom: 10px;
+}

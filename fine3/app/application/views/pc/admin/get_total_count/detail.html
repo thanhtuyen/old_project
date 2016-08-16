@@ -1,0 +1,58 @@
+
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">求人の詳細</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>ID</th>
+<td>{%$row['applicant_id']%}</td>
+</tr>
+<tr>
+<th>求人</th>
+<td><a href="{%base_url('manager/jobs/detail')%}/{%$row['job_id']%}">{%$row['job_id']%}{%$row['job_title']%}</a></td>
+</tr>
+<tr>
+<th>応募先</th>
+<td><a href="{%base_url('manager/agent/detail')%}/{%$row['agent_id']%}">{%$row['agent_id']%}{%$row['agent_name']%}</a></td>
+</tr>
+<tr>
+<th>課金対象</th>
+<td>{%entry_index_charge($row['status'])%}</td>
+</tr>
+<tr>
+<th>エントリー日時</th>
+<td>{%$row['created']%}</td>
+</tr>
+<tr>
+<th>ステータス</th>
+<td>{%entry_index_status($row['status'])%}</td>
+</tr>
+</table>
+<!-- div.widget --></div>
+
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-default" type="submit" value="戻る"></div>
+
+<!-- separater --></div>
+<!-- form-group --></div>
+
+
+
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+
+
+
+
+
+
+
+
+
+

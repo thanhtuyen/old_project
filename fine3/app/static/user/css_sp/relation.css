@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/*トップ*/
+#relation{}
+
+/*基本*/
+#relation ul{
+	text-align: left;
+}
+#relation a{
+	display: block;
+	padding:0px 25px 0px 0px;
+	overflow: hidden;
+	line-height: 20px;
+}
+#relation ol li p{line-height:50px;padding-left:10px;}
+
+
+/*画像*/
+#relation .innerimage img{width:90px; height:auto;overflow:hidden;}
+#relation .innerimage{width:90px; height:60px;overflow:hidden;margin-top:3px;margin-bottom:3px;background:url(../images_sp/no-image.gif) no-repeat;}
+
+
+#relation li .innerimage{float:left;padding:0 10px 0 0px;}
+#relation li.image .innertext{line-height:20px;margin-top:10px;}
+
+/*レコメンド*/
+#relation p.title{padding-top:15px;line-height:20px;}
+#relation p.title,
+#relation p.copy,
+#relation p.area,
+#relation p.station,
+#relation p.wage,
+#relation p.job,
+#relation p.merit,
+#relation p{
+	line-height:18px;
+	overflow:hidden;
+	font-weight:normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-left:0;
+	margin-left:10px;
+}
+#relation p.copy,
+#relation p.area,
+#relation p.station,
+#relation p.job,
+#relation p.merit,
+#relation p.wage{font-size:13px;}
+#relation .more p{padding:5px 0;text-align:center;line-height:40px;}
+
+
+/*関連*/
+.relation{
+	clear:both;
+	width:95%;
+	margin:10px auto 30px auto;
+	border-radius: 10px;
+	-webkit-border-radius: 10px; /* Safari,Google Chrome用 */
+	-moz-border-radius: 10px; /* Firefox用 */
+	border:1px #dfd6e2 solid;
+	display:block;
+	background:#eeebe2;
+	padding:0 0 10px 0;
+}
+
+
+/*------------------
+ == clearfix
+--------------------*/
+.cf:after {
+	content: ".";
+	height: 0;
+	clear: both;
+	display: block;
+	visibility: hidden;
+}
+
+.cf {
+	zoom: 100%;
+}
+/* no ie mac \*/
+* html .pkg { height: 1%; }
+.pkg { display: block; }
+/* */

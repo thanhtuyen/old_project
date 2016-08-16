@@ -1,0 +1,155 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+
+        {%if $account_type == 1%}
+            <h2 class="tit_01">応募管理<span>：応募詳細</span></h2>
+        {%else%}
+            <h2 class="tit_01">求人票への応募<span>：応募詳細</span></h2>
+        {%/if%}
+<p class="newbtn"><a class="btn_white btn_190" href="{%$base_url%}client/job_apply"><span class="ico_arrow02">&gt;</span>求人票への応募一覧</a></p>
+<div class="box">
+
+{%if $success %}
+			<div class="msg-success"><i class="fa fa-check"></i>{%$success%}</div>
+			{%/if%}
+			
+			{%if $error %}
+			<div class="msg-error"><i class="fa fa-times-circle"></i>{%$error%}</div>
+			{%/if%}
+
+<p class="tit_04">求人詳細</p>
+<table class="table02 mb20">
+<tbody>
+<tr>
+<th>エントリーID</th>
+<td>{%$item.applicant_job_id%}</td>
+</tr>
+<tr>
+<th>求人票</th>
+<td>ID：{%$item.job_id%}<br><a target="_blank" href="{%$base_url%}client/job/edit/{%$item.job_id%}">{%$item.job_title%}</a></td>
+</tr>
+<tr>
+<th>園</th>
+<td>ID：{%$item.nursery_id%}<br><a target="_blank" href="{%$base_url%}client/nursery/edit/{%$item.nursery_id%}">{%$item.nursery_name%}</a></td>
+</tr>
+<tr>
+<th>非課金申請</th>
+<td>{%$item.applicant_status%}</td>
+</tr>
+</tbody>
+</table>
+
+<p class="tit_04">応募者詳細</p>
+<table class="table02 mb20">
+<tbody>
+<tr>
+<th>応募者ID</th>
+<td>{%$item.user_id%}</td>
+</tr>
+<tr>
+<th>応募者名</th>
+<td>{%$item.user_name%}</td>
+</tr>
+<tr>
+<th>フリガナ</th>
+<td>{%$item.user_name_kana%}</td>
+</tr>
+<tr>
+<th>生年月日</th>
+<td>{%$item.user_birthdate_text%}</td>
+</tr>
+<tr>
+<th>メールアドレス</th>
+<td>{%$item.user_email%}</td>
+</tr>
+{%if !empty($item.tag_employ)%}
+<tr>
+<th>希望する雇用形態</th>
+<td>{%$item.tag_employ%}</td>
+</tr>
+{%/if%}
+{%if !empty($item.user_license)%}
+<tr>
+<th>保有資格</th>
+<td><ul>
+{%foreach $item.user_license as $tag%}
+	<li>{%$tag.name%}</li>
+{%/foreach%}
+</ul></td>
+</tr>
+{%/if%}
+<tr>
+<th>性別</th>
+<td>{%$item.user_gender_text%}</td>
+</tr>
+<tr>
+<th>住所</th>
+<td>{%$item.user_address_full%}</td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td>{%$item.user_phone%}</td>
+</tr>
+<tr>
+<th>金額</th>
+<td>{%$item.unit_price%}</td>
+</tr>
+</tbody>
+</table>
+
+{%if $item.status == 0%}
+	{%include file="pc/client/apply/item_exclude_form.html"%}
+{%elseif $item.status eq 1%}
+	{%include file="pc/client/apply/item_pending_form.html"%}
+{%elseif $item.status eq 2%}
+	{%include file="pc/client/apply/item_invalid.html"%}
+{%elseif $item.status eq 3%}
+	{%include file="pc/client/apply/item_active_form.html"%}
+{%/if%}
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$(document).ready(function(){
+    $('a.open').click(function(event){
+         $("p#deny_button").slideToggle();
+         $("div#deny_form").slideToggle();
+    });
+});
+    $('a#confirm').click(function(event){
+        $('<input>').attr({
+        type: 'hidden',
+        name: 'status',
+        value: 'confirm'
+    }).appendTo('#form-data');
+	$('#form-data').submit();
+    });
+	$('#btn-exclude').on('click', function(){
+
+	        $('<input>').attr({
+	        type: 'hidden',
+	        name: 'status',
+	        value: 'exclude'
+	    }).appendTo('#form-data');
+		$('#form-data').submit();
+	});
+	
+});
+</script>
+
+
+
+<!-- /.box --></div>
+<!-- /.contents --></div>
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

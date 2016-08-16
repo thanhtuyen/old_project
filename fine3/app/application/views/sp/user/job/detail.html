@@ -1,0 +1,392 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+<script type="text/javascript" charset="utf-8">
+$(function(){
+$(".accordion p").click(function(){
+    $(this).next("section").slideToggle();
+    $(this).children("span").toggleClass("open");
+}); 
+}); 
+</script>
+<section class="sub_container">
+<article id="detail" class="type3">
+<section class="contents_top">
+<div class="detail_title">
+<h1>{%$job_detail_info['job_detail']['job']['title']%}</h1>
+</div>
+<div class="body">
+<div class="inner">
+<div class="inner_top">
+<!--スライド-->
+<div id="mainVisual">
+    <div class="flex-container">
+        {%if count($job_detail_info['job_detail']['images'])>0%}
+        <div class="{%if count($job_detail_info['job_detail']['images'])>1%}flexslider{%/if%}">
+            <ul class="slides">
+                {%foreach $job_detail_info['job_detail']['images'] as $key => $image %}
+                <li><img src="{%getImageUrlFromS3($job_detail_info['job_detail']['job']['job_id'],$image_type['job'],$image['name'])%}" alt="" width="270"></li>
+                {%/foreach%}
+            </ul>
+        </div>
+        {%/if%}
+    </div>
+</div>
+<!--
+<li><img src="../../../../../static/user/images_sp/dummy/dummy_job_img4.jpg" alt="保育のお仕事" width="320" /></li>
+<li><img src="../../../../../static/user/images_sp/dummy/dummy_job_img5.jpg" alt="保育のお仕事" width="320" /></li>
+<li><img src="../../../../../static/user/images_sp/dummy/dummy_job_img6.jpg" alt="保育のお仕事" width="320" /></li>
+-->
+<!--スライドここまで-->
+<div class="spec_detail">
+<h4>{%nl2br($job_detail_info['job_detail']['job']['pr'])%}</h4>
+</div>
+<div id="icon_box" class="sp">
+<ul class="cf">
+{%if !empty($job_detail_info['job_detail']['tags']['tag_job'])%}
+    {%foreach $job_detail_info['job_detail']['tags']['tag_job'] as $data%}
+    <li class="merit"><a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/">{%html_escape($data['tag_detail']['name'])%}</a></li>
+    {%/foreach%}
+{%/if%}
+{%if !empty($job_detail_info['nursery_detail']['tags']['tag_nursery'])%}
+    {%foreach $job_detail_info['nursery_detail']['tags']['tag_nursery'] as $data%}
+    <li class="merit"><a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/">{%html_escape($data['tag_detail']['name'])%}</a></li>
+    {%/foreach%}
+{%/if%}
+
+</ul>
+</div>
+</div>
+</section>
+
+<nav class="oubo2 oubo_middle oubo_top">
+{%if $job_detail_info['user_info']['apply_status'] != 0%}
+<p class="done applied_button"><a>応募済み</a></p>
+{%else%}
+<p class="mail apply_button apply_job_{%$job_detail_info['job_detail']['job']['job_id']%}"><a href="javascript:void(0)"  data-job_id="{%$job_detail_info['job_detail']['job']['job_id']%}"  class="btn_pink btn_full tip_job_apply light apply_btn" data-tooltip="こちらをクリックすると応募が即完了します。<br/>応募完了後は応募先の園、または求人の紹介会社から連絡をさせて頂きます。">今すぐ応募する</a></p>
+<p class="done applied_button apply_finished_job_{%$job_detail_info['job_detail']['job']['job_id']%} display_none"><a>応募済み</a></p>
+{%/if%}
+<div class="extra clipkeisai" id="extra">
+{%if $job_detail_info['user_info']['bookmark_status']%}
+<p class="done"><a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0"><span class="ico_folder02"></span>お気に入りに追加済み</a></p>
+{%else%}
+<p class="clip"><a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0 bookmark_job_{%$job_detail_info['job_detail']['job']['job_id']%} bookmark_btn" id="operate_bookmark" data-job_id="{%$job_detail_info['job_detail']['job']['job_id']%}"><span class="ico_folder02"></span>お気に入りに追加する</a></p>
+<p class="done display_none"><a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0 bookmark_finished_job_{%$job_detail_info['job_detail']['job']['job_id']%} display_none"><span class="ico_folder02"></span>お気に入りに追加しました</a></p>
+{%/if%}
+</div>
+</nav>
+
+<ul class="accordion">
+<li><p><span>求人情報</span></p>
+<section class="contents_middle">
+<dl class="list inset">
+{%if !empty($job_detail_info['job_detail']['tags']['type_job'])%}
+<dt>職種</dt>
+<dd><p>
+{%foreach $job_detail_info['job_detail']['tags']['type_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}<br>
+{%/foreach%}
+</p></dd>
+{%/if%}
+<dt>勤務形態</dt>
+<dd><p>
+{%if !empty($job_detail_info['job_detail']['tags']['type_employ'])%}
+{%foreach $job_detail_info['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+{%/if%}
+</p></dd>
+{%if !empty($job_detail_info['job_detail']['job']['description'])%}
+<dt>仕事内容</dt>
+<dd><p>
+{%nl2br($job_detail_info['job_detail']['job']['description'])%}
+</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['job_detail']['job']['salary'])%}
+<dt>給与</dt>
+<dd><p>
+{%$job_detail_info['job_detail']['job']['salary']%}
+</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['job_detail']['job']['bonus'])%}
+<dt>賞与</dt>
+<dd><p>
+{%$job_detail_info['job_detail']['job']['bonus']%}
+</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['job_detail']['job']['worktime'])%}
+<dt>勤務時間</dt>
+<dd><p>
+{%$job_detail_info['job_detail']['job']['worktime']%}
+</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['job_detail']['job']['holiday'])%}
+<dt>休日</dt>
+<dd><p>
+{%$job_detail_info['job_detail']['job']['holiday']%}
+</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['job_detail']['tags']['tag_job'])%}
+<dt>待遇</dt>
+<dd><p>
+{%foreach $job_detail_info['job_detail']['tags']['tag_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}<br>
+{%/foreach%}
+</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['job_detail']['tags']['insurance_tag'])%}
+<dt>社会保険</dt>
+<dd><p>
+{%foreach $job_detail_info['job_detail']['tags']['insurance_tag'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}<br>
+{%/foreach%}
+</p></dd>
+{%/if%}
+<dt>必須資格</dt>
+<dd><p>
+{%$job_detail_info['job_detail']['job']['requirement']%}
+</p></dd>
+</dl>
+</section>
+</li>
+
+<li><p><span>勤務先情報</span></p>
+<section class="contents_middle">
+<dl class="list inset">
+{%if !empty($job_detail_info['nursery_detail']['name'])%}    
+<dt>施設名</dt>
+<dd><p>{%$job_detail_info['nursery_detail']['name']%}</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['nursery_detail']['address'])%}
+<dt>所在地</dt>
+<dd><p>{%$job_detail_info['nursery_detail']['address']%}</p></dd>
+{%/if%}
+{%if (count($job_detail_info['nursery_detail']['stations'])>0 && $job_detail_info['nursery_detail']['stations'][0]['main_flg']==1)%}
+<dt>最寄駅</dt>
+<dd><p>
+{%$job_detail_info['nursery_detail']['stations'][0]['station_name']%} ({%$job_detail_info['nursery_detail']['stations'][0]['line_name_h']%})
+{%if $job_detail_info['nursery_detail']['bus_time']>0 %}
+<br>
+バス {%$job_detail_info['nursery_detail']['bus_time']%} 分
+{%/if%}
+{%if $job_detail_info['nursery_detail']['walk_time']>0 %}
+<br>
+徒歩 {%$job_detail_info['nursery_detail']['walk_time']%}分
+{%/if%}
+</p></dd>
+{%/if%}
+
+{%if (count($job_detail_info['nursery_detail']['stations'])>0 )%}
+    {%if !(count($job_detail_info['nursery_detail']['stations'])==1 && $job_detail_info['nursery_detail']['stations'][0]['main_flg']==1)%}
+    <dt>近くの駅</dt>
+    <dd><p>
+        {%foreach $job_detail_info['nursery_detail']['stations'] as $station%}
+        {%if ($station['main_flg']==0)%}
+        <div >
+            {%$station['station_name']%} ( {%$station['line_name_h']%})
+        </div>
+        {%/if%}
+        {%/foreach%}
+    </p></dd>
+    {%/if%}
+{%/if%}
+
+{%if !empty($job_detail_info['nursery_detail']['direction'])%}
+<dt>交通手段補足</dt>
+<dd><p>{%$job_detail_info['nursery_detail']['direction']%}</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['nursery_detail']['url'])%}
+<dt>URL</dt>
+<dd><p><a href="{%$job_detail_info['nursery_detail']['url']%}" target="_blank">{%$job_detail_info['nursery_detail']['url']%}</a></p></dd>
+{%/if%}
+{%if !empty($job_detail_info['nursery_detail']['capacity'])%}
+<dt>定員</dt>
+<dd><p>{%$job_detail_info['nursery_detail']['capacity']%}</p></dd>
+{%/if%}
+{%if !empty($job_detail_info['nursery_detail']['description'])%}
+<dt>園のひとこと</dt>
+<dd><p>{%$job_detail_info['nursery_detail']['description']%}</p></dd>
+{%/if%}
+</dl>
+</section>
+</li>
+
+{%if $job_detail_info['client_detail']['account_type']==="1"%}
+<li><p><span>運営元情報</span></p>
+<section class="contents_middle">
+<dl class="list inset">
+{%if !empty($agent['display_name'])%}
+<dt>法人名</dt>
+<dd><p>{%html_escape($agent["display_name"])%}</p></dd>
+{%/if%}
+{%if !empty($agent['description'])%}
+<dt>ひとこと</dt>
+<dd><p>{%html_escape($agent["description"])%}</p></dd>
+{%/if%}
+{%if !empty($agent['display_address'])%}
+<dt>所在地</dt>
+<dd><p>
+{%html_escape($agent["display_address"])%}
+</p></dd>
+{%/if%}
+</dl>
+</section>
+</li>
+
+{%else%}
+
+<li><p><span>紹介会社情報</span></p>
+<section class="contents_middle">
+<dl class="list inset">
+{%if !empty($agent['display_name'])%}
+<dt>会社名</dt>
+<dd><p>{%html_escape($agent["display_name"])%}</p></dd>
+{%/if%}
+{%if !empty($agent['area'])%}
+<dt>得意エリア</dt>
+<dd><p>{%get_string_list($agent["area"], "name", " , ")%}</p></dd>
+{%/if%}
+{%if !empty($agent['tag'])%}
+<dt>得意職種</dt>
+<dd><p>{%get_string_list($agent["tag"], "name", " , ", "tag_group_id","2")%}</p></dd>
+{%/if%}
+{%if !empty($agent['description'])%}
+<dt>ひとこと</dt>
+<dd><p>
+{%html_escape($agent["description"])%}
+</p></dd>
+{%/if%}
+{%if !empty($agent['display_address'])%}
+<dt>所在地</dt>
+<dd><p>
+{%html_escape($agent["display_address"])%}
+</p></dd>
+{%/if%}
+{%if !empty($agent['license_number'])%}
+<dt>有料職業紹介許可番号</dt>
+<dd><p>{%html_escape($agent["license_number"])%}</p></dd>
+{%/if%}
+</dl>
+</section>
+</li>
+{%/if%}
+
+<li><p><span>{%if $job_detail_info['client_detail']['account_type']==="1"%}ご選考の流れ{%else%}ご紹介の流れ{%/if%}</span></p>
+<section class="contents_middle">
+<dl class="list inset">
+<dt>{%if $job_detail_info['client_detail']['account_type']==="1"%}ご選考の流れ{%else%}ご紹介の流れ{%/if%}</dt>
+<dd><p>{%html_escape($agent["process"])|nl2br%}</p></dd>
+</dl>
+</section>
+</li>
+
+{%if $job_detail_info['client_detail']['account_type']==="2"%}
+<li><p><span>この会社のキャリアアドバイザ</span></p>
+<section class="contents_middle">
+<dl class="list inset"></dl>
+
+{%foreach $career_adviser as $adviser%}               
+    <li><img src="{%getImageUrlFromS3($adviser['career_adviser_id'],4)%}" alt="" height="127" width="127" class="job_adviser_img"></li>
+    <dt><p class="job_adviser_name">{%$adviser["name"]%}</p></dt>
+    <dd><p>得意エリア：{%get_string_list($adviser["expert_area"], "name", " , ")%}</p></dd>
+    <dd><p>{%html_escape($adviser["message"]|truncate:18:"...")%}</p></dd>
+{%/foreach%}
+</section>
+</li>
+{%/if%}
+</ul>
+
+<nav class="oubo2 oubo_middle">
+{%if $job_detail_info['user_info']['apply_status'] != 0%}
+<p class="done applied_button"><a>応募済み</a></p>
+{%else%}
+<p class="mail apply_button apply_job_{%$job_detail_info['job_detail']['job']['job_id']%}"><a href="javascript:void(0)"  data-job_id="{%$job_detail_info['job_detail']['job']['job_id']%}"  class="btn_pink btn_full tip_job_apply light apply_btn" data-tooltip="こちらをクリックすると応募が即完了します。<br/>応募完了後は応募先の園、または求人の紹介会社から連絡をさせて頂きます。">今すぐ応募する</a></p>
+<p class="done applied_button apply_finished_job_{%$job_detail_info['job_detail']['job']['job_id']%} display_none"><a>応募済み</a></p>
+{%/if%}
+<div class="extra clipkeisai" id="extra">
+{%if $job_detail_info['user_info']['bookmark_status']%}
+<p class="done"><a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0"><span class="ico_folder02"></span>お気に入りに追加済み</a></p>
+{%else%}
+<p class="clip"><a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0 bookmark_job_{%$job_detail_info['job_detail']['job']['job_id']%} bookmark_btn" id="operate_bookmark" data-job_id="{%$job_detail_info['job_detail']['job']['job_id']%}"><span class="ico_folder02"></span>お気に入りに追加する</a></p>
+<p class="done display_none"><a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0 bookmark_finished_job_{%$job_detail_info['job_detail']['job']['job_id']%} display_none"><span class="ico_folder02"></span>お気に入りに追加しました</a></p>
+{%/if%}
+</div>
+</nav>
+
+
+<section class="reno">
+<h2 class="subtitle nobottom">このエリアの人気求人はこちら</h2>
+<nav id="relation">
+<ul>
+{%foreach $job_related_list as $job%}
+<li class="image">
+<a href="{%$base_url%}detail_{%$job['job_id']%}">
+<div class="innerimage">
+<img src="{%getImageUrlFromS3($job['job_id'],$image_type['job'],$job['images'][0]['name'])%}" border="0" width="80" height="60"	 alt="" /></div>
+<p class="title">{%if $job['title']%}{%html_escape($job['title'])%}{%/if%}</p>
+{%if $job['nursery_detail']['display_address']%}
+<p class="wage">勤務地 {%html_escape($job['nursery_detail']['display_address'])%}</p>
+{%/if%}
+{%if !empty($job['tags']['type_employ'])%}
+<p class="wage">勤務形態 
+{%foreach $job['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}</p>
+{%/if%}
+</a>
+</li>
+{%/foreach%}
+
+</ul>
+</nav>
+</section>
+{%include file="sp/user/common/footer.html"%}
+
+<script src="{%$static_url%}user/js/jquery.flexslider-min.js"></script>
+<script src="{%$static_url%}user/js_sp/apply.js"></script>
+<script type="text/javascript">
+        $("document").ready(function(){
+                $('.flexslider').flexslider({
+                                animation: "slide",              //"fade"か"slide"を選択
+                                slideDirection: "horizontal",   //"horizontal"で横移動、"vertical"で縦移動
+                                slideshow: true,                //trueで自動でスライドショーに
+                                slideshowSpeed: 3000,           //スライドショーの間隔
+                                animationDuration: 500,         //アニメーションのスピード
+                                directionNav: true,             //trueで前へ、次へを表示
+                                controlNav: true,               //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
+                                keyboardNav: true,              //trueでキーボードの右、左で操作できるように
+                                mousewheel: false,              //trueでマウスホイールで前に戻ることができるように
+                                prevText: "前へ",           //前に戻るボタンのテキストを指定
+                                nextText: "次へ",               //次に進むボタンのテキストを指定
+                                pausePlay: false,               //trueで停止ボタンを表示
+                                pauseText: 'Pause',             //停止ボタンのテキストを指定
+                                playText: 'Play',               //停止ボタンを押した後のテキストを指定
+                                randomize: true,               //スライドをランダムに並び替えて表示
+                                slideToStart: 0,                //最初のスライドを指定(0で一番目のスライド)
+                                animationLoop: true,            //trueでスライドをループさせる
+                                pauseOnAction: false,            //？？
+                                pauseOnHover: true,            //trueでマウスオーバーでスライドを停止に設定
+                                controlsContainer: ".flex-container",          //要素を指定すると、その直下にナビゲーション、コントロールの表示される、指定しないとこの場合.flexsliderとなる
+                                manualControls: "",             //スライドの数になるセレクタを指定とのことだが、省略で問題なし
+                                start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide
+                                before: function(){},           //Callback: function(slider) - Fires asynchronously with each slider animation
+                                after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
+                                end: function(){}               //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
+                });
+        });
+        $(".apply_btn").on("click",function(e){
+            apply_for_job($(this),"apply");
+        });
+        $(".bookmark_btn").on("click",function(e){
+            apply_for_job($(this),"bookmark");
+        });
+{%if $login !== false%}
+  jQuery(document).ready(
+    function() {
+    ga('set','dimension1','login');
+    ga('send','pageview','/detail_{%$job_detail_info["job_detail"]["job"]["job_id"]%}');
+    }
+  );
+{%/if%}
+</script>
+</body>
+</html>

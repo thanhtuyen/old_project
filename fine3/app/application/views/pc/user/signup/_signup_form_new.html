@@ -1,0 +1,143 @@
+
+<table class="formtable">
+<tr>
+<th><span class="ico_must">必須</span>メールアドレス<br><strong>※ログインIDにも使用します</strong></th>
+<td><input id="mail" name="mail" type="text" placeholder="例）info@hoiku-hiroba.jp">
+<p class="txt_attention"><span class="ico_attention01">！</span>携帯電話のメールアドレスを入力の際は「@fine.me」のドメインを「受信許可」に設定してください。</p>
+<div class="message">
+<div id="mail_err" class="display_none">メールアドレスを正しく入力してください。</div>
+<div id="mail_exist" class="error | success | warning display_none">このメールアドレスは既に登録されています。<br/>ログインすると既に登録している登録情報を使って、応募することができます。
+<p class="mt10"><a id="login_submit" href="{%$base_url%}login" class="btn_white btn_240b"><span class="ico_arrow02">&gt;</span>ログインする</a></p></div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>パスワード</th>
+<td><input id="password" name="password" type="password" class="form_size180"><span class="txt_small ml15">※8文字以上の半角英数字（a～z,0～9）で入力してください。</span>
+<div class="message">
+<div id="password_err" class="display_none">パスワードを入力してください。</div>
+</div>
+<p class="mt25 mb5">確認用にもう一度同じパスワードを入力してください。</p>
+<input id="passconf" type="password" class="form_size180">
+<div class="message">
+<div id="passconf_err" class="display_none">確認用のパスワードを入力してください。</div>
+<div id="passconf_incorrect" class="display_none">パスワードと確認用パスワードが等しくありません。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>氏名</th>
+<td><input id="name" name="name" type="text" placeholder="例）保育 育美">
+<div class="message">
+<div id="name_err" class="display_none">氏名を入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>氏名カナ</th>
+<td><input id="kana" name="kana" type="text" placeholder="例）ホイク イクミ">
+<div class="message">
+<div id="kana_err" class="display_none">氏名カナを入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>生年月日</th>
+<td>
+<select name="birth_year" id="birth_year">
+{%foreach $year as $val%}
+<option value="{%$val%}">{%$val%}</option>
+{%/foreach%}
+</select>年
+<select name="birth_month" id="birth_month">
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>月
+<select name="birth_day" id="birth_day">
+<option value="">--</option>
+</select>日
+<div class="message">
+<div id="birth_err" class="display_none">生年月日を入力してください。</div>
+</div>
+</td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>性別</th>
+<td><label>
+<input name="gender" value="1" type="radio" checked="checked">女性</label><label>
+<input name="gender" value="2" type="radio" class="ml20">男性</label>
+<div class="message">
+<div id="gender_err" class="display_none">性別を選択してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>現住所</th>
+<td><dl>
+<dt>郵便番号</dt><dd><input id="zip1" name="zip1" type="text" maxlength="3" class="form_size100" placeholder="例）160" style="width:100px;">　-　<input id="zip2" name="zip2" type="text" maxlength="4" class="form_size100" placeholder="例）0023" style="width:100px;"><span class="txt_small ml15">※半角数字（0～9）で入力してください。</span>
+<div class="message">
+<div id="zip_err" class="display_none">郵便番号を正しく入力してください。</div>
+</div></dd>
+</dl>
+<dl><dt>都道府県</dt><dd>
+<select id="address_pref" name="address_pref">
+<option value="">選択してください</option>
+{%foreach $area["pref"] as $pref%}
+<option value="{%$pref['name']%}" data-pref_id="{%$pref['pref_id']%}">{%$pref['name']%}</option>
+{%/foreach%}
+</select>
+<div class="message">
+<div id="address_pref_err" class="display_none">都道府県を選択してください。</div>
+</div></dd></dl>
+<dl><dt>市区町村</dt><dd>
+
+<select id="address_city" name="address_city">
+<option value="">選択してください</option>
+{%foreach $area["city"] as $city%}
+<option value="{%$city['name']%}" data-city_area_id="{%$city['area_id']%}" data-pref_id="{%$city['city_id']%}">{%$city['name']%}</option>
+{%/foreach%}
+</select>
+
+<div class="message">
+<div id="address_city_err" class="display_none">市区町村を選択してください。</div>
+</div></dd></dl>
+<dl><dt> </dt><dd><input id="address_detail" name="address_detail" type="text" class="form_size500" placeholder="例）西新宿1-22-2 新宿サンエービル 2階">
+<div class="message">
+<div id="address_detail_err" class="display_none">番地、マンション名等を入力してください。</div>
+</div></dd></dl></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>電話番号</th>
+<td><input id="tel" name="tel" type="text" class="form_size180" placeholder="例）0359088005"><span class="txt_small ml15">※半角数字（0～9）で入力してください。ハイフン（-）は要りません。</span>
+<div class="message">
+<div id="tel_err" class="display_none">電話番号を入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>資格</th>
+<td><ul class="formtable_license">
+
+{%foreach $license item=name key=key%}
+<label><li><input type="checkbox" class="license" name="license[]" value="{%$key%}">{%$name%}</li></label>
+{%/foreach%}
+</ul>
+<div class="message">
+<div id="license_err" class="display_none">資格を1つ以上選択してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>希望する雇用形態</th>
+<td>
+{%html_options id=employee name=employee options=$employee%}
+
+<div class="message">
+<div id="employee_err" class="display_none">希望する雇用形態を選択してください。</div>
+</div></td>
+</tr>
+</table>
+tml>

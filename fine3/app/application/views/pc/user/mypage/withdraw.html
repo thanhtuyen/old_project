@@ -1,0 +1,101 @@
+{%include file="pc/user/common/headbar_logged.html"%}
+{%include file="pc/user/common/navbar_logged.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<div class="content">
+
+{%include file="pc/user/common/mypagemenu.html"%}
+
+<h1 class="tit_01">退会</h1>
+
+{%form_open('user/mypage/withdraw',['class' => 'form-control', 'id' => 'formWithdraw'])%}
+
+<div class="box mypage_retire">
+<h2 class="tit_03">退会の理由を教えてください（必須）</h2>
+<dl>
+<dt>
+<label for="reason0"><input id="reason0" type="checkbox" name="reason[]" value="{%$reason_value['hard_use']%}">サービスが使いづらい</label>
+</dt>
+<dd>ぜひご意見を聞かせていただけませんか？</dd>
+<dd><a href="{%$base_url%}inquiry/" class="allhover"><span class="btn_125 btn_white_s2">お問い合わせへ</span></a></dd>
+</dl>
+<dl>
+<dt>
+<label for="reason1"><input id="reason1" type="checkbox" name="reason[]" value="{%$reason_value['no_job']%}">自分に合う求人がない</label>
+</dt>
+<dd>紹介会社が、非公開求人を含めてあなたに合う求人を紹介してくれます。</dd>
+<dd><a href="{%$base_url%}agent_entry" class="allhover"><span class="btn_210 btn_white_s2">紹介会社に求人紹介を申し込む</span></a></dd>
+</dl>
+<dl>
+<dt>
+<label for="reason2"><input id="reason2" type="checkbox" name="reason[]" value="{%$reason_value['quit_change']%}">転職が決まらない</label>
+</dt>
+<dd>紹介会社があなたの転職のサポートをしてくれます。</dd>
+<dd><a href="{%$base_url%}agent_entry" class="allhover"><span class="btn_210 btn_white_s2">紹介会社に求人紹介を申し込む</span></a></dd>
+</dl>
+<dl>
+<dt>
+<label for="reason3"><input id="reason3" type="checkbox" name="reason[]" value="{%$reason_value['finish_change']%}">転職が決まったから</label>
+</dt>
+<dd>退会されますとご登録された履歴書や、経歴書が消去されるので再度転職時に入力の手間がかかります。ご利用料は無料ですので、ぜひメモ代わりに、引き続きFINE!をご利用ください。</dd>
+</dl>
+
+<dl class="mypage_retire_lastdl">
+
+<dt>その他ご意見</dt>
+<dd>
+<textarea name="message">{%set_value('message')%}</textarea>
+<div class="message">{%form_error('message')%}</div>
+</dd>
+</dl>
+
+
+<div class="txt_center mb20">
+<div class="message">
+<!-- <div class="error | success | warning">退会理由を一つ以上選択してください。</div> -->
+<input type="hidden" name="checkerror" data-validation="checkValidate">
+{%form_error('reason[]')%}
+</div>
+</div>
+
+
+<p class="txt_center">
+<a href="javascript:void(0)" class="btn_pink btn_190" id="clickSubmit"><span
+class="ico_arrow03">&gt;</span>退会する</a>
+</p>
+<!-- /.box -->
+</div>
+
+</form>
+
+<!-- /.content -->
+</div>
+
+<script type="text/javascript">
+$("#clickSubmit").on("click",function(){
+		$("#formWithdraw").submit();
+		});
+
+// Add validation
+$.formUtils.addValidator({
+name : 'checkValidate',
+validatorFunction : function(value, $el, config, language, $form) {
+if( $("input[type='checkbox']:checked").length > 0 ){
+return true;
+}
+return false;
+},
+errorMessage : '<div style="color:red">退会理由を一つ以上選択してください。</div>',
+errorMessageKey: 'badEvenNumber'
+});
+
+$.validate();
+
+</script>
+
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

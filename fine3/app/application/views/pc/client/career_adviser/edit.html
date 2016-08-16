@@ -1,0 +1,215 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<div class="main">
+<!-- Left nav -->
+{%include file="pc/client/common/left_nav.html"%}
+
+<div class="contents inner">
+<h2 class="tit_01">キャリアアドバイザー<span>：アドバイザー情報を編集</span></h2>
+<p class="newbtn"><a class="btn_white btn_190" href="{%base_url()%}client/profile/career_adviser/"><span class="ico_arrow02">&gt;</span>アドバイザー一覧</a></p>
+<div class="box">
+{%if !empty($career_adviser_info["error"]) %}
+<div class="msg-error"> <i class="fa fa-times-circle"></i>{%$career_adviser_info["error"]%}</div>
+{%else%}
+
+{%form_open($base_url|cat:"client/profile/agent_update",['method'=>'POST','class'=>'create-career-adviser','id'=>'create-career-adviser','enctype'=>"multipart/form-data"])%}
+
+<table class="table02">
+<tbody>
+<tr>
+<th>名前<span class="ico_must">必須</span></th>
+<td><input type="text" class="width200 required" id="name" name="name" value="{%$career_adviser_info['name']%}">
+<p id="name_error_required" class="message display_none">名前を入力して下さい。</p></td>
+</tr>
+<tr>
+<th>メッセージ<span class="ico_must">必須</span></th>
+<td><textarea placeholder="例）あなたに一番合う職場をご提案します！" class="required" id="message" name="message" maxlength="{%$career_adviser_info['message_count_max']%}">{%$career_adviser_info['message']%}</textarea>
+<div class="float_box">
+<div style="text-align:left;" id="message_error_required" class="floatleft message display_none">メッセージを入力して下さい。</div>
+<div style="text-align:right;">残り<span id="message_count">{%$career_adviser_info['message_count_max'] - mb_strlen($career_adviser_info['message'])%}</span>文字</div>
+</div>
+</td>
+</tr>
+<tr>
+<th>写真<span class="ico_must">必須</span></th>
+<td class="media-drop">
+<div class="image-box">
+
+<div id="file_upload_form">
+
+{%if !empty($career_adviser_info['image'])%}
+<div id="existing_image">
+<img alt="" width="150" src="{%getImageUrlFromS3($career_adviser_info['career_adviser_id'],$career_adviser_info['image']['type'],$career_adviser_info['image']['name'])%}">
+<p><a id="del_existing_image" class="btn_130 btn_gray delete-image mt10" href="javascript:void(0)">画像を削除</a></p>
+<input type="hidden" id="del_existing_image_flg" name="del_existing_image_flg" value=0>
+</div>
+{%/if%}
+
+<div id="image_upload_block" {%if !empty($career_adviser_info['image'])%}class="display_none"{%/if%}>
+<!-- <div class="drag-drop file_upload">写真をこちらにドラッグ&ドロップするか、「写真追加」ボタンを押して登録してください。</div> -->
+<div id="image_thumbnail" class="mb10"></div>
+<a id="add_image" class="btn_130 btn_white update-image file_upload" href="javascript:void(0)">写真を追加</a>
+<a id="del_image" class="btn_130 btn_gray delete-image display_none" href="javascript:void(0)">画像を削除</a>
+<input type="file" id="upload" name="photo" style="visibility:hidden;">
+<p id="image_error_max_size" class="message display_none">画像のサイズが大きすぎます。</p>
+<p id="image_error_type" class="message display_none">アップロード可能なファイル形式は png , jpg , gif のみです。</p>
+<p id="image_error_required" class="message display_none">画像ファイルを選択して下さい。</p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<th>公開ステータス<span class="ico_must">必須</span></th>
+<td>
+<div class="flipswitch">
+<div class="either">
+<input type="radio" {%if empty($career_adviser_info['status']) || (!empty($career_adviser_info['status'])&&$career_adviser_info['status'] == 1)%}checked="checked"{%/if%} value="1" id="public" name="status">
+<label data-label="公開" for="public">公開</label>
+<input type="radio" {%if !empty($career_adviser_info['status'])&&$career_adviser_info['status'] == 0%}checked="checked"{%/if%} value="0" id="private" name="status">
+<label data-label="非公開" for="private">非公開</label>
+</div>
+<!-- /.flipswitch --></div>
+</td>
+
+</tr>
+</tbody>
+</table>
+{%if !empty($career_adviser_info['career_adviser_id'])%}
+<input type="hidden" name="career_adviser_id" value="{%$career_adviser_info['career_adviser_id']%}">
+{%/if%}
+<p class="txt_center mt20"><a href="javascript:void(0)" class="btn_pink btn_280 submit"><span class="ico_arrow03">&gt;</span>この内容で登録する</a></p>
+
+{%form_close()%}
+<script>
+$("#name").keyup(function(){
+    if($("#name").val() === ""){
+        $('#name_error_required').removeClass("display_none");
+    }else{
+        $('#name_error_required').addClass("display_none");
+    }
+});
+
+var message_count_max = {%$career_adviser_info['message_count_max']%};
+$("#message").keyup(function(){
+    var message_length = $("#message").val().length;
+    $("#message_count").text(message_count_max - message_length);
+    if(message_length === 0){
+        $('#message_error_required').removeClass("display_none");
+    }else{
+        $('#message_error_required').addClass("display_none");
+    }
+});
+
+$(".file_upload").on("click",function(){$('#upload').click();});
+
+$("#del_image").on("click",function(){
+    $('#upload').val("");
+    $('#image_thumbnail').html("");
+    $("#add_image").removeClass("display_none");
+    $("#del_image").addClass("display_none");
+});
+
+$("#del_existing_image").on("click",function(){
+    $("#existing_image").addClass('display_none');
+    $('#image_upload_block').removeClass("display_none");
+    footer_fix();
+    $('#del_existing_image_flg').val('1');
+});
+
+$('#upload').change(function() {
+    var file = $('#upload')[0].files[0];
+
+    if (! file.type.match('image.*')) {
+        $('#upload').val("");
+        $('#image_error_type').removeClass("display_none");
+        $('#image_error_required').addClass("display_none");
+        $('#image_error_max_size').addClass("display_none");
+        return;
+    }
+
+    $('#image_error_type').addClass("display_none");
+
+    if(file.size > 1000000){
+        $('#upload').val("");
+        $('#image_error_max_size').removeClass("display_none");
+        $('#image_error_required').addClass("display_none");
+        return;
+    }
+
+    $('#image_error_max_size').addClass("display_none");
+
+    var reader = new FileReader();
+    reader.onload = function() {
+        var img_src = $('<img>').attr('src', reader.result);
+        $('#image_thumbnail').html(img_src);
+    }
+    reader.readAsDataURL(file);
+
+    $('#image_error_required').addClass("display_none");
+    $("#add_image").addClass("display_none");
+    $("#del_image").removeClass("display_none");
+});
+
+$(".submit").on("click",function(){
+
+    var error = false;
+    if($('#name').val() === ""){
+        $('#name_error_required').removeClass("display_none");
+        error = true;
+    }else{
+        $('#name_error_required').addClass("display_none");
+    }
+
+    if($('#message').val() === ""){
+        $('#message_error_required').removeClass("display_none");
+        error = true;
+    }else{
+        $('#message_error_required').addClass("display_none");
+    }
+
+    if($('#del_existing_image_flg').val() !== '0'){
+        if(typeof $('#upload')[0].files[0] === "undefined"){
+            $('#image_error_required').removeClass("display_none");
+            error = true;
+        }else{
+            $('#image_error_required').addClass("display_none");
+        }
+    }
+    if(!error)submit();
+});
+
+function submit(){$('#create-career-adviser').submit();}
+
+function footer_fix(){
+    if($('#footer')){
+        var ft = document.getElementById('footer').offsetTop;
+        var fh = document.getElementById('footer').offsetHeight;
+        var wh = window.innerHeight;
+        if(ft+fh<wh){
+            document.getElementById('footer').style.position = "relative";
+            document.getElementById('footer').style.top = (wh-fh-ft-1)+"px";
+        }
+    }
+}
+</script>
+{%/if%}
+</div>
+
+<!-- /.box -->
+</div>
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+<!--
+<script src="{%$static_url%}client/career-adviser/js/edit.js"></script>
+<script src="{%$static_url%}common/js/jquery.html5uploader-1.1.js"></script>
+<script src="{%$static_url%}client/js/exif.js"></script>
+<script src="{%$static_url%}client/career-adviser/js/upload.js"></script>
+<link href="{%$static_url%}client/career-adviser/css/ca.css" rel="stylesheet">
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+ -->
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

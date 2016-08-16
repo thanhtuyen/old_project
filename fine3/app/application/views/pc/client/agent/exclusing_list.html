@@ -1,0 +1,124 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+<h2 class="tit_01">非課金申請管理<span>：紹介への非課金</span></h2>
+<div class="searchbox">
+<p class="tit_05">▼表示する申請を絞り込む</p>
+            <p>
+                {%form_open('', ['method' => 'GET', 'class' => 'frmsearch', 'id' => 'frmsearch'])%}
+                    フリーワード：<input type="text" name="keyword" value="{%$keyword%}" placeholder="フリーワードを入力してください。" > 
+                    <span>
+                        応募日：<input type="text" class="txt_calendar" name="start_date" value="{%$start_date_df%}"
+                            data-validation="length" 
+                            data-validation-length="10"
+                            data-validation-allowing="-"
+                            data-validation-error-msg="<div style='color:red'>応募日の始めの日付を正しく入力してください。</div>"
+                            maxlength="10"> ～ 
+                        <input type="text" class="txt_calendar" name="end_date" value="{%$end_date_df%}"
+                            data-validation="length" 
+                            data-validation-length="10"
+                            data-validation-allowing="-"
+                            data-validation-error-msg="<div style='color:red'>応募日の終わりの日付を正しく入力してください。</div>"
+                            maxlength="10">
+                    </span>
+                    <a href="javascript:void(0)" class="btn_white btn_auto submit">検索</a>
+                    
+                    {%form_error('start_date')%}
+                    {%form_error('end_date')%}
+                </form>
+            </p>
+<!-- /.searchbox --></div>
+        {%if $total === 0%}
+        <div id="message-exclude-fail" class="msg-error"><i class="fa fa-warning"></i>
+応募者がいません。
+            </div>
+        {%else%}
+            <p class="count_box">{%$total%}件中 {%$from_item%}～{%$to_item%}件を表示</p>
+
+        
+        {%form_open('', ['method' => 'POST', 'class' => 'frmsubmit', 'id' => 'frmsubmit'])%}
+<div class="box">
+<p class="before_table01">▼チェックした応募を<a class="btn_white btn_160" href="#">CSV出力</a></p>
+<table class="table01">
+<tbody>
+<tr>
+<th nowrap=""><input type="checkbox"></th>
+<th nowrap="">応募者ID</th>
+<th class="width80">応募者名</th>
+<th>申請理由</th>
+<th nowrap="">応募日</th>
+<th nowrap="">状態</th>
+<th nowrap="">操作</th>
+</tr>
+{%foreach from=$Records key=k item=v%}
+<tr>
+<td nowrap><input class="check_item" type="checkbox" name="applied[]" value="{%$v['applicant_agency_id']%}"></td>
+<td nowrap>{%$v['applicant_agency_id']%}</td>
+<td nowrap><a title="{%$v['name_kana']%}" href="{%$base_url%}client/agent_apply/detail/{%$v['applicant_agency_id']%}">{%$v['name_kana']%}</a></td>
+<td>{%if isset($v['tag']) && ! empty($v['tag'])%}
+    {%$arg = array()%}
+    {%foreach from=$v['tag'] key=kTag item=vTag%}
+        {%$arg[] = $vTag['name']%}
+    {%/foreach%}
+    {%implode(',', $arg)%}
+{%/if%}</td>
+<td nowrap="">{%date('Y/m/d', strtotime($v['apply_created']))%}</td>
+<td nowrap="">{%if $v['status'] == 1%}審査待ち{%/if%}
+{%if $v['status'] == 2%}承認{%/if%}{%if $v['status'] == 3%}非承認{%/if%}</td>
+<td nowrap=""><a class="btn_white btn_auto" href="{%$base_url%}client/agent_apply/detail/{%$v['applicant_agency_id']%}">詳細</a>
+{%if $v['status'] == 3%}<a class="btn_pink btn_auto" href="{%$base_url%}client/agent_apply/detail/{%$v['applicant_agency_id']%}">再申請</a>{%/if%}
+</td>
+</tr>
+{%/foreach%}
+</tbody>
+</table>
+<!-- /.box --></div>
+        </form>
+        {%/if%}
+        <!-- Pagination -->
+        {%$pagination%}
+        <!-- End pagination -->
+<!-- /.contents --></div>
+</div>
+<!-- Footer -->
+
+<script src="{%$static_url%}client/common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}common/js/jquery.form-validator.min.js"></script>
+<script src="{%$static_url%}client/common/js/jquery-ui.min.js"></script>
+<script src="{%$static_url%}client/common/js/ui.datepicker-ja.js"></script>
+<link href="{%$static_url%}client/common/css/jquery-ui.min.css" rel="stylesheet">
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<script type="text/javascript">$.validate();</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#check_all").click(function(){
+        $('.check_item').not(this).prop('checked', this.checked);
+    });
+    
+    $( ".txt_calendar" ).datepicker({
+        "dateFormat": "yy-mm-dd",
+        "regional":"jp",
+        changeMonth: true,
+        changeYear: true
+    });
+    
+    $('a.submit').click(function(event){
+        event.preventDefault();
+        var action = jQuery(this).attr('href');
+        var form = jQuery(this).parents('form');
+        $(form).submit();
+        return false;
+    });
+});
+</script>
+
+
+{%include file="pc/client/common/footer.html"%}

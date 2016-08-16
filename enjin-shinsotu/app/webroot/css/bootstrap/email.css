@@ -1,0 +1,377 @@
+/* CSS Document */
+
+.logo_enjin{
+	float:left !important;	
+	margin-top:15px;
+	margin-right:15px;
+}
+
+.select_option{
+	overflow: hidden;
+    background-color: #1ab394;
+  	border-color: #1ab394;
+    border-radius: 5px;
+    margin-top: 5px;
+    float: left;	
+	color:#fff;
+}
+
+.select_option select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+   padding: 8px; 
+    border: none;
+    background: #1ab394 url("../img/icon_select.png") no-repeat 43px 17px;
+}
+
+.wrapper-content-title{
+    color: #000;
+    font-size: 23px;
+}
+
+.wrapper-content-large-border{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666666;
+    margin-top: 22px;
+}
+
+.clear{
+    clear: both;
+}
+
+.content_border_button{
+    float: right;
+    padding-right: 7px;
+}
+
+.content_border_button .button{
+    text-align:center;
+    border:1px solid transparent;   
+    width: 73px;
+    border-radius: 3px;
+    height: 25px;
+    line-height: 22px;
+}
+
+.content_border_text{
+    float: left;
+}
+
+.content_border_title{    
+    border-bottom: 1px solid #666666;
+    padding-left: 14px;
+    line-height: 30px;
+    background: #999999;    
+    font-size: 12px;  
+    color: #000;  
+    height: 30px;
+}
+
+.email .wrapper-content-large-border .content-edit-border *{
+    color: #000;
+    font-size: 14px;
+}
+
+.email .wrapper-content-large-border .content-font-edit{
+    font-weight: bold;
+}
+.email .content-edit-border{
+    margin-top: 20px;
+    padding-left: 0px;
+    border-bottom: 1px solid #000;
+}
+
+.email .btn-bold{
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    width: 80px;
+}
+
+.email .bt-center
+{
+    text-align: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.email .right_bottom_content .bottom_pagination1{
+    float: right;
+    margin-right: 25px;
+}
+
+.email .right_bottom_content .bottom_pagination1 .pagination{
+    margin: 20px;    
+}
+
+.email .content-font-title1{
+    padding-left: 30px;
+    font-weight: bold;
+}
+
+.email .space{
+    text-align: center;
+    font-weight: bold;
+}
+
+.email .content-date-year{
+    height: 34px;
+    width: 80px;
+    margin-right: 10px;
+    border-color: #e5e6e7;
+}
+
+.email .content-date{
+    height: 34px;
+    border-color: #e5e6e7;
+    width: 50px;
+    margin-right: 10px;
+    margin-left: 10px
+}
+
+.email .table-edit-bordered tr th{
+    border: 1px solid #000; 
+    background-color: #999999;
+    text-align: center;
+    color: #000;
+}
+
+.email .table-edit-bordered tr td{
+    border: 1px solid #000; 
+    color: #000;
+}
+
+.email .table-edit-bordered a{
+    text-decoration: underline;
+}
+
+.table-edit-bordered{
+    border: 1px solid #000;    
+    margin-bottom: 0px;
+}
+
+.full-content .background-white-color{
+    background-color: #fff;
+}
+
+.email .content-table{
+    margin: 10px;
+}
+
+.email .full-content{
+    width: 100%;
+}
+
+.email .table-header{
+    background-color: #000;
+}
+
+.email .table-edit-bordered .right-table-th{
+    width: 30%;
+    text-align: center;
+}
+
+.email .table-edit-bordered .right-table-td{
+    width: 70%;
+    text-align: center;
+}
+
+.email .green-p{
+    color: #1ab394;
+}
+
+.email .content-table p{
+    font-size: 12px;
+    color: #000;
+}
+
+.email .break{
+    border: 1px dotted #000;
+}
+
+.email .table-edit-bordered .right-bottom-th1{
+    width: 25%;
+}
+
+.email .table-edit-bordered .right-bottom-th2{
+    width: 40%;
+}
+
+.email .table-edit-bordered .right-bottom-th3{
+    width: 35%;
+}
+
+.email .right-bottom-title{
+    color: #000;
+    margin-bottom: 7px;
+}
+
+.email .table-7-col .col-7-1{
+    width: 15%;
+}
+
+.email .table-7-col .col-7-2{
+    width: 15%;
+}
+
+.email .table-7-col .col-7-3{
+    width: 17%;
+}
+
+.email .table-7-col .col-7-4{
+    width: 15%;
+}
+
+.email .table-7-col .col-7-5{
+    width: 15%;
+}
+
+.email .table-7-col .col-7-6{
+    width: 15%;
+}
+
+.email .table-7-col .col-7-7{
+    width: 8%;
+}
+
+.full-content .border_content_table{
+    padding: 0px;
+}
+
+.full-content .border_content_table .table-border{
+   margin: 10px;
+}
+
+.full-content .bot-border-margin .bor-table{
+   border: 1px solid #000;
+}
+
+.full-content .border_content_table .table-th-rightfloat{
+    text-align: right;
+    width: 30%;
+    line-height: 34px;
+}
+
+.morejob .full-content .table-th-rightfloat{
+    width: 30%;
+}
+
+.full-content .table-edit-bordered .table-button-tdright{
+    text-align: center;
+    width: 14%;
+}
+
+.full-content .table-edit-bordered tr th{
+    border: 1px solid #000; 
+    background-color: #999999;    
+    color: #000;
+}
+
+.full-content .table-edit-bordered tr td{
+    border: 1px solid #000; 
+    color: #000;
+}
+
+.full-content .wrapper-content-large-border .ibox-content-edit{
+    margin-bottom: 0px;
+}
+
+.full-content .wrapper-content-large-border .table-bordered-bot{
+    margin-bottom: 0px;
+}
+
+.full-content .wrapper-content-large-border .space-line{
+    margin-top: 20px;
+}
+
+.full-content .wrapper-content-large-border .rtable-mar{
+    padding: 0px;
+}
+
+.full-content .table-edit-bordered .table-button-tdright{
+    padding: 3px 2px;
+}
+
+.full-content .table-edit-bordered .td-select{
+    padding: 4px;
+}
+
+.jobregistration .full-content .content-s .table-border .table-bordered-bot .data-pick{
+    width: 43.4%;
+}
+
+.jobregistration .full-content .content-s .table-border .table-bordered-bot .td-data-pick1{
+   width: 20%;
+}
+
+.jobregistration .full-content .content-s .table-border .table-bordered-bot .td-data-pick2{
+   width: 35%;
+}
+
+.jobregistration .full-content .content-s .table-border .table-bordered-bot .td-data-pick3{
+   width: 45%;
+}
+
+.jobregistration .full-content .wrapper-content-large-border .table-bordered-bot .line-content{
+    float: left;
+}
+
+.jobregistration .full-content .content-s .table-border .table-bordered-bot .two-input-layout{
+    width: 48%;
+    height: 34px;
+}
+
+.jobregistration .footer-button{
+    border: 1px solid #000;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    background-color: #999999;
+}
+
+.jobregistration .footer-btn{
+    margin: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+.jobregistration .full-content .table-number-field{
+    width: 100px;
+}
+
+.jobregistration .full-content .label-textarea{
+    line-height: 94px;
+}
+
+.jobregistration .full-content .large-content-table{
+    height: 60px;
+    line-height: 60px;
+}
+
+.jobregistration .full-content .table-edit-bordered .table-th-leftfloat{
+    text-align: left;
+    width: 30%;
+}
+
+.jobregistration .top-title{
+    margin-left: 12px;
+}
+
+.email .full-content input button{
+    border: 1px solid #000;
+}
+
+.email .full-content .bot-border-margin{
+    margin: 10px;
+}
+
+.morejob .top-title{
+    margin-left: -15px;
+}
+
+.cl-white
+{
+    color: white!important;
+}

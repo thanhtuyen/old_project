@@ -1,0 +1,49 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">非課金申請の詳細【応募課金：求人への応募】</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>申請ID</th>
+<td>{%$rows['applicant_job_id']%}</td>
+</tr>
+<tr>
+<th>ユーザーID</th>
+<td>{%$rows['user_id']%}</td>
+</tr>
+<tr>
+<th>ユーザー名</th>
+<td>{%$rows['name']%}</td>
+</tr>
+<tr>
+<th>応募先求人ID</th>
+<td><a href="{%base_url()%}manager/jobs/detail/{%$rows['job_id']%}" target="_blank">J{%$rows['job_id']%}</a></td>
+</tr>
+<tr>
+<th>申請日時</th>
+<td>{%$rows['created']%}</td>
+</tr>
+<tr>
+<th>事業所コメント</th>
+<td>{%if $rows['client_comment'] == null%}（事業所コメントはありません）{%else%}{%$rows['client_comment']%}{%/if%}</td>
+</tr>
+
+</table>
+<!-- div.widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<a href="{%base_url('manager/except/job/valid')%}/{%$rows['applicant_job_id']%}" class="btn btn-success" onClick="return confirmApply()">承認（課金対象外）</a>
+<a href="{%base_url('manager/except/job/rejected')%}/{%$rows['applicant_job_id']%}"  class="btn btn-primary" onClick="return confirmApply()">非承認（課金対象）</a>
+
+</div>
+<!-- separater --></div>
+<!-- form-group --></div>
+<!-- Content --></div>
+<script type="text/javascript">
+    var confirmApply = function () {
+        return confirm('変更しますか?');
+    };
+</script>
+{%include file="pc/admin/shared/_footer.html"%}

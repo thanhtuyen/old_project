@@ -1,0 +1,217 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%include file="pc/user/common/loading.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<link rel="stylesheet" href="{%$static_url%}common/css/slick.css" type="text/css" />
+<link rel="stylesheet" href="{%$static_url%}common/css/slick-theme.css" type="text/css" />
+<div class="content_wrapper">
+<div class="content">
+        <div class="area_intro">
+            <h1 class="tit_06"><span>{%$pref['name']%}の駅・路線</span>から保育士求人・募集を探す</h1>
+            <p>{%if !empty($seo_text)%}{%$seo_text['line']['top']%}{%/if%}</p>
+            <div class="column_wrapper">
+                <dl class="column_l">
+                    <dt>{%$pref['name']%}の求人</dt><dd><span>{%$job_all_count%}</span>件</dd>
+                </dl>
+                <div class="column_r">
+                <a class="btn_white btn_270" href="#search"><span class="ico_arrow07">▼</span>求人検索スタート！</a>
+                <!-- /.column_r --></div>
+                <!-- /.column_wrapper --></div>
+            <!-- /.area_intro --></div>
+
+<h2 class="tit_02"><span class="ico_check01">！</span>{%$pref['name']%}の新着保育士求人・募集情報</h2>
+
+{%if !empty($job_list)%}
+    <div class="area_new main">
+        <div class="area_new_inner single-item">
+            {%$i=0%}
+            {%foreach $job_list as $job%}
+            {%$i = $i + 1%}
+            {%if !empty($job) && $i <= 15%}
+            <div class="area_new_box"><a href="{%$base_url%}detail_{%$job['job_detail']['job']['job_id']%}">
+                <p><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" width="200" alt=""></p>
+                <p>{%shortenString(html_escape($job["job_detail"]["job"]["title"]),28)%}</p>
+                <ul>
+                    <li><span class="ico_arrow01">&gt;</span>{%shortenString(html_escape($job["nursery_detail"]["address"]),14)%}</li>
+                    <li><span class="ico_arrow01">&gt;</span>{%shortenString(html_escape($job["job_detail"]["job"]["salary"]),14)%}</li>
+                </ul>
+            </a></div>
+            {%/if%}
+            {%/foreach%}
+        </div>
+
+        <ul class="area_new_carouselbtn">
+            <li><a id="carousel_prev" href="javascript:void(0)"><img src="{%$static_url%}user/images/carousel_prev.png" width="18" height="78" alt=""></a></li>
+            <li><a id="carousel_next" href="javascript:void(0)"><img src="{%$static_url%}user/images/carousel_next.png" width="18" height="78" alt=""></a></li>
+        </ul>
+    </div>
+{%/if%}
+
+        <h2 id="search" class="tit_02"><span class="ico_train01">■</span>求人検索</h2>
+        <ul class="station_searchflow flow01"><!--
+        --><li class="current"><p><span>1</span>路線を選択</p><span class="ico_arrow09">&gt;</span></li><!--
+        --><li><p><span>2</span>駅を選択</p><span class="ico_arrow09">&gt;</span></li><!--
+        --><li><p><span>3</span>求人票を見る</p></li><!--
+        --></ul>
+
+        <div class="box serch_pink_box">
+            <div class="accordion">
+                <p class="search_tit"><span class="ico_train02">&gt;</span>路線</p>
+                <div class="search_box clear mb0">
+                    <ul class="search_stationlist">
+                    {%foreach $companies as $company%}
+                        <li><span class="ico_arrow08">▼</span><a href="#{%$company['company_name']%}">{%$company['company_name']%}</a></li>
+                    {%/foreach%}
+                    </ul>
+                    {%assign var="count" value=0%}
+                    {%foreach $companies as $company%}
+                    <div class="search_box_station" id="{%$company['company_name']%}">
+                        <p class="tit_03">{%$company['company_name']%}</p>
+                        <div class="line{%if count($company['lines'])>12%} show_less_div{%/if%}" id="{%$count%}">
+                        <ul>
+                            {%foreach $company['lines'] as $key => $line%}
+                                <li{%if $line['total'] == 0 %} class="search_nostation"{%/if%} {%if (count($company['lines'])>12) && ($key == 12)%} id="line12height" {%/if%}>
+                                    <input class="select_line" name="select_line"  type="checkbox" value="{%$line['line_id']%}" {%if $line['total'] == 0 %}disabled="disabled"{%/if%}>{%if $line['total'] != 0 %}<a href="{%$base_url%}railway/line_{%$line['line_id']%}">{%/if%}{%$line['line_name_h']%} <span>({%$line['total']%})</span>{%if $line['total'] != 0 %}</a>{%/if%}
+                                </li>
+                            {%/foreach%}
+                        </ul>
+                        </div>
+                        {%if count($company['lines'])>12%}
+                        <p class="search_more"><a class="show-more" href="javascript:void(0)">▼もっと路線を表示</a></p>
+                        {%/if%}
+                    </div>
+                    {%assign var="count" value=$count+1%}
+                    {%/foreach%}
+                </div><!--/.search_box -->
+            </div><!-- /.accordion -->
+        </div><!-- /.box -->
+        
+        <aside class="area_aside">
+            <p>{%if !empty($seo_text)%}{%$seo_text['line']['bottom']%}{%/if%}</p>
+            <dl>
+                <dt>関連エリア</dt>
+                <dd>
+                    <ul>
+                    {%foreach $related_areas as $related_area%}
+                    {%if $related_area['pref_id'] == $pref_cd%}
+                    <li><span>{%$related_area['name']%}</span></li>
+                    {%else%}
+                    <!--
+                    --><li><a href="{%$base_url%}railway/{%$related_area['romaji']%}/">{%$related_area['name']%}</a></li><!--
+                    -->
+                    {%/if%}
+                    {%/foreach%}
+                    </ul>
+                </dd>
+            </dl>
+        </aside>
+        
+    </div><!-- /.content -->
+    <input hidden value ="{%$pref_cd%}" id="pref_cd">
+{%include file="pc/user/common/right_nav.html"%}
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+<div class="station_btnarea" style="display: none;">
+    <ul><!--
+--><li><a id="line_search_submit" class="btn_white btn_270"   href="javascript:void(0)"><span class="ico_arrow02">&gt;</span>選択した路線の駅を表示</a></li><!--
+--></ul>
+    <!-- /.station_btnarea -->
+</div>
+<script src="{%$static_url%}common/js/slick.min.js"></script>
+<script src="{%$static_url%}common/js/jquery.darktooltip.js"></script>
+<script src="{%$static_url%}common/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    history.navigationMode = 'compatible';
+    var select ="";
+    $( document ).ready(function() {
+        if ($('.select_line:checked').length != 0) {
+            getCheckboxesValue();
+        }
+
+        $('.select_line').click(function(){
+
+            getCheckboxesValue();
+
+        });
+
+        function getCheckboxesValue(){
+
+            if ($('.select_line:checked').length==0){
+                $(".station_btnarea").slideUp("fast");
+            }else {
+                $(".station_btnarea").slideDown("fast");
+            }
+            select = select_line_list();
+        }
+
+        function select_line_list(){
+            var select = {select_line : "", num_line : ""};
+
+            $(".select_line:checked").map(function(){
+                if(select["select_line"] === ""){
+                    select["select_line"]  = $(this).val();
+                    select["num_line"] = 1;
+                }else{
+                    select["select_line"]  += ","+$(this).val();
+                    select["num_line"] = 2;
+                }
+            });
+
+            return select;
+        }
+
+        $("#line_search_submit").on("click",function(){
+            var pref_id = $("#pref_cd").val();
+            if(select["num_line"] == 1) {
+                $(location).attr("href",BASE_URL+"railway/line_"+select["select_line"]);
+            } else {
+                $(location).attr("href",BASE_URL+"station_select?line_id="+select["select_line"]+"&pref_id="+pref_id);
+            }
+
+        });
+        
+        //「もっと線路を表示」の位置合わせ
+        for(var i = 0; i < $(".line").length; i++){
+            var div = $("#" + i);
+            var ul = div.find("ul");
+            var li = ul.find("#line12height");
+            if(li.get(0)){
+                var lessHeight = li.offset().top - ul.offset().top;
+                div.css('height', lessHeight);
+            }
+        }
+        $(".show-more").click(function(){
+            var div= $(this).parent().parent().find(".show_less_div");
+            var subDiv = div.find("ul");
+            var li = subDiv.find("#line12height");
+            var lessHeight = li.offset().top - subDiv.offset().top;
+            if (div.height()==subDiv.height()){
+                div.animate({
+                    height: lessHeight
+                });
+                newText = "▼もっと路線を表示";
+            }else {
+                div.animate({
+                    height: subDiv.height()
+                });
+                newText = "▲表示を戻す";
+            }
+            $(this).text(newText);
+            return false;
+        });
+        
+        $('.single-item').slick({
+            infinite: true,
+            autoplay: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            prevArrow: $('#carousel_prev'),
+            nextArrow: $('#carousel_next'),	
+        });
+
+    });     
+</script>
+</body>
+</html>

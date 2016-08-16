@@ -1,0 +1,53 @@
+
+
+<div class="searchbox">
+{%form_open($base_url|cat:'client/job_apply',['method' => 'GET', 'class' => 'form-control', 'id' => 'search-form'])%}
+				
+	<p class="tit_05">▼表示する応募を絞り込む</p>
+				
+	<p>フリーワード：<input name="keyword" type="text" value="{%$params.keyword%}" placeholder="フリーワードを入力してください。" /> 
+		<span>応募日：
+		<input name="start_date" class="search-date-calendar" type="text" value="{%$params.start_date%}"/> ～ 
+		<input name="end_date" class="search-date-calendar" type="text" value="{%$params.end_date%}"/>
+		<input value="{%$params.limit%}" name="limit" type="hidden"></span> 
+	</p>
+	<p>
+		<span>確定状況：
+		    <select name="show_status">
+		<option value="" {%if empty($status_applied)%}selected="selected"{%/if%}>全ての確定状況</option>
+		      <option value="未確定" {%if $status_applied == "未確定"%}selected="selected"{%/if%}>未確定</option>
+		      <option value="申請中" {%if $status_applied == "申請中"%}selected="selected"{%/if%}>申請中</option>
+		      <option value="非確定" {%if $status_applied == "非確定"%}selected="selected"{%/if%}>非確定</option>
+		      <option value="確定" {%if $status_applied == "確定"%}selected="selected"{%/if%}>確定</option>
+		    </select>
+	    	</span>
+		<span>希望雇用形態：				
+		    <select name="show_wish">
+			<option value="" {%if empty($wish_status)%}selected="selected"{%/if%}>全ての雇用形態</option>
+			<option value="19" {%if $wish_status == 19%}selected="selected"{%/if%}>正社員</option>
+			<option value="20" {%if $wish_status == 20%}selected="selected"{%/if%}>パート・アルバイト</option>
+			<option value="21" {%if $wish_status == 21%}selected="selected"{%/if%}>契約社員</option>
+			<option value="22" {%if $wish_status == 22%}selected="selected"{%/if%}>派遣</option>
+			<option value="23" {%if $wish_status == 23%}selected="selected"{%/if%}>紹介予定派遣</option>
+		    </select>
+	    	</span>
+		<span>表示件数：				
+		    <select name="show_num">
+		      <option value="10">10件表示</option>
+		      <option value="20">20件表示</option>
+		    </select>
+	    	</span>
+		<a id="btn-search" href="javascript:void(0);" class="btn_white btn_auto">検索</a>
+		<input type="submit" class="display_none"/>
+	</p>
+</form>				
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$('#btn-search').on('click', function(){
+		$('#search-form').submit();
+	});
+});
+</script>
+			
+</div>

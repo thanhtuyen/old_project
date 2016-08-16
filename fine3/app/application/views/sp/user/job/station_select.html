@@ -1,0 +1,100 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<section class="top_container">
+    <article id="top_contents">
+
+        <h1 class="station_title">{%$pref['name']%}の駅・路線から探す</h1>
+
+        <ul class="accordion accordion_station">
+            {%foreach $list_lines as $line%}
+                <li><p><span>{%$line['line_name_h']%}</span></p>
+                    <ul>
+                        {%foreach $line['stations'] as $station%}
+                            <li><label {%if $station['total_job'] == 0 %} class="nocheck"{%/if%}>
+                                    <input type="checkbox" class="select_station" {%if $station['total_job'] == 0 %} disabled{%/if%} value="{%$station['station_id']%}">
+                                    {%$station['station_name']%} <span>({%$station["total_job"]%})</span>
+                                </label>
+                            </li>
+                        {%/foreach%}
+                    </ul>
+                </li>
+            {%/foreach%}
+        </ul>
+
+        <div class="searchbtn_station" style="display: none;">
+            <p class="btn btn02" ><a id="job_search_submit" href="javascript:void(0)">検索</a></p>
+            <p class="btn btn03"><a href="javascript:void(0)" id="job_search_condition">検索条件を追加</a></p>
+        </div>
+
+    </article>
+</section>
+
+{%include file="sp/user/common/footer.html"%}
+<script type="text/javascript" charset="utf-8">
+    $( document ).ready(function() {
+        if ($('.select_station:checked').length==0){
+            $(".searchbtn_station").slideUp("fast");
+        }else {
+            $(".searchbtn_station").slideDown("fast");
+        }
+        var select ="";
+        $('.select_station').click(function(){
+
+            if($(this).prop("checked") == true){
+                $(this).parent().css( "background", "#ffccd9");
+            }
+            else if($(this).prop("checked") == false){
+                $(this).parent().css( "background", "#ffffff");
+            }
+
+            if ($('.select_station:checked').length==0){
+                $(".searchbtn_station").slideUp("fast");
+            }else {
+                $(".searchbtn_station").slideDown("fast");
+            }
+            select = select_station_list();
+        });
+
+
+        function select_station_list(){
+            var select = {select_station : "", num_station : ""};
+            $(".select_station:checked").map(function(){
+                if(select["select_station"] === ""){
+                    select["select_station"]  = $(this).val();
+                    select["num_station"] = 1;
+                }else{
+                    select["select_station"]  += ","+$(this).val();
+                    select["num_station"] = 2;
+                }
+            });
+            return select;
+        }
+        $("#job_search_submit").on("click",function(){
+            var select = select_station_list();
+            if (select['select_station']==""){
+                return false;
+            }
+            if(select['"num_station'] == 1) {
+                $(location).attr("href",BASE_URL+"railway/list_station"+select["select_station"]);
+            }else {
+                $(location).attr("href",BASE_URL+"search_by_station?station="+select["select_station"]);
+            }
+        });
+
+        $("#job_search_condition").on("click",function(){
+            var select = select_station_list();
+            if (select['select_station']==""){
+                return false;
+            }
+            if(select['"num_station'] == 1) {
+                $(location).attr("href",BASE_URL+"search_condition/"+select["select_station"]);
+            }else {
+                $(location).attr("href",BASE_URL+"search_condition?station="+select["select_station"]);
+            }
+        });
+
+
+    });
+
+</script>

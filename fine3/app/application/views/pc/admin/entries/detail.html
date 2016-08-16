@@ -1,0 +1,94 @@
+
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">応募の詳細</h4>
+<!-- widget-head --></div>
+{%form_open('manager/entry/job/update')%}
+<table class="plan_form">
+<input type="hidden" name="applicant_job_id" value="{%$row['applicant_id']%}" />
+<tr>
+<th>ID</th>
+<td>{%$row['applicant_id']%}</td>
+</tr>
+<tr>
+<th>求人</th>
+<td><a target="_blank" href="{%base_url('detail_')%}{%$row['job_id']%}">{%$row['job_id']%}{%$row['job_title']%}</a></td>
+</tr>
+<tr>
+<th>応募先企業名</th>
+<td><a href="{%base_url()%}manager/agent/detail/{%$row['client_id']%}" target="_blank">{%$row['client_display_name']%}　（表示名: {%$row['client_display_name']%}）</a></td>
+</tr>
+<tr>
+<th>ユーザー名</th>
+<td><a href="{%base_url()%}manager/user/detail/{%$row['user_id']%}" target="_blank">{%$row['user_name']%}</a></td>
+</tr>
+<tr>
+<th>ユーザー住所</th>
+<td>{%$row['user_area']%}{%$row['user_address']%}</td>
+</tr>
+<tr>
+<th>プラン名</th>
+<td>{%$row['plan_group_name']%}
+</td>
+</tr>
+<tr>
+<th>課金対象</th>
+<td>{%status_text($row['status'])%}</td>
+</tr>
+
+{%if $row['status'] == 1 || $row['status'] == 3%}
+<tr>
+<th>確定日</th>
+<td>{%$row['fix_date']%}</td>
+</tr>
+{%/if%}
+
+<tr>
+<th>応募単価</th>
+<td>{%$row['unit_price']%} 円</td>
+</tr>
+<tr>
+<th>エントリー日時</th>
+<td>{%$row['created']%}</td>
+</tr>
+<tr>
+<th>事業所コメント</th>
+<td>{%if $row['client_comment'] != null%}{%$row['client_comment']%}{%else%}（コメントなし）{%/if%}</td>
+</tr>
+<tr>
+<th>管理者メモ<br>※管理者のみ表示</th>
+<td>
+<textarea class="form-control plan_form" name="admin_comment" rows="4" style="padding:3px;">
+{%$row['admin_comment']%}
+</textarea>
+</td>
+</tr>
+</table>
+<!-- div.widget --></div>
+
+<div class="form-group">
+<a href="{%base_url()%}manager/entries/job" class="btn btn-success">戻る</a>
+<button type="submit" class="btn btn-primary">メモを保存</button>
+</div>
+<!-- form-group --></div>
+{%form_close()%}
+
+
+
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+
+
+
+
+
+
+
+
+
+
+

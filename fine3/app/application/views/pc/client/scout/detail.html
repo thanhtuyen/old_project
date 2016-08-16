@@ -1,0 +1,71 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			スカウト<span>：スカウト履歴詳細</span>
+		</h2>
+		<p class="newbtn">
+			<a href="{%base_url()%}client/scout/history" class="btn_white btn_190"><span
+				class="ico_arrow02">&gt;</span>スカウト履歴一覧</a>
+		</p>
+		<div class="box">
+			{%if $error %}
+				<p class="error">{%$error%}</p>
+			{%else%}				
+<table class="table02">
+<tbody>
+<tr>
+<th>スカウトID<br><span class="txt_small">(ユーザーID)</span></th>
+<td>{%$scout['scout_id']%}<p class="txt_small">({%$scout['user_id']%})</p></td>
+</tr>
+<tr>
+<th>居住地</th>
+<td>{%$scout['address']%}</td>
+</tr>
+<th>保有資格</th>
+<td>{%$scout['license_tags']%}</td>
+</tr>
+<th>年齢</th>
+<td>{%$scout['age']%}</td>
+</tr>
+<th>希望雇用形態</th>
+<td>{%$scout['employ_tags']%}</td>
+</tr>
+<tr>
+<th>求人タイトル　<span class="txt_small">園名</span></th>
+<td><a href="{%$scout['edit_job_url']%}">{%$scout['job_title']%}</a>
+<p class="txt_small"><a href="{%$scout['edit_nursery_url']%}">{%$scout['nursery_name']%}</a></p></td>
+</tr>
+<tr>
+<th>スカウト日</th>
+<td>{%$scout['created']%}</td>
+</tr>
+<tr>
+<th>メール内容</th>
+<td><p class="tit_05">{%$scout['template_title']%}</p>
+<div>
+{%$scout['template_content']%}
+</div>
+</td>
+</tr>
+</tbody>
+</table>			
+{%/if%}
+			<p class="txt_center">
+				<a href="{%base_url()%}client/scout/history" class="btn_white btn_190 mt20"><span
+					class="ico_arrow02">&gt;</span>スカウト履歴一覧</a>
+			</p>
+			<!-- /.box -->
+		</div>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

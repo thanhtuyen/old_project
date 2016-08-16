@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/*トップ*/
+.touchable.touch-active,
+.touch-active a img,
+.touch-active a,
+.btn input.touch-active,
+.btn a.touch-active,
+.oubo a.touch-active,
+.oubo2 a.touch-active,
+.back.touch-active,
+input.top_free_btn.touch-active,
+.social_btn.touch-active a img{
+	filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.touchable2.touch-active2,
+#search_regist_btn a.touch-active2,
+h5.application_login.touch-active2 a,
+.condition_btn p.touch-active2 a,
+.login_reminder p.touch-active2,
+.page_top p.touch-active2,
+.clip.touch-active2,
+.send_work.touch-active2 a,
+.present_aboout.touch-active2,
+.top_back.touch-active2,
+.tel_number.touch-active2,
+footer ul li.touch-active2,
+div.touch-active2 a,
+.scout_mail li.touch-active2 a,
+#sort li.touch-active2 a,
+.ranking_copy.touch-active2,
+ul li.touch-active2,
+li.arrow.touch-active2,
+#mypage li.touch-active2,
+#search_cross div.link_box.touch-active2,
+.top_footer_nav li.touch-active2,
+#top_contents li.touch-active2,
+#top_contents li.text.touch-active2,
+#attention li.touch-active2,
+#attention li.text.touch-active2,
+.btn input[type="checkbox"].touch-active,
+.btn input[type="radio"].touch-active{
+	background: #ffccd9 !important;
+}
+
+form .list li p.icon_save.touch-active2 a,
+form .list li p.icon_nosave.touch-active2 a{background: none;}

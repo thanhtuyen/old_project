@@ -1,0 +1,76 @@
+{%include file="pc/user/common/headbar_logged.html"%}
+{%include file="pc/user/common/navbar_logged.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<div class="content">
+
+{%include file="pc/user/common/mypagemenu.html"%}
+
+<h1 class="tit_01">登録情報</h1>
+<div class="box mypage_confirm">
+<table class="formtable">
+<tr>
+<th>メールアドレス</th>
+<td>{%$user_data["mail"]%}</td>
+</tr>
+<tr>
+<th>パスワード</th>
+<td>********<a class="btn_190 btn_white ml15" href="{%$base_url%}mypage/change_password/"><span class="ico_arrow02">&gt;</span>変更する</a></td>
+</tr>
+<tr>
+<th>氏名</th>
+<td>{%$user_data["name"]%}</td>
+</tr>
+<tr>
+<th>氏名カナ</th>
+<td>{%$user_data["name_kana"]%}</td>
+</tr>
+<tr>
+<th>生年月日</th>
+<td>{%date("Y年 m月 d日",strtotime($user_data["birthdate"]))%}</td>
+</tr>
+<tr>
+<th>性別</th>
+<td>{%if $user_data["gender"] === "1"%}女性{%else%}男性{%/if%}</td>
+</tr>
+<tr>
+<th>現住所</th>
+<td>{%$user_data["zip_code"]%}<br>{%$user_data["area"]|cat:$user_data["address"]%}</td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td>{%$user_data["phone"]%}</td>
+</tr>
+<tr>
+<th>資格</th>
+<td><ul>
+{%if !empty($user_data["tag"]["license"])%}
+{%foreach $user_data["tag"]["license"] as $license%}
+<li>{%$license%}</li>
+{%/foreach%}
+{%/if%}
+</ul></td>
+</tr>
+<tr>
+<th>希望する雇用形態</th>
+<td><ul>
+{%if !empty($user_data["tag"]["employee"])%}
+{%foreach $user_data["tag"]["employee"] as $employee%}
+<li>{%$employee%}</li>
+{%/foreach%}
+{%/if%}
+</ul></td>
+</tr>
+</table>
+<p class="txt_center"><a href="{%$base_url%}mypage/profile_edit" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>登録内容を変更する</a></p>
+<!-- /.box --></div>
+<p><span class="ico_arrow01">&gt;</span>退会は<a href="{%$base_url%}mypage/withdraw" class="txt_line">こちら</a>から</p>
+
+<!-- /.content --></div>
+
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

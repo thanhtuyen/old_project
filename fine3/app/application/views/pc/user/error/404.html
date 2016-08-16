@@ -1,0 +1,78 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+
+
+{%display_breadcrumb($breadcrumb)%}
+
+<div class="content_wrapper">
+<div class="box comps mt50">
+<p class="comps_tit">404 Not Found</p>
+<p>お探しのページは見つかりません。<br>一時的にアクセスできない状況にあるか、<br>ページが移動もしくは削除されて存在しない可能性があります。</p>
+<p>URLをもう一度ご確認いただくか、時間をおいて再度ご覧ください。<br>もしくは、トップページからもう一度該当のページをお探しください。</p>
+<p class="txt_center"><a href="{%base_url()%}" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>TOPへ戻る</a></p>
+
+        <a href="{%$base_url%}search/"><p class="tit_02">
+            <span class="ico_search01">▼</span>条件から探す
+        </p></a>
+        <div class="box searchbox_condition">
+            <dl>
+                <dt>
+                    <span>職種から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 2%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+            <dl>
+                <dt>
+                    <span>施設形態から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 1%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+            <dl>
+                <dt>
+                    <span>勤務形態から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 3%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+
+            <dl>
+                <dt>
+                    <span>こだわり条件から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 5%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+            <!-- /.box -->
+        </div>
+
+
+<!-- /.box --></div>
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>
+

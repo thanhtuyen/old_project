@@ -1,0 +1,139 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+{%getFlashInfo()%}
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+<!-- <button type="button" class="btn btn-primary" id="send_all">本登録メール発行</button>
+<span style="color:red" id="send_all_msg"></span> -->
+  <!-- date search end -->
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<!-- <th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox" id="check_all">
+</label>
+</div>
+</th> -->
+<th>ユーザーID</th>
+<th>ユーザー名</th>
+<th>メールアドレス</th>
+<th>電話番号</th>
+<th>保有資格</th>
+<th>生年月日</th>
+<th>登録日時</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+
+{%foreach from=$users item=user%}
+<tr class="gradeX">
+<!-- <td class="text-center"><div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox" data-check></label></div></td> -->
+<td><a href="{%base_url('manager/user/detail')%}/{%$user['user_id']%}">{%$user['user_id']%}</a></td>
+<td><a href="{%base_url('manager/user/detail')%}/{%$user['user_id']%}">{%$user['name']%}</a></td>
+<td>{%$user['mail']%}</td>
+<td>{%$user['phone']%}</td>
+<td>
+{%if !empty($user['license'])%}
+{%$user['license']%}
+{%/if%}
+</td>
+<td>{%$user['birthdate']%}</td>
+<td>{%$user['created']%}</td>
+<td><button type="button" class="btn btn-primary" data-user-id="{%$user['user_id']%}" >本登録メール発行</button></td>
+</tr>
+{%/foreach%}
+</tbody>
+</table>
+{%form_open('manager/user/ajax_send_confirm_mail', ['id' => 'send_mail'])%}
+  <input value="" name="user_id" type="hidden" id="ajax_pref">
+{%form_close()%}
+
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+{%include file="pc/admin/shared/_footer.html"%}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $("button[data-user-id]").on("click",function(){
+    var $this = $(this)
+    $this.attr("disabled",true)
+    $this.html("送信...")
+    var user_id = $this.data("user-id")
+    $("#ajax_pref").val(user_id);
+    $("#send_mail").ajaxForm({
+      dataType: 'json',
+      success: function(data) {
+        console.log(data.status)
+        if(data.status == 1){
+          $this.html("送信に成功")
+        }else{
+          $this.html("送信に失敗")
+          $this.attr("disabled",false)
+        }
+      }
+    })
+    $("#send_mail").trigger("submit");
+    
+  })
+
+  $("input#check_all").on("click", function(){
+    $("input[type='checkbox']").trigger("click")
+  })
+
+  // $("#send_all").on("click", function(){
+    
+  //   var $button = $("input[data-check]:checked").parents("tr").find("button")
+  //   var size = $button.size()
+  //   if (size > 0) {
+  //     $("#send_all_msg").html("");
+  //     $("#send_all").attr("disabled",true).html("送信...")
+  //     $button.attr("disabled",true).html("送信...")
+  //     var i = 0;
+  //     $button.each(function(){
+  //       var user_id = $(this).data("user-id")
+  //       $("#ajax_pref").val(user_id);
+  //       var success_user_id = []
+  //       var fail_user_id = []
+  //       $("#send_mail").ajaxForm({
+  //           dataType: 'json',
+  //           success: function(data) {
+  //             i++;
+              
+  //             if(data.status == 1){
+  //               console.log("success")
+  //               success_user_id.push(data.user_id);
+  //               $("button[data-user-id="+data.user_id+"]").html("送信に成功")
+  //             }else{
+  //               console.log("fail")
+  //               $("button[data-user-id="+data.user_id+"]").html("送信に失敗")
+  //               $("button[data-user-id="+data.user_id+"]").attr("disabled",false)
+  //             }
+  //           },
+  //           error: function(xhr, status, err){
+  //             console.log("error")
+  //             i++;
+  //             $("button[data-user-id="+user_id+"]").html("送信に失敗").attr("disabled",false)
+  //           },
+  //           complete: function(){
+  //             if (i == size) {
+  //               $("#send_all").attr("disabled",false).html("本登録メール発行")
+  //             };
+  //           }
+  //       })
+  //       $("#send_mail").trigger("submit");
+  //     })
+  //   }else{
+  //     $("#send_all_msg").html("一つ以上を選択してください");
+  //   };
+  // })
+});
+
+</script>

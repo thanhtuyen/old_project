@@ -1,0 +1,46 @@
+body
+{
+    background-color: #FFFFFF!important;
+}
+.content
+{
+    text-align: center;
+    width: 87%;
+    margin: auto;
+}
+.content .items
+{
+    margin: 20px 20px;
+    display: inline-block;
+}
+
+.content .items div
+{
+    margin-top: 18px;
+    padding-top: 15px;
+}
+
+.content .items span{
+    display: block;
+}
+
+.content .tow-item
+{
+    width: 540px;
+    margin: auto;
+}
+
+.content .tow-item .item
+{
+    float: left;
+}
+.content .menu
+{
+    text-align: center;
+}
+
+.content .item{
+    width: 230px;
+    border: 1px solid #000;
+    height: 70px;
+}

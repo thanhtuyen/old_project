@@ -1,0 +1,58 @@
+{%include file="manager/shared/_header.tpl"%}
+{%include file="manager/contacts/_nav.tpl"%}
+<div class="innerLR">
+<form action="{%base_url('manager/contacts/update')%}" method="post">
+<h2>お問い合わせ内容</h2>
+<div class="row innerAll inner-2x">
+<div class="col-sm-6">
+<dl class="lined_dl">
+<dt>問い合わせID</dt>
+<dd>{%$rows['contact_id']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信者</dt>
+<dd>{%string_short($rows['item_name'])%}{%$rows['account_id']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信者名</dt>
+<dd>{%get_user_or_client_name($rows['j_name'],$rows['h_name'])%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>電話番号</dt>
+<dd>{%get_user_or_client_phone($rows['j_phone'],$rows['h_phone'])%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>メールアドレス</dt>
+<dd>{%$rows['email']%}</dd>
+</dl>
+
+<dl class="lined_dl">
+<dt>件名</dt>
+<dd>{%$rows['title']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>内容</dt>
+<dd>{%$rows['content']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信日時</dt>
+<dd>{%$rows['created']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>対応済</dt>
+<dd><div class="make-switch" data-on="success" data-off="default">
+<input type="hidden" name="contact_id" value="{%$rows['contact_id']%}">
+<input type="checkbox" name="status" checked>
+</div></dd>
+</dl>
+
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で更新する"></div>
+</form>
+<!-- separater --></div>
+<!-- form-group --></div>
+
+
+<!-- Content --></div>
+{%include file="manager/shared/_footer.tpl"%}

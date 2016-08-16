@@ -1,0 +1,153 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<h2>{%if !empty($agent['name'])%}{%$agent['name']%}{%/if%}の詳細情報</h2>
+<div class="innerLR">
+<div class="form-group">
+<a href="{%base_url('manager/agent/dammy_agent_login')%}/{%if !empty($agent['client_id'])%}{%$agent['client_id']%}{%/if%}"><input class="btn btn-primary" type="submit" value="なりすましログイン"></a>
+　<a href="{%base_url()%}manager/client/agent" class="btn btn-success">戻る</a>
+</div>
+<div class="row">
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">企業情報</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>ID</th><td>{%if !empty($agent['client_id'])%}{%$agent['client_id']%}{%/if%}</td>
+</tr>
+<!-- <tr>
+<th>社内ID</th><td>\</td>
+</tr> -->
+<th>企業名</th><td>{%if !empty($agent['name'])%}{%$agent['name']%}{%/if%}</td>
+</tr>
+<tr>
+<th>部署名</th><td>{%if !empty($agent['department'])%}{%$agent['department']%}{%/if%}</td>
+</tr>
+<tr>
+<th>担当者名</th><td>{%if !empty($agent['contact_name'])%}{%$agent['contact_name']%}{%/if%}</td>
+</tr>
+<tr>
+<th>担当者メール</th><td>{%if !empty($agent['mail'])%}{%$agent['mail']%}{%/if%}</td>
+</tr>
+<tr>
+<th>電話番号</th><td>{%if !empty($agent['phone'])%}{%$agent['phone']%}{%/if%}</td>
+</tr>
+<tr>
+<th>住所</th><td>{%if !empty($agent['zip_code'])%}{%$agent['zip_code']%}{%/if%}<br>{%if !empty($agent['address'])%}{%$agent['address']%}{%/if%}</td>
+</tr>
+
+<tr>
+<th>ステータス</th><td>{%if !empty($agent['status'])%}{%client_status($agent['status'])%}{%/if%}</td>
+</tr>
+
+</table>
+
+<div class="form-group">
+<a href="{%base_url('manager/agent/edit')%}/{%if !empty($agent['client_id'])%}{%$agent['client_id']%}{%/if%}">
+<input class="btn btn-primary" type="submit" value="編集"></a>
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">PR情報</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>表示企業名</th><td>{%$agent['name']%}</td>
+</tr>
+<tr>
+<th>住所</th><td>{%$agent['zip_code']%}<br>{%$agent['address']%}</td>
+</tr>
+<tr>
+<th>有料職業紹介<br>許可番号</th><td>{%$agent['license_number']%}</td>
+</tr>
+
+<tr>
+<th>PR</th><td>{%$agent['description']%}</td>
+</tr>
+<tr>
+<th>紹介の流れ</th><td>{%$agent['process']%}</td>
+</tr>
+<tr>
+<th>得意エリア</th>
+<td>{%$agent['area_name']%}</td>
+</tr>
+<tr>
+<th>得意職種</th>
+<td>{%$agent['job_name']%}</td>
+<tr>
+<th>画像(1)</th><td>
+<img src="{%$photo['1']%}" width="100" height="100px">
+</td>
+</tr>
+<tr>
+<th>画像(2)</th><td>
+<img src="{%$photo['2']%}" width="100" height="100px">
+</td>
+</tr>
+<tr>
+<th>バナー</th>
+<td>
+<img src="{%$photo['3']%}" width="100" height="100px">
+</td>
+</tr>
+</table>
+<div class="form-group">
+<a href="{%base_url('manager/agent/edit')%}/{%$agent['client_id']%}">
+<input class="btn btn-primary" type="submit" value="編集"></a>
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+<div class="col-md-6 mini-30">
+</div>
+</div>
+
+<div class="widget innerAll widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">キャリアアドバイザー情報</h4>
+<!-- widget-head --></div>
+{%foreach $cas as $ca%}
+<div class="lined_mini">
+<p>
+{%if !empty($ca['file_name'])%}
+<img src="{%$ca['file_name']%}" width="60" height="60">
+{%/if%}
+</p>
+<table>
+<tr>
+<th>ID</th><td>{%$ca['career_adviser_id']%}</td>
+</tr>
+<tr>
+<th>名前</th><td>{%$ca['name']%}</td>
+</tr>
+</table>
+</div>
+{%/foreach%}
+{%if !empty($cas)%}
+<div class="form-group">
+<a href="{%base_url('manager/agent')%}/{%$agent['client_id']%}/careeradviser">
+<button class="btn btn-primary">編集</button>
+</a>
+</div>
+{%/if%}
+
+<!-- widget --></div>
+
+{%include file="pc/admin/client/_plan_group.html"%}
+
+
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+
+
+
+
+
+
+

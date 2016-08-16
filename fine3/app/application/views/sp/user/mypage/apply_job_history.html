@@ -1,0 +1,49 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar_logged.html"%}
+<!--main_content-->
+<div class="main">
+{%include file="sp/user/common/mypagemenu.html"%}
+    <section><h4 class="title_pink_bar">求人応募履歴</h4></section>
+    <!--count-->
+    <div class="serch_count_top"><p class="search_count">{%$data.total%}件中<span class="display_job_number">{%$data.item_end%}</span>件を表示しています</p></div>
+    <!--job detail-->
+    <div id="jobs-container">{%include file="sp/user/mypage/apply_job_history_item.html"%}</div>
+    {%if $data.total gt $data.item_end%}<p class="continue_link"><a id="readmore" href="javascript:void(0);">次の{%$data.perpage%}件を表示する<br/><span>{%$data.total%}件中<span class="display_job_number">{%$data.item_end%}</span>件を表示しています</span></a></p>{%/if%}
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+<script type="text/javascript">
+var curpage = 2;
+var display_job_number = {%$data.item_end%};
+$("#readmore").on("click",function(){
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        cache: false,
+        url: "{%$base_url%}" + "user/ajax/readmore_apply_job",
+        data: {
+            "curpage" : curpage,
+            "perpage" : {%$data.perpage%},
+            {%$csrf_token_name%}: "{%$csrf_token_value%}"
+        },
+        success:function(response){
+            if(response.code == 1){
+                display_job_number = response.quantity + display_job_number;
+                {%$csrf_token_name%} = response.csrf_test_name;
+                $("#jobs-container").append(response.html);
+                $(".display_job_number").text(display_job_number);
+                ++curpage;
+                if(display_job_number >= {%$data.total%})$("#readmore").remove();
+            }else{
+                $("#readmore").remove();
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            /*$(location).attr("href",BASE_URL+"server_error");*/
+        }
+    });
+});
+</script>
+</body>
+</html>

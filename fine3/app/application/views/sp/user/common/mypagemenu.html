@@ -1,0 +1,20 @@
+<!--mypage_menu-->
+<section>
+<h4 class="title_joblist_mypage title_redbar">マイページ管理画面</h4>
+<ul class="mypage_menu">
+<a href="{%$base_url%}mypage/index"><li class="job_detail_box colum_list">
+マイページトップ
+<a href="{%$base_url%}mypage/apply_job_history"><li class="job_detail_box colum_list">
+求人応募履歴（{%$entry_count["apply_job"]%}）</span>
+</li></a>
+<a href="{%$base_url%}mypage/bookmark"><li class="job_detail_box colum_list">
+お気に入り求人（{%$entry_count["bookmark"]%}）
+</li></a>
+<a href="{%$base_url%}mypage/profile"><li class="job_detail_box colum_list">
+登録情報確認
+</li></a>
+<a href="{%$base_url%}mypage/apply_agent_history"><li class="job_detail_box colum_list">
+紹介会社への応募履歴（{%$entry_count["apply_agent"]%}）
+</li></a>
+</ul>
+</section>

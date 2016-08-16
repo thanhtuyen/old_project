@@ -1,0 +1,48 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--password reset-->
+     <section>
+     	<h4 class="title_pink_bar">ログインパスワードの再設定・完了</h4>
+        <p class="form_txt">ログインパスワードを再設定しました。ログインしてご利用ください。</p>
+        <div class="form_button_area">
+            <p class="form_button"><a href="{%$base_url%}login" id="submit">ログインページへ</a></p>
+         </div>
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+
+<script>
+$("html").keypress(function(e){if(e.which==13){password_valid();}});
+$("#submit").on("click",function(){password_valid();});
+function password_valid(){
+    password = $("#password").val();
+    if(password.match(/^[0-9a-z]{8,254}$/)){
+        $("#password_err").addClass("display_none");
+        password_confirm = $("#password_confirm").val();
+        if(password_confirm === ""){
+            $("#password_confirm_difer").addClass("display_none");
+            $("#password_confirm_err").removeClass("display_none");
+        }else if(password === password_confirm){
+            $("#password_reset_form").submit();
+        }else{
+            $("#password_confirm_err").addClass("display_none");
+            $("#password_confirm_difer").removeClass("display_none");
+        }
+    }else{
+        $("#password_confirm_err").addClass("display_none");
+        $("#password_confirm_difer").addClass("display_none");
+        $("#password_err").removeClass("display_none");
+    }
+}
+</script>
+</body>
+</html>

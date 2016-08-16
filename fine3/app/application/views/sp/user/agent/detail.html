@@ -1,0 +1,220 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+{%include file="sp/user/common/loading.html"%}
+<!--main_content-->
+<div class="main">
+
+    <section>
+            <h4 class="title_joblist_agency title_redbar">{%html_escape($agent["display_name"])%}</h4>
+         <p class="joblist_agency_txt">{%html_escape($agent["description"])|nl2br%}</p>
+        <img src="{%getImageUrlFromS3($agent['client_id'],3)%}" alt="" width="100%">
+    </section>
+     <section>
+         <h4 class="title_pink_bar">サービス概要</h4>
+            <div class="job_detail_table_s m_box agency_detail_table">
+                <dl>
+                        <dt>運営会社</dt>
+                     <dd>{%html_escape($agent["name"])%}</dd>
+                </dl>
+                <dl>
+                        <dt>得意エリア</dt>
+                     <dd>{%get_string_list($agent["area"], "name", " , ")%}</dd>
+                </dl>
+                <dl>
+                        <dt>得意職種</dt>
+                     <dd>{%get_string_list($agent["tag"], "name", " , ", "tag_group_id","2")%}</dd>
+                </dl>
+                <dl>
+                        <dt>所在地</dt>
+                     <dd>{%html_escape($agent["display_address"])%}</dd>
+                </dl>
+
+                <dl>
+                        <dt>有料職業紹介許可番号</dt>
+                     <dd>{%html_escape($agent["license_number"])%}</dd>
+                </dl>
+           </div>
+     </section>
+     <section>
+         <h4 class="title_pink_bar">紹介の流れ</h4>
+            <div class="job_detail_table_s m_box agency_detail_table">
+                <dl>
+                        <dt>ご紹介の流れ</dt>
+                     <dd>{%html_escape($agent["process"])|nl2br%}</dd>
+                </dl>
+           </div>
+     </section>
+     {%if $career_adviser != false%}
+     <section>
+         <h4 class="title_pink_bar">この会社のキャリアアドバイザー</h4>
+         {%foreach $career_adviser as $adviser%}
+             <div  class="job_adviser">
+                 <img src="{%getImageUrlFromS3($adviser['career_adviser_id'],4)%}" alt="" class="job_adviser_img">
+                 <div class="job_adviser_st">
+                     <p class="job_adviser_name">{%$adviser["name"]%}</p>
+                     <p>得意エリア：{%get_string_list($adviser["expert_area"], "name", " , ")%}</p>
+                     <p>{%html_escape($adviser["message"]|truncate:18:"...")%}</p>
+                 </div>
+             </div>
+         {%/foreach%}
+     </section>
+    {%/if%}
+    <!--serch count-->
+    <div class="serch_count_top">
+            <p>この条件が該当する求人は<span>{%$job_all_count%}</span>件ありました。</p>
+            <p class="serch_count">{%$job_all_count%}件中 {%$limit_from%}～{%$limit_to%}件を表示</p>
+    </div>
+
+    <!--job detail-->
+{%if $job_list !== false%}
+<div id="job_list_div">
+{%include file="sp/user/agent/_item.html"%}
+</div>
+{%/if%}
+<!-- {%$pagination%} -->
+{%if isset($next_page)%}
+<p class="continue_link" id="paging_content">
+<a href="javascript:void(0)" id="more_job" data-next-page="{%$next_page%}">次の10件を表示する<br/><span>{%$job_all_count%}件中 {%$limit_from%}～{%$limit_to%}件を表示しています</span></a>
+</p>
+{%/if%}
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}user/js/apply.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $("#job_list_div").on("click",'.apply_btn',function(e){apply_for_job($(this),"apply");});
+    $("#job_list_div").on("click",'.bookmark_btn',function(e){apply_for_job($(this),"bookmark");});
+
+    $('#paging_content').on('click', '#more_job', function(e){
+        var target = $(e.target);
+        if (e.target.nodeName != 'A') {
+          target = target.parents('a')
+        }
+        $.ajax({
+            type: "POST",
+            url : "{%$base_url%}user/agent/next_page",
+            dataType : "json",
+            data: {
+                client_id: "{%$agent['client_id']%}",
+                page: target.attr('data-next-page'),
+                {%$csrf_token_name%}: "{%$csrf_token_value%}"
+            },
+            success: function(res) {
+                $('.job_list_box').last().after(append_job(res.job_list));
+                console.log($('.job_list_box').length)
+                if($('.job_list_box').length>20) {
+                    console.log('hidden first 10')
+                    $('.job_list_box').slice(0,10).remove()
+                }
+                console.log(res.next_page)
+                if(res.next_page > 0) {
+                    target.attr('data-next-page', res.next_page)
+                } else {
+                    $('#paging_content').hide()
+                }
+                paging_num_html = res.job_all_count+'件中'+res.limit_from+'～'+res.limit_to+'件を表示しています'
+                $('#paging_content span').html(paging_num_html)
+                $('.serch_count').html(paging_num_html)
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest+textStatus+errorThrown)
+            }
+        });
+    })
+
+    function append_job(res)
+    {
+        var html = '';
+        for(i=0; i<res.length; i++){
+            var job_id = res[i]['job_detail']['job']['job_id']
+            html += '<section class="job_list_box">'
+                 + '<section class="job_list">'
+                 + '<a class="job_linkarea" href="{%$base_url%}detail_' + res[i]["job_detail"]["job"]["job_id"]+'">'
+                 + '<div class="job_linkarea_inbox">'
+                 + '<h4 class="job_list_title">' + res[i]["job_detail"]["job"]["title"] + '</h4>'
+                 + '<p class="job_list_img"><img src="'+res[i]["job_detail"]["cover_image"]+'" alt=""/></p>'
+                 + '<p class="job_list_txt">' + res[i]["job_detail"]["job"]["description"] + '</p>'
+                 + '<div class="job_detail_table_s">';
+            if(res[i]["nursery_detail"]) {
+                html += '<dl><dt>勤務地</dt>'
+                    + '<dd>' + res[i]["nursery_detail"]["name"]+'/'+res[i]["nursery_detail"]["address"] + '</dd></dl>';
+            }
+            if(res[i]['job_detail']['tags']['type_employ']) {
+                html += '<dl><dt>勤務形態</dt>'
+                    + '<dd>';
+                type_employ = res[i]['job_detail']['tags']['type_employ']
+                for(j=0;j<type_employ.length;j++){
+                    html += type_employ[j]['tag_detail']['name'];
+                }
+                html += '</dd></dl>';
+            }
+            if(res[i]['job_detail']['tags']['type_job']) {
+                html += '<dl><dt>職種</dt>'
+                    + '<dd>';
+                type_job = res[i]['job_detail']['tags']['type_job']
+                for(k=0;k<type_job.length;k++){
+                    html += type_job[k]['tag_detail']['name'];
+                }
+                html += '</dd></dl>';
+            }
+
+            if(res[i]['job_detail']['job']['worktime']) {
+                html += '<dl><dt>勤務時間</dt>'
+                    + '<dd>' + res[i]['job_detail']['job']['worktime']
+                    + '</dd></dl>';
+            }
+            if(res[i]['job_detail']['job']['salary']) {
+                html += '<dl><dt>給与</dt>'
+                    + '<dd>' + res[i]['job_detail']['job']['salary']
+                    + '</dd></dl>';
+            }
+            html += '</div>';
+            html += '<ul class="job_tag">';
+            if(res[i]['job_detail']['tags']['tag_job']) {
+                tag_job = res[i]['job_detail']['tags']['tag_job']
+                for(m=0;m<tag_job.length;m++){
+                    html += '<li>' + tag_job[m]['tag_detail']['name'] + '</li>';
+                }
+            }
+            if(res[i]['nursery_detail']['tags']['tag_nursery']) {
+                tag_nursery = res[i]['nursery_detail']['tags']['tag_nursery']
+                for(n=0;n<tag_nursery.length;n++){
+                    html += '<li>' + tag_nursery[n]['tag_detail']['name'] + '</li>';
+                }
+            }
+
+            html += '</ul> </div></a>';
+            if(res[i]["user_info"]["apply_status"]){
+                html += '<p class="applied_button">応募済み</p>';
+            } else {
+                html += '<p>こちらをクリックすると応募が即完了します。応募完了後は応募先の園、または求人の紹介会社から連絡をさせて頂きます。</p>'
+                    + '<p class="apply_button apply_job_'+job_id+ '">'
+                    + '<a href="javascript:void(0)" class="apply_btn" data-job_id='+job_id+ '>今すぐ応募する</a></p>'
+                    + '<p class="applied_button apply_finished_job_'+job_id+' display_none">応募済み</p>';
+            }
+
+            if(res[i]["user_info"]["bookmark_status"]){
+                html += '<p class="clip_button_done">お気に入り追加済み</p>';
+            } else {
+                html += '<p class="clip_button bookmark_job_'+job_id+'"><a class="bookmark_btn" href="javascript:void(0)" data-job_id='+job_id
+                    + '>お気に入りに追加</a></p>'
+                    + '<p class="clip_button_done display_none bookmark_finished_job_'+job_id
+                    + '">お気に入りに追加しました</p>';
+            }
+
+            html += '</section></section>';
+        }
+
+        return html;
+    }
+})
+
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,84 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+
+<div class="innerLR plan_form">
+<button class="btn btn_primary">このパッケージプランを削除する</button>
+<div class="separator"></div>
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">パッケージプランの編集</h4>
+<!-- widget-head --></div>
+{%form_open('manager/plan_group/update')%}
+<table class="plan_form">
+<tr>
+<th>パッケージプランID</th>
+<td>
+{%$group['plan_group_id']%}
+<input type="hidden" name="plan_group_id" value="{%$group['plan_group_id']%}">
+</td>
+</tr>
+<tr>
+<th>パッケージプラン名</th>
+<td><input type="text" value="{%$group['name']%}" name="name" placeholder="例）プラチナプラン" class="form-control plan_form" /></td>
+</tr>
+<tr>
+<th>プラン内容</th>
+<td>
+<select multiple id="pre-selected-options" class="multiselect" name="plan_id[]">
+    {%foreach $plans as $plan%}
+    <option value="{%$plan['plan_id']%}"{%if in_array($plan['plan_id'],$selected_plan)%} selected {%/if%}>{%$plan['plan_name']%}</option>
+    {%/foreach%}
+</select>
+</td>
+</tr>
+<tr>
+<th>料金（円）</th>
+<td><input type="text" name="price" placeholder="例）1000" value="{%$group['price']%}" class="form-control plan_form" /></td>
+</tr>
+<tr>
+<th>最低契約期間(ヶ月)</th>
+<td><input type="text" name="period" value="{%$group['period']%}" placeholder="例）1" class="form-control plan_form" /></td>
+</tr>
+<tr>
+<th>自動更新(ヶ月)</th><td><input type="text" name="extend_period" value="{%$group['extend_period']%}" placeholder="例）1" class="form-control plan_form" /></td>
+</tr>
+<tr>
+<th>自動延長</th>
+<td><div class="radio lined_div">
+<label class="radio-custom">
+<input type="radio" name="auto_extend_flg" value="1" {%is_radio(1, {%$group['auto_extend_flg']%})%}>
+<i class="fa fa-circle-o checked"></i> なし</label></div>
+<div class="radio lined_div">
+<label class="radio-custom">
+<input type="radio" name="auto_extend_flg" value="0" {%is_radio(0, {%$group['auto_extend_flg']%})%}>
+<i class="fa fa-circle-o"></i> あり
+</label>
+</div></td>
+</tr>
+<tr>
+<th>ステータス</th>
+<td><div class="make-switch" data-on="success" data-off="default">
+<input type="checkbox" name="status" {%is_switch($group['status'])%}></div></td>
+</tr>
+</table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+<a class="btn btn-default" href="{%base_url()%}manager/plan/category">キャンセル</a></div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+div.duplicate-template{
+	float:left;
+}
+.message .error{
+	color: #ff3366;
+	padding-top:10px;
+	margin-left:15px;
+}
+
+.message .success{
+	color: #ff3366;
+	padding-top:10px;
+	margin-left:15px;
+}

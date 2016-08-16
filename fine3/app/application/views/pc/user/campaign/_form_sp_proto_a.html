@@ -1,0 +1,22 @@
+<!-- Render form -->
+{%form_open('user/signup/lp_register',['class' => 'form-control', 'id' => 'register_form', 'ENCTYPE' => 'multipart/form-data'])%}
+<!-- End -->
+
+        {%include file="pc/user/campaign/_form_sp.html"%}
+
+        <tr>
+            <th valign="top" style="text-align: center;" class="list" nowrap>
+                <span style="margin: 10px; font-size: 14px; font-weight: normal;">
+                    <a href="{%$base_url%}rule" style="color: #333333;" target="_blank">利用規約</a>
+                </span>
+            </th>
+        </tr>
+
+        <tr>
+            <td class="at">
+                <a class="lp_submit" href="javascript:void(0)"><img id="submit_btn" src="{%$static_url%}lp/img/sec1_form_btn.png"></a>
+            </td>
+        </tr>
+    </table>
+
+{%form_close()%}

@@ -1,0 +1,179 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+{%foreach $area["pref"] as $pref%}
+{%if !empty($selecter["pref"][$pref["area_id"]])%}
+    {%$pref_name = $pref["name"]%}
+    {%$pref_id = $pref['pref_id']%}
+    {%$p_area_id = $pref["area_id"]%}
+{%/if%}
+{%/foreach%}
+
+<link rel="stylesheet" href="{%$static_url%}common/css/slick.css" type="text/css" />
+<link rel="stylesheet" href="{%$static_url%}common/css/slick-theme.css" type="text/css" />
+<div class="content_wrapper">
+<div class="content">
+<div class="area_intro">
+
+<input type="hidden" value="{%if isset($p_area_id)%}{%$p_area_id%}{%/if%}" id="select_pref" name="select_pref">
+
+<h1 class="tit_06"><span>{%$pref_name%}</span>の保育士求人・募集を探す</h1>
+<p>{%if !empty($seo_text)%}{%$seo_text['area']['top']%}{%/if%}</p>
+<div class="column_wrapper">
+<dl class="column_l">
+<dt>{%$pref_name%}の求人</dt><dd><span>{%$job_all_count%}</span>件</dd>
+</dl>
+<div class="column_r">
+<a class="btn_white btn_270" href="#search"><span class="ico_arrow07">▼</span>市区郡<span> で求人を探す</span></a>
+<!-- /.column_r --></div>
+<!-- /.column_wrapper --></div>
+<!-- /.area_intro --></div>
+
+<h2 class="tit_02"><span class="ico_check01">！</span>{%$pref_name%}の新着保育士求人・募集情報</h2>
+
+{%if !empty($job_list)%}
+<div class="area_new main">
+    <div class="area_new_inner single-item">
+    {%$i=0%}
+    {%foreach $job_list as $job%}
+    {%$i = $i + 1%}
+    {%if !empty($job) && $i <= 15%}
+        <div class="area_new_box"><a href="{%$base_url%}detail_{%$job['job_detail']['job']['job_id']%}">
+            <p><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" width="200" alt=""></p>
+            <p>{%shortenString(html_escape($job["job_detail"]["job"]["title"]),28)%}</p>
+            <ul>
+                <li><span class="ico_arrow01">&gt;</span>{%shortenString(html_escape($job["nursery_detail"]["address"]),15)%}</li>
+                <li><span class="ico_arrow01">&gt;</span>{%shortenString(html_escape($job["job_detail"]["job"]["salary"]),15)%}</li>
+            </ul>
+        </a></div>
+    {%/if%}
+    {%/foreach%}
+    </div>
+
+    <ul class="area_new_carouselbtn">
+        <li><a id="carousel_prev" href="javascript:void(0)"><img src="{%$static_url%}user/images/carousel_prev.png" width="18" height="78" alt=""></a></li>
+        <li><a id="carousel_next" href="javascript:void(0)"><img src="{%$static_url%}user/images/carousel_next.png" width="18" height="78" alt=""></a></li>
+    </ul>
+</div>
+{%/if%}
+
+<h2 id="search" class="tit_02"><span class="ico_location01">▼</span>{%$pref_name%}の市区郡から保育士の求人を探す</h2>
+<div class="box serch_pink_box">
+
+<div class="accordion">
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search03">&gt;</span>勤務地（エリア）</p>
+    <div class="search_box clear mb0">
+    <ul class="areatop-a">
+
+    {%foreach $area["city"] as $city%}
+        {%if $city["pref_id"] == $pref_id%}{%$key = $city['area_id']%}
+            {%if isset($city_job_count_list[$key])%}
+                <li><label>
+                <input type="checkbox" class="select_city" name="select_city" value="{%$city['area_id']%}" {%if !empty($selecter["city"][$city['area_id']])%}checked{%/if%}>
+                <a class="areatop-a" href="{%base_url()%}{%$pref_str%}/list_ct_{%$city["romaji"]%}">{%$city["name"]%}</a></label><span id="span_{%$city['area_id']%}">（{%$city_job_count_list[$key]['count_job']%}）</span>
+                </li>
+            {%else%}
+                <li style="color: #cccccc;"><label>
+                <input type="checkbox" class="select_city" name="select_city" value="{%$city['area_id']%}" {%if !empty($selecter["city"][$city['area_id']])%}checked{%/if%} disabled>
+                {%$city["name"]%}</label><span id="span_{%$city['area_id']%}">（0）</span>
+                </li>
+            {%/if%}
+        {%/if%}
+    {%/foreach%}
+    </ul>
+    <p>【選択された項目】<span class="select_city_list">未選択</span></p>
+    <!-- <p class="search_txt select_city_list">未選択</p> -->
+    </div><!--//area-->
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search04">&gt;</span>職種</p>
+<p class="toggle btn_60 btn_white_s2">選択する</p>
+    <div class="accordion_inbox search_box">
+    <ul>{%foreach $tags["job"] as $job%}<!--
+    --><li><label><input type="checkbox" class="select_job" name="select_job" value="{%$job['tag_id']%}" {%if !empty($selecter["job"][$job['tag_id']])%}checked{%/if%}>{%$job["name"]%}</label></li><!--
+    -->{%/foreach%}</ul>
+    <p>【選択された項目】<span class="select_job_list">未選択</span></p>
+    </div><!--//area-->
+<p class="search_txt select_job_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search05">&gt;</span>施設形態</p>
+<p class="toggle btn_60 btn_white_s2">選択する</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["nursery"] as $nursery%}<!--
+--><li><label><input type="checkbox" class="select_nursery" name="select_nursery" value="{%$nursery['tag_id']%}" {%if !empty($selecter["nursery"][$nursery['tag_id']])%}checked{%/if%}>{%$nursery["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_nursery_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_nursery_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search03">&gt;</span>勤務形態</p>
+<p class="toggle btn_60 btn_white_s2">選択する</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["employee"] as $employee%}<!--
+--><li><label><input type="checkbox" class="select_employee" name="select_employee" value="{%$employee['tag_id']%}" {%if !empty($selecter["employee"][$employee['tag_id']])%}checked{%/if%}>{%$employee["name"]%}</li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_employee_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_employee_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search03">&gt;</span>こだわり条件</p>
+<p class="toggle btn_60 btn_white_s2">選択する</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["tag"] as $tag%}<!--
+--><li><label><input type="checkbox" class="select_tag" name="select_ag" value="{%$tag['tag_id']%}" {%if !empty($selecter["tag"][$tag['tag_id']])%}checked{%/if%}>{%$tag["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_tag_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_tag_list">未選択</p>
+</div>
+
+</div><!--//accordion-->
+<!--ここまで新serch-->
+
+<p class="search_put"><a href="javascript:void(0);" class="btn_pink btn_190" id="job_search_submit"><span class="ico_search06">▼</span>この条件で検索する</a></p>
+<!-- /.box --></div>
+
+<aside class="area_aside">
+<p>{%if !empty($seo_text)%}{%$seo_text['area']['bottom']%}{%/if%}</p>
+{%if !empty($related_areas)%}
+<dl>
+<dt>関連エリア</dt>
+<dd><ul>
+{%foreach $related_areas as $related_area%}
+{%if $related_area['pref_id'] == $pref_id%}
+<li><span>{%$related_area['name']%}</span></li>
+{%else%}
+<!--
+--><li><a href="{%$base_url%}p_{%$related_area['romaji']%}">{%$related_area['name']%}</a></li><!--
+-->
+{%/if%}
+{%/foreach%}</ul></dd>
+</dl>
+{%/if%}
+</aside>
+
+<!-- /.content --></div>
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+
+<script src="{%$static_url%}common/js/slick.min.js"></script>
+<script src="{%$static_url%}user/js/jquery.darktooltip.js"></script>
+
+<!-- Move code js search and all function into file user/js/search.js -->
+<script src="{%$static_url%}user/js/areatopsearch.js"></script>
+</body>
+</html>

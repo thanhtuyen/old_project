@@ -1,0 +1,63 @@
+        <p id="deny_button" class="txt_center mt20">
+            <a href="javascript:void(0)" id="confirm" class="btn_pink btn_190 confirm"><span class="ico_arrow03">&gt;</span>確定申請する</a>
+            <a href="javascript:void(0)" class="btn_gray btn_190 open"><span class="ico_arrow03">&gt;</span>非課金申請する</a>
+        </p>
+
+<div id = "deny_form" style="display:none;">
+<!-- if status = valid & regected -->
+{%form_open($base_url|cat:'client/job_apply/exclude',['class' => 'form-control', 'id' => 'form-data'])%}
+<p class="tit_04">非課金申請</p>
+<table class="table02 mb20">
+<tbody>
+<tr>
+<th>非課金申請の有無</th>
+<td>
+{%$item.pay_status%}
+</td>
+
+</tr>
+
+<tr>
+<th>申請理由</th>
+<td><textarea name="client_comment">{%$item.client_comment%}</textarea>
+
+
+{%if $item.status == 0%}
+<!-- if status = valid -->
+<p class="txt_attention mt5">※申請する理由を書いてください。管理者がこの内容を見て、承認の可否を判断します。</p>
+{%elseif $item.status == 3%}
+<!-- if status = rejected -->
+<p class="txt_attention mt5">※再申請する際は内容を変えて書いてください。管理者がこの内容を見て、承認の可否を判断します。</p>
+{%/if%}
+
+
+</td>
+</tr>
+
+<tr>
+<th>状態</th>
+<td>{%$item.applicant_status%}</td>
+</tr>
+
+</tbody>
+</table>
+
+<p class="txt_center mt20"><a href="javascript:void(0);" id="btn-exclude" class="btn_pink btn_190">
+
+<span class="ico_arrow03">&gt;</span>
+{%if $item.status==0%}
+非課金申請する
+{%else%}
+再申請する
+{%/if%}
+</a>
+<a href="javascript:void(0)" class="btn_gray btn_190 open"><span class="ico_arrow03">&gt;</span>キャンセル</a>
+</p>
+
+
+
+<input type="hidden" name="ids[]" value="{%$item.applicant_job_id%}" />
+<input type="hidden" name="return" value="{%$return%}" />
+
+</form>
+</div>

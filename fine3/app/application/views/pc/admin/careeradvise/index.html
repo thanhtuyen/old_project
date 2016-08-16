@@ -1,0 +1,71 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+
+<h2>{%$agent['name']%}の情報の編集</h2>
+<div class="innerLR">
+{%getFlashInfo()%}
+<div class="form-group">
+<a href="{%base_url('manager/agent/detail')%}/{%$agent['id']%}"><input class="btn btn-default" type="submit" value="キャンセル"></a></div>
+
+<div class="widget innerAll widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">キャリアアドバイザー情報</h4>
+<!-- widget-head --></div>
+
+{%foreach $cas as $ca%}
+<div class="lined_mini lined_mini_edit" id="item{%$ca['career_adviser_id']%}">
+{%form_open_multipart('manager/careeradviser/update')%}
+<table>
+<tr>
+<th>ID</th><td>{%$ca['career_adviser_id']%}</td>
+<input type="hidden" name="career_adviser_id" value="{%$ca['career_adviser_id']%}" />
+<input type="hidden" name="client_id" value="{%$agent['id']%}" />
+</tr>
+<tr>
+<th>名前</th>
+<td><input type="text" value="{%$ca['name']%}" name="name" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　名前は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>コメント</th>
+<td><input type="text" value="{%$ca['message']%}" name="message" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　コメントは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>写真</th>
+<td>
+<div class="fileupload fileupload-new margin-none lined-div" data-provides="fileupload">
+<span class="fileupload-preview">
+<!-- <input name="image_id" type="hidden" value="{$ca['image_id']}"> -->
+<img id="photoPreview{%$ca['career_adviser_id']%}" src="{%$ca['photo']%}" width="60" height="60" ></span>
+<span class="btn btn-default btn-file">
+<span class="fileupload-new">ファイルを選択</span>
+<span class="fileupload-exists">Change</span>
+<input id="photo{%$ca['career_adviser_id']%}" type="file" class="margin-none" name="photo" onchange="PreviewPhoto({%$ca['career_adviser_id']%})"/>
+</span>
+</div></td>
+</tr>
+</table>
+</br>
+<a href="{%base_url('manager/careeradvisor/del')%}/{%$ca['career_adviser_id']%}">
+<button type="button" class="btn btn-warning" onClick="return confirmDelete()">このキャリアアドバイザーを削除</button>
+</a>
+<br/><br/>
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+{%form_close()%}
+<!-- lined_mini --></div>
+{%/foreach%}
+
+<!-- widget --></div>
+
+<!-- Content --></div>
+<script>
+
+    function PreviewPhoto(id){
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("photo"+id).files[0]);
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("photoPreview"+id).src = oFREvent.target.result;
+        };
+    }
+</script>
+
+{%include file="pc/admin/shared/_footer.html"%}

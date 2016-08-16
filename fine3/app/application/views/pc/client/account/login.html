@@ -1,0 +1,45 @@
+{%include file="pc/client/common/header.html"%}
+<link href="{%$static_url%}user/css/mailtip.css" rel="stylesheet" media="screen,print">
+<body class="beforelogin">
+<div class="content_s">
+<h1><img src="{%$static_url%}common/images/logo.png" alt="FINE！">管理画面</h1>
+{%form_open($base_url|cat:"client/login/login_execute",["id"=>"login_form"])%}
+<div class="login">
+<dl>
+<dt>メールアドレス</dt>
+<dd><input id="mail_form" name="mail" type="text"><p id="mail_form_err" class="mt5 txt_attention {%if !$params['errors']['account_not_exist']%}display_none{%/if%}">正しいメールアドレスを入力してください。</p></dd>
+</dl>
+<dl>
+<dt>パスワード</dt>
+<dd><input id="password_form" name="password" type="password"><p id="password_form_err" class="mt5 txt_attention display_none">パスワードを入力してください。</p></dd>
+</dl>
+<!-- /.login --></div>
+{%form_close()%}
+<p class="txt_center"><a href="javascript:void(0)" id="form_submit" class="btn_pink mt10 btn_280"><span class="ico_arrow03">&gt;</span>ログイン</a></p>
+<!-- /.content_s --></div>
+<p class="mt15 mb40 txt_center">パスワードをお忘れの方はこちら → <a href="{%base_url()%}client/password" class="txt_line">パスワードを再発行する</a></p>
+{%include file="pc/client/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script>
+var err;
+$("html").keypress(function(e){if(e.which==13){login();}});
+$("#form_submit").on("click",function(){login()});
+function login(){
+    err = false;
+    if($("#mail_form").val().match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
+        $("#mail_form_err").addClass("display_none");
+    }else{
+        $("#mail_form_err").removeClass("display_none");
+        err = true;
+    }
+    if($("#password_form").val() !== ""){
+        $("#password_form_err").addClass("display_none");
+    }else{
+        $("#password_form_err").removeClass("display_none");
+        err = true;
+    }
+
+    if(!err)$("#login_form").submit();
+
+}
+</script>

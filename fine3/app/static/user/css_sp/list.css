@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* --------------------------------------------------
+    リスト
+-------------------------------------------------- */
+.list>li{
+	margin: 0 !important;
+	padding: 0 0 0 0px !important;
+}
+
+ul.list li { list-style: none ;padding:0;}
+
+.list dt,
+.list li input[type="reset"],
+.list li input[type="submit"],
+.list li button,
+.list li label,
+.form_checkbox h5.open.hasChilds a,
+.form_checkbox h5.open.hasChilds input[type="checkbox"] label,
+.form_checkbox h5.open.hasChilds input[type="checkbox"] label {
+	display: block;
+	position: relative;
+	padding: 0 5px 0 15px;
+	line-height: 20px;
+}
+.list li a{
+	display: block;
+	line-height:20px;
+	padding:15px 15px 15px 15px;
+}
+
+.list li.active div.link_box p{line-height:50px;}
+
+
+/* + 詳細画面専用 */
+dl.list.inset{
+	font-size:90%;
+}
+dl.list.inset dt{font-size:100%;}
+.list>dt,
+.list>dd {
+	margin: 0 !important;
+	padding: 1px 0 0 5px;
+}
+.list>dd{padding:5px 0px 5px 5px;}
+.list dd.arrow,
+.list li.arrow,
+#search_cross div.link_box{
+	padding:0;
+}
+.list li.arrow p a,
+.list dd.arrow p a{padding:5px 0px 5px 5px;line-height:50px;}
+
+/* + + inset */
+.list.inset {margin: 10px 5px;}
+dl.list.inset {margin: 5px 5px;}
+
+/* + 2カラム */
+.list.c2 li {
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+
+.list.c3 li a,
+.list.c3 li input[type="reset"],
+.list.c3 li input[type="submit"],
+.list.c3 li button,
+.list.c3 li label,
+.list.c4 li a,
+.list.c4 li input[type="reset"],
+.list.c4 li input[type="submit"],
+.list.c4 li button,
+.list.c4 li label,
+.list.c5 li a,
+.list.c5 li input[type="reset"],
+.list.c5 li input[type="submit"],
+.list.c5 li button,
+.list.c5 li label {
+    height: 44px;
+    line-height: 44px;
+}
+
+/* + + column setting */
+.list.c2 li a, .list.c3 li a, .list.c4 li a, .list.c5 li a { padding: 0 0px ;box-sizing: border-box;}
+
+/* + 3カラム */
+.list.c3 li {
+    width: 33.3333333%;
+    float: left;
+    text-align: center;
+
+}
+.list.c3 li:first-child{
+    width: 33.4%;
+}
+.list.c3 li:last-child{
+    width: 33.4%;
+	padding-left:4px;
+}
+/* + 4カラム */
+.list.c4 li {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+/* + 5カラム */
+.list.c5 li {
+    width: 20%;
+    float: left;
+    text-align: center;
+}

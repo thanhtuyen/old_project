@@ -1,0 +1,6 @@
+limitPerRequest = 35
+username = reeracoen
+password = satoshiyoshida
+rootPath = /home/ec2-user/reeracoen-web-crawler/
+csvFolder = storage
+logMode = 1

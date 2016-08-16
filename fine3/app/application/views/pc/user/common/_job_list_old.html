@@ -1,0 +1,86 @@
+{%foreach $job_list as $job%}
+{%if !empty($job)%}
+<div class="box jobbox_large">
+<a href="{%$base_url%}detail_{%$job['job_detail']['job']['job_id']%}/" class="allhover"><h2 class="tit_03 txt_line">
+{%if array_key_exists('recommend', $job['job_detail']['tags'])%}<span class="ico_recom">オススメ！</span>
+{%/if%}
+{%if $job["job_detail"]["job"]["updated"] > $new_date%}<span>新着</span>
+{%/if%}
+{%html_escape($job["job_detail"]["job"]["title"])%}</h2></a>
+<div class="column_wrapper">
+<p class="mb15">{%html_escape($job["job_detail"]["job"]["description"])%}</p>
+<div class="column_r">
+<p class="job_detail_img"><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt="" width="197" height="143"></p>
+{%if $job["user_info"]["bookmark_status"]%}
+<p class="bookmark_box btn_litegray"><span class="ico_folder02">！</span>お気に入りに追加済み</p>
+{%else%}
+<a class="bookmark_btn bookmark_job_{%$job['job_detail']['job']['job_id']%}" data-job_id="{%$job['job_detail']['job']['job_id']%}" href="javascript:void(0)"><p class="bookmark_box btn_litegray"><span class="ico_folder02">！</span>お気に入りに追加</p></a>
+<p class="bookmark_box btn_litegray display_none bookmark_finished_job_{%$job['job_detail']['job']['job_id']%}"><span class="ico_folder02">！</span>お気に入りに追加済み</p>
+{%/if%}
+</div>
+<div class="column_l">
+<table>
+{%if array_key_exists('name',$job["nursery_detail"])%}
+<tr>
+<th>勤務地</th>
+<td>{%html_escape($job["nursery_detail"]["name"])%} / {%html_escape($job["nursery_detail"]["address"])%}</td>
+</tr>
+{%/if%}
+{%if array_key_exists('type_employ',$job['job_detail']['tags'])%}
+<tr>
+<th>勤務形態</th>
+<td>{%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</td>
+</tr>
+{%/if%}
+{%if array_key_exists('type_job', $job['job_detail']['tags'])%}
+<tr>
+<th>職種</th>
+<td>
+{%foreach $job['job_detail']['tags']['type_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</td>
+</tr>
+{%/if%}
+{%if array_key_exists('worktime', $job['job_detail']['job'])%}
+<tr>
+<th>勤務時間</th>
+<td>{%html_escape($job["job_detail"]["job"]["worktime"])%}</td>
+</tr>
+{%/if%}
+{%if array_key_exists('salary', $job['job_detail']['job'])%}
+<tr>
+<th>給与</th>
+<td>{%html_escape($job["job_detail"]["job"]["salary"])%}</td>
+</tr>
+{%/if%}
+</table>
+<!-- /.column_l --></div>
+<!-- /.column_wrapper --></div>
+<ul class="ico_jobtag">
+{%if array_key_exists('tag_job', $job['job_detail']['tags'])%}
+{%foreach $job['job_detail']['tags']['tag_job'] as $data%}
+<a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/"><li>{%html_escape($data['tag_detail']['name'])%}</li></a>
+{%/foreach%}
+{%/if%}
+{%if array_key_exists('tag_nursery', $job['nursery_detail']['tags'])%}
+{%foreach $job['nursery_detail']['tags']['tag_nursery'] as $data%}
+<a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/"><li>{%html_escape($data['tag_detail']['name'])%}</li></a>
+{%/foreach%}
+{%/if%}
+</ul>
+<ul class="jobbox_btm">
+{%if $job["user_info"]["apply_status"]%}
+<li><p class="btn_gray btn_190">応募済み</p></li>
+{%else%}
+<li><a href="javascript:void(0)" class="btn_pink btn_210b light_m apply_btn apply_job_{%$job['job_detail']['job']['job_id']%}" data-job_id="{%$job['job_detail']['job']['job_id']%}" data-tooltip="こちらをクリックすると応募が即完了します。<br/>応募完了後は応募先の園、または求人の紹介会社から連絡をさせて頂きます。"><span class="ico_arrow03">&gt;</span>今すぐ応募する</a></li><!--
+--><li class="display_none apply_finished_job_{%$job['job_detail']['job']['job_id']%}"><p class="btn_gray btn_190">応募済み</p></li>
+{%/if%}
+<li><a href="{%$base_url%}detail_{%$job['job_detail']['job']['job_id']%}/" class="btn_white btn_420"><span class="ico_glass">&gt;</span>詳細情報を見る</a></li><!--
+--></ul>
+<!-- /.box --></div>
+{%/if%}
+{%/foreach%}

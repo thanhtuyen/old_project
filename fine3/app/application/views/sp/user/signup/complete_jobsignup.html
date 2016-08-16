@@ -1,0 +1,30 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+    <section class="sub_container">
+        <article>
+            <section>
+
+                <h1 class="toptitle">応募が完了いたしました。</h1>
+                <article id="login">
+                    <p class="form_ph">応募先からの連絡をお待ちください。</p>
+                </article>
+                <nav class="btn inquiry"><a href="{%$base_url%}mypage/apply_job_history">応募した求人を見る</a></nav>
+        </article>
+    </section>
+
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+</body>
+<script>
+    jQuery(document).ready(
+        function() {
+            ga('set','dimension1','login');
+            ga('send','pageview','/detail?".$job_id."/apply?complete/signup');
+        }
+    );
+</script>
+</html>

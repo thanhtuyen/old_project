@@ -1,0 +1,275 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<div class="main"> 
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			運営園管理<span>：園情報の確認・編集</span>
+		</h2>
+		<p class="newbtn">
+			<a class="btn_white btn_190" href="C_6_nursaries_index.html"><span
+				class="ico_arrow02">&gt;</span>登録した園一覧</a>
+		</p>
+		<div class="box">
+			<table class="table02">
+				<tbody>
+					<tr>
+						<th>園名<span class="ico_must">必須</span></th>
+						<td><input name="name" type="text" value="{%$nursery['name']%}">
+						<p class="mt5 txt_attention">園名を入力してください。</p></td>
+					</tr>
+					<tr>
+						<th>園名（かな）<span class="ico_must">必須</span></th>
+						<td><input name="name_kana" type="text" value="{%$nursery['name_kana']%}">
+						<p class="mt5 txt_attention">園名を入力してください。</p></td>
+					</tr>
+					<tr>
+						<th>自社ID</th>
+						<td><input name="own_nursery_id" value="{%$nursery['own_nursery_id']%}" type="text" class="width200"></td>
+					</tr>
+					<tr>
+						<th>所在地<span class="ico_must">必須</span></th>
+						<td>select name="pref_id" class="block" id="pref_id">
+                <option value="">都道府県を選択</option>
+                {%foreach $necessary_info['prefs'] as $value%}
+                  <option value="{%$value['pref_id']%}" {%if !empty($area) && $value['pref_id']==$area['pref_id']%} selected="true"{%else%}{%set_select('pref_id', $value['pref_id'])%}{%/if%}>{%$value['name']%}</option>
+                {%/foreach%}
+            </select>
+						<p class="mt5 txt_attention">都道府県を選択してください。</p> 
+						<select name="city_id" class="block mt10" id="city_select_list">
+                <option value="">市区町村を選択</option>
+                  <!-- {%foreach $necessary_info['citys'] as $value%}
+                    <option value="{%$value['city_id']%}" {%if !empty($area) && $value['city_id']==$area['city_id']%} selected="true"{%else%}{%set_select('city_id', $value['city_id'])%}{%/if%}>{%$value['name']%}</option>
+                  {%/foreach%} -->
+              </select>
+						<p class="mt5 txt_attention">市区町村を選択してください。</p> 
+						<input type="text" name="address" value="{%if $operation=='edit'%}{%$nursery['address']%}{%else%}{%set_value('address')%}{%/if%}" class="mt10 width450">
+						<span class="ico_option ml10">任意</span></td>
+					</tr>
+					<tr>
+						<th>最寄駅</th>
+						<td>
+							<input type="text" name="station_name" value="{%if $operation=='edit'%}{%$nursery['station_name']%}{%else%}{%set_value('station_name')%}{%/if%}">
+						</td>
+					</tr>
+					<tr>
+						<th>アクセス</th>
+						<td><textarea name="direction">{%if $operation=='edit'%}{%$nursery['direction']%}{%else%}{%set_value('direction')%}{%/if%}</textarea></td>
+					</tr>
+					<tr>
+						<th>園児数</th>
+						<td>
+
+<input type="text" name="capacity" value="{%if $operation=='edit'%}{%$nursery['capacity']%}{%else%}{%set_value('capacity')%}{%/if%}" placeholder="半角数字のみ">
+						<p class="mt5 txt_attention">半角数字で入力してください。</p></td>
+					</tr>
+					<tr>
+						<th>URL</th>
+						<td><input type="text" name="url" value="{%if $operation=='edit'%}{%$nursery['url']%}{%else%}{%set_value('url')%}{%/if%}"></td>
+					</tr>
+					<tr>
+						<th>PR文<span class="ico_must">必須</span></th>
+						<td>
+						<textarea name="pr">{%if $operation=='edit'%}{%$nursery['pr']%}{%else%}{%set_value('pr')%}{%/if%}</textarea>
+							<p class="mt5 txt_attention">PR文を入力してください。</p></td>
+					</tr>
+					<tr>
+						<th>施設区分<span class="ico_must">必須</span></th>
+						<td><ul>
+						{%foreach $necessary_info['type_nursery'] as $key => $value%}
+                  <li><label>
+                  {%if $operation=='add'%}
+                    <input type="radio" name="type_nursery" value="{%$value['tag_id']%}" {%if $key==0%}checked="true"{%else%}{%set_radio('type_nursery', $value['tag_id'])%}{%/if%}> {%$value['name']%}
+                  {%else%}
+                    <input type="radio" name="type_nursery" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%/if%}> {%$value['name']%}
+                  {%/if%}
+                  </label></li>
+                {%/foreach%}
+							</ul>
+							<p class="mt5 txt_attention">施設区分を選択してください。</p></td>
+					</tr>
+					<tr>
+						<th>福利厚生</th>
+						<td><ul>
+ {%foreach $necessary_info['tag_insurance'] as $value%}
+                  <li><label><input type="checkbox" name="tag_insurance[]" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%else%}{%set_checkbox('tag_insurance[]', $value['tag_id'])%}{%/if%}>{%$value['name']%}</label></li>
+                {%/foreach%}
+</ul></td>
+					</tr>
+					<tr>
+						<th>登録タグ</th>
+						<td><ul>
+{%foreach $necessary_info['tag_nursery'] as $value%}
+                  <li><label><input type="checkbox" name="tag_nursery[]" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%else%}{%set_checkbox('tag_nursery[]', $value['tag_id'])%}{%/if%}>{%$value['name']%}</label></li>
+                {%/foreach%}
+</ul></td>
+					</tr>
+					<tr>
+						<th>公開状態</th>
+						<td>
+							<div class="flipswitch">
+								<div class="either">
+									
+<input type="radio" {%if ($operation=='edit' and $nursery['status']==0) or $operation=='add'%}checked="checked"{%/if%} value="0" id="dummy_0" name="status">
+<label data-label="公開" for="dummy_1">公開</label>
+									<input type="radio" {%if $operation=='edit' and $nursery['status']==1%}checked="checked"{%/if%} value="1" id="dummy_1" name="status">
+									<label data-label="非公開" for="dummy_0">非公開</label>
+								</div>
+								<!-- /.flipswitch -->
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>イメージ画像<br>
+						<span class="txt_small txt_normal">※最大3枚</span></th>
+						<td>
+							 {%if !empty($images)%}
+                <input type="hidden" id="delete_image_id" name="delete_image_ids" value="">
+                <div class="imageselect">
+                  {%foreach $images as $img%}
+                  <div id="image_div_{%$img['image_id']%}">
+                    <p class="mb10">
+                      <img alt="" src="{%getImageUrlFromS3($nursery['nursery_id'],$image_type,{%$img['name']%})%}">
+                      <!-- <img alt="" src="{%$static_url%}common/images/dummy/dummy_bnr_s.png"> -->
+                    </p>
+                    <p>
+                      <a class="btn_130 btn_gray delete_image_link" href="javascript:void(0);"data-image-id="{%$img['image_id']%}">画像を削除{%$img['image_id']%}</a>
+                    </p>
+                  </div>
+                  {%/foreach%}
+                </div>
+              {%/if%}
+							<div class="imageselect">
+								<p id="image_1">
+                  <!-- <a class="btn_130 btn_white" href="javascript:void(0);">画像を追加</a><br> -->
+                  <input type="file" name="nursery_photo_1" class="input-file">
+                  <input type="file" name="nursery_photo_2" class="input-file">
+                  <input type="file" name="nursery_photo_3" class="input-file">
+                </p>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="txt_center mt20">
+				<a href="#" class="btn_pink btn_280"><span class="ico_arrow03">&gt;</span>この内容で登録する</a>
+			</p>
+			{%form_close()%}
+      {%if validation_errors()%}
+        <p class="mt5 txt_attention txt_center">必須項目で未入力の項目があります。</p>
+      {%/if%}
+			
+			<!-- /.box -->
+		</div>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+{%form_open_multipart('client/nursery/ajax_get_city', ['id' => 'get_city_form'])%}
+  <input value="" name="pref_id" type="hidden" id="ajax_pref">
+{%form_close()%}
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}
+
+
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-form_v3.51.0/jquery.form.js"></script>
+<script type="text/javascript">
+  $('document').ready(function(){
+
+    // form validation
+    var nursery_new_form = $('#nursery_new_form')
+    nursery_new_form.validate({
+      rules: {
+        name: {
+          required: true,
+        },
+        pref_id: {
+          required: true,
+        },
+        city_id: {
+          required: true,
+        },
+        pr: {
+          required: true,
+        },
+        capacity: {
+          digits:true,
+        },
+        url: {
+          url: true
+        },
+      },
+      errorPlacement: function(error, element) {
+        error.appendTo(element.next());
+      }
+    });
+
+
+    $('#add_link').on('click', function(){
+      if(nursery_new_form.valid()){
+        nursery_new_form.submit()
+      }
+    })
+
+    // $('#add_link').on('click', function(){
+    //     $('form').submit()
+    // })
+
+    var nursery_id = $('#edit_nursery_id').val()
+    if(nursery_id){
+      nursery_new_form.attr('action', "{%$base_url%}" + 'client/nursery/update')
+    }
+
+    //delete image
+    $('.delete_image_link').on('click', function(e){
+      var target = $(e.target)
+      var image_id = target.attr('data-image-id')
+      $('#image_div_' + image_id).remove()
+
+      var delete_image_ids = $('#delete_image_id').val()
+      if(delete_image_ids){
+        delete_image_ids += "_" + image_id
+      } else {
+        delete_image_ids += image_id
+      }
+      $('#delete_image_id').val(delete_image_ids)
+    });
+
+    $("#get_city_form").ajaxForm({
+        dataType: 'json',
+        // beforeSubmit: function(arr, $form, options) {
+        //   return $form.valid();
+        // },
+        // beforeSend: function() {
+        //   result.empty();
+        // },
+        success: function(data) {
+          if(data.option != ''){
+            $("#city_select_list").html(data.option);
+            {%if !empty($area) && !empty($area['city_id'])%}
+              $("#city_select_list").val({%$area['city_id']%})
+            {%/if%}
+          }
+        },
+        error: function(xhr) {
+          console.log("error")
+        }
+      })
+
+    $("#pref_id").on("change",function(){
+      var pref_id = $(this).val()
+      $("#ajax_pref").val(pref_id)
+      $("#get_city_form").trigger("submit");
+    })
+
+    {%if !empty($area) && !empty($area['pref_id'])%}
+      $("#pref_id").trigger("change");
+      
+    {%/if%}
+
+  })
+</script>

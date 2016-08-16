@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>XXXXXXXXXXXXX</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="keywords" content="XXXXXXXXXXXXX">
+<meta name="description" content="XXXXXXXXXXXXX">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<link rel="stylesheet" href="../../../../static/user/css_sp/main.css" type="text/css">
+<link rel="icon" href="../../../../static/user/images_sp/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon" href="../../../../static/user/images_sp/apple-touch-icon.png">
+
+<script src="../../../../static/user/js_sp/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="../../../../static/user/js_sp/form.js" type="text/javascript"></script>
+<script src="../../../../static/user/js_sp/utils.js" type="text/javascript"></script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWM3WJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWM3WJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- エリア切り替え用js -->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+$(function() {
+	var startX,endX;
+	var window_state = 0;
+    var winWidth = window.innerWidth;
+    var current_window;
+    function start(){
+        startX = event.touches[0].pageX;
+    }
+    function move(e){
+        endX = event.touches[0].pageX;
+    }
+    function end(e){
+        if(endX - startX > 180){
+		$(".second_window").css("display","none");
+//		.animate({
+//    			left: (winWidth ) + "px"
+//    		}, 1000)
+    		
+		$("#first_window").fadeIn("slow");
+//    		.animate({
+//    			left: 0
+//    		},1000);
+       }
+    }
+
+	$(".go_first").click(function(){
+
+		$("#first_window").css("display","block");
+
+		setTimeout(function () {
+
+			animateTarget($("#" + current_window), winWidth, function () {
+
+				$("#" + current_window).css("display","none");
+			});
+
+			animateTarget($("#first_window"), 0);
+
+		}, 1);
+
+	});
+
+
+	function animateTarget($obj, value, callback) {
+
+    	var param = {
+					    '-webkit-transition':'left 300ms linear'
+					    //,'-webkit-transform':'translate3d(0, 0, 0)'
+					    //,'-webkit-transform-style':'preserve-3d'
+					};
+
+		if( navigator.userAgent.search(/Android 4.0/) == -1 ) {
+			//param['-webkit-transform'] = 'translate3d(0, 0, 0)';
+		}
+
+    	var reset = {
+						'-webkit-transition':''
+						//,'-webkit-transform':''
+						//,'-webkit-transform-style':''
+					};
+
+    	$obj.css(param);
+
+
+
+		$obj.css('left', value + 'px').one("webkitTransitionEnd", function (){
+
+			$(this).css(reset);
+
+			if (callback) {
+				callback();
+			}
+		});
+	}
+
+	$(".listChilds").css("display","none");
+	$(".hasChilds > *").click(function() {
+		var checked2 = $(this).attr("id");
+		var a_ob = $(this).find("a");	//クリックされた下のaタグのオブジェクトをとる
+		var a_id = $(this).find("a").attr("id");	//クリックされた下のaタグのIDをとる
+		$("#Small"+a_id).slideToggle("slow");
+		if($(this).find("a").is(".iconOpen")) {
+			$(this).find("a").removeClass("iconOpen").addClass("iconClose");
+		}else{
+			$(this).find("a").removeClass("iconClose").addClass("iconOpen");
+		}
+
+	});
+	$(".BigCheckBox").click(function() {
+		var checked3 = $(this).attr("id");
+		if(this.checked){
+			$("#Small"+checked3 + " input").attr("checked","checked");
+			$("#Small"+checked3 + " a ").css("background-color","yellow");
+		}else{
+			$("#Small"+checked3 + " input").removeAttr('checked');
+			$("#Small"+checked3 + " a ").css("background-color","white");
+		}
+	});
+	$("#selectarea :input").click(function() {
+		var chk_item_exist = false;	//チェックが入っている項目があるかを表す変数
+		$("#selectarea :input").each(function() {
+			var checked = $(this).attr("checked");
+			if(checked=="checked"){
+				chk_item_exist = true;
+				return false;
+			}
+		});
+		if(chk_item_exist == true){
+			$("#chbox_btn").show("slow");
+		}else{
+			$("#chbox_btn").hide("slow");
+		}
+	});
+
+	if(window_state==0){
+
+		$("#first_window .arrow").click(function() {
+
+			var id = $(this).attr("id");
+
+			$("#second_window" + id).css("display","block");
+
+			current_window = "second_window" + id;
+
+//			setTimeout(function () {
+
+//				animateTarget($("#first_window"), -winWidth, function () {
+
+					$("#first_window").css("display","none");
+//				});
+
+//				animateTarget($("#second_window" + id), 0);
+
+//			}, 1);
+		});
+	}
+
+	$(".area_cd_tab").click(function() {
+		location.href="area/index.html";
+	});
+});
+//--></script>
+
+<!-- 路線切り替え用js -->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+$(function() {
+	var startX,endX;
+	var window_state = 0;
+    var winWidth = window.innerWidth;
+    var current_window;
+    function start(){
+        startX = event.touches[0].pageX;
+    }
+    function move(e){
+        endX = event.touches[0].pageX;
+    }
+    function end(e){
+        if(endX - startX > 180){
+		$(".second_window").css("display","none");
+//		.animate({
+//    			left: (winWidth ) + "px"
+//    		}, 1000)
+    		
+		$("#third_window").fadeIn("slow");
+//    		.animate({
+//    			left: 0
+//    		},1000);
+       }
+    }
+
+	$(".go_first").click(function(){
+
+		$("#third_window").css("display","block");
+
+		setTimeout(function () {
+
+			animateTarget($("#" + current_window), winWidth, function () {
+
+				$("#" + current_window).css("display","none");
+			});
+
+			animateTarget($("#third_window"), 0);
+
+		}, 1);
+
+	});
+
+
+	function animateTarget($obj, value, callback) {
+
+    	var param = {
+					    '-webkit-transition':'left 300ms linear'
+					    //,'-webkit-transform':'translate3d(0, 0, 0)'
+					    //,'-webkit-transform-style':'preserve-3d'
+					};
+
+		if( navigator.userAgent.search(/Android 4.0/) == -1 ) {
+			//param['-webkit-transform'] = 'translate3d(0, 0, 0)';
+		}
+
+    	var reset = {
+						'-webkit-transition':''
+						//,'-webkit-transform':''
+						//,'-webkit-transform-style':''
+					};
+
+    	$obj.css(param);
+
+
+
+		$obj.css('left', value + 'px').one("webkitTransitionEnd", function (){
+
+			$(this).css(reset);
+
+			if (callback) {
+				callback();
+			}
+		});
+	}
+
+	$(".listChilds").css("display","none");
+	$(".hasChilds > *").click(function() {
+		var checked2 = $(this).attr("id");
+		var a_ob = $(this).find("a");	//クリックされた下のaタグのオブジェクトをとる
+		var a_id = $(this).find("a").attr("id");	//クリックされた下のaタグのIDをとる
+		$("#Small"+a_id).slideToggle("slow");
+		if($(this).find("a").is(".iconOpen")) {
+			$(this).find("a").removeClass("iconOpen").addClass("iconClose");
+		}else{
+			$(this).find("a").removeClass("iconClose").addClass("iconOpen");
+		}
+
+	});
+	$(".BigCheckBox").click(function() {
+		var checked3 = $(this).attr("id");
+		if(this.checked){
+			$("#Small"+checked3 + " input").attr("checked","checked");
+			$("#Small"+checked3 + " a ").css("background-color","yellow");
+		}else{
+			$("#Small"+checked3 + " input").removeAttr('checked');
+			$("#Small"+checked3 + " a ").css("background-color","white");
+		}
+	});
+	$("#selectarea :input").click(function() {
+		var chk_item_exist = false;	//チェックが入っている項目があるかを表す変数
+		$("#selectarea :input").each(function() {
+			var checked = $(this).attr("checked");
+			if(checked=="checked"){
+				chk_item_exist = true;
+				return false;
+			}
+		});
+		if(chk_item_exist == true){
+			$("#chbox_btn").show("slow");
+		}else{
+			$("#chbox_btn").hide("slow");
+		}
+	});
+
+	if(window_state==0){
+
+		$("#third_window .arrow").click(function() {
+
+			var id = $(this).attr("id");
+
+			$("#fourth_window" + id).css("display","block");
+
+			current_window = "fourth_window" + id;
+
+//			setTimeout(function () {
+
+//				animateTarget($("#third_window"), -winWidth, function () {
+
+					$("#third_window").css("display","none");
+//				});
+
+//				animateTarget($("#fourth_window" + id), 0);
+
+//			}, 1);
+		});
+	}
+
+	$(".area_cd_tab").click(function() {
+		location.href="area/index.html";
+	});
+});
+//--></script>
+
+
+<!-- タブの切り替えjs -->
+<script type="text/javascript">
+$(function() {
+	//クリックしたときのファンクションをまとめて指定
+	$('.top_tab h2').click(function() {
+
+		//.index()を使いクリックされたタブが何番目かを調べ、
+		//indexという変数に代入します。
+		var index = $('.top_tab h2').index(this);
+
+		//コンテンツを一度すべて非表示にし、
+		$('.top_searchbox .top_searchbox_inner').css('display','none');
+
+		//クリックされたタブと同じ順番のコンテンツを表示します。
+		$('.top_searchbox .top_searchbox_inner').eq(index).css('display','block');
+
+		//一度タブについているクラスselectを消し、
+		$('.top_tab h2').removeClass('select');
+
+		//クリックされたタブのみにクラスselectをつけます。
+		$(this).addClass('select')
+	});
+});
+</script>
+
+</head>
+
+<body>
+<header id="global_header">
+<div id="sub_global">
+<p class="logo_back"><a href="../index.html"><img src="../../../../static/user/images_sp/index_back.png" width="155" alt="全国TOP" ></a></p>
+<div id="globalNavi">
+<ul id="nav">
+<li class="regist hd_regist"><a href="account/login.html"><img width="72" alt="お気に入り" src="../../../../static/user/images_sp/okini_btn.png"></a></li>
+<li class="regist hd_regist"><a href="account/login.html"><img width="72" alt="ログイン" src="../../../../static/user/images_sp/regist_btn.png"></a></li>
+</ul>
+<!-- /#globalNavi --></div>
+<!-- /#sub_global --></div>
+</header>
+
+<section class="top_container">
+<article id="top_contents">
+<h1><p class="top_new"><img src="../../../../static/user/images_sp/top.png" alt="顧客満足度ランキング 保育業界シェア No.1！ 国内最大級の保育士求人サイト「FINE!」"></p></h1>
+<div class="top_tab">
+<h2 class="select"><span class="ico_area">▼</span>エリアから探す</h2><!--
+--><h2><span class="ico_train">■</span>駅・路線から探す</h2>
+<!-- /.top_tab --></div>
+
+<div class="top_searchbox">
+<div class="top_searchbox_inner">
+<div id="first_window">
+<form>
+<nav id="top">
+<ul class="chbox list c1" id="selectarea">
+<li id="1" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>北海道・<br>東北</label></div>
+</li>
+<li id="2" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関東</label></div>
+</li>
+<li id="3" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>信越・<br>北陸</label></div>
+</li>
+<li id="4" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>東海</label></div>
+</li>
+<li id="5" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関西</label></div>
+</li>
+<li id="6" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>中国・<br>四国</label></div>
+</li>
+<li id="7" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>九州・<br>沖縄</label></div>
+</li>
+</ul>
+</nav>
+</form>
+<!-- /#first_window --></div>
+
+<div id="second_window1" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">北海道（62）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">青森県（3）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">岩手県（6）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">宮城県（20）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">秋田県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">山形県（31）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">福島県（9）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window1 --></div>
+
+<div id="second_window2" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">茨城県（96）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">栃木県（30）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">群馬県（54）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">埼玉県（405）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">千葉県（609）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">東京都（2118）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">神奈川県（1520）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window2 --></div>
+
+<div id="second_window3" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">新潟県（28）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">富山県（4）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">石川県（6）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">福井県（4）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">山梨県（6）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">長野県（6）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window3 --></div>
+
+<div id="second_window4" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">岐阜県（21）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">静岡県（56）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">愛知県（173）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">三重県（15）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window4 --></div>
+
+<div id="second_window5" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">滋賀県（206）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">京都府（232）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">大阪府（734）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">兵庫県（367）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">奈良県（78）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">和歌山県（42）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window5 --></div>
+
+<div id="second_window6" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">鳥取県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">島根県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">岡山県（19）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">広島県（38）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">山口県（3）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">徳島県（14）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">香川県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">愛媛県（16）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">高知県（0）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window6 --></div>
+
+<div id="second_window7" class="second_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">福岡県（280）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">佐賀県（12）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">長崎県（24）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">熊本県（28）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">大分県（19）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">宮崎県（11）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">鹿児島県（23）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">沖縄県（5）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window7 --></div>
+<!-- /.top_searchbox_inner --></div>
+
+<!-- ここから駅・路線用 -->
+<div class="top_searchbox_inner hide">
+<div id="third_window">
+<form name="form2" method="post" action="/">
+<nav id="top">
+<ul class="chbox list c1" id="selectarea">
+<li id="1" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>北海道・<br>東北</label></div>
+</li>
+<li id="2" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関東</label></div>
+</li>
+<li id="3" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>信越・<br>北陸</label></div>
+</li>
+<li id="4" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>東海</label></div>
+</li>
+<li id="5" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>関西</label></div>
+</li>
+<li id="6" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>中国・<br>四国</label></div>
+</li>
+<li id="7" class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image"><label>九州・<br>沖縄</label></div>
+</li>
+</ul>
+</nav>
+</form>
+<!-- /#first_window --></div>
+
+<div id="fourth_window1" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">北海道（62）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">青森県（3）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">岩手県（6）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">宮城県（20）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">秋田県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">山形県（31）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">福島県（9）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window1 --></div>
+
+<div id="fourth_window2" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">茨城県（96）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">栃木県（30）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">群馬県（54）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">埼玉県（405）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">千葉県（609）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">東京都（2118）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">神奈川県（1520）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window2 --></div>
+
+<div id="fourth_window3" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">新潟県（28）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">富山県（4）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">石川県（6）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">福井県（4）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">山梨県（6）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">長野県（6）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window3 --></div>
+
+<div id="fourth_window4" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">岐阜県（21）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">静岡県（56）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">愛知県（173）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">三重県（15）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window4 --></div>
+
+<div id="fourth_window5" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">滋賀県（206）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">京都府（232）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">大阪府（734）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">兵庫県（367）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">奈良県（78）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">和歌山県（42）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window5 --></div>
+
+<div id="fourth_window6" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">鳥取県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">島根県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">岡山県（19）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">広島県（38）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">山口県（3）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">徳島県（14）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">香川県（2）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">愛媛県（16）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">高知県（0）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window6 --></div>
+
+<div id="fourth_window7" class="fourth_window" style="width:100%">
+<form>
+<ul id="selectarea" class="chbox list c1">
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">福岡県（280）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">佐賀県（12）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">長崎県（24）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">熊本県（28）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">大分県（19）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">宮崎県（11）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">鹿児島県（23）</label>
+</div>
+</li>
+<li class="arrow">
+<div class="clearfix"><input type="checkbox" class="BigCheckBox no_image">
+<label class="area_cd_tab">沖縄県（5）</label>
+</div>
+</li>
+</ul>
+</form>
+<!-- /#second_window7 --></div>
+
+<!-- /.top_searchbox_inner --></div>
+
+<!-- /.top_searchbox --></div>
+
+<!-- /#top_contents --></article>
+<!-- ./top_container --></section>
+	
+<div class="top_footer_nav">
+<ul class="list">
+<li><a href="index.html">求人を探す</a></li>
+<li><a href="#">施設特集</a></li>
+<li><a href="#">コラム</a></li>
+<li><a href="fqa/index.html">よくあるご質問</a></li>
+</ul>
+<!-- ./top_footer_nav --></div>
+	
+<footer id="sub_footer">
+<p class="p_back"><img width="75" alt="プライバシーマーク" src="../../../../static/user/images_sp/privacy.png"><p>
+<p class="small"><a href="statics/rule.html">利用規約</a>｜<a href="http://www.neo-career.co.jp/policy.html" target="_blank">プライバシーポリシー</a>｜<a href="http://www.neo-career.co.jp/" target="_blank">運営会社</a><br><a href="inquire/index.html">お問い合わせ</a>｜<a href="inquire/businessoffer.html">採用ご担当者様お問い合わせ</a><br>
+<span class="f_company"><a href="http://www.neo-career.co.jp/" target="_blank">株式会社ネオキャリア</a></span></p>
+<p class="f_kyoka">一般労働者派遣許可　許可番号 般13-070366<br>
+有料職業紹介事業許可 許可番号 13-ュ-070309<br>
+プライバシーマーク認定 10860758(04)</p>
+</footer>
+
+<div id="copyright"><p>&copy;Neo Career CO.,LTD.All rights reserved.</p></div>
+
+</body>
+</html>

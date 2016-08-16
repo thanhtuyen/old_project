@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+{%display_tdk($tdk_array)%}
+<!-- Favicon -->
+
+<link rel="icon" href="{%$static_url%}common/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{%$static_url%}common/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{%$static_url%}common/images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon" href="{%$static_url%}common/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="{%$static_url%}common/images/favicon.ico">
+
+<!-- css -->
+<link href="{%$static_url%}client/css/common.css" rel="stylesheet" media="screen,print">
+
+<!-- js -->
+<script src="{%$static_url%}common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}common/js/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="{%$static_url%}client/js/common.js"></script> -->
+<script src="{%$static_url%}client/js/footerFixed.js"></script>
+<script src="{%$static_url%}client/js/jquery.leanModal.min.js"></script>
+
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-validation_v1.13.2-pre/delegate.js"></script>
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-validation_v1.13.2-pre/core.js"></script>
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-validation_v1.13.2-pre/localization/messages_ja.js"></script>
+<script id="common_js" src="{%$static_url%}common/js/common.js" data-base_url="{%$base_url%}" data-csrf_name="{%$csrf_token_name%}" data-csrf_value="{%$csrf_token_value%}"></script>
+
+<!--[if lt IE 9]>
+<script src="{%$static_url%}client/js/html5shiv.min.js"></script>
+<script src="{%$static_url%}client/js/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>

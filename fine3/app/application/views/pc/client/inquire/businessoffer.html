@@ -1,0 +1,58 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<h1 class="tit_01">採用ご担当者様お問い合わせ</h1>
+<div class="box">
+<p class="mb10">FINE！に求人を掲載してみませんか？ 下記フォームより該当項目をご入力の上、送信してください。<br>後ほど担当者より詳細のご説明をさせていただきます。</p>
+<p class="mb20"><span class="ico_must">必須</span>マークのついている項目は、お問い合わせいただく際に入力が必須の項目です。</p>
+{%form_open('')%}
+<table class="formtable">
+<tr>
+<th><span class="ico_must">必須</span>法人名</th>
+<td><input type="text" name="company_name" class="required" value="{%set_value('company_name')%}">
+<div class="message">
+<div class="error" data="{%if !empty($company_name_required)%}{%html_escape($company_name_required)%}{%/if%}">{%form_error('company_name')%}</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>ご担当者様名</th>
+<td><input type="text" name="name" class="required" value="{%set_value('name')%}">
+<div class="message">
+<div class="error" data="{%if !empty($name_required)%}{%html_escape($name_required)%}{%/if%}">{%form_error('name')%}</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>メールアドレス</th>
+<td><input type="email" name="email" class="required" value="{%set_value('email')%}">
+<p class="txt_attention"><span class="ico_attention01">！</span>携帯電話のメールアドレスを入力の際は「@fine.me」のドメインを「受信許可」に設定してください。</p>
+<div class="message">
+<div class="error" data="{%if !empty($email_required)%}{%html_escape($email_required)%}{%/if%}">{%form_error('email')%}</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>内容</th>
+<td><textarea name="content" class="required">{%set_value('content')%}</textarea>
+<div class="message">
+<div class="error" data="{%if !empty($content_required)%}{%html_escape($content_required)%}{%/if%}">{%form_error('content')%}</div>
+</div></td>
+</tr>
+</table>
+<div class="message">
+<div class="error text-center" ><noscript>{%if !empty($noscript)%}{%html_escape($noscript)%}{%/if%}</noscript></div>
+</div>
+
+
+<p class="txt_center mt30"><a href="" class="btn_pink btn_190 submit"><span class="ico_arrow03">&gt;</span>送信する</a></p>
+
+<script src="{%$static_url%}user/js/contact.js"></script>
+
+</form>
+<!-- /.box --></div>
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+
+</body>
+</html>

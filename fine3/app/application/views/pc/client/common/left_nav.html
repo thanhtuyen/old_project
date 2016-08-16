@@ -1,0 +1,40 @@
+<div class="left_nav inner">
+<ul>
+<li class="nav_01"><a href="{%base_url()%}client/"><img alt=""src="{%$static_url%}common/images/nav_01.png">管理画面トップ</a></li>
+<li class="nav_01"><img alt="" src="{%$static_url%}common/images/nav_02.png"><span>求人票管理</span>
+<ul>
+<li><a href="{%base_url()%}client/job/input/">新規求人票作成</a></li>
+<li><a href="{%base_url()%}client/job/">求人票一覧</a></li>
+</ul></li>
+<li class="nav_01"><img alt="" src="{%$static_url%}common/images/nav_03.png"><span>運営園管理</span>
+<ul>
+<li><a href="{%base_url()%}client/nursery/input/">新規園登録</a></li>
+<li><a href="{%base_url()%}client/nursery/">園一覧</a></li>
+</ul></li>
+{%if $account_type == 1%}
+<li class="nav_01"><a href="{%base_url()%}client/job_apply/"><img
+alt="" src="{%$static_url%}common/images/nav_04.png">応募管理</a></li>
+{%else%}
+<li class="nav_01"><a href="{%base_url()%}client/job_apply/"><img
+alt="" src="{%$static_url%}common/images/nav_04.png">求人票への応募</a></li>
+<li class="nav_01"><a href="{%base_url()%}client/agent_apply/"><img
+alt="" src="{%$static_url%}common/images/nav_04.png">紹介への応募</a></li>
+{%/if%}
+<li class="nav_01"><img alt="" src="{%$static_url%}common/images/nav_07.png"><span>スカウト</span>
+<ul>
+<li><a href="{%base_url()%}client/scout/">スカウトメール送信</a></li>
+<li><a href="{%base_url()%}client/scout/history">スカウト履歴</a></li>
+<li><a href="{%base_url()%}client/scout/template_list/">メールテンプレート一覧</a></li>
+<li><a href="{%base_url()%}client/scout/create_template/">新規テンプレート作成</a></li>
+</ul></li>
+<li class="nav_01"><img alt="" src="{%$static_url%}common/images/nav_08.png"><span>登録情報</span>
+<ul>
+<li><a href="{%base_url()%}client/profile/">企業情報</a></li>
+{%if $account_type == 2%}
+<li><a href="{%base_url()%}client/profile/career_adviser/">キャリアアドバイザー</a></li>
+{%/if%}
+<li><a href="{%base_url()%}client/plan/">プラン確認・変更</a></li>
+</ul></li>
+</ul>
+<!-- /.left_nav -->
+</div>

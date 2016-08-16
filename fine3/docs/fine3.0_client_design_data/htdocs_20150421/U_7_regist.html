@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+<meta name="keywords" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+<meta name="author" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+<title>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</title>
+
+<!-- Favicon -->
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon" href="images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="images/favicon.ico">
+
+<!-- css -->
+<link href="css/common.css" rel="stylesheet" media="screen,print">
+
+<!-- js -->
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/footerFixed.js"></script>
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="head_nav">
+head_nav
+<!-- /.head_nav --></div>
+
+<div class="breadcrumbs">
+<p><a href="U_1_index.html">TOP</a> &gt; 会員登録</p>
+<!-- /.breadcrumbs --></div>
+
+<div class="content_wrapper">
+<h1 class="tit_01">会員登録</h1>
+<div class="box">
+<p class="mb10">[Fine!]の会員登録は無料です。<br>Facebookのアカウントをお持ちの方は、簡単に会員登録できます。</p>
+<a href="#" class="hover_box"><span class="icon-facebook fb_regist_ico fb_regist_btn_ico mb30"></span><p class="fb_regist_btn_txt mb30">Facebookで会員登録をする</p></a>
+<p class="mb20 clear_s"><span class="ico_must">必須</span>マークのついている項目は、会員登録する際に入力が必須の項目です。</p>
+<table class="formtable">
+<tr>
+<th><span class="ico_must">必須</span>メールアドレス<br><strong>※ログインIDにも使用します</strong></th>
+<td><input type="text">
+<p class="txt_attention"><span class="ico_attention01">！</span>携帯電話のメールアドレスを入力の際は「@hoikuhirobanavi.com」のドメインを「受信許可」に設定してください。</p>
+<div class="message">
+<div class="error | success | warning">メールアドレスを入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>パスワード</th>
+<td><input type="text" class="form_size180"><span class="txt_small ml15">※8文字以上の半角英数字（a～z,0～9）で入力してください。</span>
+<div class="message">
+<div class="error | success | warning">パスワードを入力してください。</div>
+</div>
+<p class="mt25 mb5">確認用にもう一度同じパスワードを入力してください。</p>
+<input type="text" class="form_size180">
+<div class="message">
+<div class="error | success | warning">確認用のパスワードを入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>氏名</th>
+<td><input type="text" placeholder="例）保育 育美">
+<div class="message">
+<div class="error | success | warning">氏名を入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>氏名カナ</th>
+<td><input type="text" placeholder="例）ホイク イクミ">
+<div class="message">
+<div class="error | success | warning">氏名カナを入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>生年月日</th>
+<td><select><option>選択してください</option></select>年<select><option>選択してください</option></select>月<select><option>選択してください</option></select>日
+<div class="message">
+<div class="error | success | warning">生年月日を入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>性別</th>
+<td><label><input type="radio">女性</label><label><input type="radio" class="ml20">男性</label>
+<div class="message">
+<div class="error | success | warning">性別を選択してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>現住所</th>
+<td><dl>
+<dt>郵便番号</dt><dd><input type="text" class="form_size130" placeholder="例）1600023"><span class="txt_small ml15">※半角数字（0～9）で入力してください。ハイフン（-）は要りません。</span>
+<div class="message">
+<div class="error | success | warning">7桁の半角数字で入力してください。</div>
+</div></dd>
+</dl>
+<dl><dt>都道府県</dt><dd><select><option>選択してください</option></select>
+<div class="message">
+<div class="error | success | warning">都道府県を選択してください。</div>
+</div></dd></dl>
+<dl><dt>市区町村</dt><dd><select><option>選択してください</option></select>
+<div class="message">
+<div class="error | success | warning">市区町村を選択してください。</div>
+</div></dd></dl>
+<dl><dt> </dt><dd><input type="text" class="form_size500" placeholder="例）西新宿1-22-2 新宿サンエービル 2階">
+<div class="message">
+<div class="error | success | warning">error message</div>
+</div></dd></dl></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>電話番号</th>
+<td><input type="text" class="form_size180" placeholder="例）0359088005"><span class="txt_small ml15">※半角数字（0～9）で入力してください。ハイフン（-）は要りません。</span>
+<div class="message">
+<div class="error | success | warning">電話番号を入力してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>資格</th>
+<td><ul class="formtable_license"><!--
+--><label><li><input type="checkbox">保育士</li></label><!--
+--><label><li><input type="checkbox">幼稚園教諭&#8544;種</li></label><!--
+--><label><li><input type="checkbox">幼稚園教諭&#8545;種</li></label><!--
+--><label><li><input type="checkbox">管理栄養士</li></label><!--
+--><label><li><input type="checkbox">栄養士</li></label><!--
+--><label><li><input type="checkbox">調理師</li></label><!--
+--><label><li><input type="checkbox">看護師</li></label><!--
+--><label><li><input type="checkbox">准看護師</li></label><!--
+--><label><li><input type="checkbox">チャイルドマインダー</li></label><!--
+--><label><li><input type="checkbox">ベビーシッター</li></label><!--
+--><label><li><input type="checkbox">無資格</li></label><!--
+--><label><li><input type="checkbox">管理栄養士</li></label><!--
+--></ul>
+<div class="message">
+<div class="error | success | warning">資格を1つ以上選択してください。</div>
+</div></td>
+</tr>
+<tr>
+<th><span class="ico_must">必須</span>希望する雇用形態</th>
+<td><select><option>選択してください</option></select>
+<div class="message">
+<div class="error | success | warning">希望する雇用形態を選択してください。</div>
+</div></td>
+</tr>
+</table>
+<div class="register_area">
+<p class="register_check"><label><input type="checkbox">無料転職サポート一括登録をする</label></p>
+<p class="txt_center">チェックを入れると、会員時登録で入力した情報をFINE！に登録している、転職支援会社に同時登録ができます。</p>
+<dl>
+<dt>無料転職サポートとは？</dt>
+<dd>キャリアコンサルタントがあなたの転職活動をサポート。非公開求人のご紹介や、応募書類や面接に対するサポートを受けながら、転職活動を進められます。</dd>
+</dl>
+<p>弊社の「<a href="http://www.neo-career.co.jp/policy.html" target="_blank" class="txt_line">プライバシーポリシー</a>」と「<a href="rule.html" class="txt_line">利用規約</a>」を必ずご確認ください。<br>ご同意いただける場合は「会員登録をする」ボタンをクリックして下さい。</p>
+<p><a href="regist_comp.html" class="btn_pink"><span class="ico_arrow03">&gt;</span>会員登録をする</a></p>
+<!-- /.regist_area --></div>
+<!-- /.box --></div>
+
+<!-- /.content_wrapper --></div>
+
+<div id="footer">
+footer
+<!-- /#footer --></div>
+</body>
+</html>

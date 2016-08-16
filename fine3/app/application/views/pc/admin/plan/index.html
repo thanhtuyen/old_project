@@ -1,0 +1,64 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+{%getFlashInfo()%}
+<h2 style="margin-bottom:10px;">プラン内容の一覧</h2>
+<a href="{%base_url('manager/plan/add')%}"><button class="btn btn-success">新しいプラン内容の作成</button></a>
+<a href="{%base_url('manager/plan/category')%}"><button class="btn btn-default">パッケージプラン一覧に戻る</button></a>
+
+<div class="separator"></div>
+
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>プラン内容ID</th>
+<th>プラン内容名</th>
+<th>上限数</th>
+
+</tr>
+</thead>
+<tbody>
+{%foreach $plans as $plan%}
+<tr class="gradeX">
+<td class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox"></label></div>
+</td>
+<td><a href="{%base_url('manager/plan/edit')%}/{%$plan['plan_id']%}">{%$plan['plan_id']%}</a></td>
+<td><a href="{%base_url('manager/plan/edit')%}/{%$plan['plan_id']%}">{%$plan['plan_name']%}</a></td>
+<td>{%$plan['limit_num']%}</td>
+<td>
+<a href="{%base_url('manager/plan/edit')%}/{%$plan['plan_id']%}">
+<button type="button" class="btn btn-primary">編集</button></a>
+<a href="{%base_url('manager/plan/del')%}/{%$plan['plan_id']%}">
+<button type="button" class="btn btn-inverse" onClick="return confirmDelete()">削除</button></a>
+</td>
+</tr>
+{%/foreach%}
+
+
+</tbody>
+</table>
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+</div>
+</div>
+<!-- // Widget END -->
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}

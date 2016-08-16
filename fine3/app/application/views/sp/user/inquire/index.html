@@ -1,0 +1,58 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--contact form-->
+     <section>
+     	<h4 class="title_pink_bar">お問い合わせ</h4>
+        <div class="form_txt">
+        	<p>※採用ご担当者様は<a href="{%$base_url%}user/inquire/businessoffer">こちら</a>よりお問い合わせください。</p>
+        </div>
+        {%form_open('')%}
+        <dl class="job_detail_table form_table">
+        		<dt><label>お名前</label></dt>
+        		<dd><input type="text" name="name" class="required" size="30">
+                <div class="message">
+		<div class="error" data="{%$name_required%}">{%form_error('name')%}</div>
+                </div>
+			</dd>
+        		<dt>メールアドレス</dt>
+        		<dd><input type="email" name="email" class="required" size="40"><br>
+                <span class="form_attention_red">携帯電話のメールアドレスで登録する場合は「@fine.me」のドメインを「受信許可」に設定してください。</span>
+                <div class=" mt5">
+                <div class="message">
+		<div class="error" data="{%$email_required%}">{%form_error('email')%}</div>
+                </div>
+                </div>
+             </dd>
+        		<dt>件名</dt>
+        		<dd><input type="text" name="title" class="required" size="40">
+                <div class="message">
+		<div class="error"  data="{%$title_required%}">{%form_error('title')%}</div>
+                </div>
+             </dd>
+        		<dt>内容</dt>
+        		<dd><textarea name="content" rows="6" cols="50" class="required" ></textarea>
+                <div class="message">
+		<div class="error" data="{%$content_required%}">{%form_error('content')%}</div>
+                </div>
+            	</dd>
+        </dl>
+        <div class="form_button_area">
+            <p class="form_button"><a href="" rel="nofollow"  class="btn_pink btn_190 submit">送信する</a></p>
+<script src="{%$static_url%}user/js/contact.js"></script>
+        <!--<input type="submit" class="form_button" value="送信する">-->
+         </div>
+        </form>
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+</body>
+</html>
+

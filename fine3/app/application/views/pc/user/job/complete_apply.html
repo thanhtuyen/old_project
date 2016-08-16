@@ -1,0 +1,27 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<h1 class="tit_01">求人応募完了</h1>
+<div class="box comps">
+<p class="comps_tit">求人「{%$job_detail["title"]%}」への応募が完了いたしました。</p>
+<p class="txt_center"><a href="{%$base_url%}mypage" class="btn_pink btn_200"><span class="ico_arrow03">&gt;</span>マイページへ移動</a></p>
+<p class="txt_center"><a href="{%$base_url%}detail_{%$job_detail['job_id']%}" class="btn_green btn_200"><span class="ico_arrow05">&gt;</span>応募した求人を見る</a></p>
+<!-- /.box --></div>
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+<!-- tag -->
+<script>
+  jQuery(document).ready(
+    function() {
+    ga('set','dimension1','login');
+    ga('send','pageview','/detail_{%$job_detail["job_id"]%}/apply_complete/just_login');
+    }
+  );
+</script>
+<!-- tag end -->
+</body>
+</html>

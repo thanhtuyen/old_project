@@ -1,0 +1,72 @@
+
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">求人の詳細</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+
+<tr>
+<th>求人タイトル</th>
+<td>{%nl2br($job['title'])%}</td>
+</tr>
+<tr>
+<th>自社求人ID</th>
+<td>{%nl2br($job['own_job_id'])%}</td>
+</tr>
+<tr>
+<th>応募先施設ID</th>
+<td><a href="{%base_url('manager/nursery/detail')%}/{%nl2br($job['client_id'])%}">{%nl2br($job['client_id'])%}</a></td>
+</tr>
+<tr>
+<th>PR文</th>
+<td>{%nl2br($job['description'])%}</td>
+</tr>
+<tr>
+<th>勤務形態</th>
+<td>{%nl2br($job['employ'])%}</td>
+</tr>
+<tr>
+<th>給与</th>
+<td>{%nl2br($job['salary'])%}</td>
+</tr>
+<tr>
+<th>賞与</th>
+<td>{%nl2br($job['bonus'])%}</td>
+</tr>
+<tr>
+<th>勤務時間</th>
+<td>{%nl2br($job['worktime'])%}</td>
+</tr>
+<tr>
+<th>休日</th>
+<td>{%nl2br($job['holiday'])%}</td>
+</tr>
+<tr>
+<th>おすすめ求人</th>
+<td>{%is_reccoment($job['reccoment'])%}</td>
+</tr>
+<tr>
+<th>待遇</th>
+<td>{%nl2br($job['tag_job'])%}</td>
+</tr>
+
+<tr>
+<th>公開ステータス</th>
+<td><div class="make-switch" data-on="success" data-off="default"><input type="checkbox" {%if $job['status'] eq '1'%}checked{%/if%}></div></td>
+</tr>
+
+</table>
+<!-- div.widget --></div>
+<div class="form-group">
+
+<a href="{%base_url()%}manager/jobs" class="btn btn-default">求人一覧に戻る</a>
+
+
+<!-- separater --></div>
+<!-- form-group --></div>
+
+
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

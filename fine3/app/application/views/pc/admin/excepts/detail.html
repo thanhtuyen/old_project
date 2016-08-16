@@ -1,0 +1,66 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">申請の詳細・審査【登録】</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tr>
+<th>申請ID</th>
+<td>{%$rows['apply_id']%}</td>
+</tr>
+<tr>
+<th>ユーザーID</th>
+<td>{%$rows['user_id']%}</td>
+</tr>
+<tr>
+<th>ユーザー名</th>
+<td>{%$rows['user_name']%}</td>
+</tr>
+<!-- <tr> -->
+<!-- <th>紹介会社ID</th>
+<td>{%$rows['headhunter_id']%}</td>
+</tr>
+<tr>
+<th>紹介会社名</th>
+<td>{%$rows['name']%}</td> -->
+<!-- </tr> -->
+<tr>
+<th>申請日時</th>
+<td>{%$rows['date']%}</td>
+</tr>
+
+
+</table>
+<!-- div.widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<button class="btn btn-primary" onClick="deleteExcept({%$rows['apply_id']%})">この除外申請を非承認にする</button>
+</div>
+<!-- separater --></div>
+<!-- form-group --></div>
+<!-- Content --></div>
+<script>
+    function deleteExcept(id)
+    {
+        var strconfirm = confirm("Are you sure you want to delete?");
+        if (strconfirm == true) {
+            jQuery(function(){
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "{%base_url('manager/contacts/delete')%}",
+                        data: {apply_id: id},
+                        cache: false,
+                        success: function (response) {
+                            if (response == 'success') {
+
+                            }
+                        },
+                    });
+                });
+        }
+
+    }
+
+</script>
+{%include file="pc/admin/shared/_footer.html"%}

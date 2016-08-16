@@ -1,0 +1,62 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--recruit contact-->
+     <section>
+     	<h4 class="title_pink_bar">採用ご担当者様お問い合わせフォーム</h4>
+        <div class="form_txt">
+            <p>FINE！に求人を掲載してみませんか？ 下記フォームにご入力いただき、送信してください。後ほど、担当より詳細のご説明をさせていただきます。</p>
+            <p><span class="tag_hissu">必須</span>マークのついている項目は企業申し込みに入力が必須の項目です。</p>
+         </div>
+{%form_open('')%}
+        <dl class="job_detail_table form_table">
+        		<dt><label>法人名</label><span class="tag_hissu">必須</span></dt>
+        		<dd><input type="text" name="company_name" class="required" size="30">
+                <div class="message">
+		<div class="error" data="{%$company_name_required%}">{%form_error('company_name')%}</div>
+                </div>
+             </dd>
+        		<dt><label>ご担当者様名</label><span class="tag_hissu">必須</span></dt>
+        		<dd><input type="text" name="name" class="required" size="30">
+                <div class="message">
+		<div class="error" data="{%$name_required%}">{%form_error('name')%}</div>
+                </div>
+            </dd>
+        		<dt><label>ご担当者様メールアドレス</label><span class="tag_hissu">必須</span></dt>
+        		<dd><input type="email" name="email" size="40" class="required"><br>
+                <span class="form_attention_red">携帯電話のメールアドレスで登録する場合は「@fine.me」のドメインを「受信許可」に設定してください。</span>
+                <div class="mt5">
+                    <div class="message">
+		    <div class="error" data="{%$email_required%}">{%form_error('email')%}</div>
+                    </div>
+                </div>
+             </dd>
+        		<dt><label>内容</label><span class="tag_hissu">必須</span></dt>
+        		<dd><textarea name="content" rows="6" cols="50" class="required" ></textarea>
+                <div class="message">
+		<div class="error" data="{%$content_required%}">{%form_error('content')%}</div>
+                </div>
+            </dd>
+        </dl>
+	<div class="message">
+	    <div class="error text-center" ><noscript>{%$noscript%}</noscript></div>
+	</div>
+
+        <div class="form_button_area">
+            <p class="form_button"><a href="" class="submit">送信する</a></p>
+	<script src="{%$static_url%}user/js/contact.js"></script>
+
+         </div>
+        </form>
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+</body>
+</html>
+

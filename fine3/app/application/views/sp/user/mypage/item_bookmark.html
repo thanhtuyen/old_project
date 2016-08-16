@@ -1,0 +1,160 @@
+{%if isset($records) && $records && ! empty($records)%}
+    
+    {%foreach from=$records key=k item=v%}
+    
+        {%$recommend = ''%}
+		{%if isset($v['tag']) && isset($v['tag'][8]) && ! empty(isset($v['tag'][8]))%}
+			{%$recommend = '<span>オススメ!</span>'%}
+		{%/if%}
+		
+		<section class="job_list" id="bookmark{%$v['job_id']%}">  
+   			<div class="delete_checkbox">
+   				<label for="chkitem{%$v['job_id']%}">
+   					<input type="checkbox" id="chkitem{%$v['job_id']%}" class="chkitem" name="bookmark[]" value="{%$v['job_id']%}">選択する
+  					</label>
+			</div>
+			
+            <a href="{%$base_url%}detail_{%$v['job_id']%}" title="{%$v['title']%}" class="job_linkarea">
+            	<div class="job_linkarea_inbox">
+            		<h4 class="job_list_title">{%$v['title']%}</h4>
+            		
+            		{%if isset($v['image']) && ! empty($v['image']) && isset($v['image']['1'])%}
+						<p class="job_list_img"><img src="{%$v['image']['1']['name']%}" alt="{%$v['title']%}"/></p>
+					{%/if%}
+            		
+            		<p class="job_list_txt">{%$v['description']%}</p>
+            		
+                	<div class="job_detail_table_s">
+	                    <dl>
+							<dt>勤務地</dt>
+	                         <dd>
+	                         {%if ! empty($v['nursery']) && isset($v['nursery']['name'])%}
+								{%$v['nursery']['name']%}
+							{%/if%} / 
+							
+							{%if isset($v['area']) && ! empty($v['area']) %}
+								{%if isset($v['area']['pname']) && ! empty($v['area']['pname']) %}
+									{%$v['area']['pname']%}
+								{%/if%}
+								
+								{%if isset($v['area']['cname']) && ! empty($v['area']['cname']) %}
+									{%$v['area']['cname']%}
+								{%/if%}
+							{%/if%}
+							
+							{%$v['nursery']['address']%}
+	                         </dd>
+	                    </dl>
+	                    
+	                    {%if isset($v['tag']) && isset($v['tag'][3]) && ! empty(isset($v['tag'][3]))%}
+						<dl class="group_3 type_employ">
+							<dt>雇用形態</dt>
+							<dd>
+							{%$tagName = array()%}
+							{%foreach from=$v['tag'][3] key=kTag item=vTag%}
+								{%$tagName[] = $vTag['name']%}
+							{%/foreach%}
+							{%implode(',', $tagName)%}
+							</dd>
+						</dl>
+						{%/if%}
+	                    
+	                    {%if isset($v['tag']) && isset($v['tag'][2]) && ! empty(isset($v['tag'][2]))%}
+						<dl class="group_2 type_job">
+							<dt>職種</dt>
+							<dd>
+							{%$tagName = array()%}
+							{%foreach from=$v['tag'][2] key=kTag item=vTag%}
+								{%$tagName[] = $vTag['name']%}
+							{%/foreach%}
+							{%implode(',', $tagName)%}
+							</dd>
+						</dl>
+						{%/if%}
+						
+						<dl>
+							<dt>勤務時間</dt>
+							<dd>{%$v['worktime']%}</dd>
+						</dl>
+						<dl>
+							<dt>給与</dt>
+							<dd>{%$v['salary']%}</dd>
+						</dl>
+						
+               		</div>
+               		
+               		{%if isset($v['tag']) && ( isset($v['tag'][5]) || isset($v['tag'][6]) ) && 
+							( ! empty(isset($v['tag'][5])) || ! empty(isset($v['tag'][6])) )%}
+					<ul class="job_tag ico_jobtag group_5_6 tag_job tag_nursery">
+						{%$tag5_6 = array()%}
+						{%$tagName = array()%}
+						
+						{%if isset($v['tag'][5])%}
+							{%$tag5_6 = $v['tag'][5]%}
+						{%/if%}
+						
+						{%if isset($v['tag'][6])%}
+							{%$tag5_6 = array_merge( $tag5_6, $v['tag'][6] )%}
+						{%/if%}
+						
+						{%foreach from=$tag5_6 key=kTag item=vTag%}
+							{%$tagName[] = $vTag['name']%}
+						{%/foreach%}
+						<li>{%implode('</li><li>', $tagName)%}</li>
+					</ul>
+					{%/if%}
+					
+              		</div>
+           	</a>
+           	
+           	{%if isset($v["apply_job"])%}
+				{%if $v["apply_job"]%}
+				<p id="job_apply{%$v['job_id']%}" class="applied_button">応募済み</p>
+				{%else%}
+				<p id="job_apply{%$v['job_id']%}" class="apply_button ">
+					<a href="javascript:void(0)" class="job_apply" data-job-id="{%$v['job_id']%}">今すぐ応募する</a>
+				</p>
+				{%/if%}
+			{%/if%}
+            
+            <!--<p class="telapply_button"><a href="tel:xxxxxxxxxxx">電話で応募する</a></p>-->
+            <!-- Not bookmark -->
+            <!-- <p class="clip_button"><a href="#">お気に入り</a></p> -->
+            
+            <!-- already Bookmarked -->
+            <p class="clip_button_done"><a href="#">お気に入り追加済み</a></p>
+            
+       	</section>
+
+    {%/foreach%}
+    
+    <script type="text/javascript">
+    // Add Apply Job Single button
+	$('.job_apply').on('click', function(e){
+		var target = $(e.target);
+		var job_id = target.attr('data-job-id');
+		$.ajax({
+		  type: 'POST',
+		  dataType: 'json',
+		  url: '{%$base_url%}user/ajax/ajax_add_applicant_job',
+		  data: {
+		    job_id: job_id,
+		    {%$csrf_token_name%}: '{%$csrf_token_value%}'
+		  },
+		  success:function(data){
+    		if(data.status == 1) {
+    			$('#job_apply'+job_id).removeClass('apply_button');
+    			$('#job_apply'+job_id).addClass('applied_button');
+    			$('#job_apply'+job_id).html('応募済み');
+		    }else if(data.status == 2){
+		    	alert('この求人は既に応募が完了しています。');
+		    }
+		  },
+		  error: function(XMLHttpRequest, textStatus, errorThrown) {
+		    console.log('error happend')
+		  }
+		});
+    });
+    </script>
+    
+{%/if%}

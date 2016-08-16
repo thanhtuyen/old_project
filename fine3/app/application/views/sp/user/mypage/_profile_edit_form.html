@@ -1,0 +1,180 @@
+
+<dl class="job_detail_table form_table">
+    <dt>メールアドレス<span class="tag_hissu">必須</span><br><span class="form_attention">※ログインIDにも使用します</span></dt>
+    <dd><input id="mail" name="mail" size="30" type="text" value="{%$user_data['mail']%}" placeholder="例）info@hoiku-hiroba.jp"><br/><span class="form_attention_red">携帯電話のメールアドレスで登録する場合は「@fine.me」のドメインを「受信許可」に設定してください。</span>
+        <div class="mt5">
+            <div class="message msgerror_mail">
+                <div id="mail_err" class="display_none">※入力してください</div>
+				<div id="mail_exist" class="display_none">※このメールアドレスは既に登録されています。</div>
+            </div>
+        </div>
+    </dd>
+    <dt><label>氏名</label><span class="tag_hissu">必須</span></dt>
+    <dd><input type="text" id="name" name="name" size="30" value="{%$user_data['name']%}" placeholder="保育 育美"><br><span class="form_attention">例）保育 育美</span>
+        <div class="mt5">
+            <div class="message msgerror_name">
+                <div id="name_err" class="display_none">※入力してください</div>
+				<div id="japanese_name_err" class="display_none">※氏名は全角のみで入力してください</div>
+            </div>
+        </div>
+    </dd>
+    <dt><label>氏名カナ</label><span class="tag_hissu">必須</span></dt>
+    <dd><input id="kana" type="text" name="kana" size="30" value="{%$user_data['name_kana']%}" placeholder="ホイク イクミ"><br><span class="form_attention">例）ホイク イクミ</span>
+        <div class="mt5">
+            <div class="message msgerror_kana">
+                <div id="kana_err" class="display_none">※入力してください</div>
+				<div id="kana_except_err" class="display_none">※氏名はカタカナのみで入力してください</div>
+            </div>
+        </div>
+    </dd>
+    <dt><label>生年月日</label><span class="tag_hissu">必須</span></dt>
+    <dd class="male_select">
+        <select name="birth_year" id="birth_year">
+            {%foreach $year as $val%}
+            <option value="{%$val%}" {%if $val == date("Y",strtotime($user_data["birthdate"]))%}selected{%/if%}>{%$val%}</option>
+            {%/foreach%}
+        </select>年
+        {%$month = date("m",strtotime($user_data["birthdate"]))%}
+        <select name="birth_month" id="birth_month">
+            <option value="01" {%if "01" === $month%}selected{%/if%}>01</option>
+            <option value="02" {%if "02" === $month%}selected{%/if%}>02</option>
+            <option value="03" {%if "03" === $month%}selected{%/if%}>03</option>
+            <option value="04" {%if "04" === $month%}selected{%/if%}>04</option>
+            <option value="05" {%if "05" === $month%}selected{%/if%}>05</option>
+            <option value="06" {%if "06" === $month%}selected{%/if%}>06</option>
+            <option value="07" {%if "07" === $month%}selected{%/if%}>07</option>
+            <option value="08" {%if "08" === $month%}selected{%/if%}>08</option>
+            <option value="09" {%if "09" === $month%}selected{%/if%}>09</option>
+            <option value="10" {%if "10" === $month%}selected{%/if%}>10</option>
+            <option value="11" {%if "11" === $month%}selected{%/if%}>11</option>
+            <option value="12" {%if "12" === $month%}selected{%/if%}>12</option>
+        </select>月
+        {%$day = date("d",strtotime($user_data["birthdate"]))%}
+        <select name="birth_day" id="birth_day">
+            <option value="01" {%if "01" === $day%}selected{%/if%}>01</option>
+            <option value="02" {%if "02" === $day%}selected{%/if%}>02</option>
+            <option value="03" {%if "03" === $day%}selected{%/if%}>03</option>
+            <option value="04" {%if "04" === $day%}selected{%/if%}>04</option>
+            <option value="05" {%if "05" === $day%}selected{%/if%}>05</option>
+            <option value="06" {%if "06" === $day%}selected{%/if%}>06</option>
+            <option value="07" {%if "07" === $day%}selected{%/if%}>07</option>
+            <option value="08" {%if "08" === $day%}selected{%/if%}>08</option>
+            <option value="09" {%if "09" === $day%}selected{%/if%}>09</option>
+            <option value="10" {%if "10" === $day%}selected{%/if%}>10</option>
+            <option value="11" {%if "11" === $day%}selected{%/if%}>11</option>
+            <option value="12" {%if "12" === $day%}selected{%/if%}>12</option>
+            <option value="13" {%if "13" === $day%}selected{%/if%}>13</option>
+            <option value="14" {%if "14" === $day%}selected{%/if%}>14</option>
+            <option value="15" {%if "15" === $day%}selected{%/if%}>15</option>
+            <option value="16" {%if "16" === $day%}selected{%/if%}>16</option>
+            <option value="17" {%if "17" === $day%}selected{%/if%}>17</option>
+            <option value="18" {%if "18" === $day%}selected{%/if%}>18</option>
+            <option value="19" {%if "19" === $day%}selected{%/if%}>19</option>
+            <option value="20" {%if "20" === $day%}selected{%/if%}>20</option>
+            <option value="21" {%if "21" === $day%}selected{%/if%}>21</option>
+            <option value="22" {%if "22" === $day%}selected{%/if%}>22</option>
+            <option value="23" {%if "23" === $day%}selected{%/if%}>23</option>
+            <option value="24" {%if "24" === $day%}selected{%/if%}>24</option>
+            <option value="25" {%if "25" === $day%}selected{%/if%}>25</option>
+            <option value="26" {%if "26" === $day%}selected{%/if%}>26</option>
+            <option value="27" {%if "27" === $day%}selected{%/if%}>27</option>
+            <option value="28" {%if "28" === $day%}selected{%/if%}>28</option>
+            <option value="29" {%if "29" === $day%}selected{%/if%}>29</option>
+            <option value="30" {%if "30" === $day%}selected{%/if%}>30</option>
+            <option value="31" {%if "31" === $day%}selected{%/if%}>31</option>
+        </select>日
+        <div class="mt5">
+            <div class="message msgerror_birth_day">
+                <div id ="birth_err" class="error | success | warning display_none">生年月日を入力してください。</div>
+            </div>
+        </div>
+    </dd>
+    <dt><label>性別</label><span class="tag_hissu">必須</span></dt>
+    <dd class="male_select">
+        <label><input name="gender" value="1" type="radio" {%if $user_data['gender'] === "1"%}checked="checked"{%/if%}>女性</label><label>
+        <input name="gender" value="2" type="radio" {%if $user_data['gender'] === "2"%}checked="checked"{%/if%} class="ml20">男性</label>
+        <div class="mt5">
+            <div class="message msgerror_gender">
+                <div id ="gender_err" class="error | success | warning display_none">性別を入力してください。</div>
+            </div>
+        </div>
+    </dd>
+    <dt>現住所<span class="tag_hissu">必須</span></dt>
+    <dd class="address_input">
+        <div class="address_box">
+            郵便番号<input id="zip1" type="text" name="zip1" size="15" placeholder="1600023" value="{%substr($user_data['zip_code'],0,3)%}" >  -  <input id="zip2" type="text" name="zip2" size="15" placeholder="1600023" value="{%substr($user_data['zip_code'],3,4)%}" ><br>
+            <span class="form_attention">（例）1600023 ※半角数字（0～9）で入力してください。ハイフン（-）は要りません</span>
+        </div>
+        <div class="mb5">
+            <div class="message msgerror_zip1">
+                <div id="zip_err" class="error | success | warning display_none">エラーエラーエラーエラーエラーエラーエラー</div>
+            </div>
+        </div>
+        <div class="address_box">
+            <label>都道府県</label>
+            {%$now_pref = substr($user_data["area_id"],-5,-3)%}
+            <select id="address_pref" name="address_pref">
+                <option value="">選択してください</option>
+                {%foreach $area["pref"] as $pref%}
+                <option value="{%$pref['name']%}" data-pref_id="{%$pref['pref_id']%}" {%if $pref['pref_id'] == $now_pref%}selected{%/if%}>{%$pref['name']%}</option>
+                {%/foreach%}
+            </select>
+        </div>
+        <div class="mb5">
+            <div class="message msgerror_address_pref">
+                <div id="address_pref_err" class="error | success | warning display_none">※選択してください</div>
+            </div>
+        </div>
+        <div class="address_box">
+            <label>市町村</label>
+            {%$now_city = substr($user_data["area_id"],-3)%}
+            <select id="address_city" name="address_city">
+                <option value="">選択してください</option>
+                {%foreach $area["city"] as $city%}
+                <option value="{%$city['name']%}" data-city_area_id="{%$city['area_id']%}" data-pref_id="{%$city['city_id']%}" {%if $city['city_id'] == $now_city%}selected{%/if%}>{%$city['name']%}</option>
+                {%/foreach%}
+            </select>
+
+            <span class="form_attention">例）新宿区</span>
+        </div>
+        <div class="message msgerror_address_city">
+            <div id="address_city_err" class="error | success | warning display_none">※選択してください</div>
+        </div>
+        <div class="address_box">
+            <input id ="address_detail" type="text" name="address_detail" size="40" value="{%$user_data['address']%}" placeholder="西新宿1-22-2 新宿サンエービル 2階"><br>
+            <span class="form_attention">例）西新宿1-22-2 新宿サンエービル 2階</span>
+        </div>
+        <div class="message msgerror_address_detail">
+            <div id="address_detail_err" class="error | success | warning display_none">エラーエラーエラーエラーエラーエラーエラー</div>
+        </div>
+    </dd>
+    <dt><label>電話番号</label><span class="tag_hissu">必須</span></dt>
+    <dd><input id = "tel" type="text" name="tel" size="20" value="{%$user_data['phone']%}"  placeholder="0359088005"><br><span class="form_attention">（例）0359088005 ※半角数字（0～9）で入力してください。ハイフン（-）は要りません</span>
+        <div class="mt5">
+            <div class="message msgerror_tel">
+                <div id="tel_err" class="error | success | warning display_none">電話番号を入力してください。</div>
+            </div>
+        </div>
+    </dd>
+    <dt><label>資格</label><span class="tag_hissu">必須</span></dt>
+    <dd><ul class="formtable_license">
+            {%foreach $license item=name key=key%}
+            <label><li><input type="checkbox" class="license" name="license[]" value="{%$key%}" {%if !empty($user_data["tag"]["license"][$key])%}checked="checked"{%/if%}>{%$name%}</li></label>
+            {%/foreach%}
+        </ul>
+        <div class="message msgerror_license">
+            <div id="license_err" class="error | success | warning display_none">※選択してください</div>
+        </div>
+    </dd>
+    <dt><label>希望する雇用形態</label><span class="tag_hissu">必須</span></dt>
+    <dd>
+        <select name="employee" id="employee">
+            {%foreach $employee as $employee_key => $employee_val%}
+            <option value="{%$employee_key%}" {%if !empty($user_data["tag"]["employee"][$employee_key])%}selected{%/if%}>{%$employee_val%}</option>
+            {%/foreach%}
+        </select>
+        <div class="message msgerror_employee">
+            <div id="employee_err" class="error | success | warning display_none">雇用形態を選択してください。</div>
+        </div>
+    </dd>
+</dl>

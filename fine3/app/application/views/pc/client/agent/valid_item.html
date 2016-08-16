@@ -1,0 +1,65 @@
+{%form_open('', ['method' => 'POST', 'class' => 'frmsubmit', 'id' => 'frmsubmit', 'name' => 'valid'])%}
+        <p id="deny_button" class="txt_center mt20">
+            <a href="javascript:void(0)" class="btn_pink btn_190 confirm"><span class="ico_arrow03">&gt;</span>確定申請する</a>
+            <a href="javascript:void(0)" class="btn_gray btn_190 open"><span class="ico_arrow03">&gt;</span>{%$detailUserApplied['applied']['button']%}</a>
+        </p>
+<div id = "deny_form" style="display:none;">
+    <p class="tit_04">非課金申請</p>
+    <table class="table02">
+        <tbody>
+            <tr>
+                <th>非課金申請の有無</th>
+                <td>{%$detailUserApplied['applied']['paid']%}</td>
+            </tr>
+            <tr>
+                <th>申請理由</th>
+                <td>
+                    <textarea name="comment">{%$detailUserApplied['applied']['client_comment']%}</textarea>
+                    {%if $detailUserApplied['applied']['status'] == 3%}
+                        <p class="txt_attention mt5">※再申請する際は内容を変えて書いてください。管理者がこの内容を見て、承認の可否を判断します。</p>
+                    {%else%}
+                        <p class="txt_attention mt5">※申請する理由を書いてください。管理者がこの内容を見て、承認の可否を判断します。</p>
+                    {%/if%}
+                </td>
+            </tr>
+            <tr>
+                <th>状態</th>
+                <td>{%$detailUserApplied['applied']['applied_status']%}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <input type="hidden" name="applied" value="{%$detailUserApplied['applied']['applicant_agency_id']%}" />
+    <input type="hidden" name="user_id" value="{%$detailUserApplied['applied']['user_id']%}" />
+    <input id="frmname" type="hidden" name="form" value="valid" />
+    {%form_error('applied')%}
+    
+    <p class="txt_center mt20">
+        <a href="javascript:void(0)" class="btn_pink btn_190 submit"><span class="ico_arrow03">&gt;</span>{%$detailUserApplied['applied']['button']%}</a>
+        <a href="javascript:void(0)" class="btn_gray btn_190 open"><span class="ico_arrow03">&gt;</span>キャンセル</a>
+    </p>
+</form>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('a.open').click(function(event){
+    	 $("p#deny_button").slideToggle();
+    	 $("div#deny_form").slideToggle();
+    });
+    $('a.confirm').click(function(event){
+        $('#frmname').attr('value','confirm');
+        event.preventDefault();
+        var action = jQuery(this).attr('href');
+        var form = jQuery(this).parents('form');
+        $(form).submit();
+        return false;
+    });
+    $('a.submit').click(function(event){
+        event.preventDefault();
+        var action = jQuery(this).attr('href');
+        var form = jQuery(this).parents('form');
+        $(form).submit();
+        return false;
+    });
+});
+</script>

@@ -1,0 +1,73 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="pc/admin/shared/_sidebar.html"%}
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ご意見ID</th>
+<th>送信者ID</th>
+<th>送信者名</th>
+<th>内容</th>
+<th>送信日時</th>
+<th>  </th>
+</tr>
+</thead>
+<tbody>
+
+{%foreach from=$result key=k item=v%}
+<tr id="item{%$v['contact_id']%}" class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td>{%$v['contact_id']%}</td>
+<td><a href="{%get_detail_url($v['item_name'], $v['account_id'])%}">{%string_short($v['item_name'])%}{%$v['account_id']%}</a></td>
+<td><a href="{%get_detail_url($v['item_name'], $v['account_id'])%}">{%$v['name']%}</a></td>
+<td>{%$v['content']%}</td>
+<td>{%$v['created']%}</td>
+<td>
+<button class="btn btn-default" onClick="deleteContact({%$v['contact_id']%})">削除</button></td>
+</tr>
+{%/foreach%}
+
+
+</tbody>
+</table>
+</div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+<script>
+    function deleteContact(id)
+    {
+        var strconfirm = confirm("Are you sure you want to delete?");
+        if (strconfirm == true) {
+            jQuery(function(){
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "{%base_url('manager/contacts/delete')%}",
+                        data: {contact_id: id},
+                        cache: false,
+                        success: function (response) {
+                            if (response == 'success') {
+                                jQuery('#item'+id).remove();
+                            }
+                        },
+                    });
+                });
+        }
+
+    }
+
+</script>
+{%include file="manager/shared/_footer.html"%}

@@ -1,0 +1,67 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<div class="content">
+<h1 class="tit_01">パスワード再設定</h1>
+<div class="box">
+{%form_open($base_url|cat:"password/reset_execute",["id"=>"password_reset_form"])%}
+<input name="user_id" type="hidden" value="{%$user_id%}">
+<input name="token" type="hidden" value="{%$token%}">
+<div class="login">
+<p>新しいパスワードをご入力ください。</p>
+<dl><dt style="width:100%;">新しいパスワード</dt><dd style="width:100%;"><input id="password" name="password" type="password" placeholder="半角英数8文字以上">
+<div class="message">
+<div id="password_err_xss" class="display_none">使用できないパスワードです</div>
+<div id="password_err" class="display_none">半角英数8文字以上で入力してください。</div>
+</div></dd></dl>
+<dl><dt style="width:100%;">新しいパスワード（確認用）</dt><dd style="width:100%;"><input id="password_confirm" type="password" placeholder="">
+<div class="message">
+<div id="password_confirm_err" class="display_none">確認用パスワードを正しく入力してください。</div>
+<div id="password_confirm_difer" class="display_none">確認用パスワードが一致しません。</div>
+</div></dd></dl>
+<p class="txt_center"><a href="javascript:void(0)" id="submit" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>送信する</a></p>
+{%form_close()%}
+<!-- /.login --></div>
+<!-- /.box --></div>
+
+<!-- /.content --></div>
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+<script>
+$("html").keypress(function(e){if(e.which==13){password_valid();}});
+$("#submit").on("click",function(){password_valid();});
+function password_valid(){
+    password = $("#password").val();
+    if(password.match(/^[a-z0-9\-\$\@\#\!\%\^\*\&\'\:\(\)\+\?\;\"\=\,\]\~\<\>\|\{\}\[\]]{6,32}$/)){
+        console.log(password.match(/\<[a-zA-Z0-9]+\>/))
+        if(!password.match(/\<[a-zA-Z0-9]+\>/)){
+            $("#password_err").addClass("display_none");
+            $("#password_err_xss").addClass("display_none");
+            password_confirm = $("#password_confirm").val();
+            if(password_confirm === ""){
+                $("#password_confirm_difer").addClass("display_none");
+                $("#password_confirm_err").removeClass("display_none");
+            }else if(password === password_confirm){
+                $("#password_reset_form").submit();
+            }else{
+                $("#password_confirm_err").addClass("display_none");
+                $("#password_confirm_difer").removeClass("display_none");
+            }
+        }else{
+            $("#password_confirm_err").addClass("display_none");
+            $("#password_err_xss").removeClass("display_none");
+            $("#password_confirm_difer").addClass("display_none");
+            $("#password_err").addClass("display_none");
+        }
+    }else{
+        $("#password_confirm_err").addClass("display_none");
+        $("#password_err_xss").addClass("display_none");
+        $("#password_confirm_difer").addClass("display_none");
+        $("#password_err").removeClass("display_none");
+    }
+}
+</script>
+</html>

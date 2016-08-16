@@ -1,0 +1,49 @@
+{%include file="pc/user/common/headbar.html"%} {%include
+file="pc/user/common/navbar.html"%} {%display_breadcrumb($breadcrumb)%}
+<!--main_content-->
+<div class="content_wrapper">
+<div class="content">
+
+<h1 class="tit_01">求人紹介会社一覧</h1>
+<!-- <div class="area_intro">
+<p></p>
+</div> -->
+<p id="agencylist_top" class="mb15"><span class="ico_check02">▲</span>50音順に並んでおります。保育施設名をクリックし、詳細情報をご覧ください。</p>
+<div class="box">
+<div class="agencylist_box agencylist_box02">
+<ul>
+{%if isset($agent_list) && ! empty($agent_list)%}
+{%foreach $agent_list as $agent%}<li><a href="{%$base_url%}agent/{%$agent['client_id']%}"><span class="ico_arrow01">&gt;</span>{%$agent['display_name']%}</a></li>{%/foreach%}
+{%/if%}</ul>
+<p class="agencylist_bktp"><a href="#agencylist_top">▲TOP</a></p>
+<!-- /.agencylist_box --></div>
+<!-- /.box --></div>
+<!-- 
+<div class="box search_agency_box">
+<p class="mb20">FIne！に求人情報を掲載している紹介会社から、直接求人情報を紹介してもらうことができます。<br/>
+クリックすると紹介会社の詳しい情報を見ることができます。</p>
+{%if isset($agent_list) && ! empty($agent_list)%}
+{%foreach $agent_list as $agent%}
+<a href="{%$base_url%}agent/{%$agent['client_id']%}"
+ title="{%$agent['display_name']%}" class="agency_box_ink allhover">
+<div>
+<p class="tit_04"><span class="ico_company02">□</span>{%$agent["display_name"]|truncate:16:"..."%}</p>
+<p class="mb10"><img src="{%$images = getImageFromS3({%$agent['client_id']%},{%$config_image_client%})%}" alt="{%$agent['image_name']%}" width="198" height="138"></p>
+<p><span class="special_area">得意エリア</span>{%foreach $agent["relation_area"] as $relation_area%}
+{%$relation_area["name"]%}
+{%/foreach%}</p>
+<p>{%$agent["description"]|truncate:18:"..."%}</p>
+<p class="btn_white btn_190"><span class="ico_glass">&gt;</span>詳細情報を見る</p>
+</div>
+</a>
+{%/foreach%}
+{%/if%}
+</div>
+ -->
+</div>
+    {%include file="pc/user/common/right_nav.html"%}
+    <!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

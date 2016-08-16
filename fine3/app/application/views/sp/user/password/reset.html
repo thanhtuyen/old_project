@@ -1,0 +1,69 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--password reset-->
+     <section>
+     	<h4 class="title_pink_bar">パスワード再設定</h4>
+        <p class="form_txt">新しいパスワードをご入力ください。</p>
+{%form_open($base_url|cat:"password/reset_execute",["id"=>"password_reset_form"])%}
+<input name="user_id" type="hidden" value="{%$user_id%}">
+<input name="token" type="hidden" value="{%$token%}">
+        <dl class="job_detail_table form_table">
+        		<dt>新しいパスワード</dt>
+        		<dd><input id="password" name="password" type="password" size="40" placeholder="半角英数8文字以上で入力してください。">
+                <div class="message">
+		<div id="password_err" class="display_none">半角英数8文字以上で入力してください。</div>
+                </div>
+            </dd>
+        </dl>
+	<dl class="job_detail_table form_table">
+                        <dt>新しいパスワード（確認用）</dt>
+                        <dd><input id="password_confirm" type="password" size="40" placeholder="">
+                <div class="message">
+		<div id="password_confirm_err" class="display_none">確認用パスワードを正しく入力してください。</div>
+		<div id="password_confirm_difer" class="display_none">確認用パスワードが一致しません。</div>
+                </div>
+            </dd>
+        </dl>
+        <div class="form_button_area">
+            <p class="form_button"><a href="javascript:void(0)" id="submit">変更する</a></p>
+         </div>
+{%form_close()%}
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+
+<script>
+$("html").keypress(function(e){if(e.which==13){password_valid();}});
+$("#submit").on("click",function(){password_valid();});
+function password_valid(){
+    password = $("#password").val();
+    if(password.match(/^[0-9a-z]{8,254}$/)){
+        $("#password_err").addClass("display_none");
+        password_confirm = $("#password_confirm").val();
+        if(password_confirm === ""){
+            $("#password_confirm_difer").addClass("display_none");
+            $("#password_confirm_err").removeClass("display_none");
+        }else if(password === password_confirm){
+            $("#password_reset_form").submit();
+        }else{
+            $("#password_confirm_err").addClass("display_none");
+            $("#password_confirm_difer").removeClass("display_none");
+        }
+    }else{
+        $("#password_confirm_err").addClass("display_none");
+        $("#password_confirm_difer").addClass("display_none");
+        $("#password_err").removeClass("display_none");
+    }
+}
+</script>
+</body>
+</html>

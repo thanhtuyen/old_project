@@ -1,0 +1,204 @@
+{%include file="sp/user/common/sp_headbar.html"%}
+{%include file="sp/user/common/navbar_logged.html"%}
+{%include file="sp/user/common/loading.html"%}
+<!--main_content-->
+<div class="main">
+{%include file="sp/user/common/mypagemenu.html"%}
+    <!--bookmark-->
+    <section><h4 class="title_pink_bar">お気に入り求人</h4></section>
+
+    {%if !empty($bookmarks)%}
+        <p class="form_txt">チェックした求人にまとめて</p>
+        <div class="bookmark_oubo">
+            <p class="form_button"><a href="javascript:void(0)" id="apply_job_multiple">応募する</a></p>
+            <p class="form_cancel_button"><a href="javascript:void(0)"  id="remove_bookmark">削除する</a></p>
+         </div>
+        <!--count-->
+
+        {%if $count_view && ! empty($count_view)%}<div class="serch_count_top"><p class="serch_count">{%$count_view['total']%}件中 1～{%$count_view['to_item']%}件を表示</p></div>{%/if%}
+        <!--job detail-->
+        <section id="load_page" class="job_list_box">
+        {%foreach from=$bookmarks key=k item=v%}
+            <section class="job_list" id="bookmark{%$v['job_id']%}">
+                <div class="delete_checkbox">
+                    <label for="chkitem{%$v['job_id']%}"><input type="checkbox" id="chkitem{%$v['job_id']%}" class="chkitem" name="bookmark[]" value="{%$v['job_id']%}">選択する</label>
+                </div>
+                <a href="{%$base_url%}detail_{%$v['job_id']%}" title="{%$v['title']%}" class="job_linkarea">
+                    <div class="job_linkarea_inbox">
+                        <h4 class="job_list_title">{%$v['title']%}</h4>
+                        {%if isset($v['image']) && ! empty($v['image']) && isset($v['image']['1'])%}<p class="job_list_img"><img src="{%$v['image']['1']['name']%}" alt="{%$v['title']%}"/></p>{%/if%}
+                        <p class="job_list_txt">{%$v['description']%}</p>
+                        <div class="job_detail_table_s">
+                            <dl>
+                                <dt>勤務地</dt>
+                                <dd>
+                                {%if !empty($v['nursery'])&&isset($v['nursery']['name'])%}{%$v['nursery']['name']%}{%/if%} /
+                                {%if !empty($v['area']) %}
+                                    {%if !empty($v['area']['pname'])%}{%$v['area']['pname']%}{%/if%}
+                                    {%if !empty($v['area']['cname'])%}{%$v['area']['cname']%}{%/if%}
+                                {%/if%}
+                                {%$v['nursery']['address']%}
+                                </dd>
+                            </dl>
+                            {%if !empty($v['tag'][3])%}
+                            <dl class="group_3 type_employ">
+                                <dt>雇用形態</dt>
+                                <dd>
+                                {%$tagName = array()%}
+                                {%foreach from=$v['tag'][3] key=kTag item=vTag%}{%$tagName[] = $vTag['name']%}{%/foreach%}
+                                {%implode(',',$tagName)%}
+                                </dd>
+                            </dl>
+                            {%/if%}
+
+                            {%if !empty($v['tag'][2])%}
+                            <dl class="group_2 type_job">
+                                <dt>職種</dt>
+                                <dd>
+                                {%$tagName = array()%}
+                                {%foreach from=$v['tag'][2] key=kTag item=vTag%}{%$tagName[] = $vTag['name']%}{%/foreach%}
+                                {%implode(',',$tagName)%}
+                                </dd>
+                            </dl>
+                            {%/if%}
+                            <dl>
+                                <dt>勤務時間</dt>
+                                <dd>{%$v['worktime']%}</dd>
+                            </dl>
+                            <dl>
+                                <dt>給与</dt>
+                                <dd>{%$v['salary']%}</dd>
+                            </dl>
+                        </div>
+
+                           {%if !empty($v['tag'][5]) || !empty($v['tag'][6])%}
+                        <ul class="job_tag ico_jobtag group_5_6 tag_job tag_nursery">
+                            {%$tag5_6 = array()%}
+                            {%$tagName = array()%}
+
+                            {%if isset($v['tag'][5])%}
+                                {%$tag5_6 = $v['tag'][5]%}
+                            {%/if%}
+
+                            {%if isset($v['tag'][6])%}
+                                {%$tag5_6 = array_merge( $tag5_6, $v['tag'][6] )%}
+                            {%/if%}
+
+                            {%foreach from=$tag5_6 key=kTag item=vTag%}
+                                {%$tagName[] = $vTag['name']%}
+                            {%/foreach%}
+                            <li>{%implode('</li><li>', $tagName)%}</li>
+                        </ul>
+                        {%/if%}
+
+                       </div>
+                </a>
+
+                {%if !empty($v["apply_job"]) && $v["apply_job"]%}
+                    <p class="applied_button mb10">応募済み</p>
+                {%else%}
+                    <p class="apply_button apply_job_{%$v['job_id']%} mb10"><a href="javascript:void(0)" class="job_apply apply_btn" data-job_id="{%$v['job_id']%}">今すぐ応募する</a></p>
+                    <p class="applied_button apply_finished_job_{%$v['job_id']%} display_none mb10">応募しました</p>
+                {%/if%}
+                <!-- <p class="clip_button_done"><a href="#">お気に入り追加済み</a></p> -->
+             </section>
+        {%/foreach%}
+        </section>
+
+        {%if $count_view && ! empty($count_view)%}
+            <div class="serch_count_top">
+                <!-- <p class="serch_count">{%$count_view['total']%}件中 {%$count_view['from_item']%}～{%$count_view['to_item']%}件を表示</p> -->
+                <p class="serch_count">{%$count_view['total']%}件中 1～{%$count_view['to_item']%}件を表示</p>
+            </div>
+        {%/if%}
+
+        <script src="{%$static_url%}user/js/apply.js"></script>
+        <script>
+            $(".apply_btn").on("click",function(e){apply_for_job($(this),"apply");});
+            // remove bookmark
+            $('#remove_bookmark').on('click', function(e){
+                if($('[name="bookmark[]"]:checked').length === 0 ){
+                    alert('お気に入りリストから削除したい求人を選択してください。');
+                    return false;
+                }
+                if(!confirm("この求人をお気に入りリストから削除しますか？")){return false;}
+                var job_str = $('[name="bookmark[]"]:checked').map(function(){return $(this).val();}).get().join(',');
+                $("#loading_layer").removeClass("display_none");
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: "{%$base_url%}" + 'user/ajax/remove_bookmark_multiple',
+                    data: {
+                        job_str: job_str,
+                        {%$csrf_token_name%}: "{%$csrf_token_value%}"
+                    },
+                    success:function(res){if(res["code"] === 0)alert("error");},
+                    error: function(XMLHttpRequest, textStatus, errorThrown){/*alert("server_error")*/},
+                    complete:function(data){location.reload();}
+                });
+            });
+            // Add Apply Job multiple button
+            $('#apply_job_multiple').on('click', function(e){
+                if( $('[name="bookmark[]"]:checked').length == 0 ){
+                    alert('応募する求人を選択してください。');
+                    return false;
+                }
+                var job_str = $('[name="bookmark[]"]:checked').map(function(){return $(this).val();}).get().join(',');
+                $("#loading_layer").removeClass("display_none");
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: "{%$base_url%}" + 'user/ajax/apply_job_multiple',
+                    data: {
+                        job_str: job_str,
+                        {%$csrf_token_name%}: "{%$csrf_token_value%}"
+                    },
+                    success:function(res){},
+                    error: function(XMLHttpRequest, textStatus, errorThrown){alert("server_error")},
+                    complete:function(data){location.reload();}
+                });
+            });
+        </script>
+    {%/if%}
+
+    {%if $count_view['total'] > $count_view['limit']%}
+    <p class="continue_link" id="click_more_item">
+        <a href="javascript:void(0)" class="click_pagination" data-page="1">
+            次の{%$count_view['limit']%}件を表示する<br/><span>{%$count_view['total']%}件中{%$count_view['to_item']%}件を表示しています</span>
+        </a>
+        <script type="text/javascript">
+            // Add Apply Job multiple button
+            $('.click_pagination').on('click', function(e){
+                var target = $(e.target);
+                var page = target.attr('data-page');
+                $.ajax({
+                  type: 'POST',
+                  dataType: 'json',
+                  url: "{%$base_url%}" + 'user/mypage/bookmark_ajax_page',
+                  data: {
+                      page: 1,
+                    {%$csrf_token_name%}: '{%$csrf_token_value%}'
+                  },
+                  success:function(data){
+                        $('#load_page').append(data.content);
+                        $('#click_more_item').html(data.pagination);
+                        $('.serch_count_top').html(data.count_page);
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('error happend')
+                  }
+                });
+            });
+        </script>
+    </p>
+    {%else%}
+        <p style="margin:10px 0 0 15px;">現在お気に入りに登録されている求人はありません</p>
+    {%/if%}
+
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+</body>
+</html>

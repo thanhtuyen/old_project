@@ -1,0 +1,39 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<link href="{%$static_url%}user/css/mailtip.css" rel="stylesheet" media="screen,print">
+<div class="content_wrapper">
+<h1 class="tit_01">会員登録</h1>
+<div class="box">
+<p class="mb10">
+<!-- <br>Facebookのアカウントをお持ちの方は、簡単に会員登録できます。 -->
+</p>
+<!-- <a href="#" class="hover_box"><span class="icon-facebook fb_regist_ico fb_regist_btn_ico mb30"></span><p class="fb_regist_btn_txt mb30">Facebookで会員登録をする</p></a> -->
+<p class="mb20 clear_s"><span class="ico_must">必須</span>マークのついている項目は、会員登録する際に入力が必須の項目です。</p>
+{%form_open("user/signup/register",["id"=>"register_form"])%}
+{%include file="pc/user/signup/_signup_form.html"%}
+<div class="register_area">
+<p class="register_check"><label><input name="job_change_support_check" type="checkbox">無料転職サポート一括登録をする</label></p>
+<p class="txt_center">チェックを入れると、会員時登録で入力した情報をFINE！に登録している、転職支援会社に同時登録ができます。</p>
+<dl>
+    <dt>無料転職サポートとは？</dt>
+    <dd>キャリアコンサルタントがあなたの転職活動をサポート。非公開求人のご紹介や、応募書類や面接に対するサポートを受けながら、転職活動を進められます。</dd>
+</dl>
+<p>弊社の「<a href="http://www.neo-career.co.jp/policy.html" target="_blank" rel="nofollow" class="txt_line">プライバシーポリシー</a>」と「<a href="{%$base_url%}rule" class="txt_line">利用規約</a>」を必ずご確認ください。<br>ご同意いただける場合は「会員登録をする」ボタンをクリックして下さい。</p>
+<p><a href="javascript:void(0)" class="form_submit btn_pink"><span class="ico_arrow03">&gt;</span>会員登録をする</a></p>
+<!-- /.regist_area -->
+</div>
+{%form_close()%}
+<!-- /.box -->
+</div>
+<!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script src="{%$static_url%}common/js/jpostal.js"></script>
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script src="{%$static_url%}common/js/jquery.autoKana.js"></script>
+<script src="{%$static_url%}common/js/date_format.js"></script>
+<script src="{%$static_url%}user/js/signup.js"></script>
+</body>
+</html>

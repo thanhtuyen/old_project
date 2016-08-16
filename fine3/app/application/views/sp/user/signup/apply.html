@@ -1,0 +1,114 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+<link href="{%$static_url%}user/css/mailtip.css" rel="stylesheet" media="screen,print">
+<!--main_content-->
+<div class="main">
+<section class="sub_container" id="contents">
+    <article id="member_regist">
+
+        <h1 class="area_title">「{%$select_job["job_detail"]["job"]["title"]%}」{%if empty($bookmark_flg)%}へ応募する{%else%}をお気に入り登録する{%/if%}</h1>
+        <h2 class="subtitle">{%if empty($bookmark_flg)%}求人応募{%else%}お気に入り登録{%/if%}</h2>
+        <!--
+        <div class="job_list_sec">
+            <div id="icon_box" class="sp">
+            <ul class="cf">
+                {%if !empty($select_job['job_detail']['tags']['tag_job'])%}
+                {%foreach $select_job['job_detail']['tags']['tag_job'] as $data%}
+                <a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/"><li>{%html_escape($data['tag_detail']['name'])%}</li></a>
+                {%/foreach%}
+                {%/if%}
+                {%if !empty($select_job['nursery_detail']['tags']['tag_nursery'])%}
+                {%foreach $select_job['nursery_detail']['tags']['tag_nursery'] as $data%}
+                <a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/"><li>{%html_escape($data['tag_detail']['name'])%}</li></a>
+                {%/foreach%}
+                {%/if%}
+            </ul>
+            </div>
+            <div class="job_detail_table_s">
+                {%if !empty($select_job['job_detail']['tags']['type_job'])%}
+                <dl>
+                    <dt>職種</dt>
+                    <dd>{%foreach $select_job['job_detail']['tags']['type_job'] as $data%}
+                        {%html_escape($data['tag_detail']['name'])%}
+                        {%/foreach%}
+                    </dd>
+                </dl>
+                {%/if%}
+                {%if !empty($select_job['job_detail']['tags']['type_employ'])%}
+                <dl>
+                    <dt>勤務形態</dt>
+                    <dd>{%foreach $select_job['job_detail']['tags']['type_employ'] as $data%}
+                        {%html_escape($data['tag_detail']['name'])%}
+                        {%/foreach%}
+                    </dd>
+                </dl>
+                {%/if%}
+            </div>
+        </div>-->
+
+        <div class="privacy_box">
+            <p>弊社の<a href="http://www.neo-career.co.jp/policy.html" target="_blank">プライバシーポリシー</a>と<a href="{%$base_url%}rule" target="_blank">利用規約</a>を必ずご確認ください。</p>
+        </div>
+        <section id="form_sex2" class="form_radio">
+            <p class="form_caption">※{%if empty($bookmark_flg)%}ご応募{%else%}お気に入り登録{%/if%}いただくと自動的にサイト会員（無料）に登録されます。予めご了承ください。</p>
+        </section>
+
+        {%form_open("user/signup/register",["id"=>"register_form"])%}
+        {%include file="sp/user/signup/_signup_form.html" type="add_job"%}
+        <input name="added_job_id" type="hidden" value="{%$select_job['job_detail']['job']['job_id']%}">
+        <input name="added_job_type" type="hidden" value="{%if empty($bookmark_flg)%}apply{%else%}bookmark{%/if%}">
+        <!--
+            <section class="form_chk">
+                <h3 class="subtitle thin">無料転職サポート</h3>
+                <!--<ul class="list c2 inset">-->
+                    <!--<li><input type="checkbox" id="suport"><label for="app_option1000a" class="form_checkbox_label"> 一括登録をする</label></li>-->
+                <!--</ul>--><!--
+                <p class="orm_caption"><label for="suport"><input type="checkbox" id="suport">一括登録をする</label></p>
+                <p class="form_caption">チェックを入れると、会員時登録で入力した情報をFINE！に登録している、転職支援会社に同時登録ができます。</p>
+                <div class="privacy_box">
+                    <h4>無料転職サポートとは？</h3>
+                        <p>キャリアコンサルタントがあなたの転職活動をサポート。非公開求人のご紹介や、応募書類や面接に対するサポートを受けながら、転職活動を進められます。</p>
+                </div>
+            </section>
+            -->
+            
+            <section class="btn oubopage">
+                <a href="javascript:void(0)" class="form_submit register_member_apply">上記の内容で{%if empty($bookmark_flg)%}応募する{%else%}お気に入り登録する{%/if%}</a>
+            </section>
+
+        {%form_close()%}
+    </article>
+</section>
+
+
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script src="{%$static_url%}common/js/jpostal.js"></script>
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script src="{%$static_url%}common/js/jquery.autoKana.js"></script>
+<script src="{%$static_url%}common/js/date_format.js"></script>
+<script src="{%$static_url%}user/js/signup.js"></script>
+    <style>
+        .btn .register_member_apply{
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border: 1px solid #E13938;
+            background-color: #FF4C5D;
+            background-image: -webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+            background-image: linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+            background-size: 15px 15px;
+            color: #FFF;
+            -webkit-box-shadow: 0px 2px 3px #CCC;
+            -moz-box-shadow: 0px 2px 3px #CCC;
+            text-shadow: -1px -1px 1px #c11a24;
+            width: 100%;
+            display: block;
+            float: none;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

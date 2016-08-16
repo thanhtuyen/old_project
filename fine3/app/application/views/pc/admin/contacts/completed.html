@@ -1,0 +1,46 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%getFlashInfo()%}
+{%include file="manager/contacts/_nav.tpl"%}
+
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+{%form_open('manager/contacts/create')%}
+<table class="plan_form">
+<tr>
+<th>宛先</th>
+<td><div class="radio lined_div">
+<label class="radio-custom">
+<input type="radio" name="group_id" value="29" checked="checked">
+<i class="fa fa-circle-o checked"></i> 全ユーザー</label></div>
+<div class="radio lined_div">
+<label class="radio-custom">
+<input type="radio" name="group_id" value="30">
+<i class="fa fa-circle-o"></i> 全紹介会社</label></div>
+<div class="radio lined_div">
+<label class="radio-custom">
+<input type="radio" name="group_id" value="31">
+<i class="fa fa-circle-o"></i> 全園法人</label>
+</div>
+</td>
+</tr>
+<tr>
+<th>件名</th>
+<td><input type="text" placeholder="title" name="title" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　件名は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>本文</th>
+<td><textarea placeholder="text" name="text" class="form-control plan_form" cols="80" rows="15"></textarea></td>
+</tr>
+</table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で送信する">
+<input class="btn btn-default" type="reset" value="キャンセル"></div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

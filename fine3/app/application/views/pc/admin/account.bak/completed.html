@@ -1,0 +1,56 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">
+{%if $result['role'] eq 'client'%}
+事業所アカウント作成完了
+{%else%}
+新しいパスワードの発行
+{%/if%}
+
+</h4>
+<!-- widget-head --></div>
+
+<h4>
+{%if $result['role'] eq 'client'%}
+事業所アカウントの作成が完了しました。
+{%else%}
+新しいパスワードは{%$result['real_password']%}です。
+{%/if%}
+</h4>
+<p>
+{%if $result['role'] eq 'client'%}
+先ほどご登録いただいたメールアドレスに、
+作成したアカウントのパスワードと、アカウントを有効化するURLをお送りしました。
+メール内のURLをクリックしてログインしていただくようご連絡ください。
+{%else%}
+先ほどの入力ページで登録いただいたメールアドレスに、上記のパスワードを送信しました。<br>
+正常に届いているか、直接もしくはお電話にてご確認ください。
+{%/if%}
+</p>
+
+
+
+
+
+<table class="plan_form">
+<!-- <tr>
+<th>名前</th>
+<td>[admin/agent/company|name] [agent/company|person]</td>
+</tr> -->
+<!--[admin|mail] [agent/company|phone]-->
+<tr>
+<th>連絡先</th>
+<td>{%$result['email']%}</td>
+</tr>
+</table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<a href="{%base_url()%}manager/top"><input class="btn btn-default" type="submit" value="TOPへ戻る"></a></div>
+
+<!-- innerLR --></div>
+{%include file="pc/admin/shared/_footer.html"%}

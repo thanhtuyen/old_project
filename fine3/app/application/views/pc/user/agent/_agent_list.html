@@ -1,0 +1,9 @@
+<p id="agencylist_top" class="mb15"><span class="ico_check02">▲</span>50音順に並んでおります。保育施設名をクリックし、詳細情報をご覧ください。</p>
+<div class="box">
+<div class="agencylist_box agencylist_box02">
+<ul>{%foreach $agent_list as $row%}<!--
+--><li><a href="{%$base_url%}agent/{%$row['client_id']%}"><span class="ico_arrow01">&gt;</span>{%html_escape($row['display_name']|truncate:24:"...")%}</a></li><!--
+-->{%/foreach%}</ul>
+<p class="agencylist_bktp"><a href="#agencylist_top">▲TOP</a></p>
+<!-- /.agencylist_box --></div>
+<!-- /.box --></div>

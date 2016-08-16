@@ -1,0 +1,134 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="pc/admin/entries/_nav.html"%}
+
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+
+{%form_open('manager/entries', ['method' => 'get'])%}
+<div class="row">
+  <div class="col-md-2">
+  <select name="q[status]">
+    <option value="">選択してください</option>
+    <option value="not_sure" {%if isset($condition['status']) and $condition['status']=='not_sure'%}selected="true"{%/if%}>未確定</option>
+    <option value="1" {%if isset($condition['status']) and $condition['status']==1%}selected="true"{%/if%}>申請中</option>
+    <option value="2" {%if isset($condition['status']) and $condition['status']==2%}selected="true"{%/if%}>非確定</option>
+    <option value="3" {%if isset($condition['status']) and $condition['status']==3%}selected="true"{%/if%}>確定</option>
+  </select>
+  </div>
+
+  <div class="input-group date col-sm-2"  data-datetimepicker style="float:left">
+      <input class="form-control" type="text" name="q[apply_start_time]" value="{%if isset($condition['apply_start_time'])%}{%$condition['apply_start_time']%}{%/if%}" readonly>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+  </div>
+
+  <div class="input-group date col-sm-2"  data-datetimepicker>
+      <input class="form-control" type="text" name="q[apply_end_time]" value="{%if isset($condition['apply_end_time'])%}{%$condition['apply_end_time']%}{%/if%}" readonly>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+  </div>
+
+
+  <div class="col-sm-5" style="float:right;margin-top:-27px">
+    <input type="submit" value="検索">
+  </div>
+</div>
+{%form_close()%}
+
+
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ID</th>
+<th>ユーザー名</th>
+<th>適用プラン</th>
+<th>応募単価</th>
+<th>求人ID</th>
+<th>企業名</th>
+<th>エントリー日時</th>
+
+
+
+<th>確定ステータス</th>
+<th>確定日</th>
+<th>　</th>
+</tr>
+</thead>
+
+{%foreach from=$agents key=k item=list%}
+<tr class="gradeX">
+<td class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox"></label>
+</div>
+</td>
+<td><a href="{%base_url('manager/entry/detail')%}/{%$list['applicant_id']%}">E{%$list['applicant_id']%}</a></td>
+<td><a href="{%base_url('manager/user/detail/')%}/{%$list['user_id']%}">{%$list['user']['name']%}</a></td>
+<td>{%if $list['plan'] %}
+		{%foreach from=$list['plan'] item=group%}
+			{%$group['name']%},
+		{%/foreach%}
+	{%/if%}
+</td>
+<td>
+{%if $list['plan'] %}
+{%$list['plan'][0]['unit_price']%}
+{%/if%}
+</td>
+<td><a target="_blank" href="{%base_url('detail_')%}{%$list['job_id']%}">J{%$list['job_id']%}</a></td>
+<td>{%$list['client_name']%}</td>
+<td>{%$list['created']%}</td>
+
+<td>{%status_text($list['status'])%}</td>
+<td>
+{%if $list['status'] == 1 || $list['status'] == 3%}
+{%$list['fix_date']%}
+{%/if%}
+</td>
+<td><a href="{%base_url('manager/entry/detail')%}/{%$list['applicant_id']%}">
+<button class="btn btn-primary" type="button">詳細</button></a></td>
+</tr>
+{%/foreach%}
+
+
+</table>
+
+
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+<script src="{%$static_url%}admin/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="{%$static_url%}admin/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.ja.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('[data-datetimepicker]').datetimepicker({
+    language:  'ja',
+    format: 'yyyy-mm-dd',
+    startDate: '2015-01-01',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+  });
+});
+
+</script>

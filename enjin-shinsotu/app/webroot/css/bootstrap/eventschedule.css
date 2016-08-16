@@ -1,0 +1,90 @@
+/* CSS Document */
+
+.logo_enjin{
+	float:left !important;	
+	margin-top:15px;
+	margin-right:15px;
+}
+
+.select_option{
+	overflow: hidden;
+    background-color: #1ab394;
+  	border-color: #1ab394;
+    border-radius: 5px;
+    margin-top: 5px;
+    float: left;	
+	color:#fff;
+}
+
+.select_option select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+   padding: 8px; 
+    border: none;
+    background: #1ab394 url("../img/icon_select.png") no-repeat 43px 17px;
+}
+
+.wrapper-content-title{
+    color: #000;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.wrapper-content-large-border{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666666;
+    margin-top: 22px;
+}
+
+.clear{
+    clear: both;
+}
+
+.eventschedule .wrapper-content-color{
+    background-color: #999999;
+}
+
+.eventschedule .wrapper-content-large-border .three-button-table{
+    margin: 10px;
+}
+
+.eventschedule .none-bot-border{
+    border-bottom: none;
+}
+.eventschedule .wrapper-content-large-border .three-button-table button{
+    width: 60px;
+    line-height: inherit;
+    margin-right: 10px;
+}
+
+.eventschedule .wrapper-content-large-border .three-button-table span{
+    margin-left: 200px;
+    color: #000;
+    font-size: 15px;
+}
+.eventschedule .table-edit-bordered{
+    margin-bottom: 0px;
+}
+
+.eventschedule .table-edit-bordered tbody tr td{
+    border: 1px solid #000; 
+}
+
+.eventschedule .table-edit-bordered .td-1{
+    width: 5%;
+}
+
+.eventschedule .table-edit-bordered .td-2{
+    width: 5%;
+}
+
+.eventschedule .table-edit-bordered .tr-16{
+    background-color: #999999;
+}
+
+.eventschedule .wrapper-content-none-margin{
+    border-top: none;
+    margin-top: 0px;
+}

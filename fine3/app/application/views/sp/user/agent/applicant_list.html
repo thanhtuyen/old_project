@@ -1,0 +1,67 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+
+<!--求人を紹介してもらう-->
+<section>
+<h4 class="title_pink_bar">求人を紹介してもらう</h4>
+<div class="form_txt">
+<p>紹介会社が、あなたに代わって条件にあう求人を探してくれます。<br/>
+ホームページ上で非公開となっている好条件の求人を紹介してもらえるかも…？！<br/>
+求人紹介を依頼するエージェントを選択し、チェックを入れてください。<br/>
+何社でも依頼をすることが出来ます。</p>
+</div>
+{%form_open("user/agent/apply_agency")%}
+{%foreach $client_list as $client%}
+<section class="job_list agency_entry">  
+<div class="delete_checkbox"><label for="apply_check"><input type="checkbox" name="apply_client_id[]" value="{%$client['client_id']%}">選択する</label></div>
+<div class="job_linkarea_inbox pb10">
+<h4 class="job_list_title"><span class="tag_osusume">オススメ!</span>{%$client['display_name']%}</h4>
+<p class="form_apply_img"><img src="../common/img/dummy/dummy_company_logo.jpg" alt=""></p>
+<p class="company_txt">{%$client['description']%}</p>
+<div class="job_detail_table_s">
+<dl>
+<dt>得意エリア</dt>
+<dd>{%$client['area_name']%}</dd>
+</dl>
+<dl>
+<dt>得意職種</dt>
+<dd>{%$client['job_name']%}</dd>
+</dl>
+</div>
+</div>
+</section>
+{%/foreach%}
+<!--
+-->{%if $client_exist%}<p id="error_P" style="color:red;text-align:center;display:none;">応募を1つ以上選択してください。</p>
+<div class="form_button_area">
+<p class="form_button"><a href="javascript:void(0);" class="btn_pink btn_190" id="apply_agency_link">求人紹介を依頼する</a></p>{%else%}
+<div class="form_txt"><p class="red_b_txt_l">利用可能な紹介会社が見つかりませんでした</p></div>
+{%/if%}
+<!--<input type="submit" class="form_button" value="応募内容の確認画面へ">-->
+</div>
+{%form_close()%}
+</section>
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#apply_agency_link').on('click', function(e){
+      var form = $('form')
+      if($("form input[type='checkbox']:checked").length > 0) {
+        form.submit()
+      } else {
+        $('#error_P').show()
+      }
+    });
+  })
+</script>
+
+</body>
+</html>

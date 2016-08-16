@@ -1,0 +1,79 @@
+{%include file="common/header.html"%}
+<body>
+<header>
+<p class="logo"><a href="{%$base_url%}"><img src="{%$static_url%}htdocs/images/logo.png" alt="SUITS" width="66"></a></p>
+<ul>
+<li><a href="{%$base_url%}register">診断開始</a></li>
+<li class="login"><a href="{%$base_url%}login">ログイン</a></li>
+</ul>
+</header>
+<section class="comp">
+<h1 class="tit_01">503 Service Unavailable</h1>
+<div class="box">
+<h2>現在エラーが発生しています</h2>
+<p>トップページなどに戻ってから再度ご確認ください。<br>解決できない場合、お手数ですが<a href="{%$base_url%}front/contact">お問い合わせ</a>ください。</p>
+<p class="mb0"><a href="{%$base_url%}" class="btn_l btn_yellow">TOPへ戻る</a></p>
+
+
+        <p class="tit_02">
+            <span class="ico_search01">▼</span>条件から探す
+        </p>
+        <div class="box searchbox_condition">
+            <dl>
+                <dt>
+                    <span>職種から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 2%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+            <dl>
+                <dt>
+                    <span>施設形態から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 1%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+            <dl>
+                <dt>
+                    <span>勤務形態から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 3%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+
+            <dl>
+                <dt>
+                    <span>こだわり条件から探す</span>
+                </dt>
+                {%foreach $tags as $data%}
+                {%if $data['tag_group_id'] == 5%}
+                <dd>
+                    <span class="ico_arrow01">&gt;</span><a href="{%$base_url%}{%$data['prefix']%}{%$data['link_name']%}/">{%html_escape($data['name'])%} ({%$data['job_total']%})</a>
+                </dd>
+                {%/if%}
+                {%/foreach%}
+            </dl>
+            <!-- /.box -->
+        </div>
+
+
+<!-- /.box --></div>
+</section>
+{%include file="common/footer.html"%}
+</body>
+</html>

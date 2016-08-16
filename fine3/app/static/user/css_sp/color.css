@@ -1,0 +1,1254 @@
+@charset "UTF-8";
+body{color: #333;background-color:#FFF;/*border-top:5px solid #8AB852;*/}
+a {color:#676767;}
+/* --------------------------------------------------
+    グローバル
+-------------------------------------------------- */
+#global_header{background-color:#F5F5F5;}
+#top_global,
+#sub_global{
+
+}
+/*nav*/
+/*
+#globalNavi{
+	border-left:1px solid #274e9e;
+	background-color: rgba(255,255,255,0.15);
+-webkit-box-shadow:inset 1px 0px 7px rgba(0,0,0,0.45);
+-moz-box-shadow:inset 1px 0px 7px rgba(0,0,0,0.45);
+border-left:1px solid #DE3679;
+  background: -webkit-gradient(linear, left top, left bottom,
+	from(#ff9eb6),
+	color-stop(0.45, #ff6b90), 
+	color-stop(0.5, #fe4875), 
+	to(#ff3366)  );
+  background: -moz-linear-gradient( top, 
+	#ff9eb6 ,  
+	#ff6b90 45%,
+	#fe4875 50%,
+	#ff3366);
+}*/
+/*area_container*/
+.top_container h2.title,
+.sub_container h2.title{
+	color:#676767;
+}
+/* --------------------------------------------------
+    コンテンツタイトル
+-------------------------------------------------- */
+#co_header .back a{
+	font-size:120%;
+	color:#FFF;
+	background:url(../images_sp/back.png) 0 0 no-repeat;
+	background-size:76px auto;
+}
+
+#co_header .title h3{color:#E45991;}
+#co_header .title .res_number{font-size:80%;color:#333;}
+#co_header .title .res_number_srong{font-size:160%;color:#ff3366;}
+
+#co_header #search_regist_btn a{
+	color:#676767;
+	border:1px solid #CCC;
+  background-image:-webkit-gradient(linear, left top, left bottom, from(#FFF),to(#EEE));
+  background: -moz-linear-gradient(top,#FFF,#EEE);
+}
+
+.newjob_title {
+    background: none repeat scroll 0 0 #fff;
+    border-top: 1px solid #ddd;
+    color: #333;
+    padding: 5px 5px 2px;
+	text-align: left;
+}
+
+.sub_container h4.title{
+/*	background: none repeat scroll 0 0 #eeebe2;*/
+	background:#FFFFCD;
+	border-top:1px solid #E4E4E4;
+	border-bottom:1px solid #E4E4E4;
+	color: #331f09;
+	font-weight: bold;
+	padding: 5px 15px;
+}
+.sub_container h5.title{
+	background:#FCF0D6;
+	border-top:1px solid #F381B1;
+  text-shadow: -1px -1px 1px #FFF; 
+  background: -webkit-gradient(linear,left top,left bottom,from(#FCDCEA),to(#FAC0D9));
+  background: -moz-linear-gradient(top,#FCDCEA,#FAC0D9);
+}
+.sub_container h5.title_small{
+	background:#FFFFCC;
+  background: -webkit-gradient(linear,left top,left bottom,from(#FFCC00),to(#EFB110));
+  background: -moz-linear-gradient(top,#FFCC00,#EFB110);
+}
+/*  必須  */
+.sub_container h4.title span,
+.sub_container h5.title span,
+.sub_container h5.title_small span, 
+.sub_container .subtitle span{
+color:#FFF;
+background:#FE4C5E;
+border-radius: 3px;
+}
+
+/* --------------------------------------------------
+    トップ
+-------------------------------------------------- */
+/*基本*/
+#top ul,
+#mypage ul,
+#special ul,
+#banner2 ul,
+#topics ul,
+#pick_up ul,
+#hurry ul,
+#attention ul,
+#relation ul,
+#expo ul,
+#banner ul,
+#ranking ul{
+	border-bottom: 1px solid #ddd;
+}
+#top ul li,
+#mypage ul li,
+#special ul li.text,
+#banner2 ul li.text,
+#topics ul li,
+#pick_up ul li,
+#hurry ul li,
+#attention ul li,
+#relation ul li,
+#expo ul li,
+#banner ul li,
+#ranking ol li{
+  /*background-image:-webkit-gradient(linear, left top, left bottom, from(#FFF),to(#EEE));
+  background: -moz-linear-gradient(top,#FFF,#EEE);*/
+	border-top: 1px solid #ddd;
+}
+#top li a,
+#mypage li a,
+#special li.text a,
+#banner2 li.text a,
+#topics a,
+#pick_up a,
+#hurry a,
+#attention a,
+#relation a,
+#expo a,
+#banner a,
+#ranking a,
+.list_nav a,
+.list dd.arrow a,
+.list li.arrow a{
+	color:#333;
+	background:url(../images_sp/arrow.gif) right center no-repeat;
+	text-shadow: -1px -1px 1px #FFF;
+}
+
+/*フリーワード*/
+input.top_free_text{
+	border:1px solid #CCC;
+/*  background: -webkit-gradient(linear,left top,left bottom,from(#eee),to(#fff));
+  background: -moz-linear-gradient(top,#eee,#fff);*/
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-box-shadow: 0px 0px 1px #CCC;
+	-moz-box-shadow: 0px 0px 1px #CCC;
+}
+input:focus.top_free_text{
+	border:1px solid #AAA;
+	background-color:#f9e99f;
+  background: -webkit-gradient(linear,left top,left bottom,from(#f9e99f),to(#faf2c9));
+  background: -moz-linear-gradient(top,#f9e99f,#faf2c9);
+	-webkit-box-shadow: 0px 0px 1px #d5b25f;
+	-moz-box-shadow: 0px 0px 1px #d5b25f;
+}
+.top_free_btn{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border: 1px solid #E13938;
+background-color: #FF4C5D;
+background-image: -webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-image: linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-size: 15px 15px;
+	color: #FFF;
+/*	-webkit-box-shadow: 0px 2px 3px #CCC;
+	-moz-box-shadow: 0px 2px 3px #CCC;
+	text-shadow: -1px -1px 1px #c11a24;*/
+}
+#search_free form input.blur { color: #969696; }
+
+/* 検索ボタン */
+#search li a{
+	color: #FFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-box-shadow: 0px 2px 3px #CCC, inset 0px 0px 2px #FFF 0.65;
+	-moz-box-shadow: 0px 2px 3px #CCC, inset 0px 0px 2px #FFF 0.65;
+}
+#search li.area a{
+	border: 1px solid #fd4800;
+	background-color: #fd6500;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#fd9347),to(#fd6c0b));
+	background: -moz-linear-gradient(top,#fd9347,#fd6c0b);
+	border-top: 1px solid #ddd !important;
+	margin-top: 15px;
+}
+#search li.line a{
+	border: 1px solid #fe8700;
+	background-color: #fe9b0e;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#febf66),to(#fe9b0e));
+	background: -moz-linear-gradient(top,#febf66,#fe9b0e);
+}
+
+#search li.job a{
+	border: 1px solid #cec000;
+	background-color: #d6c900;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#f7ea27),to(#d6c900));
+	background: -moz-linear-gradient(top,#f7ea27,#d6c900);
+}
+
+#search li.merit a{
+	border: 1px solid #91b900;
+	background-color: #a1c400;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#c9e818),to(#a1c400));
+	background: -moz-linear-gradient(top,#c9e818,#a1c400);
+}
+
+#search li.new a{
+	border: 1px solid #00b4ad;
+	background-color: #00beb6;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#31d7c6),to(#00beb6));
+	background: -moz-linear-gradient(top,#31d7c6,#00beb6);
+}
+
+#search li.cross a{
+	border: 1px solid #0082fe;
+	background-color: #0a8dfe;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#64aafe),to(#0a8dfe));
+	background: -moz-linear-gradient(top,#64aafe,#0a8dfe);
+}
+/*注目のお仕事・ランキング*/
+#attention .more p,
+#relation .more p{color:#ff3548;}
+#attention .title,
+#relation .title{color:#337DD0;color: #333;font-weight: bold;}
+
+/*ランキング*/
+#ranking li.rank1 p{background: url(../images_sp/rank1.png) 0px 15px no-repeat;}
+#ranking li.rank2 p{background: url(../images_sp/rank2.png) 0px 15px no-repeat;}
+#ranking li.rank3 p{background: url(../images_sp/rank3.png) 0px 15px no-repeat;}
+#ranking li.rank1 p,
+#ranking li.rank2 p,
+#ranking li.rank3 p{background-size:17px auto;}
+#ranking .more p{color:#ff3548;font-weight:normal;}
+#ranking .more{border-bottom:1px solid #DDD;}
+.i_more{display:inline-block;width:15px;height:20px;margin-right:5px;background: url(../images_sp/more.png) 0px 7px no-repeat;background-size:contain;}
+
+#ranking .more a,
+#attention .more a,
+#relation .more a{background:none;text-decoration:underline;color:#ff3548;}
+
+/*トピックス*/
+.text.no_link p{background:#FFF;}
+
+/*特集・リンク集*/
+#special ul li.image,
+#banner2 ul li.image{border-top:1px solid #CCC;}
+
+/*マイページ*/
+#mypage p.title{color:#337DD0;}
+#mypage p.title span{
+	color:#333;
+	background:#FFFF00;
+}
+
+/* --------------------------------------------------
+    form
+-------------------------------------------------- */
+input[type="submit"],
+input[type="reset"],
+button { cursor: pointer ;-webkit-tap-highlight-color:rgba(0,0,0,0.0);}
+form .list {border-top: 1px solid #CCCCCC ;}
+.form_checkbox h5.open.hasChilds,
+form .list li { position: relative ;background-color: #FFF;}
+form .list li.hasChilds.open{background-color: #ffffcc;}
+.form_checkbox h5.open.hasChilds.active,
+form .list li.active ,
+.list li.active {
+    font-weight: bold;
+    background-color: #ffccd9;
+}
+.form_checkbox h5.open.hasChilds label,
+form .list li label { text-align: left ;border-left:none ;border-bottom:none; border-top: 1px solid #FFFFFF;-webkit-tap-highlight-color:rgba(0,0,0,0.0);}
+.form_checkbox h5.open.hasChilds.active label,
+form .list li.active label { border-top: 1px solid #CCCCCC;border-bottom:none; }
+/*  チェックボックス・ラジオボタン  */
+.form_checkbox h5.open.hasChilds input[type="checkbox"],
+.form_checkbox h5.open.hasChilds input[type="radio"],
+form .list li input[type="checkbox"], form .list li input[type="radio"] {
+-webkit-tap-highlight-color:rgba(0,0,0,0.0);
+}
+
+form .list.scout_mail li,
+form .list.chbox li{/*border-left:1px solid #CCC;*/}
+
+/*  画像  */
+.form_checkbox h5.open.hasChilds input[type="checkbox"]+label,
+form .list li input[type="checkbox"]+label { background-image: url(../images_sp/checkbox_false.png) ;}
+.form_checkbox h5.open.hasChilds input[type="checkbox"]:checked+label,
+form .list li input[type="checkbox"]:checked+label { background-image: url(../images_sp/checkbox_checked.png) }
+.form_checkbox h5.open.hasChilds input[type="radio"]+label,
+form .list li input[type="radio"]+label { background-image: url(../images_sp/radio_false.png) }
+.form_checkbox h5.open.hasChilds input[type="radio"]:checked+label,
+form .list li input[type="radio"]:checked+label { background-image: url(../images_sp/radio_checked.png); background-color:#ffccd9;}
+
+form .list li input.no_image+label,
+form .childList li input.no_image+label{background-image:none;}
+
+/*  検索ページチェック画像なし  */
+form .list.chbox li.arrow label,
+form .childList li.arrow label.route_label{background:url(../images_sp/arrow.gif) right center no-repeat;}
+
+form p.cancel{color:#FF0000;background: url(../images_sp/alert.png) 0 0 no-repeat;background-size:16px auto;}
+.cancel2{background:#FFFFCC url(../images_sp/alert.png) 0 0 no-repeat;border:1px solid #FFFF00; }
+
+/*  テキストボックス  */
+#login_name,#login_pass,
+input[type="submit"], input[type="reset"], button { cursor: pointer }
+.form_radio {text-align:center;}
+#login_name ,#login_pass,
+.form_text input[type="text"],.form_text input[type="tel"],.form_text textarea,.form_text input[type="email"],.form_text input[type="password"]{
+	border:1px solid #fccad7;
+/*  background: -webkit-gradient(linear,left top,left bottom,from(#eee),to(#fff));
+  background: -moz-linear-gradient(top,#eee,#fff);*/
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-moz-border-radius: 3px;
+/*	-webkit-box-shadow: inset 0px 0px 3px #CCC;
+	-moz-box-shadow: inset 0px 0px 3px #CCC;*/
+-webkit-appearance: none;
+	box-shadow:0px 0px 0px 2px #fbeaef;
+	-webkit-box-shadow:0px 0px 0px 2px #fbeaef;
+	-moz-box-shadow:0px 0px 0px 2px #fbeaef;
+
+}
+.form_select_box select{
+	border:1px solid #fccad7;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-moz-border-radius: 3px;
+-webkit-appearance: none;
+	box-shadow:0px 0px 0px 2px #fbeaef;
+	-webkit-box-shadow:0px 0px 0px 2px #fbeaef;
+	-moz-box-shadow:0px 0px 0px 2px #fbeaef;
+}
+
+
+/*　入力ページ　*/
+.privacy_box {
+	font-weight:normal;
+/*    background: none repeat scroll 0 0 #eeebe2;*/
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}
+.privacy_box a {color:#FF0000;}
+/* --------------------------------------------------
+    list
+-------------------------------------------------- */
+.list>li{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border-bottom:1px solid #CCC;
+}
+ol.list li { list-style: decimal inside;}
+.list dt,
+.list li input[type="reset"],
+.list li input[type="submit"],
+.list li button,
+.list li label,
+.form_checkbox h5.open.hasChilds a,
+.form_checkbox h5.open.hasChilds input[type="checkbox"] label,
+.form_checkbox h5.open.hasChilds input[type="checkbox"] label {
+	text-shadow: -1px -1px 1px #FFFFFF;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background: #EDB530;
+	background: 
+-webkit-gradient(linear, left top, left bottom,
+	from(#FFF),
+	color-stop(0.07, #EDB530), 
+	to(#F0C255)  );
+  background:
+-moz-linear-gradient( top, 
+	#FFF,  
+	#F0C255 7%,  
+	#EDB530);
+}
+.list li a{
+/*灰*/  background:-webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+  background:-moz-linear-gradient( top, #FFF, #EEE);
+}
+/* + 詳細画面専用 */
+dl.list.inset{
+	border:1px solid #CCC;
+}
+.list>dt,
+.list>dd {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.list>dt{
+/*橙*/	/*border:1px solid #998a8a;color:#FFF;text-shadow: -1px -1px 1px #998a8a;*/
+/*青	border:1px solid #6588CC;color:#FFF;text-shadow: -1px -1px 1px #4568AB;*/
+/*緑	border:1px solid #7B9C30;color:#FFF;text-shadow: -1px -1px 1px #7B9C30;*/
+	border-right:none;
+	border-left:none;
+}
+.list dd.arrow,
+.list li.arrow,
+#search_cross div.link_box{
+background:#FFF;
+/*灰  background:-webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+  background:-moz-linear-gradient( top, #FFF, #EEE);*/
+}
+h5.open a:active,
+.list dd.arrow p:active,
+.list li div.link_box a:active,
+#search_cross div.link_box a:active,
+.list li a:active,
+.list li input[type="reset"]:active,
+.list li input[type="submit"]:active,
+.list li button:active,
+form .list li.active label,
+form .chbox li.active,
+.list li.hasChilds.open.active{
+	background: #ffccd9;
+}
+form .list li.active label { background: transparent }
+form .list li p.icon_save a:active,
+form .list li p.icon_nosave a:active{background: none;}
+
+/* + + inset */
+.list.inset {
+	border-left:1px solid #CCC;
+	border-radius: 5px;*/
+	box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.list.inset li:first-child,
+.list.inset dt:first-child,
+.list.inset dd:first-child,
+.list.inset li:first-child a,
+.list.inset li:first-child input[type="reset"],
+.list.inset li:first-child input[type="submit"],
+.list.inset li:first-child button { border-radius: 3px 3px 0 0 }
+.list.inset li:last-child,
+.list.inset dd:last-child,
+.list.inset>:last-child,
+.list.inset :last-child :last-child { border-radius: 0 0 3px 3px }
+.list.c2 li a,
+.list.c2 li input[type="reset"],
+.list.c2 li input[type="submit"],
+.list.c2 li button,
+.list.c2 li label,
+.list.c3 li a,
+.list.c3 li input[type="reset"],
+.list.c3 li input[type="submit"],
+.list.c3 li button,
+.list.c3 li label,
+.list.c4 li a,
+.list.c4 li input[type="reset"],
+.list.c4 li input[type="submit"],
+.list.c4 li button,
+.list.c4 li label,
+.list.c5 li a,
+.list.c5 li input[type="reset"],
+.list.c5 li input[type="submit"],
+.list.c5 li button,
+.list.c5 li label {
+	border-right: 1px solid #ccc;
+}
+/* + + 2カラムinset */
+.list.c2.inset>:first-child,
+.list.c2.inset>:first-child * {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 0px;
+}
+.list.c2.inset>:nth-child(2),
+.list.c2.inset>:nth-child(2) * { border-top-right-radius: 3px }
+.list.c2.inset>:nth-last-child(2),
+.list.c2.inset>:nth-last-child(2) * {
+	border-top-right-radius: 0;
+	border-bottom-left-radius: 3px;
+}
+.list.c2.inset>:last-child,
+.list.c2.inset>:last-child * {
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 0;
+}
+/* + + 3カラムinset */
+.list.c3.inset>:first-child,
+.list.c3.inset>:first-child * {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0px;
+}
+.list.c3.inset>:nth-child(3), .list.c3.inset>:nth-child(3) * { border-top-right-radius: 5px }
+.list.c3.inset>:nth-last-child(3), .list.c3.inset>:nth-last-child(3) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+}
+.list.c3.inset>:last-child, .list.c3.inset>:last-child * {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+}
+/* + + 4カラムinset */
+.list.c4.inset>:first-child,
+ .list.c4.inset>:first-child * {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0px;
+}
+.list.c4.inset>:nth-child(4),
+.list.c4.inset>:nth-child(4) * { border-top-right-radius: 5px }
+.list.c4.inset>:nth-last-child(4), .list.c4.inset>:nth-last-child(4) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+}
+.list.c4.inset>:last-child,
+.list.c4.inset>:last-child * {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+}
+/* + + 5カラムinset */
+.list.c5.inset>:first-child, 
+.list.c5.inset>:first-child * {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0px;
+}
+.list.c5.inset>:nth-child(5), .list.c5.inset>:nth-child(5) * { border-top-right-radius: 5px }
+.list.c5.inset>:nth-last-child(5), .list.c5.inset>:nth-last-child(5) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+}
+.list.c5.inset>:last-child, .list.c5.inset>:last-child * {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+}
+/* --------------------------------------------------
+    検索
+-------------------------------------------------- */
+#chbox_btn{background:#FFF;/*border-top:2px dotted #999;*/}
+#chbox_btn a{
+	color:#FFF;
+/*赤*/  background:-webkit-gradient(linear,left top,left bottom,from(#FF0000),to(#AA0000));
+  background:-moz-linear-gradient(top,#FF0000,#AA0000);
+}
+.childList li{border-bottom: 1px solid #CCCCCC ;}
+.childList li label{border-top:1px solid #FFF !important;}
+/* --------------------------------------------------
+    仕事一覧
+-------------------------------------------------- */
+/*　並び替えボタン　*/
+#sort ul{
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+	box-sizing: border-box;
+border-bottom:1px solid #CCC;
+}
+#sort ul li{border-top:none;border-bottom:none;text-shadow:1px 1px 0px #FFF;}
+#sort ul li.sort_origin a,
+#sort ul li.sort_new a,
+#sort ul li.sort_fin a,
+#sort ul li.sort_oiwai a{
+	color: #676767;
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+#sort ul li.sort_origin,
+#sort ul li.sort_new,
+#sort ul li.sort_fin,
+#sort ul li.sort_oiwai{
+	color:#333;
+}
+#sort ul li.active{border-right:1px solid #CCC;}
+
+/*　リンク　*/
+.detail_copyA, .detail_copyB, .detail_copyC, .ranking_copy{
+	width:92%;
+	margin:10px auto 0 auto;
+	background:#fff;
+	border:1px #ccc solid;
+	padding: 0 0 10px 0;
+}
+
+.detail_copyA a,
+.detail_copyB a,
+.detail_copyC a,
+.ranking_copy a{
+	background:url(../images_sp/arrow_detail.png) no-repeat right center;
+	background-size:30px auto;
+}
+.ranking_copy a{
+	border-top:none;
+  -moz-box-shadow: 0 -5px 8px #999;
+  -webkit-box-shadow: 0 -5px 8px #999;
+}
+
+/*　NEWアイコン　*/
+.detail_copyA .new_icon,
+.detail_copyB .new_icon,
+.detail_copyC .new_icon{
+	color:#FFF;
+	border-radius: 3px;
+	border:1px solid #FF219C;
+	text-shadow:0 0 3px #FF219C;
+  background:#FF3648;
+}
+
+/*　検索結果の給与・社名欄　*/
+.icon_box{border-bottom:1px dotted #ccc; }
+.salary{font-weight:bold; color:#333;}
+.company{color:#E45991;}
+
+/*　検索結果のキャッチコピー　*/
+#detail .copy{color:#20ACDD;}
+.detail_copyA .copy,
+.detail_copyB .copy,
+.detail_copyC .copy,
+.ranking_copy .copy {text-decoration:underline;}
+
+/*　検索結果の画像　*/
+.detail_copyA .list_photo img{border:1px solid #CCC;}
+
+/*　検索結果のテーブル欄　*/
+.detail_copyA table,
+.detail_copyB table,
+.detail_copyC table,
+.ranking_copy table{border: 1px #cccccc solid;color:#333; }
+.detail_copyA th,
+.detail_copyB th,
+.detail_copyC th,
+.ranking_copy th{border-bottom: 1px #cccccc solid;}
+.detail_copyA th,
+.detail_copyB th,
+.detail_copyC th,
+.ranking_copy th{background-color: #F3F3F3 ;}
+.detail_copyA td,
+.detail_copyB td,
+.detail_copyC td,
+.ranking_copy td{font-size: 90%;line-height: 120%;border-bottom: 1px #cccccc solid;text-align: left;padding: 3px;background-color: #FFF ;}
+
+/*　次の10件　*/
+#continue{border-top:1px solid #CCC;border-bottom:1px solid #CCC;}
+#continue a{
+	color:#FF4A4B;
+	text-shadow:none;
+  background:-webkit-gradient(linear,left top,left bottom,from(#FFEBEB),to(#FFD8D8));
+  background:-moz-linear-gradient(top,#FFEBEB,#FFD8D8);
+}
+/*　駅検索時の一覧　*/
+#station{background: none repeat scroll 0 0 #eeebe2;}
+
+/* --------------------------------------------------
+    仕事情報
+-------------------------------------------------- */
+#detail .contents_top{
+/*  -moz-box-shadow: 0 3px 3px #ccc;
+  -webkit-box-shadow: 0 3px 3px #ccc;*/
+}
+#detail .copy {font-size:100%; color:#ff3366;}
+/*　一覧バー部分　*/
+.list_title,
+.detail_title,
+.detail_title2{
+	border-bottom:1px solid #ccc;
+}
+/*　一覧バーの文字部分　*/
+.list_title h2,
+.detail_title h2,
+.detail_title2 h2{color:#333333;}
+/*　画像箇所　*/
+#photo_detail img,
+#photo_detail1 img,
+#photo_detail2 img{border:1px solid #CCC;}
+/*　コメント箇所　*/
+.spec_detail_pr{
+  margin: 0 auto;
+}
+.spec_detail_pr h4{
+background:#FFFFCD;padding:10px 15px;
+}
+.spec_detail_pr .pr{
+  padding: 10px 15px;
+/*	border:1px solid #dfd6e2;
+	background:#eeebe2 url(../images_sp/pr_icon.png) 5px 5px no-repeat;
+	background-size:120px auto;*/
+}
+/*　応募ボタン下部　*/
+.extra p.clip{
+	border-radius: 5px;
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+.extra div.clip_sumi,
+.extra p.clip a{
+	border-radius: 5px;
+	border:1px solid #CCC;
+	background:url(../images_sp/clip.png) 0px 3px no-repeat;
+	background-size:32px auto;
+}
+.extra div.clip_sumi{
+	background:#EEE url(../images_sp/clip.png) 0px 3px no-repeat;
+	background-size:32px auto;
+}
+#co_header .send_work a,
+.extra .send_work a{
+	border-radius: 5px;
+	border:1px solid #CCC;
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+/*　検索条件保存　*/
+#search_regist_btn p a,
+.condition_btn p a{
+	border-radius: 5px;
+	border:1px solid #CCC;
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+/*　応募ページ　*/
+.application_loginbox{
+	box-shadow:0 0px 7px #666;
+}
+h5.open.application_login a{
+	color:#333;
+/*赤*/  background:-webkit-gradient(linear,left top,left bottom,from(#FEEEEF),to(#FDDDDE));
+  background:-moz-linear-gradient(top,#FEEEEF,#FDDDDE);
+}
+h5.application_login a:first-line{color:#337DD0;}
+h5.open.application_login a img{padding:0 5px 6px 0;}
+/*　電話応募ページ　*/
+p.tel_number{
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+p.tel_number a{
+	background: url(../images_sp/tel.png) 5px center no-repeat,url(../images_sp/arrow.gif) right center no-repeat;
+	background-size:45px auto ,auto auto;
+	border-bottom:1px solid #CCC;
+}
+/*　説明会ページ　*/
+.list dd.arrow .tel a{
+	background: url(../images_sp/tel.png) 5px center no-repeat,url(../images_sp/arrow.gif) right center no-repeat;
+	background-size:30px auto ,20px auto;
+	border-bottom:1px solid #CCC;
+}
+/*　お祝い金　*/
+/*　result　*/
+.present_A{width:120px;background:url(../images_sp/present_a.png) center left no-repeat ;}
+.present_B,
+.present_C{width:120px;background:url(../images_sp/present_c.png) center left no-repeat ;}
+.present_A,
+.present_B,
+.present_C{background-size:120px;float:left;}
+.price{color:#372600;}
+/*　detail　*/
+.present_detail{
+	background:url(../images_sp/present_detail.png) top center no-repeat;
+	background-size:310px;
+}
+.price_detail{
+	color:#B28303;
+}
+
+
+/* --------------------------------------------------
+    ボタン
+-------------------------------------------------- */
+.btn.back_gray input[type='button'],
+.btn.reset input[type='button'],
+.btn.reset a,
+.btn.logout input[type='submit'],
+.btn.logout input[type='button'],
+form .btn.mail_btn input[type='button'],
+form .btn.delete input[type='submit'],
+form .btn.delete input[type='button'],
+form .btn.receive input[type='submit'],
+form .btn input[type='reset'] ,
+form .btn input[type='button']{
+	color:#000;
+	text-shadow: -1px -1px 1px #FFF;
+/*灰*/  background:-webkit-gradient(linear, left top, left bottom, from(#EEE), to(#CCC));
+  background:-moz-linear-gradient( top, #EEE, #CCC);
+}
+
+.btn.inquiry a,
+.btn.back a,
+.btn.top a,
+form .btn.member2 input[type='submit'],
+form .btn.member2 input[type='button'],
+form .btn.mail_btn input[type='button']:nth-child(2n),
+form .btn.delete input[type='submit']:nth-child(2n),
+form .btn.receive input[type='submit']:nth-child(2n),
+form .btn input[type='submit']{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border: 1px solid #E13938;
+
+background:-webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background:-moz-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background: linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-color: #FF4C5D;
+background-size:15px 15px;
+	color: #FFF;
+	-webkit-box-shadow: 0px 2px 3px #CCC;
+	-moz-box-shadow: 0px 2px 3px #CCC;
+	text-shadow: -1px -1px 1px #c11a24;
+}
+
+
+/* + 応募専用 */
+.type2 .oubo .mail a,
+.type2 .oubo2 .mail a,
+.type3 .oubo .mail a,
+.type3 .oubo2 .mail a,
+.detail_copyB .oubo .mail a,
+.detail_copyB .oubo2 .mail a,
+.detail_copyC .oubo .mail a,
+.detail_copyC .oubo2 .mail a{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border: 1px solid #E13938;
+
+background: url(../images_sp/oubo_mail.png) no-repeat center center, -webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background: url(../images_sp/oubo_mail.png) no-repeat center center,-moz-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background: url(../images_sp/oubo_mail.png) no-repeat center center, linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-color: #FF4C5D;
+background-size:180px auto, 15px 15px;
+	color: #FFF;
+	-webkit-box-shadow: 0px 2px 3px #CCC;
+	-moz-box-shadow: 0px 2px 3px #CCC;
+	text-shadow: -1px -1px 1px #c11a24;
+/*  background: url(../images_sp/oubo_mail.png) no-repeat center center,-webkit-gradient(linear, left top, left bottom,from(#ff9eb6),color-stop(0.45, #ff6b90), color-stop(0.5, #fe4875),to(#ff3366)  );
+  background: url(../images_sp/oubo_mail.png) no-repeat center center,-moz-linear-gradient(top,#ff9eb6 ,#ff6b90 45%,#fe4875 50%,#ff3366); *//* Firefox用 */
+}
+
+.type1 .oubo .mail a,
+.type1 .oubo2 .mail a,
+.detail_copyA .oubo .mail a,
+.detail_copyA .oubo2 .mail a{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border: 1px solid #E13938;
+
+background: url(../images_sp/oubo_mail_sub.png) no-repeat center center, -webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background: url(../images_sp/oubo_mail_sub.png) no-repeat center center,-moz-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background: url(../images_sp/oubo_mail_sub.png) no-repeat center center, linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-color: #FF4C5D;
+background-size:180px auto, 15px 15px;
+	color: #FFF;
+	-webkit-box-shadow: 0px 2px 3px #CCC;
+	-moz-box-shadow: 0px 2px 3px #CCC;
+	text-shadow: -1px -1px 1px #c11a24;
+
+ /* background: url(../images_sp/oubo_mail_sub.png) no-repeat center center,-webkit-gradient(linear, left top, left bottom,from(#ff9eb6),color-stop(0.45, #ff6b90), color-stop(0.5, #fe4875),to(#ff3366)  );
+  background: url(../images_sp/oubo_mail_sub.png) no-repeat center center,-moz-linear-gradient(top,#ff9eb6 ,#ff6b90 45%,#fe4875 50%,#ff3366); *//* Firefox用 */
+/*	background-size: 30px auto;*/
+}
+
+.oubo .tel a,
+.oubo2 .tel a{
+/*  background: url(../images_sp/oubo_tel.png) no-repeat center center,-webkit-gradient(linear, left top, left bottom,from(#ff9eb6),color-stop(0.45, #ff6b90), color-stop(0.5, #fe4875),to(#ff3366)  );
+  background: url(../images_sp/oubo_tel.png) no-repeat center center,-moz-linear-gradient(top,#ff9eb6 ,#ff6b90 45%,#fe4875 50%,#ff3366);*//* Firefox用 */
+}
+
+.type1 .oubo .mail a,
+.type1 .oubo2 .mail a,
+.type2 .oubo .mail a,
+.type2 .oubo2 .mail a,
+.type3 .oubo .mail a,
+.type3 .oubo2 .mail a,
+.detail_copyA .oubo .mail a,
+.detail_copyA .oubo2 .mail a,
+.detail_copyB .oubo .mail a,
+.detail_copyB .oubo2 .mail a,
+.detail_copyC .oubo .mail a,
+.detail_copyC .oubo2 .mail a,
+.oubo .tel a,
+.oubo2 .tel a{text-indent:-10000px;/*background-size:auto 50px;border:1px solid #DE3679;*/}
+
+
+.oubo2.oubo_middle.oubo_top{padding-top:20px;	border-top:1px dotted #d2d2d2;}
+
+
+/* + 会員登録専用 */
+#regist{/*background-color:#EEE;border-top:1px solid #CCC;*/box-shadow:0px -2px 3px #CCC;}
+.btn.mypage a,
+#regist .btn a,
+.btn.regist a{
+	border: 1px solid #E13938;
+background-color: #FF4C5D;
+background-image: -webkit-linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-image: linear-gradient(-45deg, #FF3D4A 15%, transparent 15%, transparent 50%, #FF3D4A 50%, #FF3D4A 65%, transparent 65%, transparent);
+background-size: 15px 15px;
+font-weight:normal;
+  text-shadow: none;
+}
+
+/* + お祝い金専用 */
+#oiwai{background-color:#EEE;border-top:1px solid #CCC;}
+.btn.oiwai a,
+#oiwai .btn a{
+	border: 1px solid #F089BE;
+/*ピンク*/  background-image:-webkit-gradient(linear, left top, left bottom, from(#FEBAE1),to(#FD7BC6));
+  background: -moz-linear-gradient(top,#FEBAE1,#FD7BC6);
+}
+.present_aboout{
+  background-image:-webkit-gradient(linear, left top, left bottom, from(#FFF),to(#EEE));
+  background: -moz-linear-gradient(top,#FFF,#EEE);
+	border-radius: 5px;
+	border:1px solid #CCC;
+}
+.present_aboout a{
+	background:url(../images_sp/arrow.gif) right center no-repeat;
+}
+
+.red{color:#FF0000;}
+
+
+/* --------------------------------------------------
+    マイページ
+-------------------------------------------------- */
+/*　WEBメール・スカウトメール並び替えBOX　*/
+#sort_scout ul{border-right:1px solid #CCC;}
+#sort_scout ul li{
+	border-left:1px solid #CCC;
+	border-bottom:none;
+	background:#FFF;
+}
+#sort_scout ul li a{
+	border:none;
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+#sort_scout li.save.outbox{border-right:1px solid #CCC;}
+
+/*  スカウトメールのアコーディオンのタイトル　※チェックボックスなし  */
+a.iconOpen,
+a.iconClose{
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	background:#FFF;
+/*灰  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);*/
+}
+a.iconOpen span{
+  background:url(../images_sp/plus.png) right 0px no-repeat;
+	background-size:50px 50px;
+}
+a.iconClose span{
+  background:url(../images_sp/minus.png) right 0px no-repeat;
+	background-size:50px 50px;
+}
+
+/*  検索ページ・メール配信のアコーディオンのタイトル　※チェックボックスあり  */
+.form_checkbox h5.open.hasChilds,
+.chbox.list li.open{
+/*	border-top:1px solid #CCC;*/
+}
+.form_checkbox h5.open.hasChilds a.iconOpen,
+.form_checkbox h5.open.hasChilds a.iconClose,
+.chbox li.open a.iconOpen,
+.chbox li.open a.iconClose{
+	border:none;
+	background:none;
+}
+.form_checkbox h5.open.hasChilds a.iconOpen,
+.chbox li.open a.iconOpen{
+  background:url(../images_sp/plus.png) right 0px no-repeat;
+	background-size:50px 50px;
+}
+.form_checkbox h5.open.hasChilds a.iconClose,
+.chbox li.open a.iconClose{
+  background:url(../images_sp/minus.png) right 0px no-repeat;
+	background-size:50px 50px;
+}
+
+/*  クロス検索  */
+#search_cross div.link_box a{
+/*灰  background:-webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+  background:-moz-linear-gradient( top, #FFF, #EEE);*/
+	background:#FFF;
+	border-bottom:1px solid #CCC;
+}
+#search_cross div.link_box a p{
+	color:#333;
+	background:url(../images_sp/arrow.gif) right center no-repeat;
+  text-shadow: -1px -1px 1px #FFF;
+}
+
+/*  スカウト・WEBメールページ  */
+.mail_box{background:#EEE;border-top:1px solid #CCC;border-bottom:1px solid #CCC;}
+.mail_box li.active{border-right:1px solid #CCC;}
+
+.mail_outbox .list.c2.inset>:first-child,
+.mail_outbox .list.c2.inset>:first-child * {
+	border-bottom-right-radius: 0px;
+}
+
+.sub_container a.iconMailOpened,
+.sub_container a.iconMailNew{
+	border-bottom:1px solid #CCC;
+/*灰*/  background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+  background:-moz-linear-gradient(top,#FFF,#EEE);
+}
+.sub_container a.iconMailNew div{
+  background:url(../images_sp/mail_new.png) left 8px no-repeat;
+	background-size:35px 35px;
+}
+.sub_container a.iconMailOpened div{
+  background:url(../images_sp/mail_opened.png) left 8px no-repeat;
+	background-size:35px 35px;
+}
+
+.scout_mail p.icon_nosave a,
+.scout_mail p.icon_save a{background:none;}
+
+
+/*　メール詳細ページ　*/
+table#mail_detail{border: 1px #cccccc solid;color:#333;}
+table#mail_detail th{border-bottom: 1px #cccccc solid;background-color: #F3F3F3 ;}
+table#mail_detail td{border-bottom: 1px #cccccc solid;}
+.icon_save_box a{
+	border-radius: 9px;
+	border:1px solid #CCC;
+}
+
+/*　応募履歴ページ　*/
+.form_apply{color:#FFF;background:#F381B1;text-shadow:none;border-radius: 3px;}
+
+
+/*  検索ページ・メール配信のアコーディオンのタイトル　※チェックボックスあり  */
+.form_checkbox h5.open.hasChilds label.open_text,
+.chbox li.open label{border-top:1px solid #FFF;}
+.form_checkbox h5.open.hasChilds.active label,
+.chbox .childList .active label{border-top:1px solid #CCC !important;}
+
+
+/* --------------------------------------------------
+    サブページ
+-------------------------------------------------- */
+/*　FAQ　*/
+.faq p.title{color:#FF2E05;}
+.faq p.title span.number{
+	border-radius: 3px;
+	color:#FFF;
+/*橙*/  background:-webkit-gradient(linear, left top, left bottom, from(#F16714), to(#FF2E05));
+  background:-moz-linear-gradient( top, #F16714, #FF2E05);
+}
+/*------------privacy/disclaimer------------*/
+.text_box_disclaimer{border:1px solid #CCC;}
+
+/*------------mail_regist------------*/
+.form_mail_veri span{
+	background:#F3F9F9;
+	border:1px solid #D7F4FF;
+}
+/* --------------------------------------------------
+    フッター
+-------------------------------------------------- */
+footer{
+	background:url(../images_sp/footer_bg.png) 0 0 repeat;
+}
+footer .small a{color:#333;}
+footer#sub_footer{
+	clear:both;
+	text-align:center;
+}
+footer#sub_footer .top_back a {
+    clear: both;
+    color: #676767;
+    padding: 10px 30px 10px 10px;
+    text-align: center;
+}
+
+
+
+/*social*/
+.social_bottom{background:#EEE;border-top:1px solid #CCC;border-bottom:1px solid #CCC;}
+
+
+/*list_box*/
+footer ul{
+	border:1px solid #B3B3B3;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	background: #FFF;
+	box-shadow:1px 1px 3px rgba(0,0,0,0.1);
+	-webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.1);
+  background-image:-webkit-gradient(linear, left top, left bottom, from(#FFF),to(#EEE));
+  background: -moz-linear-gradient(top,#FFF,#EEE);
+}
+
+/*list-nav*/
+footer ul{
+	box-shadow: 0 0 3px #666;
+	border-bottom: 1px solid #B3B3B3;
+}
+footer li{
+	background-color: #DDD;
+	border-top: 1px solid #B3B3B3;
+}
+footer li a{
+	border-top:1px solid #FFF;
+	color:#333;
+}
+footer li.active{
+	color: #EE6600;
+	background:-webkit-gradient(linear, left top, left bottom, from(#f9e88f),to(#faf2c9));
+	background: -moz-linear-gradient(top,#f9e88f,#faf2c9);
+
+}
+footer li.active a{
+	color: #EE6600;
+}
+
+/*footer*/
+footer li:first-child{
+	border-top:none;
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+}
+footer li:first-child a{
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+}
+footer li:last-child{
+	-webkit-border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+}
+footer li:last-child a{
+	-webkit-border-radius: 0px 0px 5px 5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+}
+#copyright{
+	color:#FFF;
+  background: #666666;
+}
+
+.ft_back {
+background: url(../images_sp/hd_back.png) no-repeat center bottom;
+background-size: auto 30px;
+height: 70px;
+}
+
+p.small {
+font-size: 11px;
+font-weight: normal;
+}
+
+.text_privacy{
+	border: solid 1px #808080;
+}
+
+/*パスワードリマインダー ページのトップへ戻る*/
+.login_reminder p,
+.page_top p{
+  background-image:-webkit-gradient(linear, left top, left bottom, from(#FFF),to(#EEE));
+  background: -moz-linear-gradient(top,#FFF,#EEE);
+	border-radius: 5px;
+	border:1px solid #CCC;
+}
+
+.page_top p:after {
+    color:#676767;
+    content: "▲"; /* 文字列を生成 */
+    text-shadow: -1px -1px 1px #FFF; /* 文字にドロップシャドウ */
+}
+
+
+
+/*--------------------------------------------2013/5/1追加：レコメンドのタイトル--------------------------------------------*/
+.reno h3.title1,
+.reno h3.title2,
+.reno h3.title3,
+.reno h3.title4,
+.reno h3.title5{
+color: #fff;
+background:#FFFFCD;
+color:#333;
+/*text-shadow: -1px -1px 1px #999;*/
+padding:10px 10px;
+font-size:16px;
+/*text-indent:5px;*/
+clear:both;
+border-top:1px solid #E4E4E4 ;
+border-bottom:1px solid #E4E4E4;
+/*
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #ff3366), color-stop(0.50, #ff3366), color-stop(0.50, #ff3366), color-stop(1.00, #ff3366));
+background: -webkit-linear-gradient(top, #82bcea 0%, #ff3366 50%, #ff3366 50%, #ff3366 100%);
+background: -moz-linear-gradient(top, #ff3366 0%, #ff3366 50%, #ff3366 50%, #ff3366 100%);
+background: -o-linear-gradient(top, #ff3366 0%, #ff3366 50%, #ff3366 50%, #ff3366 100%);
+background: -ms-linear-gradient(top, #ff3366 0%, #ff3366 50%, #ff3366 50%, #ff3366 100%);
+background: linear-gradient(to bottom, #ff3366 0%, #ff3366 50%, #ff3366 50%, #ff3366 100%);
+*/
+
+}
+
+/*関連のお仕事*/
+.relation h3.title0{
+color: #FFF;
+text-shadow: -1px -1px 1px #333;
+padding:3px 0;
+text-align:center;
+clear:both;
+
+border-radius: 10px;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #b8a1a1), color-stop(1.00, #c4abab));
+background: -webkit-linear-gradient(#b8a1a1, #c4abab);
+background: -moz-linear-gradient(#b8a1a1, #c4abab);
+background: -o-linear-gradient(#b8a1a1, #c4abab);
+background: -ms-linear-gradient(#b8a1a1, #c4abab);
+background: linear-gradient(#b8a1a1, #c4abab);
+
+}
+
+#kanren{clear:both;width:100%;font-size:80%;}
+#kanren h4{clear:both; text-indent:10px;color: #331f09;}
+#kanren p{
+	border-radius: 5px;
+	background:-webkit-gradient(linear,left top,left bottom,from(#FFF),to(#EEE));
+	background:-moz-linear-gradient(top,#FFF,#f2f2f2);
+	color:#333;
+	width:45%;
+	float:left;
+	margin:1px 2%;
+	padding:3px 0;
+	text-align:center;
+	border:1px solid #cccccc;
+
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+#kanren p a{display:block;}
+
+/*
+#kanren h4.job,
+#kanren h4.area,
+#kanren h4.station,
+#kanren p.job,
+#kanren p.area,
+#kanren p.station{display:none;}
+*/

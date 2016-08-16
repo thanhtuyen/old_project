@@ -1,0 +1,1210 @@
+29-09-2015 05:08:21   /home/ec2-user/reeracoen-web-crawler/tmp/current_page.txt
+29-09-2015 05:08:21   {"currentPage":"4"}
+29-09-2015 05:08:21   Start to get page: 4
+29-09-2015 05:08:21   Error: Can not login! Try to log-in again
+29-09-2015 05:08:21   /home/ec2-user/reeracoen-web-crawler/tmp/current_page.txt
+29-09-2015 05:08:21   {"currentPage":"4"}
+29-09-2015 05:08:21   Start to get page: 4
+29-09-2015 05:08:22   CSV file: storage/2015-09-29.csv
+29-09-2015 05:08:22   Limit: 35
+29-09-2015 05:08:25   Get CV from : https://www.jobbkk.com/resumes/detail/999960/.html
+29-09-2015 05:08:25   Start to get element: fullName
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Start to get element: profile
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Start to get element: job_requirement
+29-09-2015 05:08:25   Get job category 1
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Start to get element: education
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Start to get element: workExperience
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Start to get element: skill
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Start to get element: training
+29-09-2015 05:08:25   Result after analytic content
+29-09-2015 05:08:25   Can not export CV from https://www.jobbkk.com/resumes/detail/999960/.html
+29-09-2015 05:08:25   Get CV from : https://www.jobbkk.com/resumes/detail/1105440/fdgs.html
+29-09-2015 05:08:29   Start to get element: fullName
+29-09-2015 05:08:29   Result after analytic content
+29-09-2015 05:08:29   Start to get element: job_requirement
+29-09-2015 05:08:29   Get job category 1
+29-09-2015 05:08:29   Result after analytic content
+29-09-2015 05:08:29   Start to get element: education
+29-09-2015 05:08:29   Result after analytic content
+29-09-2015 05:08:29   Start to get element: workExperience
+29-09-2015 05:08:29   Result after analytic content
+29-09-2015 05:08:29   Start to get element: skill
+29-09-2015 05:08:29   Result after analytic content
+29-09-2015 05:08:29   Start to get element: training
+29-09-2015 05:08:29   Result after analytic content
+29-09-2015 05:08:29   Get CV from : https://www.jobbkk.com/resumes/detail/1087703/customer service.html
+29-09-2015 05:08:32   Start to get element: fullName
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Start to get element: profile
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Start to get element: job_requirement
+29-09-2015 05:08:32   Get job category 1
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Start to get element: education
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Start to get element: workExperience
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Start to get element: skill
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Start to get element: training
+29-09-2015 05:08:32   Result after analytic content
+29-09-2015 05:08:32   Get CV from : https://www.jobbkk.com/resumes/detail/1081266/Fashion Designer.html
+29-09-2015 05:08:36   Start to get element: fullName
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Start to get element: profile
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Start to get element: job_requirement
+29-09-2015 05:08:36   Get job category 1
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Start to get element: education
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Start to get element: workExperience
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Start to get element: skill
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Start to get element: training
+29-09-2015 05:08:36   Result after analytic content
+29-09-2015 05:08:36   Get CV from : https://www.jobbkk.com/resumes/detail/1027024/paralegal  Legal Affairs.html
+29-09-2015 05:08:39   Start to get element: fullName
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Start to get element: profile
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Start to get element: job_requirement
+29-09-2015 05:08:39   Get job category 1
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Start to get element: education
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Start to get element: workExperience
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Start to get element: skill
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Start to get element: training
+29-09-2015 05:08:39   Result after analytic content
+29-09-2015 05:08:39   Get CV from : https://www.jobbkk.com/resumes/detail/1092694/Networker.html
+29-09-2015 05:08:44   Start to get element: fullName
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Start to get element: profile
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Start to get element: job_requirement
+29-09-2015 05:08:44   Get job category 1
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Start to get element: education
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Start to get element: workExperience
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Start to get element: skill
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Start to get element: training
+29-09-2015 05:08:44   Result after analytic content
+29-09-2015 05:08:44   Get CV from : https://www.jobbkk.com/resumes/detail/1082747/Engineer.html
+29-09-2015 05:08:48   Start to get element: fullName
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Start to get element: profile
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Start to get element: job_requirement
+29-09-2015 05:08:48   Get job category 1
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Start to get element: education
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Start to get element: workExperience
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Start to get element: skill
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Start to get element: training
+29-09-2015 05:08:48   Result after analytic content
+29-09-2015 05:08:48   Get CV from : https://www.jobbkk.com/resumes/detail/1099787/Civil Engineer.html
+29-09-2015 05:08:52   Start to get element: fullName
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Start to get element: profile
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Start to get element: job_requirement
+29-09-2015 05:08:52   Get job category 1
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Start to get element: education
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Start to get element: workExperience
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Start to get element: skill
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Start to get element: training
+29-09-2015 05:08:52   Result after analytic content
+29-09-2015 05:08:52   Get CV from : https://www.jobbkk.com/resumes/detail/998139/Admin.html
+29-09-2015 05:08:55   Start to get element: fullName
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Start to get element: profile
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Start to get element: job_requirement
+29-09-2015 05:08:55   Get job category 1
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Start to get element: education
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Start to get element: workExperience
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Start to get element: skill
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Start to get element: training
+29-09-2015 05:08:55   Result after analytic content
+29-09-2015 05:08:55   Get CV from : https://www.jobbkk.com/resumes/detail/1048467/Purchasing  Planning.html
+29-09-2015 05:08:58   Start to get element: fullName
+29-09-2015 05:08:58   Result after analytic content
+29-09-2015 05:08:58   Start to get element: profile
+29-09-2015 05:08:58   Result after analytic content
+29-09-2015 05:08:58   Start to get element: job_requirement
+29-09-2015 05:08:58   Get job category 1
+29-09-2015 05:08:58   Result after analytic content
+29-09-2015 05:08:58   Start to get element: education
+29-09-2015 05:08:58   Result after analytic content
+29-09-2015 05:08:58   Start to get element: workExperience
+29-09-2015 05:08:58   Result after analytic content
+29-09-2015 05:08:59   Start to get element: skill
+29-09-2015 05:08:59   Result after analytic content
+29-09-2015 05:08:59   Start to get element: training
+29-09-2015 05:08:59   Result after analytic content
+29-09-2015 05:08:59   Get CV from : https://www.jobbkk.com/resumes/detail/275297/Account Manager.html
+29-09-2015 05:09:02   Start to get element: fullName
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Start to get element: profile
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Start to get element: job_requirement
+29-09-2015 05:09:02   Get job category 1
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Start to get element: education
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Start to get element: workExperience
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Start to get element: skill
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Start to get element: training
+29-09-2015 05:09:02   Result after analytic content
+29-09-2015 05:09:02   Get CV from : https://www.jobbkk.com/resumes/detail/1001751/Engineer.html
+29-09-2015 05:09:06   Start to get element: fullName
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Start to get element: profile
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Start to get element: job_requirement
+29-09-2015 05:09:06   Get job category 1
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Start to get element: education
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Start to get element: workExperience
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Start to get element: skill
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Start to get element: training
+29-09-2015 05:09:06   Result after analytic content
+29-09-2015 05:09:06   Get CV from : https://www.jobbkk.com/resumes/detail/808798/พนักงานธุรการ.html
+29-09-2015 05:09:15   Start to get element: fullName
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Start to get element: profile
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Start to get element: job_requirement
+29-09-2015 05:09:15   Get job category 1
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Start to get element: education
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Start to get element: workExperience
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Start to get element: skill
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Start to get element: training
+29-09-2015 05:09:15   Result after analytic content
+29-09-2015 05:09:15   Get CV from : https://www.jobbkk.com/resumes/detail/1106128/surveyor.html
+29-09-2015 05:09:25   Start to get element: fullName
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Start to get element: profile
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Start to get element: job_requirement
+29-09-2015 05:09:25   Get job category 1
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Start to get element: education
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Start to get element: workExperience
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Start to get element: skill
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Start to get element: training
+29-09-2015 05:09:25   Result after analytic content
+29-09-2015 05:09:25   Get CV from : https://www.jobbkk.com/resumes/detail/1102470/IT Support.html
+29-09-2015 05:09:29   Start to get element: fullName
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Start to get element: profile
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Start to get element: job_requirement
+29-09-2015 05:09:29   Get job category 1
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Start to get element: education
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Start to get element: workExperience
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Start to get element: skill
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Start to get element: training
+29-09-2015 05:09:29   Result after analytic content
+29-09-2015 05:09:29   Total CV from page 4 is 14
+29-09-2015 05:09:29   Saved 14 CV(s) to file
+29-09-2015 05:09:29   Next page : 5
+29-09-2015 05:09:32   Get CV from : https://www.jobbkk.com/resumes/detail/710849/Graphic Design.html
+29-09-2015 05:09:39   Start to get element: fullName
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Start to get element: profile
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Start to get element: job_requirement
+29-09-2015 05:09:39   Get job category 1
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Start to get element: education
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Start to get element: workExperience
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Start to get element: skill
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Start to get element: training
+29-09-2015 05:09:39   Result after analytic content
+29-09-2015 05:09:39   Get CV from : https://www.jobbkk.com/resumes/detail/1091841/Web Developer.html
+29-09-2015 05:09:42   Start to get element: fullName
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Start to get element: profile
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Start to get element: job_requirement
+29-09-2015 05:09:42   Get job category 1
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Start to get element: education
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Start to get element: workExperience
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Start to get element: skill
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Start to get element: training
+29-09-2015 05:09:42   Result after analytic content
+29-09-2015 05:09:42   Get CV from : https://www.jobbkk.com/resumes/detail/1084063/Sales Executive and Sales Associate Chinese and English speaking.html
+29-09-2015 05:09:48   Start to get element: fullName
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Start to get element: profile
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Start to get element: job_requirement
+29-09-2015 05:09:48   Get job category 1
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Start to get element: education
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Start to get element: workExperience
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Start to get element: skill
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Start to get element: training
+29-09-2015 05:09:48   Result after analytic content
+29-09-2015 05:09:48   Get CV from : https://www.jobbkk.com/resumes/detail/159931/Purchasing Officer.html
+29-09-2015 05:10:03   Start to get element: fullName
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Start to get element: profile
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Start to get element: job_requirement
+29-09-2015 05:10:03   Get job category 1
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Start to get element: education
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Start to get element: workExperience
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Start to get element: skill
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Start to get element: training
+29-09-2015 05:10:03   Result after analytic content
+29-09-2015 05:10:03   Can not export CV from https://www.jobbkk.com/resumes/detail/159931/Purchasing Officer.html
+29-09-2015 05:10:03   Get CV from : https://www.jobbkk.com/resumes/detail/1083446/Political Science.html
+29-09-2015 05:10:09   Start to get element: fullName
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Start to get element: profile
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Start to get element: job_requirement
+29-09-2015 05:10:09   Get job category 1
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Start to get element: education
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Start to get element: workExperience
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Start to get element: skill
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Start to get element: training
+29-09-2015 05:10:09   Result after analytic content
+29-09-2015 05:10:09   Get CV from : https://www.jobbkk.com/resumes/detail/1039057/Logistic.html
+29-09-2015 05:10:14   Start to get element: fullName
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Start to get element: profile
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Start to get element: job_requirement
+29-09-2015 05:10:14   Get job category 1
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Start to get element: education
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Start to get element: workExperience
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Start to get element: skill
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Start to get element: training
+29-09-2015 05:10:14   Result after analytic content
+29-09-2015 05:10:14   Get CV from : https://www.jobbkk.com/resumes/detail/415636/production engineer.html
+29-09-2015 05:10:18   Start to get element: fullName
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Start to get element: profile
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Start to get element: job_requirement
+29-09-2015 05:10:18   Get job category 1
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Start to get element: education
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Start to get element: workExperience
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Start to get element: skill
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Start to get element: training
+29-09-2015 05:10:18   Result after analytic content
+29-09-2015 05:10:18   Get CV from : https://www.jobbkk.com/resumes/detail/1103719/Interior Desgin.html
+29-09-2015 05:10:22   Start to get element: fullName
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Start to get element: profile
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Start to get element: job_requirement
+29-09-2015 05:10:22   Get job category 1
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Start to get element: education
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Start to get element: workExperience
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Start to get element: skill
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Start to get element: training
+29-09-2015 05:10:22   Result after analytic content
+29-09-2015 05:10:22   Get CV from : https://www.jobbkk.com/resumes/detail/1071088/Scientist/Lab/Research and Development.html
+29-09-2015 05:10:27   Start to get element: fullName
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Start to get element: profile
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Start to get element: job_requirement
+29-09-2015 05:10:27   Get job category 1
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Start to get element: education
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Start to get element: workExperience
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Start to get element: skill
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Start to get element: training
+29-09-2015 05:10:27   Result after analytic content
+29-09-2015 05:10:27   Get CV from : https://www.jobbkk.com/resumes/detail/1061056/QA ,QC,RD.html
+29-09-2015 05:10:32   Start to get element: fullName
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Start to get element: profile
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Start to get element: job_requirement
+29-09-2015 05:10:32   Get job category 1
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Start to get element: education
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Start to get element: workExperience
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Start to get element: skill
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Start to get element: training
+29-09-2015 05:10:32   Result after analytic content
+29-09-2015 05:10:32   Get CV from : https://www.jobbkk.com/resumes/detail/1064733/Internal Audit.html
+29-09-2015 05:10:41   Start to get element: fullName
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: profile
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: job_requirement
+29-09-2015 05:10:41   Get job category 1
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: education
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: workExperience
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: skill
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: training
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Get CV from : https://www.jobbkk.com/resumes/detail/1014769/.html
+29-09-2015 05:10:41   Start to get element: fullName
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: profile
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: job_requirement
+29-09-2015 05:10:41   Get job category 1
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: education
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: workExperience
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: skill
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Start to get element: training
+29-09-2015 05:10:41   Result after analytic content
+29-09-2015 05:10:41   Can not export CV from https://www.jobbkk.com/resumes/detail/1014769/.html
+29-09-2015 05:10:41   Get CV from : https://www.jobbkk.com/resumes/detail/974977/marketing communication officer.html
+29-09-2015 05:11:01   Start to get element: fullName
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Start to get element: profile
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Start to get element: job_requirement
+29-09-2015 05:11:01   Get job category 1
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Start to get element: education
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Start to get element: workExperience
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Start to get element: skill
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Start to get element: training
+29-09-2015 05:11:01   Result after analytic content
+29-09-2015 05:11:01   Can not export CV from https://www.jobbkk.com/resumes/detail/974977/marketing communication officer.html
+29-09-2015 05:11:01   Get CV from : https://www.jobbkk.com/resumes/detail/1109041/IT Support.html
+29-09-2015 05:11:16   /home/ec2-user/reeracoen-web-crawler/tmp/current_page.txt
+29-09-2015 05:11:16   {"currentPage":"4"}
+29-09-2015 05:11:16   Start to get page: 4
+29-09-2015 05:11:16   Error: Can not login! Try to log-in again
+29-09-2015 05:11:16   /home/ec2-user/reeracoen-web-crawler/tmp/current_page.txt
+29-09-2015 05:11:16   {"currentPage":"4"}
+29-09-2015 05:11:16   Start to get page: 4
+29-09-2015 05:11:16   CSV file: storage/2015-09-29.csv
+29-09-2015 05:11:16   Limit: 35
+29-09-2015 05:11:21   /home/ec2-user/reeracoen-web-crawler/tmp/current_page.txt
+29-09-2015 05:11:21   {"currentPage":"4"}
+29-09-2015 05:11:21   Start to get page: 4
+29-09-2015 05:11:22   CSV file: storage/2015-09-29.csv
+29-09-2015 05:11:22   Limit: 35
+29-09-2015 05:11:23   Get CV from : https://www.jobbkk.com/resumes/detail/794470/bookeeper.html
+29-09-2015 05:11:45   Start to get element: fullName
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Start to get element: profile
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Start to get element: job_requirement
+29-09-2015 05:11:45   Get job category 1
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Start to get element: education
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Start to get element: workExperience
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Start to get element: skill
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Start to get element: training
+29-09-2015 05:11:45   Result after analytic content
+29-09-2015 05:11:45   Get CV from : https://www.jobbkk.com/resumes/detail/9214/-.html
+29-09-2015 05:11:58   Start to get element: fullName
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Start to get element: profile
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Start to get element: job_requirement
+29-09-2015 05:11:58   Get job category 1
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Start to get element: education
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Start to get element: workExperience
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Start to get element: skill
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Start to get element: training
+29-09-2015 05:11:58   Result after analytic content
+29-09-2015 05:11:58   Get CV from : https://www.jobbkk.com/resumes/detail/880592/law.html
+29-09-2015 05:12:06   Start to get element: fullName
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Start to get element: profile
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Start to get element: job_requirement
+29-09-2015 05:12:06   Get job category 1
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Start to get element: education
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Start to get element: workExperience
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Start to get element: skill
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Start to get element: training
+29-09-2015 05:12:06   Result after analytic content
+29-09-2015 05:12:06   Get CV from : https://www.jobbkk.com/resumes/detail/1106369/Sales Manager.html
+29-09-2015 05:12:12   Start to get element: fullName
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Start to get element: profile
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Start to get element: job_requirement
+29-09-2015 05:12:12   Get job category 1
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Start to get element: education
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Start to get element: workExperience
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Start to get element: skill
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Start to get element: training
+29-09-2015 05:12:12   Result after analytic content
+29-09-2015 05:12:12   Get CV from : https://www.jobbkk.com/resumes/detail/1107389/personnel.html
+29-09-2015 05:12:16   Start to get element: fullName
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Start to get element: profile
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Start to get element: job_requirement
+29-09-2015 05:12:16   Get job category 1
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Start to get element: education
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Start to get element: workExperience
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Start to get element: skill
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Start to get element: training
+29-09-2015 05:12:16   Result after analytic content
+29-09-2015 05:12:16   Get CV from : https://www.jobbkk.com/resumes/detail/8238/CONTROL  QUALITY,TEST  QUALITY,CO-ORDINATE.html
+29-09-2015 05:12:19   Start to get element: fullName
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Start to get element: profile
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Start to get element: job_requirement
+29-09-2015 05:12:19   Get job category 1
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Start to get element: education
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Start to get element: workExperience
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Start to get element: skill
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Start to get element: training
+29-09-2015 05:12:19   Result after analytic content
+29-09-2015 05:12:19   Get CV from : https://www.jobbkk.com/resumes/detail/1005964/27,000.html
+29-09-2015 05:12:23   Start to get element: fullName
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Start to get element: profile
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Start to get element: job_requirement
+29-09-2015 05:12:23   Get job category 1
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Start to get element: education
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Start to get element: workExperience
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Start to get element: skill
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Start to get element: training
+29-09-2015 05:12:23   Result after analytic content
+29-09-2015 05:12:23   Get CV from : https://www.jobbkk.com/resumes/detail/1108460/Warehouse Staff.html
+29-09-2015 05:12:26   Start to get element: fullName
+29-09-2015 05:12:26   Result after analytic content
+29-09-2015 05:12:26   Start to get element: profile
+29-09-2015 05:12:26   Result after analytic content
+29-09-2015 05:12:27   Start to get element: job_requirement
+29-09-2015 05:12:27   Get job category 1
+29-09-2015 05:12:27   Result after analytic content
+29-09-2015 05:12:27   Start to get element: education
+29-09-2015 05:12:27   Result after analytic content
+29-09-2015 05:12:27   Start to get element: workExperience
+29-09-2015 05:12:27   Result after analytic content
+29-09-2015 05:12:27   Start to get element: skill
+29-09-2015 05:12:27   Result after analytic content
+29-09-2015 05:12:27   Start to get element: training
+29-09-2015 05:12:27   Result after analytic content
+29-09-2015 05:12:27   Get CV from : https://www.jobbkk.com/resumes/detail/1028415/Business Development.html
+29-09-2015 05:12:30   Start to get element: fullName
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Start to get element: profile
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Start to get element: job_requirement
+29-09-2015 05:12:30   Get job category 1
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Start to get element: education
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Start to get element: workExperience
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Start to get element: skill
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Start to get element: training
+29-09-2015 05:12:30   Result after analytic content
+29-09-2015 05:12:30   Get CV from : https://www.jobbkk.com/resumes/detail/890687/Electronic Data Processing.html
+29-09-2015 05:12:34   Start to get element: fullName
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Start to get element: profile
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Start to get element: job_requirement
+29-09-2015 05:12:34   Get job category 1
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Start to get element: education
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Start to get element: workExperience
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Start to get element: skill
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Start to get element: training
+29-09-2015 05:12:34   Result after analytic content
+29-09-2015 05:12:34   Get CV from : https://www.jobbkk.com/resumes/detail/1082735/Mechanical Engineer.html
+29-09-2015 05:12:37   Start to get element: fullName
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: profile
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: job_requirement
+29-09-2015 05:12:37   Get job category 1
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: education
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: workExperience
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: skill
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: training
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Get CV from : https://www.jobbkk.com/resumes/detail/999960/.html
+29-09-2015 05:12:37   Start to get element: fullName
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: profile
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: job_requirement
+29-09-2015 05:12:37   Get job category 1
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: education
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: workExperience
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: skill
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Start to get element: training
+29-09-2015 05:12:37   Result after analytic content
+29-09-2015 05:12:37   Can not export CV from https://www.jobbkk.com/resumes/detail/999960/.html
+29-09-2015 05:12:37   Get CV from : https://www.jobbkk.com/resumes/detail/1105440/fdgs.html
+29-09-2015 05:12:41   Start to get element: fullName
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Start to get element: profile
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Start to get element: job_requirement
+29-09-2015 05:12:41   Get job category 1
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Start to get element: education
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Start to get element: workExperience
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Start to get element: skill
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Start to get element: training
+29-09-2015 05:12:41   Result after analytic content
+29-09-2015 05:12:41   Get CV from : https://www.jobbkk.com/resumes/detail/1087703/customer service.html
+29-09-2015 05:12:45   Start to get element: fullName
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Start to get element: profile
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Start to get element: job_requirement
+29-09-2015 05:12:45   Get job category 1
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Start to get element: education
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Start to get element: workExperience
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Start to get element: skill
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Start to get element: training
+29-09-2015 05:12:45   Result after analytic content
+29-09-2015 05:12:45   Get CV from : https://www.jobbkk.com/resumes/detail/1081266/Fashion Designer.html
+29-09-2015 05:12:48   Start to get element: fullName
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Start to get element: profile
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Start to get element: job_requirement
+29-09-2015 05:12:48   Get job category 1
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Start to get element: education
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Start to get element: workExperience
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Start to get element: skill
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Start to get element: training
+29-09-2015 05:12:48   Result after analytic content
+29-09-2015 05:12:48   Total CV from page 4 is 14
+29-09-2015 05:12:48   Saved 14 CV(s) to file
+29-09-2015 05:12:48   Next page : 5
+29-09-2015 05:12:51   Get CV from : https://www.jobbkk.com/resumes/detail/1027024/paralegal  Legal Affairs.html
+29-09-2015 05:12:54   Start to get element: fullName
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Start to get element: profile
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Start to get element: job_requirement
+29-09-2015 05:12:54   Get job category 1
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Start to get element: education
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Start to get element: workExperience
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Start to get element: skill
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Start to get element: training
+29-09-2015 05:12:54   Result after analytic content
+29-09-2015 05:12:54   Get CV from : https://www.jobbkk.com/resumes/detail/1092694/Networker.html
+29-09-2015 05:12:58   Start to get element: fullName
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Start to get element: profile
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Start to get element: job_requirement
+29-09-2015 05:12:58   Get job category 1
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Start to get element: education
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Start to get element: workExperience
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Start to get element: skill
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Start to get element: training
+29-09-2015 05:12:58   Result after analytic content
+29-09-2015 05:12:58   Get CV from : https://www.jobbkk.com/resumes/detail/1082747/Engineer.html
+29-09-2015 05:13:02   Start to get element: fullName
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Start to get element: profile
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Start to get element: job_requirement
+29-09-2015 05:13:02   Get job category 1
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Start to get element: education
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Start to get element: workExperience
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Start to get element: skill
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Start to get element: training
+29-09-2015 05:13:02   Result after analytic content
+29-09-2015 05:13:02   Get CV from : https://www.jobbkk.com/resumes/detail/1099787/Civil Engineer.html
+29-09-2015 05:13:06   Start to get element: fullName
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Start to get element: profile
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Start to get element: job_requirement
+29-09-2015 05:13:06   Get job category 1
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Start to get element: education
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Start to get element: workExperience
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Start to get element: skill
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Start to get element: training
+29-09-2015 05:13:06   Result after analytic content
+29-09-2015 05:13:06   Get CV from : https://www.jobbkk.com/resumes/detail/998139/Admin.html
+29-09-2015 05:13:09   Start to get element: fullName
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Start to get element: profile
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Start to get element: job_requirement
+29-09-2015 05:13:09   Get job category 1
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Start to get element: education
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Start to get element: workExperience
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Start to get element: skill
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Start to get element: training
+29-09-2015 05:13:09   Result after analytic content
+29-09-2015 05:13:09   Get CV from : https://www.jobbkk.com/resumes/detail/1048467/Purchasing  Planning.html
+29-09-2015 05:13:16   Start to get element: fullName
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Start to get element: profile
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Start to get element: job_requirement
+29-09-2015 05:13:16   Get job category 1
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Start to get element: education
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Start to get element: workExperience
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Start to get element: skill
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Start to get element: training
+29-09-2015 05:13:16   Result after analytic content
+29-09-2015 05:13:16   Get CV from : https://www.jobbkk.com/resumes/detail/275297/Account Manager.html
+29-09-2015 05:13:25   Start to get element: fullName
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Start to get element: profile
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Start to get element: job_requirement
+29-09-2015 05:13:25   Get job category 1
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Start to get element: education
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Start to get element: workExperience
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Start to get element: skill
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Start to get element: training
+29-09-2015 05:13:25   Result after analytic content
+29-09-2015 05:13:25   Get CV from : https://www.jobbkk.com/resumes/detail/1001751/Engineer.html
+29-09-2015 05:13:31   Start to get element: fullName
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Start to get element: profile
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Start to get element: job_requirement
+29-09-2015 05:13:31   Get job category 1
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Start to get element: education
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Start to get element: workExperience
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Start to get element: skill
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Start to get element: training
+29-09-2015 05:13:31   Result after analytic content
+29-09-2015 05:13:31   Get CV from : https://www.jobbkk.com/resumes/detail/808798/พนักงานธุรการ.html
+29-09-2015 05:13:36   Start to get element: fullName
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Start to get element: profile
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Start to get element: job_requirement
+29-09-2015 05:13:36   Get job category 1
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Start to get element: education
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Start to get element: workExperience
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Start to get element: skill
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Start to get element: training
+29-09-2015 05:13:36   Result after analytic content
+29-09-2015 05:13:36   Get CV from : https://www.jobbkk.com/resumes/detail/1106128/surveyor.html
+29-09-2015 05:13:48   Start to get element: fullName
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Start to get element: profile
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Start to get element: job_requirement
+29-09-2015 05:13:48   Get job category 1
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Start to get element: education
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Start to get element: workExperience
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Start to get element: skill
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Start to get element: training
+29-09-2015 05:13:48   Result after analytic content
+29-09-2015 05:13:48   Get CV from : https://www.jobbkk.com/resumes/detail/1102470/IT Support.html
+29-09-2015 05:13:51   Start to get element: fullName
+29-09-2015 05:13:51   Result after analytic content
+29-09-2015 05:13:51   Start to get element: profile
+29-09-2015 05:13:51   Result after analytic content
+29-09-2015 05:13:51   Start to get element: job_requirement
+29-09-2015 05:13:51   Get job category 1
+29-09-2015 05:13:51   Result after analytic content
+29-09-2015 05:13:51   Start to get element: education
+29-09-2015 05:13:51   Result after analytic content
+29-09-2015 05:13:52   Start to get element: workExperience
+29-09-2015 05:13:52   Result after analytic content
+29-09-2015 05:13:52   Start to get element: skill
+29-09-2015 05:13:52   Result after analytic content
+29-09-2015 05:13:52   Start to get element: training
+29-09-2015 05:13:52   Result after analytic content
+29-09-2015 05:13:52   Get CV from : https://www.jobbkk.com/resumes/detail/710849/Graphic Design.html
+29-09-2015 05:13:55   Start to get element: fullName
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Start to get element: profile
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Start to get element: job_requirement
+29-09-2015 05:13:55   Get job category 1
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Start to get element: education
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Start to get element: workExperience
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Start to get element: skill
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Start to get element: training
+29-09-2015 05:13:55   Result after analytic content
+29-09-2015 05:13:55   Get CV from : https://www.jobbkk.com/resumes/detail/1091841/Web Developer.html
+29-09-2015 05:13:59   Start to get element: fullName
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Start to get element: profile
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Start to get element: job_requirement
+29-09-2015 05:13:59   Get job category 1
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Start to get element: education
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Start to get element: workExperience
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Start to get element: skill
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Start to get element: training
+29-09-2015 05:13:59   Result after analytic content
+29-09-2015 05:13:59   Get CV from : https://www.jobbkk.com/resumes/detail/1084063/Sales Executive and Sales Associate Chinese and English speaking.html
+29-09-2015 05:14:03   Start to get element: fullName
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Start to get element: profile
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Start to get element: job_requirement
+29-09-2015 05:14:03   Get job category 1
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Start to get element: education
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Start to get element: workExperience
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Start to get element: skill
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Start to get element: training
+29-09-2015 05:14:03   Result after analytic content
+29-09-2015 05:14:03   Get CV from : https://www.jobbkk.com/resumes/detail/159931/Purchasing Officer.html
+29-09-2015 05:14:06   Start to get element: fullName
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Start to get element: profile
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Start to get element: job_requirement
+29-09-2015 05:14:06   Get job category 1
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Start to get element: education
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Start to get element: workExperience
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Start to get element: skill
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Start to get element: training
+29-09-2015 05:14:06   Result after analytic content
+29-09-2015 05:14:06   Can not export CV from https://www.jobbkk.com/resumes/detail/159931/Purchasing Officer.html
+29-09-2015 05:14:06   Total CV from page 5 is 14
+29-09-2015 05:14:06   Saved 14 CV(s) to file
+29-09-2015 05:14:06   Next page : 6
+29-09-2015 05:14:09   Get CV from : https://www.jobbkk.com/resumes/detail/1083446/Political Science.html
+29-09-2015 05:14:13   Start to get element: fullName
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Start to get element: profile
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Start to get element: job_requirement
+29-09-2015 05:14:13   Get job category 1
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Start to get element: education
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Start to get element: workExperience
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Start to get element: skill
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Start to get element: training
+29-09-2015 05:14:13   Result after analytic content
+29-09-2015 05:14:13   Get CV from : https://www.jobbkk.com/resumes/detail/1039057/Logistic.html
+29-09-2015 05:14:20   Start to get element: fullName
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Start to get element: profile
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Start to get element: job_requirement
+29-09-2015 05:14:20   Get job category 1
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Start to get element: education
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Start to get element: workExperience
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Start to get element: skill
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Start to get element: training
+29-09-2015 05:14:20   Result after analytic content
+29-09-2015 05:14:20   Get CV from : https://www.jobbkk.com/resumes/detail/415636/production engineer.html
+29-09-2015 05:14:36   Start to get element: fullName
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Start to get element: profile
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Start to get element: job_requirement
+29-09-2015 05:14:36   Get job category 1
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Start to get element: education
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Start to get element: workExperience
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Start to get element: skill
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Start to get element: training
+29-09-2015 05:14:36   Result after analytic content
+29-09-2015 05:14:36   Get CV from : https://www.jobbkk.com/resumes/detail/1103719/Interior Desgin.html
+29-09-2015 05:14:42   Start to get element: fullName
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Start to get element: profile
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Start to get element: job_requirement
+29-09-2015 05:14:42   Get job category 1
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Start to get element: education
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Start to get element: workExperience
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Start to get element: skill
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Start to get element: training
+29-09-2015 05:14:42   Result after analytic content
+29-09-2015 05:14:42   Get CV from : https://www.jobbkk.com/resumes/detail/1071088/Scientist/Lab/Research and Development.html
+29-09-2015 05:14:47   Start to get element: fullName
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Start to get element: profile
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Start to get element: job_requirement
+29-09-2015 05:14:47   Get job category 1
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Start to get element: education
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Start to get element: workExperience
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Start to get element: skill
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Start to get element: training
+29-09-2015 05:14:47   Result after analytic content
+29-09-2015 05:14:47   Get CV from : https://www.jobbkk.com/resumes/detail/1061056/QA ,QC,RD.html
+29-09-2015 05:14:52   Start to get element: fullName
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Start to get element: profile
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Start to get element: job_requirement
+29-09-2015 05:14:52   Get job category 1
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Start to get element: education
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Start to get element: workExperience
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Start to get element: skill
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Start to get element: training
+29-09-2015 05:14:52   Result after analytic content
+29-09-2015 05:14:52   Get CV from : https://www.jobbkk.com/resumes/detail/1064733/Internal Audit.html
+29-09-2015 05:14:58   Start to get element: fullName
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: profile
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: job_requirement
+29-09-2015 05:14:58   Get job category 1
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: education
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: workExperience
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: skill
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: training
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Get CV from : https://www.jobbkk.com/resumes/detail/1014769/.html
+29-09-2015 05:14:58   Start to get element: fullName
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: profile
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: job_requirement
+29-09-2015 05:14:58   Get job category 1
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: education
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: workExperience
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: skill
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Start to get element: training
+29-09-2015 05:14:58   Result after analytic content
+29-09-2015 05:14:58   Can not export CV from https://www.jobbkk.com/resumes/detail/1014769/.html
+29-09-2015 05:14:58   Get CV from : https://www.jobbkk.com/resumes/detail/974977/marketing communication officer.html
+29-09-2015 05:15:03   Start to get element: fullName
+29-09-2015 05:15:03   Result after analytic content
+29-09-2015 05:15:03   Start to get element: profile
+29-09-2015 05:15:03   Result after analytic content
+29-09-2015 05:15:04   Start to get element: job_requirement
+29-09-2015 05:15:04   Get job category 1
+29-09-2015 05:15:04   Result after analytic content
+29-09-2015 05:15:04   Start to get element: education
+29-09-2015 05:15:04   Result after analytic content
+29-09-2015 05:15:04   Start to get element: workExperience
+29-09-2015 05:15:04   Result after analytic content
+29-09-2015 05:15:04   Start to get element: skill
+29-09-2015 05:15:04   Result after analytic content
+29-09-2015 05:15:04   Start to get element: training
+29-09-2015 05:15:04   Result after analytic content
+29-09-2015 05:15:04   Can not export CV from https://www.jobbkk.com/resumes/detail/974977/marketing communication officer.html
+29-09-2015 05:15:04   Get CV from : https://www.jobbkk.com/resumes/detail/870969/Telesale.html
+29-09-2015 05:15:09   Start to get element: fullName
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Start to get element: profile
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Start to get element: job_requirement
+29-09-2015 05:15:09   Get job category 1
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Start to get element: education
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Start to get element: workExperience
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Start to get element: skill
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Start to get element: training
+29-09-2015 05:15:09   Result after analytic content
+29-09-2015 05:15:09   Get CV from : https://www.jobbkk.com/resumes/detail/1062283/Sale.html
+29-09-2015 05:15:14   Start to get element: fullName
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Start to get element: profile
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Start to get element: job_requirement
+29-09-2015 05:15:14   Get job category 1
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Start to get element: education
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Start to get element: workExperience
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Start to get element: skill
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Start to get element: training
+29-09-2015 05:15:14   Result after analytic content
+29-09-2015 05:15:14   Get CV from : https://www.jobbkk.com/resumes/detail/1106735/Site Engineer.html
+29-09-2015 05:15:18   Start to get element: fullName
+29-09-2015 05:15:18   Result after analytic content
+29-09-2015 05:15:18   Start to get element: profile
+29-09-2015 05:15:18   Result after analytic content
+29-09-2015 05:15:18   Start to get element: job_requirement
+29-09-2015 05:15:18   Get job category 1
+29-09-2015 05:15:18   Result after analytic content
+29-09-2015 05:15:19   Start to get element: education
+29-09-2015 05:15:19   Result after analytic content
+29-09-2015 05:15:19   Start to get element: workExperience
+29-09-2015 05:15:19   Result after analytic content
+29-09-2015 05:15:19   Start to get element: skill
+29-09-2015 05:15:19   Result after analytic content
+29-09-2015 05:15:19   Start to get element: training
+29-09-2015 05:15:19   Result after analytic content
+29-09-2015 05:15:19   Get CV from : https://www.jobbkk.com/resumes/detail/916006/RF.html
+29-09-2015 05:15:25   Start to get element: fullName
+29-09-2015 05:15:25   Result after analytic content
+29-09-2015 05:15:25   Start to get element: profile
+29-09-2015 05:15:25   Result after analytic content
+29-09-2015 05:15:26   Start to get element: job_requirement
+29-09-2015 05:15:26   Get job category 1
+29-09-2015 05:15:26   Result after analytic content
+29-09-2015 05:15:26   Start to get element: education
+29-09-2015 05:15:26   Result after analytic content
+29-09-2015 05:15:26   Start to get element: workExperience
+29-09-2015 05:15:26   Result after analytic content
+29-09-2015 05:15:26   Start to get element: skill
+29-09-2015 05:15:26   Result after analytic content
+29-09-2015 05:15:26   Start to get element: training
+29-09-2015 05:15:26   Result after analytic content
+29-09-2015 05:15:26   Get CV from : https://www.jobbkk.com/resumes/detail/272610/Facility  Management  Engineer.html
+29-09-2015 05:15:31   Start to get element: fullName
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Start to get element: profile
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Start to get element: job_requirement
+29-09-2015 05:15:31   Get job category 1
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Start to get element: education
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Start to get element: workExperience
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Start to get element: skill
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Start to get element: training
+29-09-2015 05:15:31   Result after analytic content
+29-09-2015 05:15:31   Get CV from : https://www.jobbkk.com/resumes/detail/336899/Sales.html
+29-09-2015 05:15:37   Start to get element: fullName
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Start to get element: profile
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Start to get element: job_requirement
+29-09-2015 05:15:37   Get job category 1
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Start to get element: education
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Start to get element: workExperience
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Start to get element: skill
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Start to get element: training
+29-09-2015 05:15:37   Result after analytic content
+29-09-2015 05:15:37   Total CV from page 6 is 13
+29-09-2015 05:15:37   Saved 13 CV(s) to file
+29-09-2015 05:15:37   Next page : 7

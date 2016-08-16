@@ -1,0 +1,110 @@
+{%include file="pc/user/campaign/common/header/header.html"%}
+
+<article>
+	<header id="pcheader">
+		<a name="pageTop" id="pageTop"></a>
+		<h1>
+			<img src="{%$static_url%}lp/img/logo.png" alt="FINE!" id="Image4" />
+			<p>日本最大級 保育士転職サイト</p>
+		</h1>
+	</header>
+	<header id="spheader">
+		<a name="pageTop" id="pageTop"></a>
+		<h1>
+			<img src="{%$static_url%}lp/img/logo.png" alt="FINE!" width="60" />
+			<p>日本最大級 保育士転職サイト</p>
+		</h1>
+	</header>
+	<section>
+		<div id="main">
+			<div class="contents">
+				<!-- front↓ -->
+				<div class="mainPic2">
+					<p class="text">
+						<span class="t1" style="font-size: 24px;">顧客満足度</span><br>
+						<span class="t2" style="font-size: 51px;">98.2%</span><br>
+						<span class="t3" style="font-size: 12px;">※楽天リサーチ調べ</span>
+					</p>
+				</div>
+				<div class="mainPic2_sp">
+					<img src="{%$static_url%}lp/img/sec1_bg_sp.png" alt="" />
+					<p class="text">
+						<span class="t1" style="font-size: 16px;">顧客満足度</span><span
+							class="t2" style="font-size: 35px;">98.2%</span><span class="t3"
+							style="font-size: 10px;">※楽天リサーチ調べ</span>
+					</p>
+				</div>
+				<!-- front↑ -->
+				<div class="formArea">
+					<a name="entry" id="entry"></a>
+					<div class="formTtl">
+						<p>無料登録はこちら！</p>
+					</div>
+					<!-- ▼エントリーフォーム start -->
+					<div id="pcform">
+						
+						<!-- ====================================== -->
+						<!-- Render form for pc -->
+						{%include file="pc/user/campaign/_confirm_form_pc_proto_a.html"%}
+						<!-- End form pc -->
+						<!-- ====================================== -->
+								
+					</div>
+
+					<div id="spform">
+						
+						<!-- ====================================== -->
+						<!-- Render form for pc -->
+						{%include file="pc/user/campaign/_confirm_form_sp_proto_a.html"%}
+						<!-- End form pc -->
+						<!-- ====================================== -->
+								
+					</div>
+
+					<!-- //エントリーフォーム end -->
+					<!-- /.contents -->
+				</div>
+				<!-- /#main -->
+			</div>
+
+			<div id="mainInfo">
+				<div class="contents">
+					<div class="flow" style="margin: 47px 0 107px 0;">
+						<img src="{%$static_url%}lp/img/sec1_nagare.png"
+							alt="登録の流れ｜step1．ご登録。登録は60秒で完了！登録後、お住まいのエリアの求人をメールにてご紹介させていただきます。step2．日程調整。気になった園があったらその場で応募！応募した園から、見学の連絡、面接の連絡がきます。step3．見学・面接。あとは面接を受けて、お互いに条件が合えば内定となります！" />
+					</div>
+				</div>
+				<!-- /#mainInfo -->
+			</div>
+	</section>
+	
+	<!-- ====================================== -->
+	<!-- Render form for pc -->
+	{%include file="pc/user/campaign/list-job.html"%}
+	<!-- End form pc -->
+	<!-- ====================================== -->
+
+	<footer>
+		<!--p id="jobCategoryLinkOut">ご紹介エリア・条件などは<a id="jobCategoryLink">こちら</a>をご確認ください。</p-->
+		<div class="scrollBox">
+			<div>
+				<a href="#pageTop" class="bgc1 scroll">ページ上部へ戻る</a>
+			</div>
+		</div>
+		<ul class="lp_social">
+			<li><a href="http://www.neo-career.co.jp/" target="_blank">運営会社</a></li>|
+			<li><a href="http://www.neo-career.co.jp/policy.html"
+				target="_blank">プライバシーポリシー</a></li>|
+			<li><a href="https://twitter.com/fine_jpn" target="_blank"><i
+					class="icon-twitter"></i></a></li>|
+			<li><a
+				href="https://www.facebook.com/pages/%EF%BC%A6%EF%BC%A9%EF%BC%AE%EF%BC%A5/315073388697708"
+				target="_blank"><i class="icon-facebook"></i></a></li>
+		</ul>
+		<p class="copyright">Copyright (c) Neo Career CO., LTD. All rights
+			reserved.</p>
+	</footer>
+
+</article>
+
+{%include file="pc/user/campaign/common/footer/footer.html"%}

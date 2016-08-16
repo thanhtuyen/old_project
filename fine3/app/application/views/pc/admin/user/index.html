@@ -1,0 +1,95 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR">
+{%getFlashInfo()%}
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+<!-- date search -->
+{%form_open('manager/user', ['method' => 'get'])%}
+  <div class="input-group date col-sm-2"  data-datetimepicker style="float:left">
+      <input class="form-control" type="text" name="q[apply_start_time]" value="{%if isset($condition['apply_start_time'])%}{%$condition['apply_start_time']%}{%/if%}" readonly>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+  </div>
+
+  <div class="input-group date col-sm-2"  data-datetimepicker>
+      <input class="form-control" type="text" name="q[apply_end_time]" value="{%if isset($condition['apply_end_time'])%}{%$condition['apply_end_time']%}{%/if%}" readonly>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+  </div>
+
+  <div class="col-sm-5" style="float:right;margin-top:-27px">
+    <input type="submit" value="検索">
+  </div>
+{%form_close()%}
+
+  <!-- date search end -->
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ユーザーID</th>
+<th>ユーザー名</th>
+<th>保有資格</th>
+<th>生年月日</th>
+<th>登録日時</th>
+<th>アカウント状態</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+
+{%foreach from=$users item=user%}
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox"></label></div></td>
+<td><a href="{%base_url('manager/user/detail')%}/{%$user['user_id']%}">{%$user['user_id']%}</a></td>
+<td><a href="{%base_url('manager/user/detail')%}/{%$user['user_id']%}">{%$user['name']%}</a></td>
+<td>
+{%if !empty($user['license'])%}
+{%$user['license']%}
+{%/if%}
+</td>
+<td>{%$user['birthdate']%}</td>
+<td>{%$user['created']%}</td>
+<td>{%status_text($user['status'])%}</td>
+<td><a href="{%base_url('manager/user/detail')%}/{%$user['user_id']%}"><button type="button" class="btn btn-primary">詳細</button></a>
+<a href="{%base_url('manager/user/del')%}/{%$user['user_id']%}">
+<button class="btn btn-default" type="button" onClick="return confirmDelete()">削除</button></a></td>
+</tr>
+{%/foreach%}
+</tbody>
+</table>
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+{%include file="pc/admin/shared/_footer.html"%}
+
+<script src="{%$static_url%}admin/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="{%$static_url%}admin/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.ja.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('[data-datetimepicker]').datetimepicker({
+    language:  'ja',
+    format: 'yyyy-mm-dd',
+    startDate: '2015-01-01',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+  });
+});
+
+</script>

@@ -1,0 +1,58 @@
+
+        {%foreach from=$rowAppliedAgency key=k item=v%}
+
+        <section class="job_list">
+            <a href="{%$base_url%}user/agent/detail/{%$v['client_id']%}"
+                title="{%$v['display_name']%}">
+                <div class="mypage_agency">
+                    <h4 class="mypage_list_title title_joblist_agency_sec">{%$v['display_name']%}</h4>
+                    <p class="job_list_txt">{%$v['description']%}</p>
+                    <div class="job_detail_table_s">
+
+                        {%if isset($v['area_relationship']) && !
+                        empty($v['area_relationship'])%}
+                        <dl class="area_relationship">
+                            <dt>得意エリア</dt>
+                            <dd>{%$arg = array()%} {%foreach
+                                from=$v['area_relationship'] key=kArea item=vArea%} {%if
+                                isset($vArea['area_detail']) && ! empty($vArea['area_detail'])%}
+                                {%$arg[] = $vArea['area_detail']['name']%} {%/if%} {%/foreach%}
+                                {%implode(',', $arg)%}</dd>
+                        </dl>
+                        {%/if%} {%if isset($v['tag_relationship']) && !
+                        empty($v['tag_relationship'])%}
+                        <dl class="tag_relationship">
+                            <dt>得意職種</dt>
+                            <dd>{%$arg = array()%} {%foreach from=$v['tag_relationship']
+                                key=kTag item=vTag%} {%if isset($vTag['tag_detail']) &&
+                                $vTag['tag_detail'] && ! empty($vTag['tag_detail'])%} {%$arg[] =
+                                $vTag['tag_detail']['name']%} {%/if%} {%/foreach%}
+                                {%implode(',', $arg)%}</dd>
+                        </dl>
+                        {%/if%}
+
+
+                        <dl class="proccess">
+                            <dt>紹介の流れ</dt>
+                            <dd>{%$v['process']%}</dd>
+                        </dl>
+                        <dl>
+                            <dt>所在地</dt>
+                            <dd>{%if isset($v['area_name']) && ! empty($v['area_name'])
+                                %} {%if isset($v['area_name']['pname']) && !
+                                empty($v['area_name']['pname']) %} {%$v['area_name']['pname']%}
+                                {%/if%} {%if isset($v['area_name']['cname']) && !
+                                empty($v['area_name']['cname']) %} {%$v['area_name']['cname']%}
+                                {%/if%} {%/if%} {%$v['address']%}</dd>
+                        </dl>
+                        <dl>
+                            <dt>運営会社</dt>
+                            <dd>{%$v['display_name']%}</dd>
+                        </dl>
+
+                    </div>
+                </div>
+            </a>
+        </section>
+
+        {%/foreach%}

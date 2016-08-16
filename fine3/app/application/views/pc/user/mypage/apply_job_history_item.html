@@ -1,0 +1,64 @@
+{%foreach $data.items as $item%}
+{%if !empty($item)%}
+<div>
+    <div class="box jobbox_large">
+        <h2 class="tit_03">
+            {%if $item.recomment ne ''%}<span>オススメ!</span>{%/if%}
+            <a href="{%base_url()%}detail_{%$item.job_id%}/">{%$item.title%}</a>
+        </h2>
+        <div class="txt_right"><p class="bookmark_box btn_litegray btn_175 mt0">
+                <span class="ico_folder02">■</span>
+                {%$textBookmark = 'お気に入りに追加する'%}
+                {%$valueAdd = 0%}
+                {%if $item.bookmarked%}{%$textBookmark = 'お気に入り追加済'%}{%$valueAdd = 1%}{%/if%}
+                <a href="javascript:void(0)" class="add-to-bookmark btn_litegray" data-value="{%$valueAdd%}" data-id="{%$item.job_id%}">{%$textBookmark%}</a>
+            </p>
+        </div>
+        <div class="column_wrapper">
+            <p class="column_l">{%$item.pr%}</p>
+            <p class="column_r mb10">
+                {%if $item.image %}
+                <img src="{%getImageUrlFromS3($item.job_id, $image_type['job'], $item.image)%}" alt="">
+                {%else%}
+                <img style="width:500px;height:200px" src="{%$static_url%}user/images/dummy/dummy_bookmak.jpg" alt="">
+                {%/if%}
+            </p>
+        <!-- /.column_wrapper --></div>
+<table>
+<tr>
+<th>勤務地</th>
+<td>{%$item.nursery_name%} / {%$item.nursery_province%}{%$item.nursery_city%}{%$item.nursery_address%}</td>
+</tr>
+<tr>
+<th>雇用形態</th>
+<td>{%$item.tag_employ%}</td>
+</tr>
+<tr>
+<th>職種</th>
+<td>{%$item.type_job%}</td>
+</tr>
+<tr>
+<th>勤務時間</th>
+<td>{%$item.worktime%}</td>
+</tr>
+<tr>
+<th>給与</th>
+<td>{%$item.bonus%}</td>
+</tr>
+</table>
+<ul class="ico_jobtag">
+
+{%foreach $item.tags as $tag%}
+<a href="{%$base_url%}{%$tag.prefix%}{%$tag.link_name%}/"><li>{%$tag.name%}</li></a>
+{%/foreach%}
+
+
+</ul>
+<!-- /.box -->
+<ul class="jobbox_btm"><!--
+--><li class="btn_litegray btn_210b"><span class="ico_arrow06">&gt;</span>応募済み</li><!--
+--><li><a href="{%base_url()%}detail_{%$item.job_id%}/" class="btn_white btn_420"><span class="ico_glass">&gt;</span>詳細情報を見る</a></li><!--
+--></ul>
+</div></div>
+{%/if%}
+{%/foreach%}

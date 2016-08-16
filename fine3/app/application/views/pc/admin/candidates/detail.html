@@ -1,0 +1,62 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="manager/contacts/_nav.tpl"%}
+<div class="innerLR">
+
+<h2>スカウト内容</h2>
+<div class="row innerAll inner-2x">
+<div class="col-sm-6">
+<dl class="lined_dl">
+<dt>スカウトID</dt>
+<dd>{%$rows['candidate_id']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信者</dt>
+<dd><a href="{%get_detail_url($rows['item_name'], $rows['headhunter_id'])%}">{%$rows['headhunter_name']%}</a></dd>
+</dl>
+<dl class="lined_dl">
+<dt>対象求人ID</dt>
+<dd><a href="{%base_url('manager/jobs/detail')%}/{%$rows['job_id']%}">{%$rows['job_id']%}</a></dd>
+</dl>
+<dl class="lined_dl">
+<dt>対象求人</dt>
+<dd><a href="{%base_url('manager/jobs/detail')%}/{%$rows['job_id']%}">{%$rows['jobseeker_name']%}</a></dd>
+</dl>
+<dl class="lined_dl">
+<dt>ユーザーID</dt>
+<dd><a href="{%base_url('manager/users/detail')%}/{%$rows['jobseeker_id']%}">{%$rows['jobseeker_id']%}</a></dd>
+</dl>
+<dl class="lined_dl">
+<dt>ユーザー</dt>
+<dd><a href="{%base_url('manager/users/detail')%}/{%$rows['jobseeker_id']%}">{%$rows['jobseeker_name']%}</a></dd>
+</dl>
+<dl class="lined_dl">
+<dt>件名</dt>
+<dd>{%$rows['title']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>内容</dt>
+<dd>{%mb_strcut(strip_tags($rows['content']), 0, 100, 'UTF-8')%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信日時</dt>
+<dd>{%$rows['created']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>メール</dt>
+<dd>{%status_num_to_string($rows['email_status'])%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>エントリー</dt>
+<dd>{%status_num_to_string($rows['status'])%}</dd>
+</dl>
+
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="戻る"></div>
+
+<!-- separater --></div>
+<!-- form-group --></div>
+
+
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

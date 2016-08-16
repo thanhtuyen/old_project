@@ -1,0 +1,38 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="manager/contacts/_nav.tpl"%}
+<div class="innerLR">
+
+<h2>送信内容</h2>
+<div class="row innerAll inner-2x">
+<div class="col-sm-6">
+<dl class="lined_dl">
+<dt>送信メールID</dt>
+<dd>{%$rows['template_id']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信先</dt>
+<dd>{%$rows['name']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>件名</dt>
+<dd>{%$rows['title']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>内容</dt>
+<dd>{%$rows['content']%}</dd>
+</dl>
+<dl class="lined_dl">
+<dt>送信日時</dt>
+<dd>{%$rows['created']%}</dd>
+</dl>
+
+<div class="separator"></div>
+<div class="form-group">
+<button class="btn btn-primary" >戻る</button></div>
+
+<!-- separater --></div>
+<!-- form-group --></div>
+
+
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

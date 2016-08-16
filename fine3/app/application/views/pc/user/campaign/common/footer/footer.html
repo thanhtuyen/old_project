@@ -1,0 +1,98 @@
+
+
+<!--
+<script>
+
+  $.validate({
+    modules : 'location, date, security, file',
+    onModulesLoaded : function() {
+      $('#country').suggestCountry();
+    }
+
+  });
+
+  $("[name='field_1172911[]']:eq(0)")
+  .valAttr('','validate_checkbox_group')
+  .valAttr('qty','min1')
+  .valAttr('error-msg',"<span style='color:red'>保有資格は必須項目です</span>");
+
+  // Restrict presentation length
+  $('#presentation').restrictLength( $('#pres-max-length') );
+
+</script>
+-->
+<script type="text/javascript">
+$.validate();
+
+$("[name='certifications[]']:eq(0)")
+.valAttr('','validate_checkbox_group')
+.valAttr('qty','min1')
+.valAttr('error-msg',"<div style='color:red'>※選択してください</div>");
+</script>
+
+<!-- <script src="{%$static_url%}lp/js/all_city.js"></script>-->
+<!-- <script type="text/javascript">
+  //window.all_cities = load_all_cities;
+  window.all_cities = {%$all_cities%};
+
+  $(document).ready(function(){
+
+    $('#search_pc_select').on('change', function(e){
+      var $node = $(e.target);
+      var pc = $node.val();
+      var cities = [];
+      $.each(window.all_cities, function(index, value) {
+        if(value.pref_id == pc){
+          cities.push(value)
+        }
+      });
+      var html = '';
+      html += "<option value=''>全市区町村</option>";
+
+      var city_value = parseInt({%if isset($city)%}{%$city%}{%else%}{%set_value('city')%}{%/if%});
+
+      $.each(cities, function(index, value){
+          var selectedCity = '';
+          if(value.area_id == city_value){
+              selectedCity = 'selected';
+          }
+         //html += "<option value='"+value.city_code+"' " +selectedCity+ ">"+value.city_name+"</option>"
+          html += "<option value='"+value.area_id+"' " +selectedCity+ ">"+value.name+"</option>"
+      });
+      $('#search_cc_select').html(html);
+      $('#search_cc_select option:eq(0)').attr('selected', 'selected')
+    })
+    $('#search_pc_select').trigger('change');
+
+
+     $('#search_pc_select_sp').on('change', function(e){
+      var $node = $(e.target);
+      var pc = $node.val();
+      var cities = [];
+      $.each(window.all_cities, function(index, value) {
+        if(value.pref_id == pc){
+          cities.push(value)
+        }
+      });
+      var html = '';
+      html += "<option value=''>全市区町村</option>";
+
+      var city_value = parseInt({%if isset($city)%}{%$city%}{%else%}{%set_value('city')%}{%/if%});
+
+      $.each(cities, function(index, value){
+          var selectedCity = '';
+          if(value.area_id == city_value){
+              selectedCity = 'selected';
+          }
+         //html += "<option value='"+value.city_code+"' " +selectedCity+ ">"+value.city_name+"</option>"
+          html += "<option value='"+value.area_id+"' " +selectedCity+ ">"+value.name+"</option>"
+      });
+      $('#search_cc_select_sp').html(html);
+      $('#search_cc_select_sp option:eq(0)').attr('selected', 'selected')
+    })
+    $('#search_pc_select_sp').trigger('change');
+  })
+
+ </script> -->
+</body>
+</html>

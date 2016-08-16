@@ -1,0 +1,58 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="manager/shared/_client_menu.tpl"%}
+
+
+
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+ {%include file="pc/admin/shared/_export_and_search.html"%}
+
+
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>園法人ID</th>
+<th>法人名</th>
+<th>ステータス</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+{%foreach from=$result item=list%}
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="{%base_url('manager/employers/detail')%}/{%$list['nursery_id']%}">{%$list['nursery_id']%}</a></td>
+<td><a href="{%base_url('manager/employers/detail')%}/{%$list['nursery_id']%}">{%$list['name']%}</a></td>
+<td>{%status_num_to_string($list['status'])%}</td>
+<td>
+<a href="{%base_url('manager/employers/detail')%}/{%$list['nursery_id']%}">
+<button type="button" class="btn btn-primary">編集</button>
+</a>
+<a href="{%base_url('manager/employers/del')%}/{%$list['nursery_id']%}">
+<button type="button" class="btn btn-default" onClick="return confirmDelete()">削除</button>
+</a>
+</td>
+</tr>
+
+{%/foreach%}
+
+</tbody>
+</table>
+<div class="row"><div class="col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info">Showing {%$quantity['start']%} to {%$quantity['end']%} of {%$quantity['total']%} entries</div></div><div class="col-md-6"><div class="dataTables_paginate paging_bootstrap">
+{%$pagerfantaHtml%}
+</div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

@@ -1,0 +1,231 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+<style type="text/css">
+  .input-file {
+    border:0px
+  }
+  .not-show{
+    display: none;
+  }
+  .error{
+    color: #ff0000;
+  }
+</style>
+    <div class="main">
+    <!-- Left nav -->
+{%include file="pc/client/common/left_nav.html"%}
+
+<div class="contents inner">
+<h2 class="tit_01">
+企業情報<span>：PR情報変更</span>
+</h2>
+<p class="newbtn">
+<a class="btn_white btn_190" href="{%base_url()%}client/profile/"><span
+class="ico_arrow02">&gt;</span>企業情報へ戻る</a>
+</p>
+<div class="box">
+{%form_open_multipart('client/profile/update_info',["id"=>"profile_update_form"])%}
+<input type="hidden" name="client_id" value="{%$client['client_id']%}">
+<p class="tit_04">PR情報</p>
+<table class="table02">
+<tbody>
+<tr>
+<th>表示企業名</th>
+<td><input id ="display_name" name="display_name" type="text" value="{%$client['display_name']%}">
+    <p class="mt5 txt_attention"></p>
+</td>
+</tr>
+<tr>
+<th>詳細住所</th>
+<td>
+<span style="margin:10px 5px 0 0;">〒</span><input type="text" id="zip1" name="display_zip_1" maxlength="3" value="{%substr($client['display_zip_code'],0,3)%}" style="width:60px;">
+<span style="margin:10px 5px 0 0;">-</span><input type="text" id="zip2" name="display_zip_2" maxlength="4" value="{%substr($client['display_zip_code'],3,4)%}" style="width:80px;">
+<p class="mt5 txt_attention">{%form_error('zip_code')%}</p>
+<input type="hidden" id="area_id" name="area_id" value="">
+<select id="address_pref" class="block">
+<option id="pref_default" value="">都道府県を選択</option>
+{%foreach $area["pref"] as $pref%}
+<option value="{%$pref['name']%}" data-pref_id="{%$pref['pref_id']%}" {%if $pref['pref_id']===$client["display_pref_id"]%}selected{%/if%}>{%$pref['name']%}</option>
+{%/foreach%}
+
+</select>
+<select id="address_city" class="block mt10" id="city_select_list">
+<option class="city_pref_id_" value="">市区町村を選択</option>
+{%foreach $area["city"] as $city%}
+<option value="{%$city['name']%}" class="city_pref_id_{%$city['pref_id']%}" data-city_area_id="{%$city['area_id']%}" data-pref_id="{%$city['pref_id']%}" {%if $city['area_id']===$client["display_area_id"]%}selected{%/if%}>{%$city['name']%}</option>
+{%/foreach%}
+</select>
+    <input type="text" id="address_detail" name="display_address" value="{%$client['display_address']%}" class="mt10 width450">
+    <p class="mt5 txt_attention"></p>
+</td>
+</tr>
+<tr>
+<th>有料職業紹介許可番号</th>
+<td><input id="license_number" type="text" class="width200" name="license_number" value="{%$client['license_number']%}">
+    <p class="mt5 txt_attention"></p>
+</td>
+</tr>
+
+<tr>
+<th>PR</th>
+<td><textarea id ="description" name="description" placeholder="例）保育のお仕事探しならお任せください！">{%$client['description']%}</textarea>
+    <p class="mt5 txt_attention"></p>
+</td>
+</tr>
+<tr>
+<th>紹介の流れ</th>
+<td><textarea id="process" placeholder="例）連絡後、日程調整の上すぐに面接となります。" name="process">{%$client['process']%}</textarea>
+    <p class="mt5 txt_attention"></p>
+</tr>
+<tr>
+<th>得意エリア</th>
+<td><ul>
+{%if $necessary_info['areas']%}
+{%foreach from=$necessary_info['areas'] key=key item=val%}
+<li><label>
+{%if isset($client_area['selected_areas'])%}
+{%if in_array($val['area_id'],$client_area['selected_areas'])%}
+<input type="checkbox" name="area[]" value="{%$val['area_id']%}" checked>
+{%else%}
+<input type="checkbox" name="area[]" value="{%$val['area_id']%}">
+{%/if%}
+{%else%}
+<input type="checkbox" name="area[]" value="{%$val['area_id']%}">
+{%/if%}<!--
+--> {%$val['name']%}</label></li>
+{%/foreach%}
+{%/if%}
+</ul></td>
+</tr>
+<tr>
+<th>得意職種</th>
+<td><ul>
+{%if $necessary_info['type_job']%}
+{%foreach from=$necessary_info['type_job'] key=key item=val%}
+<li><label>
+{%if isset($client['selected_tags'])%}
+{%if in_array($val['tag_id'],$client['selected_tags'])%}
+<input type="checkbox" name="type_job[]" value="{%$val['tag_id']%}" checked>
+{%else%}
+<input type="checkbox" name="type_job[]" value="{%$val['tag_id']%}">
+{%/if%}
+{%else%}
+<input type="checkbox" name="type_job[]" value="{%$val['tag_id']%}">
+{%/if%}<!--
+--> {%$val['name']%}</label></li>
+{%/foreach%}
+{%/if%}
+</ul></td>
+</tr>
+<tr>
+<th>イメージ画像<br>
+<span class="txt_small txt_normal"></span></th>
+<td>
+{%if empty($client["image"])%}
+<input type="file" name="client_photo" id="client_photo" class="input-file">
+<p id="client_photo_error_max_size" class="txt_attention display_none">ファイルサイズが大きすぎます。</p>
+{%else%}
+<input type="hidden" id="delete_image_flg" name="delete_image_flg" value="0">
+<div id="image_block">
+    <p class="mb10"><img src="{%getImageUrlFromS3($client['client_id'],$client['image']['type'],$client['image']['name'])%}" alt=""></p>
+    <p><a id="delete_image_btn" class="btn_130 btn_gray" href="javascript:void(0);">画像を削除</a></p>
+</div>
+<div id="image_upload_block" class="display_none">
+    <input type="file" name="client_photo" id="client_photo" class="input-file">
+    <p id="client_photo_error_max_size" class="txt_attention display_none">ファイルサイズが大きすぎます。</p>
+</div>
+{%/if%}
+</td>
+</tr>
+</tbody>
+</table>
+<p class="txt_center mt20"><a id="submit" class="btn_pink btn_280">この内容で登録する</a></p>
+{%form_close()%}
+<!-- /.box -->
+</div>
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}
+<script type="text/javascript" src="{%$static_url%}common/js/jpostal.js"></script>
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-form_v3.51.0/jquery.form.js"></script>
+
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script>
+    $('document').ready(function(){
+        $("#delete_image_btn").on('click',function(){$("#delete_image_flg").val("1");$("#image_block").addClass("display_none");$("#image_upload_block").removeClass("display_none");});
+        // form validation
+        var profile_update_form = $('#profile_update_form')
+        profile_update_form.validate({
+            rules: {
+
+                display_name: {
+                    maxlength: 255
+                },
+                display_address: {
+                    maxlength: 255
+                },
+                license_number: {
+                    maxlength: 255
+                },
+                description: {
+                    maxlength: 255
+                },
+                process: {
+                    maxlength: 255
+                }
+
+
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr('type') == 'file') {
+                    console.log('file type')
+                    error.insertAfter(element.parents('p'));
+                } else {
+                    var next = element.next();
+                    if (next.prop("tagName")=="P")
+                        error.appendTo(next);
+                    else {
+                        error.appendTo(element.prev());
+                    }
+                }
+            }
+        });
+
+    $('#submit').on('click',function(){
+        if(profile_update_form.valid()){
+            if(typeof $('#client_photo')[0].files[0] !== "undefined" && $('#client_photo')[0].files[0].size > 1000000)
+            {
+                $('#client_photo').val();$('#client_photo_error_max_size').removeClass("display_none");
+            }else{
+                profile_update_form.submit()
+            }
+
+        }
+
+    });
+
+    $("#establish_year").on('change', function(){date_formatting();});
+    $("#establish_month").on('change', function(){date_formatting();});
+    function submit(){$("#area_id").val($("option","#address_city").eq($("#address_city")[0].selectedIndex).data("city_area_id"));$("#profile_update_form").submit();}
+    function date_formatting(){
+        var establish_year = $("#establish_year").val();
+        var establish_month = $("#establish_month").val();
+        if(establish_year !== ""&&establish_month !== ""){
+            $('#establish_day').empty();
+            if (2 == establish_month && (0 == establish_year % 400 || (0 == establish_year % 4 && 0 != establish_year % 100))) {
+              var last = 29;
+            }else{
+              var last = new Array(31,28,31,30,31,30,31,31,30,31,30,31)[establish_month - 1];
+            }
+            for (var i = 1; i <= last; i++){
+                $('#establish_day').append('<option value="' + i + '">' + i + '</option>');
+            }
+        }
+    }
+    });
+</script>

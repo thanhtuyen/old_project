@@ -1,0 +1,165 @@
+{%include file="pc/user/common/headbar_logged.html"%}
+{%include file="pc/user/common/navbar_logged.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+{%include file="pc/user/common/mypagemenu.html"%}
+<h1 class="tit_01">登録情報の変更</h1>
+<div class="box">
+{%form_open("user/mypage/profile_update",["id"=>"update_form"])%}
+<input id="area_id" name="area_id" type="hidden" value="">
+{%include file="pc/user/mypage/_profile_edit_form.html"%}
+<ul class="mypage_edit">
+<li><a id="profile_edit_cancel" class="btn_190 btn_gray" href="/mypage/profile"><span class="ico_arrow05">&gt;</span>キャンセル</a></li><!--
+--><li><a id="profile_edit_execute" class="btn_190 btn_pink ml10 form_submit" href="javascript:void(0)"><span class="ico_arrow03">&gt;</span>登録する</a></li>
+</ul>
+{%form_close()%}
+<!-- /.box --></div>
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+<script type="text/javascript" src="https://jpostal.googlecode.com/svn/trunk/jquery.jpostal.js"></script>
+<script src="{%$static_url%}user/js/validate.js"></script>
+<script type="text/javascript">
+window.onbeforeunload = function(e) {
+    var msg = "入力内容が消去されます。";
+
+    if(g_isPostBack){
+        return;
+    }
+
+    return msg;
+};
+</script>
+<script>
+$("#profile_edit_execute").on("click",function(){validate();});
+
+$('#address_pref').on('change', function(){changeCityList();});
+
+function validate(){
+
+    err = false;
+    position = 100000;
+
+    mail("update");
+    name();
+    kana();
+    birthday();
+    gender();
+    //zip();
+    address_pref();
+    address_city();
+    address_detail();
+    tel();
+    license();
+    employee()
+
+    if(err){
+        $('html,body').animate({ scrollTop: position - 30 }, 'fast');
+    }else{
+        $("#area_id").val($("option","#address_city").eq($("#address_city")[0].selectedIndex).data("city_area_id"));
+
+        g_isPostBack = true;
+        $("#update_form").submit();
+    }
+}
+function change_background_color(obj){
+    var id_input = String($(obj).attr('id'));
+    if ($(obj).val() === '' || $(obj).val() === '0') {
+        $(obj).css('background-color', '#ffdede');
+    }else{
+        // If wrong, view background
+        if( $('.msgerror_'+id_input).find('div:not(.display_none)').length != 0 ){
+            $(obj).css('background-color', '#ffdede');
+        }else{
+            $(obj).removeAttr('style');
+        }
+    }
+}
+// If form load finished
+$("#update_form").ready(function() {
+    $('input[type=text], input[type=password], input[type=textbox], select').each(function() {
+        var id_input = String($(this).attr('id'));
+        if( id_input === 'zip1' || id_input === 'zip2' || id_input === 'address_detail'){
+            return;
+        }else{
+            change_background_color(this);
+        }
+    });
+});
+// If field empty
+$(".form_submit").click(function() {
+    $('input[type=text], input[type=password], input[type=textbox], select').each(function() {
+        var id_input = String($(this).attr('id'));
+        // If field keyup
+        if( id_input !== 'zip1' && id_input !== 'zip2' && id_input !== 'address_detail'){
+            $(this).keyup(function(){
+                change_background_color(this);
+            });
+        }
+    });
+});
+$('input[type=text], input[type=password], input[type=textbox]').each(function() {
+    // If field keyup
+    $(this).keyup(function(){
+        var id_input = String($(this).attr('id'));
+        if( id_input === 'zip1' || id_input === 'zip2' || id_input === 'address_detail'){
+            return;
+        }else{
+            change_background_color(this);
+        }
+    });
+    // If field change
+    var id_input = String($(this).attr('id'));
+    if( id_input === 'kana' || id_input === 'name'){
+        $(this).bind("input", function (event) {
+            change_background_color(this);
+            if( $('#name').val() === '' ){
+                $('#kana_err').removeClass("display_none");
+                set_error_position($('#kana_err').position().top);
+                err = true;
+                change_background_color($('#kana'));
+            }
+        });
+    }
+});
+// If field change select
+$('select').each(function() {
+    $(this).change(function(){
+        change_background_color(this);
+    });
+});
+$('#mail').bind("input", function (event) {
+    $('#mail_err').addClass('display_none');
+    var re = /\S+@\S+\.\S+/; // When email format is correct, then call function mail();
+    if( re.test($("#mail").val()) ){
+        mail('update');
+    }else{
+        $('#mail_err').removeClass('display_none');
+    }
+});
+$('#name').keyup(function(){
+    name();
+});
+$('#kana').keyup(function(){
+    kana();
+});
+$('select#birth_year, select#birth_month, select#birth_day').change(function(){
+    birthday();
+});
+$('[name=gender]').change(function(){
+    gender();
+});
+$('#address_pref').change(function(){
+    address_pref();
+});
+$('#address_city').change(function(){
+    address_city();
+});
+$('#tel').bind("keyup keydown input", function (event) {
+    tel();
+});
+$('.license').change(function(){
+    license();
+});
+</script>
+</body>
+</html>

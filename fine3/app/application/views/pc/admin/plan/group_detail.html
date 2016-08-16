@@ -1,0 +1,65 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">パッケージプランの詳細</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tbody><tr>
+<th>お申し込みID</th>
+<td>{%$plan_detail["client_plan_group_relation_id"]%}</td>
+</tr>
+<tr>
+<th>申込日時</th>
+<td>{%$plan_detail["created"]%}</td>
+</tr>
+<tr>
+<th>契約終了予定月</th>
+<td>{%$plan_detail["expire_month"]%}</td>
+</tr>
+<tr>
+<th>更新の有無</th>
+<td>{%if $plan_detail["cpr_auto_extend_flg"] === "0"%}無し{%else%}有り{%/if%}</td>
+</tr>
+<tr>
+<th>パッケージプラン名</th>
+<td>{%$plan_detail["name"]%}</td>
+</tr>
+<tr>
+<th>プラン内容</th>
+<td>
+<ul>
+{%foreach $plan_detail["plan"] as $plan%}
+<li>{%$plan["plan_name"]%}</li>
+{%/foreach%}
+</ul>
+</td>
+</tr>
+<tr>
+<th>料金</th>
+<td>{%$plan_detail["price"]%}円　（割引：{%$plan_detail["discount"]%}円）</td>
+</tr>
+<tr>
+<th>最低契約期間</th>
+<td>{%$plan_detail["period"]%}ヶ月</td>
+</tr>
+<tr>
+<th>自動更新</th>
+<td>{%$plan_detail["extend_period"]%}ヶ月</td>
+</tr>
+<tr>
+<th>自動延長</th>
+<td>{%if $plan_detail["pg_auto_extend_flg"] === "0"%}無し{%else%}有り{%/if%}</td>
+</tr>
+
+
+</tbody></table>
+<!-- widget --></div>
+<div class="form-group">
+<!-- <input class="btn btn-primary" type="submit" value="この内容で登録する"> -->
+<a class="btn btn-default" href="{%$base_url%}manager/agent/detail/{%$plan_detail['client_id']%}">事業所情報に戻る</a>
+</div>
+
+<!-- innnerLR --></div>
+{%include file="pc/admin/shared/_footer.html"%}

@@ -1,0 +1,86 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			スカウト<span>：メールテンプレート一覧</span>
+		</h2>
+		{%if $total > 0%}
+		<p class="count_box">{%$total%}件中 {%$limit_from%}～{%$limit_to%}件を表示</p>
+		{%else%}
+				<p class="count_box"></p>
+		{%/if%}
+		<p class="newbtn">
+			<a  href="{%base_url()%}client/scout/create_template" class="btn_pink btn_190"><span
+				class="ico_arrow03">&gt;</span>新規テンプレート作成</a>
+		</p>
+		{%form_open($base_url|cat:'client/scout/duplicate_template', ['method' => 'POST', 'class' => 'search-scout', 'id' => 'template-list'])%}
+
+		<div class="box">
+			{%if $success %}
+			<div class="msg-success">{%$success%}</div>
+			{%/if%}
+			<div class="before_table01 duplicate-template">
+				▼チェックしたテンプレートを<a href="{%base_url()%}client/scout/duplidate_template"
+					class="btn_pink btn_160 submit">コピーして新規作成</a>
+			</div>
+			<div class="message" >
+					<div class="error" data="「メールテンプレートから１つお選びください。」">{%$error%}</div>
+			</div>
+
+
+			<table class="table01">
+				<tbody>
+					<tr>
+						<th nowrap=""><input type="checkbox" class="checkAllTemplates" value="1"></th>
+						<th nowrap>ID</th>
+						<th class="width80">件名</th>
+						<th class="width130">本文</th>
+						<th nowrap="">作成日</th>
+						<th nowrap="">操作</th>
+					</tr>
+					{%if !empty($templates)%}
+					{%foreach $templates as $template%}
+					<tr>
+						<td nowrap=""><input type="checkbox" name="template_id[]" value="{%$template['template_id']%}" class="required"></td>
+						<td nowrap="">{%$template['template_id']%}</td>
+						<td class="width80"><a href="{%base_url()%}client/confirm_template/{%$template['template_id']%}">{%$template['title']%}</a></td>
+						<td class="width130">{%$template['content']|html_entity_decode%}</td>
+						<td>{%$template['created']|date_format:"%Y-%m-%d"%}
+						</td>
+						<td nowrap="">
+						<a href="{%base_url()%}client/confirm_template/{%$template['template_id']%}"
+							class="btn_white btn_auto">編集</a></br>
+							<a style="margin-top: 5px" href=""
+							class="btn_gray btn_auto delete-template" data-id="{%$template['template_id']%}">削除</a></td>
+					</tr>
+					{%/foreach%}
+					{%else%}
+							<tr>
+    							<td colspan="7">メールテンプレートが見つかりません。</td>
+    						</tr>
+					{%/if%}
+				</tbody>
+			</table>
+			<!-- /.box -->
+		</div>
+		</form>
+			{%$pagination%}
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+<!-- BEGIN SCRIPT -->
+<script src="{%$static_url%}client/common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}client/scout/js/template.js"></script>
+<link href="{%$static_url%}client/scout/css/template.css" rel="stylesheet">
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<!-- END SCRIPT -->
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

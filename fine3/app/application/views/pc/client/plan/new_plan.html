@@ -1,0 +1,52 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			プラン確認・変更<span>：申し込み可能なプラン一覧</span>
+		</h2>
+		<p class="mb20">
+			お申し込みが可能なプランの一覧です。<br>プラン名をクリックすると、プランの詳細をご覧いただけます。
+		</p>
+		<p class="count_box">{%$count%}件中 {%$limit_from%}～{%$limit_to%}件を表示</p>
+		<p class="newbtn">
+			<a class="btn_white btn_190" href="{%base_url()%}client/plan/applied_plan/"><span
+				class="ico_arrow02">&gt;</span>利用中のプラン</a>
+		</p>
+		<div class="box">
+			<table class="table01">
+				<tbody>
+					<tr>
+						<th nowrap="">ID</th>
+						<th>プラン名</th>
+						<th nowrap="">最低契約期間</th>
+						<th nowrap="">料金</th>
+						<th nowrap="">申し込み</th>
+					</tr>
+					{%foreach $plan_list as $plan %}
+					<tr>
+						<td>{%html_escape($plan['plan_group_id'])%}</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%html_escape($plan['plan_group_id'])%}">{%html_escape($plan['name'])%}</a></td>
+						<td nowrap="">{%if $plan['unlimited_flg'] == 1%}無制限{%else%}{%html_escape($plan['period'])%}ヶ月{%/if%}</td>
+						<td nowrap="">{%html_escape($plan['price'])%}円</td>
+						<td nowrap=""><a class="btn_pink btn_auto"
+							href="{%base_url()%}client/plan/detail/{%html_escape($plan['plan_group_id'])%}">申し込む</a></td>
+					</tr>
+					{%/foreach%}
+				</tbody>
+			</table>
+			<!-- /.box -->
+		</div>
+		{%$pagination%}
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

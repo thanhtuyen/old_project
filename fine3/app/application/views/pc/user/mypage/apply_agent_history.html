@@ -1,0 +1,108 @@
+{%include file="pc/user/common/headbar_logged.html"%}
+{%include file="pc/user/common/navbar_logged.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<div class="content">
+
+{%include file="pc/user/common/mypagemenu.html"%}
+
+<h1 class="tit_01">紹介会社への応募履歴</h1>
+
+{%if isset($rowAppliedAgency) && ! empty($rowAppliedAgency)%}
+
+{%if $count_view && ! empty($count_view)%}
+<p class="count_box">{%$count_view['total']%}件中 {%$count_view['from_item']%}～{%$count_view['to_item']%}件を表示</p>
+{%/if%}
+
+{%foreach from=$rowAppliedAgency key=k item=v%}
+
+<a href="{%$base_url%}user/agent/detail/{%$v['client_id']%}" title="{%$v['display_name']%}">
+<div class="box mypage_agency_box">
+<h2 class="tit_04">
+<span class="ico_company01">□</span>{%$v['display_name']%}
+</h2>
+<p>{%$v['description']%}</p>
+<table>
+{%if isset($v['area_relationship']) && ! empty($v['area_relationship'])%}
+<tr class="area_relationship">
+<th>得意エリア</th>
+<td>
+{%$arg = array()%}
+{%foreach from=$v['area_relationship'] key=kArea item=vArea%}
+{%if isset($vArea['area_detail']) && ! empty($vArea['area_detail'])%}
+{%$arg[] = $vArea['area_detail']['name']%}
+{%/if%}
+{%/foreach%}
+{%implode(',', $arg)%}
+</td>
+</tr>
+{%/if%}
+
+
+{%if isset($v['tag_relationship']) && ! empty($v['tag_relationship'])%}
+<tr class="tag_relationship">
+<th>得意職種</th>
+<td>
+{%$arg = array()%}
+{%foreach from=$v['tag_relationship'] key=kTag item=vTag%}
+{%if isset($vTag['tag_detail']) && $vTag['tag_detail'] && ! empty($vTag['tag_detail'])%}
+{%$arg[] = $vTag['tag_detail']['name']%}
+{%/if%}
+{%/foreach%}
+{%implode(',', $arg)%}
+</td>
+</tr>
+{%/if%}
+
+
+<tr class="proccess">
+<th>紹介の流れ</th>
+<td>{%$v['process']%}</td>
+</tr>
+<tr>
+<th>所在地</th>
+<td>
+{%if isset($v['area_name']) && ! empty($v['area_name']) %}
+{%if isset($v['area_name']['pname']) && ! empty($v['area_name']['pname']) %}
+{%$v['area_name']['pname']%}
+{%/if%}
+{%if isset($v['area_name']['cname']) && ! empty($v['area_name']['cname']) %}
+{%$v['area_name']['cname']%}
+{%/if%}
+{%/if%}
+{%$v['address']%}
+</td>
+</tr>
+<tr>
+<th>運営会社</th>
+<td>{%$v['display_name']%}</td>
+</tr>
+</table>
+<!-- /.box -->
+</div>
+</a>
+
+{%/foreach%}
+
+{%if $count_view && ! empty($count_view)%}
+<p class="count_box">{%$count_view['total']%}件中 {%$count_view['from_item']%}～{%$count_view['to_item']%}件を表示</p>
+{%/if%}
+
+{%if $linkPage && ! empty($linkPage)%}
+<p class="pagenation">{%$linkPage%}</p>
+{%/if%}
+
+{%else%}
+<p>紹介会社への応募履歴はありません</p>
+{%/if%}
+
+<!-- /.content -->
+</div>
+
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

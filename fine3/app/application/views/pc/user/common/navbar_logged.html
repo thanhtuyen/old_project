@@ -1,0 +1,26 @@
+<div class="head_nav">
+<header>
+<ul class="head_logo">
+<li><a href="{%$base_url%}"><img src="{%$static_url%}common/images/header_logo.png" alt="FINE！（ファイン）"></a></li>
+<li>国内最大級の保育士求人サイト</li>
+</ul>
+
+<div class="head_right">
+<ul class="logined01"><!--
+--><li><a href="{%$base_url%}mypage/profile">{%$user_name%}</a> さん</li><!--
+--><li><a href="{%$base_url%}logout">ログアウト</a></li><!--
+--></ul>
+<ul class="logined02"><!--
+--><li><a href="{%$base_url%}mypage/bookmark">お気に入り求人<span>{%$entry_count["bookmark"]%}</span>件</a></li><!--
+--><li><a href="{%$base_url%}mypage/apply_job_history">応募済求人<span>{%$entry_count["apply_job"]%}</span>件</a></li><!--
+--><li><a href="{%$base_url%}mypage/apply_agent_history">紹介依頼済<span>{%$entry_count["apply_agent"]%}</span>件</a></li><!--
+--></ul>
+<div class="count_job">
+<dl><dt>掲載中の求人</dt><dd><span>{%$common_job_info["count"]%}</span>件</dd></dl>
+<dl><dt>最終更新：</dt><dd>{%$common_job_info["last_update"]%}</dd></dl>
+<!-- /.count_job --></div>
+<!-- /.head_right --></div>
+</header>
+<!-- /.head_nav --></div>
+{%include file="pc/user/common/global_nav.html"%}
+

@@ -1,0 +1,127 @@
+
+
+{%form_open($base_url|cat:'client/job_apply/exclude',['class' => 'form-control', 'id' => 'form-data'])%}
+
+
+<div class="before_table01">
+▼チェックした応募を<a id="btn-exclude" href="javascript:void(0);" class="btn_pink btn_160">確定する</a>
+<a href="javascript:void(0);" class="btn_white btn_160" id="export_csv">CSV出力</a>       
+</div>
+
+<table class="table01" id="job_table">
+<tbody>
+<tr>
+<th nowrap><input id="chk-all" type="checkbox" value="0" name="checkall"></th>
+<th nowrap>ID</th>
+<th>応募者名<br><span class="txt_small">応募日時</span></th>
+<th nowrap>応募園・募集職種<br><span class="txt_small">応募求人</span></th>
+<th nowrap>希望雇用形態<br><span class="txt_small">保有資格</span></th>
+<th nowrap>金額</th>
+<th nowrap>ステータス</th>
+<th nowrap>操作</th>
+</tr>
+{%foreach $data.items as $item%}                        
+<tr>
+<td nowrap><input name="ids[]" class="chk-applicant" type="checkbox" value="{%$item.applicant_job_id%}"></td>
+<td nowrap>{%$item.applicant_job_id%}</td>
+<td><a href="{%$base_url%}client/job_apply/detail/{%$item.applicant_job_id%}/">{%$item.user_name%}</a><br>
+<span class="txt_small">{%$item.created%}
+</span></td>
+<td><a target="_blank" href="{%$base_url%}client/nursery/edit/{%$item.nursery_id%}/">{%$item.nursery_name%}</a><p class="txt_small mt5">
+<a target="_blank" href="{%$base_url%}client/job/edit/{%$item.job_id%}">{%$item.job_title%}</a>・{%$item.type_job%}</p></td>
+<td><p class="mb5">{%$item.wish_job%}</p>
+{%if is_array($item.user_license)%}{%foreach $item.user_license as $ul%}
+<p class="txt_small">・{%$ul.name%}</p>
+{%/foreach%}{%/if%}
+</td>
+<td nowrap>{%$item.unit_price%}</td>
+<td nowrap>{%$item.applicant_status%}</td>
+<td nowrap><a href="{%$base_url%}client/job_apply/detail/{%$item.applicant_job_id%}/"
+class="btn_white btn_auto">詳細</a></td>
+</tr>
+{%/foreach%}                        
+</tbody>
+</table>
+<input type="hidden" name ="status" value ="confirm">
+</form>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+
+		$('#btn-exclude').on('click', function(){
+
+			var chkbox = false;
+
+			$('#chk-all').on('click',function(){
+				if($(this).attr('checked') == 'checked'){
+				chkbox = true;      
+				$('#message-exclude-fail').addClass('display_none');
+				}
+
+				});
+
+
+			$.each($('.chk-applicant'), function(index, item){
+				if($(this).attr('checked') == 'checked'){
+				chkbox = true;              
+				}
+
+				$(this).on('click',function(){
+					if($(this).attr('checked') == 'checked'){
+					chkbox = true;      
+					$('#message-exclude-fail').addClass('display_none');
+					}
+
+					});
+				});
+
+
+
+			if(chkbox){
+				$('#message-exclude-fail').addClass('display_none');
+				$('#form-data').submit();
+			}else{
+				$('.msg-success').addClass('display_none');
+				$('#message-exclude-fail').removeClass('display_none');         
+			}
+
+		});
+
+		$('#chk-all').on('click',function(){
+			$('.chk-applicant').prop('checked', $(this).attr('checked') == 'checked');
+			if ($('#chk-all').is(':checked')) {
+				$("#job_table input[name='checkall']").val('1');
+			}else{
+				$("#job_table input[name='checkall']").val('0');
+			}
+		});
+
+		//export csv
+		$('#export_csv').on('click', function(){
+				var ids = '';
+				var _checkall = $("#job_table input[name='checkall']").val();
+				var checked_job = $("#job_table input[name='ids[]']:checked")
+				if(checked_job.length > 0) {
+					checked_job.each(function(){
+						val = this.value;
+						if(val){
+							ids += ('_' + val);
+						}
+						if(ids){
+							window.location.href = "{%$base_url%}client/job_apply/export_csv?fromat=csv&job_ids=" + ids + "&checkall=" + _checkall;
+						}
+					});
+				} else {
+					return;
+				}
+		});
+
+		$("select[name='show_num']").on("change", function(){
+				var num = $(this).val()
+				$("input[name=limit]").val(num)
+				})
+		{%if isset($params.limit)%}
+		$("select[name='show_num']").val({%$params.limit%}) 
+		{%/if%}
+});
+</script>               

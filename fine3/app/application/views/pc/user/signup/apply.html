@@ -1,0 +1,128 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<link type="text/css" rel="stylesheet" href="{%$static_url%}user/css/mailtip.css"/>
+<div class="content_wrapper">
+
+<p class="apply_head">{%if empty($bookmark_flg)%}応募する求人{%else%}お気に入り登録する求人{%/if%}</p>
+<div class="box apply_box">
+<h1 class="tit_02">{%$select_job["job_detail"]["job"]["title"]%}</h1>
+<table>
+{%if !empty($select_job['job_detail']['tags']['type_job'])%}
+<tr>
+<th>職種</th>
+<td>
+{%foreach $select_job['job_detail']['tags']['type_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</td>
+{%/if%}
+{%if !empty($select_job['job_detail']['tags']['type_employ'])%}
+<th>勤務形態</th>
+<td>
+{%foreach $select_job['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</td>
+{%/if%}
+</tr>
+</table>
+<ul class="ico_jobtag apply_tag">
+{%if !empty($select_job['job_detail']['tags']['tag_job'])%}
+{%foreach $select_job['job_detail']['tags']['tag_job'] as $data%}
+<li><a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/">{%html_escape($data['tag_detail']['name'])%}</a></li>
+{%/foreach%}
+{%/if%}
+{%if !empty($select_job['nursery_detail']['tags']['tag_nursery'])%}
+{%foreach $select_job['nursery_detail']['tags']['tag_nursery'] as $data%}
+<li><a href="{%$base_url%}{%$data['tag_group_detail']['prefix']%}{%$data['tag_detail']['link_name']%}/">{%html_escape($data['tag_detail']['name'])%}</a></li>
+{%/foreach%}
+{%/if%}
+</ul>
+<!-- /.box --></div>
+
+<div class="box">
+<p class="mb10"><span class="ico_must">必須</span>マークのついている項目は、会員登録する際に入力が必須の項目です。</p>
+<p class="mb20">こちらのページで登録した情報はマイページから確認できます。次回からこちらの情報を編集して応募できます。</p>
+{%form_open("user/signup/register",["id"=>"register_form"])%}
+{%include file="pc/user/signup/_signup_form.html" type="add_job"%}
+<input id="area_id" name="area_id" type="hidden" value="">
+<input name="added_job_id" type="hidden" value="{%$select_job['job_detail']['job']['job_id']%}">
+<input name="added_job_type" type="hidden" value="{%if empty($bookmark_flg)%}apply{%else%}bookmark{%/if%}">
+<div class="apply_btnarea">
+<p>上記の内容が選択された求人に送信されます</p>
+<ul>
+<li><a class="btn_190 btn_gray" onClick="history.back(); return false;"><span class="ico_arrow05">&gt;</span>戻る</a></li><!--
+--><li><a class="form_submit btn_190 btn_pink ml10" href="javascript:void(0)"><span class="ico_arrow03">&gt;</span>{%if empty($bookmark_flg)%}応募する{%else%}お気に入り登録する{%/if%}</a></li>
+</ul>
+</div>
+
+<!--
+
+{%if $related_list%}
+<div class="apply_more">
+<table class="formtable">
+<tr>
+<th><span class="ico_option">任意</span>チェックした求人も一緒に応募複数応募で内定率アップ♪</th>
+<td>
+<div class="jobbox_users">
+
+
+
+<p class="jobbox_users_all"><label>すべてにチェックを入れる<input type="checkbox"></label></p>
+<div class="clear">
+
+{%foreach $related_list as $related_job%}
+<div class="jobbox_users_check">
+<input type="checkbox">
+<a class="jobbox" href="{%base_url()%}detail_{%$related_job['job_id']%}/">
+<p class="tit_boxjob">{%$related_job['title']%}</p>
+<p class="custom_job_img"><img src="{%getImageUrlFromS3($related_job['job_id'],2,1)%}" alt="" width="94" height="68"></p>
+<ul class="job_s_list">
+{%if !empty($related_job['address'])%}
+<li><span class="ico_arrow01">&gt;</span>{%$related_job['address']%}</li>{%/if%}
+
+{%if !empty($related_job['tags']['type_employ'])%}
+<li><span class="ico_arrow01">&gt;</span>
+{%foreach $related_job['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</li>{%/if%}
+
+{%if !empty($related_job['tags']['tag_job'])%}
+<li><span class="ico_arrow01">&gt;</span>
+{%foreach $related_job['tags']['tag_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</li>{%/if%}
+</ul>
+</a>
+</div>
+{%/foreach%}
+<!-- /.clear --><!-- </div>
+<!-- /.box --><!-- </div></td>
+</tr>
+</table>
+<div class="apply_btnarea mb25">
+<p>上記の内容が応募先に送信されます</p>
+<ul>
+<li><a class="btn_190 btn_gray" href="#"><span class="ico_arrow05">&gt;</span>戻る</a></li><!--
+--><!-- <li><a class="form_submit btn_190 btn_pink ml10" href="javascript:void(0)"><span class="ico_arrow03">&gt;</span>応募する</a></li>
+</ul>
+</div>
+<!-- /.apply_more --><!-- </div>
+{%/if%}-->
+{%form_close()%}
+<!-- /.box --></div>
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script src="{%$static_url%}common/js/jpostal.js"></script>
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script src="{%$static_url%}common/js/jquery.autoKana.js"></script>
+<script src="{%$static_url%}common/js/date_format.js"></script>
+<script src="{%$static_url%}user/js/signup.js"></script>
+</body>
+</html>

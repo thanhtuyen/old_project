@@ -1,0 +1,17 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+<h1 class="tit_01">求人お気に入り登録完了</h1>
+<div class="box comps">
+<p class="comps_tit">求人「{%$job_detail["title"]%}」のお気に入り登録が完了いたしました。</p>
+<p class="txt_center"><a href="{%$base_url%}mypage" class="btn_pink btn_200"><span class="ico_arrow03">&gt;</span>マイページへ移動</a></p>
+<p class="txt_center"><a href="{%$base_url%}detail_{%$job_detail['job_id']%}" class="btn_green btn_200" style="width:300px;"><span class="ico_arrow05">&gt;</span>お気に入り登録した求人を見る</a></p>
+<!-- /.box --></div>
+
+<!-- /.content_wrapper --></div>
+
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+<!-- Ticket 1153 -->
+<div class="main">
+    <!-- Left nav -->
+    {%include file="pc/client/common/left_nav.html"%}
+
+    <div class="contents inner">
+        <h2 class="tit_01">
+            スカウト<span>：スカウト条件選択&#12288;1/2</span>
+        </h2>
+
+        <!-- BEGIN SEARCH FORM -->
+        <!-- notice -->
+        {%$info%}
+        <!-- end notice -->
+        {%form_open($base_url|cat:'client/scout/', ['method' => 'GET', 'class' => 'search-scout', 'id' => 'search-scout'])%}
+        <div class="box">
+            <p class="tit_04">1.まずは求人票を選びましょう</p>
+            <table class="table02">
+                <tbody>
+                    <tr>
+                        <th>園名<span class="ico_must">必須</span></th>
+                        <td>
+                            <select class="widthfull required" name="nursery_id">
+                                <option value="" >選択してください</option>
+                                {%foreach from=$nurseries key=k item=nursery%}
+                                     <option  value="{%$nursery['nursery_id']%}" {%$nursery['selected']%}>{%$nursery['name']%}</option>
+                                {%/foreach%}
+                            </select>
+                            <div class="message" >
+                                <div class="error" data="選択してください"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>求人票<span class="ico_must">必須</span></th>
+                        <td>
+                        <select class="widthfull required" name="job_id">
+                                <option value="">選択してください</option>
+                                {%foreach from=$jobs key=k item=job%}
+                                     <option  value="{%$job['job_id']%}" {%$job['selected']%}>{%$job['title']%}</option>
+                                {%/foreach%}
+                        </select>
+                        <div class="message" >
+                                <div class="error" data="選択してください"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /.box -->
+        </div>
+        <div class="box">
+            <p class="tit_04">2.スカウトする人の検索条件を指定しましょう</p>
+            <table class="table02">
+                <tbody>
+                    <tr>
+                        <th>最終更新日</th>
+                        <td><input type="text" class="width200 date" name="start_date" value="{%$start_date%}"> ～ <input
+                            type="text" class="width200 date" name="end_date" value="{%$end_date%}"></td>
+                    </tr>
+                    <tr>
+                        <th>エリア</th>
+                        <td><select name="province_id">
+                                <option value="">選択してください</option>
+                                {%foreach from=$provinces key=k item=province%}
+                                     <option data-pref_id="{%$province['province_id']%}" value="{%$province['province_id']%}" {%$province['selected']%}>{%$province['name']%}</option>
+                                {%/foreach%}
+
+                        </select>
+                            <ul class="mt15" id="cityList">
+                                {%foreach from=$cities key=k item=city%}
+                                     <li><label><input name="area_id[{%$city['area_id']%}]" value="{%$city['area_id']%}" type="checkbox"  {%$city['checked']%}> {%$city['name']%}</label></li>
+                                {%/foreach%}
+                            </ul></td>
+                    </tr>
+                    <tr>
+                        <th>保有資格</th>
+                        <td><a href="#"  data-tag_group_id="4">▼条件を選択</a>
+                            <ul class="mt15" >
+                                {%foreach from=$license_tags key=k item=tag%}
+                                    <li><label><input data-tag_group_id="{%$tag['tag_group_id']%}" name="license_tag_id[{%$tag['tag_id']%}]" value="{%$tag['tag_id']%}" type="checkbox" {%$tag['checked']%}> {%$tag['name']%}</label></li>
+                                {%/foreach%}
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>希望雇用形態</th>
+                        <td><a href="#" data-tag_group_id="3" >▼条件を選択</a>
+                        <ul class="mt15">
+                                {%foreach from=$employ_tags key=k item=tag%}
+                                     <li><label><input data-tag_group_id="{%$tag['tag_group_id']%}" name="employ_tag_id[{%$tag['tag_id']%}]" value="{%$tag['tag_id']%}" type="checkbox" {%$tag['checked']%}> {%$tag['name']%}</label></li>
+                                {%/foreach%}
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="txt_center mt20">
+                <a href="" class="btn_white btn_280 submit"><span class="ico_arrow02">&gt;</span>この条件で検索</a>
+            </p>
+            </form>
+            <!-- END SEARCH FORM -->
+
+
+            <!-- BEGIN SUBMIT CONFIRM -->
+            {%form_open($base_url|cat:'client/scout/confirm', ['method' => 'POST', 'id' => 'confirm-scout', 'class' => 'confirm-scout'])%}
+
+        {%if $total > 0%}
+            <p class="tit_04">3.スカウトする人を選択しましょう</p>
+            <p class="count_box mt30">{%$total%}件中 {%$from_item%}～{%$to_item%}件を表示</p>
+            <div class="before_table01">
+                ▼チェックした人を<a class="btn_pink btn_190 confirm scout"
+                    href="{%base_url()%}client/scout/confirm">一括選択して次へ</a>
+                    <div class="message" >
+                                <div class="error" data="ユーザーを1人以上選択してください。"></div>
+                    </div>
+                    <input type="hidden" name="job_id" value="{%$job_id%}">
+            </div>
+        {%else%}
+            <div class="before_table01"></div>
+        {%/if%}
+            <table class="table01">
+                <tbody>
+                    {%if $total > 0%}
+                    <tr>
+                        <th nowrap=""><input type="checkbox" class="checkAllUsers" value="1"></th>
+                        <th nowrap="">ID</th>
+                        <th nowrap="">居住地</th>
+                        <th nowrap="">保有資格</th>
+                        <th nowrap="">年齢</th>
+                        <th nowrap="">希望雇用形態</th>
+                        <th nowrap="">操作</th>
+                    </tr>
+                    {%/if%}
+                    {%foreach from=$users key=k item=user%}
+                            <tr>
+                                <td nowrap=""><input type="checkbox" name="user_id[]" value="{%$user['user_id']%}"></td>
+                                <td nowrap="" class="user_id">{%$user['user_id']%}</td>
+                                <td class="area">{%$user['address']%}</td>
+                                <td class="license_tags">{%$user['license_tags']%}</td>
+                                <td nowrap="" class="age">{%$user['age']%}</td>
+                                <td class="employ_tags">{%$user['employ_tags']%}</td>
+                                <td nowrap=""><a class="btn_pink btn_auto confirm-one" href="{%base_url()%}scout/confirm">選択して次へ</a></td>
+                            </tr>
+                    {%foreachelse%}
+                            <tr>
+                                <td colspan="7">条件に合致するユーザーが見つかりませんでした。</td>
+                            </tr>
+                    {%/foreach%}
+
+
+
+                </tbody>
+            </table>
+            </form>
+            <!-- END SUBMIT CONFIRM -->
+
+            {%$pagination%}
+
+            <!-- /.box -->
+        </div>
+        <!-- /.contents -->
+    </div>
+    <!-- /.main -->
+</div>
+
+<!-- BEGIN SCRIPT -->
+<script >
+    var cityData  = {%$cityData%};
+    var jobData  = {%$jobData%};
+</script>
+<script src="{%$static_url%}client/common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}client/scout/js/search.js"></script>
+<script src="{%$static_url%}client/common/js/jquery-ui.min.js"></script>
+<script src="{%$static_url%}client/common/js/ui.datepicker-ja.js"></script>
+<link href="{%$static_url%}client/common/css/jquery-ui.min.css" rel="stylesheet">
+<link href="{%$static_url%}client/scout/css/search.css" rel="stylesheet">
+
+<!-- END SCRIPT -->
+
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

@@ -1,0 +1,83 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			プラン確認・変更<span>：プラン詳細</span>
+		</h2>
+		<p class="newbtn">
+			<a class="btn_white btn_190" href="javascript:history.go(-1)"><span
+				class="ico_arrow02">&gt;</span>前のページに戻る</a>
+		</p>
+		<div class="box">
+			<p class="tit_04">{%html_escape($plan_detail['name'])%}</p>
+			<table class="table02 mb20">
+				<tbody>
+					<tr>
+						<th>ID</th>
+						<td>{%html_escape($plan_detail['plan_group_id'])%}</td>
+					</tr>
+					<tr>
+						<th>プラン名</th>
+						<td>{%html_escape($plan_detail['name'])%}</td>
+					</tr>
+					<tr>
+						<th>最低契約期間</th>
+						<td>{%html_escape($plan_detail['period'])%}ヶ月</td>
+					</tr>
+					<tr>
+						<th>プラン内容</th>
+						<td>
+						{%foreach $plan_list as $plan %}
+							<dl>
+								<dt><span class="ico_arrow01"></span>{%$plan['plan_name']%}</dt>
+								<dd><p class="txt_small">{%$plan['description']%}</p></dd>
+							</dl>
+						{%/foreach%}
+							</td>
+					</tr>
+					<tr>
+						<th>自動延長</th>
+						<td>{%if $plan_detail['auto_extend_flg'] == 1%}{%if $plan_detail['extend_period'] > 0%}{%$plan_detail['extend_period']%}ヶ月{%/if%}
+						{%else%}なし{%/if%}</td>
+					</tr>
+					<tr>
+						<th>料金</th>
+						<td>{%html_escape(number_format($plan_detail['price']))%}円(税込)</td>
+					</tr>
+				</tbody>
+			</table>
+			{%if $status === 'not_applied'%}
+			{%form_open($base_url|cat:"client/plan/apply/",["id"=>"apply_form"])%}
+			<input id="apply_id" name="apply_id" value="{%html_escape($plan_detail['plan_group_id'])%}" type="hidden">
+			<p class="txt_center mt20">
+				<a href="javascript:void(0)" id="form_submit" class="btn_pink btn_280"><span
+					class="ico_arrow03">&gt;</span>このプランに申し込む</a>
+			</p>
+			<p class="txt_center txt_attention mt5">
+				※ご利用期間は、お申し込みされた日からの起算となります。<br>※上記ボタンをクリックするとお申込み完了となり、プランのご利用開始となります。
+			</p>
+			{%form_close()%}
+			{%/if%}
+			<!-- /.box -->
+		</div>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+<script>
+
+var err;
+$("#form_submit").on("click",function(){
+    err = false;
+    if(!err)$("#apply_form").submit();
+
+});
+</script>
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

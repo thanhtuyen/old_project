@@ -1,0 +1,27 @@
+<!-- if status = pending -->
+
+{%form_open($base_url|cat:'client/job_apply/active',['class' => 'form-control', 'id' => 'form-data'])%}
+<p class="tit_04">非課金申請</p>
+<table class="table02">
+<tbody>
+<tr>
+<th>非課金申請の有無</th>
+<td>{%$item.pay_status%}</td>
+</tr>
+<tr>
+<th>申請理由</th>
+<td>{%$item.client_comment%}</td>
+</tr>
+<tr>
+<th>状態</th>
+<td>申請中</td>
+</tr>
+</tbody>
+</table>
+<p class="txt_center mt20">
+
+<a class="btn_gray btn_190" href="javascript:void(0);" id="btn-exclude"><span class="ico_arrow05">></span>申請を取り下げる</a></p>
+
+<input type="hidden" name="ids[]" value="{%$item.applicant_job_id%}" />
+<input type="hidden" name="return" value="{%$return%}" />
+</form>

@@ -1,0 +1,78 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+
+
+
+
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ID</th>
+<th>ユーザー名</th>
+<th>求人ID</th>
+<th>応募先</th>
+<th>エントリー日時</th>
+<th>課金対象</th>
+<th>ステータス</th>
+<th>　</th>
+</tr>
+</thead>
+
+{%foreach from=$result key=k item=list%}
+<tr class="gradeX">
+<td class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox" checked="checked"></label>
+</div>
+</td>
+<td><a href="{%base_url('manager/entry/detail')%}/{%$list['applicant_id']%}">E{%$list['applicant_id']%}</a></td>
+<td><a href="{%base_url('manager/users/detail/')%}/{%$list['jobseeker_id']%}">U{%$list['jobseeker_id']%}</a></td>
+<td><a href="{%base_url('manager/jobs/detail/')%}/{%$list['job_id']%}">J{%$list['job_id']%}</a></td>
+<td><a href="agent-detail.html">{%$list['agent_name']%}</a></td>
+<td>{%$list['created']%}</td>
+<td>{%entry_index_charge($list['status'])%}</td>
+<td>{%entry_index_status($list['status'])%}</td>
+<td><a href="{%base_url('manager/entry/detail')%}/{%$list['applicant_id']%}">
+<button class="btn btn-primary" type="button">詳細</button></a></td>
+</tr>
+{%/foreach%}
+
+
+
+</table>
+<div class="row"><div class="col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info">Showing {%$quantity['start']%} to {%$quantity['end']%} of {%$quantity['total']%} entries</div></div><div class="col-md-6"><div class="dataTables_paginate paging_bootstrap">
+
+{%$pagerfantaHtml%}
+
+</div></div></div>
+</div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+
+
+
+
+
+
+
+
+
+
+{%include file="pc/admin/shared/_footer.html"%}

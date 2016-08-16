@@ -1,0 +1,68 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+{%include file="pc/user/common/loading.html"%}
+{%display_breadcrumb($breadcrumb)%}
+<div class="content_wrapper">
+    <div class="content">
+    <h1 class="tit_01">{%html_escape($nursery["name"]|truncate:26:"...")%}の求人一覧</h1>
+        <div class="job_tab agency_detail"><!--
+            --><h2 class="tab_btn active_tab_btn" data-tab="summary"><a href="{%$base_url%}shisetsu/{%$nursery["nursery_id"]%}/">会社概要</a></h2><!--
+            --><h2 class="tab_btn current active_tab_btn" data-tab="job"><a href=>募集中の求人<span class="count_red">{%$job_all_count%}</span><span class="count_after">件</span></a></h2><!--
+           このliは表示件数0件のときのタブデザインです<li class="tab_btn tab_no_job" data-tab="job">募集中の求人<span class="count_black">{%$job_all_count%}</span><span class="count_after">件</span></li><!--
+        --></div>
+            <p class="count_box" style="background:#ffffff";></p>
+        <div id="select_tab_job" >
+            <p class="count_box">{%$job_all_count%}件中 {%$limit_from + 1%}～{%$limit_to%}件を表示</p>
+
+{%if $job_list !== false%}
+{%include file="pc/user/common/_job_list.html"%}
+
+            <p class="count_box">{%$job_all_count%}件中 {%$limit_from + 1%}～{%$limit_to%}件を表示</p>
+
+        <p class="pagenation">{%$pagination%}</p>
+        {%/if%}
+
+        </div>
+
+        <!-- /.content -->
+    </div>
+
+    {%include file="pc/user/common/right_nav.html"%}
+    <!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+<script src="{%$static_url%}user/js/apply.js"></script>
+<script src="{%$static_url%}common/js/jquery.darktooltip.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" charset="UTF-8"></script>
+<script>
+$('.light_m').darkTooltip({size:"medium"});
+$(".apply_btn").on("click",function(e){apply_for_job($(this),"apply");});
+$(".bookmark_btn").on("click",function(e){apply_for_job($(this),"bookmark");});
+tab = "summary";
+$(".active_tab_btn").on("click",function(){
+    var select_tab = $(this).data("tab");
+    if(tab !== select_tab){
+        $(".tab_btn").removeClass("current");
+        $(this).addClass("current");
+        $("[id^=select_tab]").addClass("display_none");
+        $("#select_tab_"+select_tab).removeClass("display_none");
+        tab = select_tab
+    }
+})
+/*---- google map ----*/
+var latlon=new google.maps.LatLng({%if !empty($nursery["lat"])%}{%$nursery["lat"]%}{%else%}0{%/if%},{%$nursery["lon"]%});
+var map = new google.maps.Map(document.getElementById('map'),{
+    zoom:16,
+    center:latlon,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+});
+new google.maps.InfoWindow({
+    content: "{%html_escape($nursery["name"])%}"
+}).open(map,new google.maps.Marker({
+    position:latlon,
+    map:map
+}));
+/*---- google map ----*/
+</script>
+</body>
+</html>

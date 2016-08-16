@@ -1,0 +1,77 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">テキストリンク集の編集</h4>
+<!-- widget-head --></div>
+{%form_open('manager/ad/text/update')%}
+<table class="plan_form">
+<input type="hidden" name="g[ads_group_id]" value="{%$ad['ads_group_id']%}" />
+<tr>
+<th>エリア</th>
+<td>
+{%foreach $states as $state%}
+<div class="radio lined_div">
+<label class="radio-custom">
+    <input type="radio" name="g[area_id]" value="{%$state['area_id']%}" {%state_is_checked($state['area_id'],$ad['area_id'])%}>
+    <i class="fa fa-fw fa-square-o"></i>{%$state['name']%}</label>
+</div>
+{%/foreach%}
+</tr>
+<tr>
+<th>開始日</th>
+<td><input name="g[start_date]" class="form-control datepicker1" type="text" value="{%$ad['start_date']%}" data-validation = "required" data-validation-error-msg="<span style='color:red'>　開始日は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>終了日</th>
+<td><input name="g[end_date]" class="form-control datepicker1" type="text" value="{%$ad['end_date']%}"   data-validation = "required" data-validation-error-msg="<span style='color:red'>　終了日は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>表示非表示</th>
+<td>
+<div class="make-switch" data-on="success" data-off="default">
+<input type="checkbox" name="g[status]" {%is_switch(!$ad['group_status'])%}>
+</div></td>
+</tr>
+
+</table>
+<!-- widget --></div>
+
+
+{%foreach $ads as $ad %}
+<div class="widget widget-heading-simple widget-body-white mini-div" >
+<table class="plan_form">
+<input type="hidden" name="ads_id[]" value="{%$ad['ads_id']%}" />
+<tr>
+<th>表示順</th>
+<td><select class="selectpicker col-md-6" data-style="btn-success" name="ordered[]">
+{%foreach range(0, 10) as $ordered%}
+<option value="{%$ordered%}" {%is_selected($ordered, $ad['ordered'])%}>{%$ordered%}</option>
+{%/foreach%}
+</select>
+</td>
+</tr>
+<tr>
+<th>テキスト</th>
+<td><input type="text" name="title[]" value="{%$ad['title']%}" class="form-control plan_form"  data-validation = "required" data-validation-error-msg="<span style='color:red'>　テキストは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>リンク先URL</th>
+<td><input type="text" name="url[]" value="{%$ad['url']%}" class="form-control plan_form"  data-validation = "required" data-validation-error-msg="<span style='color:red'>　リンク先URLは必須項目です.</span>"/></td>
+</tr>
+</table>
+<!-- widget --></div>
+{%/foreach%}
+
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+<input class="btn btn-default" type="submit" value="削除">
+</div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

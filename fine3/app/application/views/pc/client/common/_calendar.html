@@ -1,0 +1,15 @@
+<script src="{%$static_url%}client/common/js/jquery-ui.min.js"></script>
+<script src="{%$static_url%}client/common/js/ui.datepicker-ja.js"></script>
+<link href="{%$static_url%}client/common/css/jquery-ui.min.css" rel="stylesheet">
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<script type="text/javascript">
+  $(document).ready(function($){
+    $(".search-date-calendar" ).datepicker({
+      "dateFormat": "yy-mm-dd",
+      "regional":"jp",
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script>

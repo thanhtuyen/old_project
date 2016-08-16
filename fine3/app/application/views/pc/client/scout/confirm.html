@@ -1,0 +1,121 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			スカウト<span>：スカウト条件選択&#12288;2/2</span>
+		</h2>
+		<p class="mb10">
+			<a class="btn_white btn_130" href="{%base_url()%}/scout"><span
+				class="ico_arrow02">&gt;</span>戻る</a>
+		</p>
+		<!-- BEGIN SUBMIT CONFIRM -->
+		{%form_open($base_url|cat:'client/scout/execute', ['method' => 'POST', 'id' => 'send-scout', 'class' => 'search-scout'])%}
+		<div class="box">
+			<p class="tit_04">4.メールテンプレートを選びましょう</p>
+			<table class="table02">
+				<tbody>
+					<tr>
+						<th>メールテンプレート</th>
+						<td>
+						<select class="widthfull required" name="template_id">
+								<option value="">選択してください</option>
+								{%foreach from=$templates key=k item=template%}
+								     <option value="{%$template['template_id']%}" {%$template['selected']%}>{%$template['title']%}</option>
+								{%/foreach%}
+						</select>
+							<div class="message" >
+								<div class="error" data="選択してください"></div>
+							</div>
+							{%if $editTemplateUrl%}
+							<p class="mt10">
+								<a class="btn_white btn_190" target="_blank"
+									href="{%$editTemplateUrl%}"><span class="ico_arrow02">&gt;</span>メールの内容を確認</a>
+							</p></td>
+							{%/if%}
+					</tr>
+				</tbody>
+			</table>
+			<p class="mt20">
+				<a class="btn_white btn_190" href="{%$createTemplateUrl%}"><span
+					class="ico_arrow02">&gt;</span>テンプレート新規作成</a><span
+					class="txt_attention ml10">※テンプレート新規作成ボタンを押すと、スカウトが一時中断されます。</span>
+			</p>
+			<!-- /.box -->
+		</div>
+		<div class="box">
+			<p class="tit_04">5.送る相手と求人票を再度確認して、スカウトメールを送信しましょう</p>
+			<table class="table02">
+				<tbody>
+					<tr>
+						<th>求人タイトル</th>
+						<td>
+							<p class="job" data-id="{%$job['job_id']%}" >{%$job['title']%}</p>
+							<input type="hidden" class="required" name="job_id" value="{%$job['job_id']%}">
+							<p class="mt10">
+								<a class="btn_white btn_190" target="_blank"
+									href="{%$editJobUrl%}"><span class="ico_arrow02">&gt;</span>求人票の内容を確認</a>
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table01 mt20">
+				<tbody>
+					<tr>
+						<th nowrap="">ID</th>
+						<th>居住地</th>
+						<th nowrap="">保有資格</th>
+						<th nowrap="">年齢</th>
+						<th nowrap="">希望雇用形態</th>
+						<th nowrap="">送信リストから</th>
+					</tr>
+					{%foreach from=$users key=k item=user%}
+							<tr>
+								<td nowrap="" class="user_id">{%$user['user_id']%}</td>
+								<td class="area">{%$user['address']%}</td>
+								<td class="license_tags">{%$user['license_tags']%}</td>
+								<td nowrap="" class="age">{%$user['age']%}</td>
+								<td class="employ_tags">{%$user['employ_tags']%}</td>
+								<td nowrap="">
+									<input name="user_id[]" type="hidden" value="{%$user['user_id']%}" />
+									<a class="btn_gray btn_auto delete-user" data-id="{%$user['user_id']%}" href="">外す</a>
+								</td>
+							</tr>
+					{%foreachelse%}
+							<tr>
+    							<td colspan="7">条件に合致するユーザーが見つかりませんでした。</td>
+    						</tr>
+					{%/foreach%}
+
+				</tbody>
+			</table>
+			<p class="txt_center mt20 ">
+				<a href="" class="btn_pink btn_280 submit"><span
+					class="ico_arrow03">&gt;</span>スカウトメールを送信</a>
+			</p>
+
+			<!-- /.box -->
+		</div>
+		</form>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+
+<!-- BEGIN SCRIPT -->
+<script src="{%$static_url%}client/common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}client/scout/js/confirm.js"></script>
+<link href="{%$static_url%}client/scout/css/search.css" rel="stylesheet">
+
+<!-- END SCRIPT -->
+
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

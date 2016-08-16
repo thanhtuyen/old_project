@@ -1,0 +1,119 @@
+<div class="right_nav">
+    {%if $login%}
+    <p class="mypage_name mb0">
+        <span class="ico_mypage_menu">▲</span>マイページメニュー
+    </p>
+    <div class="box mypage_btnarea mb20">
+        <ul class="clear">
+        <!-- @since 2015/05/05 -->
+            <a href="{%$base_url%}mypage" class="allhover"><li class="btn_white"><span class="ico_mymenu01">▽</span>おすすめ求人</li></a>
+            <a href="{%$base_url%}mypage/apply_job_history" class="allhover"><li class="btn_white"><span class="ico_mymenu02">▽</span>求人への<br />応募履歴<span class="mypage_count">{%$entry_count["apply_job"]%}</span></li></a>
+            <a href="{%$base_url%}mypage/apply_agent_history" class="allhover"><li class="btn_white"><span class="ico_mymenu03">▽</span>紹介会社への<br />応募履歴<span class="mypage_count">{%$entry_count["apply_agent"]%}</span></li></a>
+            <a href="{%$base_url%}mypage/bookmark" class="allhover"><li class="btn_white"><span class="ico_mymenu04">▽</span>お気に入り求人<span class="mypage_count">{%$entry_count["bookmark"]%}</span></li></a>
+            <a href="{%$base_url%}mypage/profile" class="allhover"><li class="btn_white"><span class="ico_mymenu05">▽</span>登録情報</li></a>
+        </ul>
+        <div class="mypage_logout">
+            <a href="{%$base_url%}logout" class="allhover"><span
+                class="btn_gray">ログアウト</span></a>
+        </div>
+    </div>
+    {%else if empty($login_page)%}
+    <a href="{%$base_url%}signup/" class="allhover"><p class="right_regist_btn"><span class="ico_regist">▽</span>新規会員登録</p></a>
+    {%include file="pc/user/common/nav_login_form.html"%}
+    <ul class="right_banner">
+{%if !empty($right_upper_banner_path)%}
+<li><a href="{%$right_upper_banner_url%}" target="_blank"><img src="{%$right_upper_banner_path%}" alt=""></a></li>
+{%/if%}
+{%if !empty($right_lower_banner_path)%}
+<li><a href="{%$right_lower_banner_url%}" target="_blank"><img src="{%$right_lower_banner_path%}" alt=""></a></li>
+{%/if%}
+</ul>
+{%/if%}
+
+{%if isset($recent_job)%}
+<div class="right_box job_sidebar">
+<p class="right_box_tit">最近見た求人</p>
+{%foreach from=$recent_job key=key item=val%}
+<a class="job_sidebar_box" href="{%$base_url%}detail_{%$val['job_detail']['job']['job_id']%}/">
+{%if !empty($val['job_detail']['job']['title'])%}
+<p class="tit_boxjob mb5">{%$val['job_detail']['job']['title']%}</p>
+{%/if%}
+<ul>
+{%if !empty($val['nursery_detail']['display_address'])%}
+<li><span class="ico_arrow01">&gt;</span>{%$val['nursery_detail']['display_address']%}</li>
+{%/if%}
+{%if !empty($val['job_detail']['job']['salary'])%}
+<li><span class="ico_arrow01">&gt;</span>{%$val['job_detail']['job']['salary']%}</li>
+{%/if%}
+</ul>
+</a>
+{%/foreach%}
+<p class="txt_center"><a href="{%$base_url%}search/" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>すべての求人を見る</a></p>
+<!-- /.job_sidebar --></div>
+{%/if%}
+
+{%if !empty($job_right_navi_name) && !empty($job_right_navi_content)%}
+<div class="right_box job_sidebar">
+<p class="right_box_tit">{%$job_right_navi_name%}</p>
+{%foreach from=$job_right_navi_content key=count item=job%}
+<a class="job_sidebar_box" href="{%$base_url%}detail_{%$job.job_detail.job.job_id%}/">
+{%if !empty($job.job_detail.job.title)%}
+<p class="tit_boxjob mb5">{%$job.job_detail.job.title%}</p>
+{%/if%}
+<ul>
+{%if !empty($job.nursery_detail.display_address)%}
+<li><span class="ico_arrow01">&gt;</span>{%$job.nursery_detail.display_address%}</li>
+{%/if%}
+{%if !empty($job.job_detail.job.salary)%}
+<li><span class="ico_arrow01">&gt;</span>{%$job.job_detail.job.salary%}</li>
+{%/if%}
+</ul>
+</a>
+{%/foreach%}
+<p class="txt_center"><a href="{%$base_url%}search/" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>すべての求人を見る</a></p>
+<!-- /.job_sidebar --></div>
+{%/if%}
+
+<!--<a href="{%$base_url%}search" class="allhover"><p
+            class="serch_right_btn">
+            <span class="ico_serch_03">▽</span>求人を探す
+        </p></a>-->
+
+<!--<div class="right_box right_list">
+<p class="right_box_tit">コラムカテゴリー一覧</p>
+<ul>
+{%foreach $wp_category as $category%}
+    <li><span class="ico_arrow01">&gt;</span><a href="{%$base_url%}contents/?cat={%$category['term_id']%}">{%$category['name']%}</a></li>
+{%/foreach%}-->
+<!-- <li><span class="ico_arrow01">&gt;</span><a href="column_cate.html">news</a></li>
+<li><span class="ico_arrow01">&gt;</span><a href="column_cate.html">新着求人情報</a></li>
+<li><span class="ico_arrow01">&gt;</span><a href="column_cate.html">キャンペーンのお知らせ</a></li>
+<li><span class="ico_arrow01">&gt;</span><a href="column_cate.html">イベント情報</a></li>
+<li><span class="ico_arrow01">&gt;</span><a href="column_cate.html">説明会</a></li> 
+</ul>
+</div>--><!-- /.right_list -->
+
+    <!--<p class="right_single">
+        <a href="{%$base_url%}about"><img
+            src="{%$static_url%}common/images/bnr_guide.png" alt="FINEとは"></a>
+    </p>-->
+{%if !empty($partner_name) && !empty($partner_banner) && !login%}
+<div class="right_box right_partner">
+<p class="right_box_tit">{%$partner_name%}</p>
+<ul>{%foreach from=$partner_banner key=count item=partner%}<!--
+--><li><a href="{%$partner.url%}" target="_blank"><img src="{%$partner.path%}" alt=""></a></li>{%/foreach%}<!--
+ --></ul>
+<!-- /.right_partner --></div>
+{%/if%}
+    <p class="right_single">
+        <iframe
+            src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/%EF%BC%A6%EF%BC%A9%EF%BC%AE%EF%BC%A5/315073388697708?fref=nf&width=270&height=350&colorscheme=light&show_faces=false&header=true&stream=true&show_border=true"
+            scrolling="no" frameborder="0"
+            style="border: none; overflow: hidden; width: 100%; height: 350px;"
+            allowTransparency="true"></iframe>
+    </p>
+
+    
+<p class="right_single"><a href="https://twitter.com/fine_navi" target="_blank"><img src="{%$static_url%}common/images/bnr_twitter.png" alt="FINE! Twitter"></a></p>
+    <!-- /.right_nav -->
+</div>

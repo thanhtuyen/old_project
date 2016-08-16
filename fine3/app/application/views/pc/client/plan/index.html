@@ -1,0 +1,139 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} {%include
+file="pc/client/common/top.html"%}
+
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			プラン確認・変更<span>：利用中のプラン一覧</span>
+		</h2>
+		<p class="mb20">
+			プランについてのお問い合わせ・お申込みは<a class="txt_line" href="{%base_url()%}client/backend/contact">こちら</a>からお願いいたします。<br>
+			「自動更新あり」と記載されているプランは、終了予定日を過ぎますと自動的に期間が延長されます。<br>
+			自動更新せずにプランを終了されたい場合は、終了予定日の7日前までにこのページ上で終了申請を行っていただくか、<a class="txt_line" href="{%base_url()%}client/backend/contact">こちら</a>からお問い合わせください。
+		</p>
+		<p class="count_box">6050件中 1～10件を表示</p>
+		<p class="newbtn">
+			<a class="btn_white btn_190" href="{%base_url()%}client/plan/"><span class="ico_arrow02">&gt;</span>申し込み可能なプラン</a>
+		</p>
+		<div class="box">
+			<table class="table01">
+				<tbody>
+					<tr>
+						<th nowrap="">ID</th>
+						<th>プラン名</th>
+						<th nowrap="">開始日</th>
+						<th nowrap="">終了予定日</th>
+						<th nowrap="">自動更新</th>
+						<th nowrap="">終了申請</th>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ここにプラン名ここにプラン名</a></td>
+						<td nowrap="">2015/01/12</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><span class="btn_gray btn_auto">申請済</span></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ここにプラン名ここにプラン名</a></td>
+						<td nowrap="">2014/10/04</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">スタープラチナ</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">なし</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ザ・ワールド</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ブラック・サバス</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ストーン・フリー</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ここにプラン名ここにプラン名</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ここにプラン名ここにプラン名</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ここにプラン名ここにプラン名</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+					<tr>
+						<td>123456</td>
+						<td><a href="{%base_url()%}client/plan/detail/{%id%}">ここにプラン名ここにプラン名</a></td>
+						<td nowrap="">2014/12/16</td>
+						<td nowrap="">2015/09/14</td>
+						<td nowrap="">あり</td>
+						<td nowrap=""><a class="btn_pink btn_auto" href="{%base_url()%}client/plan/stop">終了申請</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- /.box -->
+		</div>
+		<ul class="pagenation">
+			<!--
+-->
+			<li><a href="#">≪ 最初へ</a></li>
+			<!--
+-->
+			<li>[ 1 ]</li>
+			<!--
+-->
+			<li><a href="#">2</a></li>
+			<!--
+-->
+			<li><a href="#">最後へ ≫</a></li>
+			<!--
+-->
+		</ul>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

@@ -1,0 +1,32 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+	
+    <!--FINE！-->
+     <section>
+     	<h4 class="title_pink_bar">FINE！（ファイン）とは？</h4>
+                    <div class="form_txt">
+                        <p>「FINE！」は<span class="red_txt">保育関連の求人サイト</span>です。<br/>会員登録をすると、気になる求人を<span class="red_txt">お気に入り登録</span>して、いつでも見ることができます。</p>
+                        <p>ぴったりな求人を<span class="red_txt">紹介会社に探してもらう</span>こともできるので、なにかと手間のかかる転職もラクラク！</p>
+                    </div>     
+                        <p class="guide_img"><img src="{%$static_url%}user/img/guide_img.png" alt="サイトの使い方" /></p> 
+                    <div class="form_button_area">
+                        <p class="form_button"><a href="{%$base_url%}signup/">会員登録はこちら</a></p>
+                        <p class="green_button"><a href="{%base_url()%}user/inquire/businessoffer">採用担当者様はこちら</a></p>
+                    </div>
+                    <div class="form_button_area pt20">
+                        <p class="service_button"><a href="{%$base_url%}guide">サイトの使い方</a></p>
+                        <p class="contact_button"><a href="{%base_url()%}user/inquire/">お問い合わせ</a></p>
+                    </div>
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+
+</body>
+</html>

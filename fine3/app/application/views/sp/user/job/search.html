@@ -1,0 +1,138 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+{%include file="sp/user/common/loading.html"%}
+<section class="sub_container">
+    <h1 class="toptitle">求人票検索結果</h1>
+
+
+    <article id="result">
+
+        {%if $job_all_count && $job_all_count > 0%}
+        <nav id="co_header">
+            <div class="title">
+                <p class="res_number">
+                    <span class="res_number_srong">{%$job_all_count%}</span>件あります
+                </p>
+            </div>
+        </nav>
+        {%/if%}
+
+        <div id="result_box">
+
+            {%if $job_list !== false%}
+                <!-- /////////////////////////////// -->
+                <!-- ////////RENDER LIST JOB//////// -->
+                <div id="job_list">
+                    {%include file="sp/user/common/_job_list.html"%}
+                </div>
+                <!-- ////////END RENDER LIST JOB//////// -->
+                <!-- /////////////////////////////// -->
+
+                <!-- ////////////////////////////////////// -->
+                <!-- ////////RENDER PAGINAITON////////// -->
+                <nav id="continue">
+                    <div id="continue_link">
+                        <a id="readmore" class="btn" href="javascript:void(0)">
+                            <p class="next">次の10件を表示する</p>
+                            <p class="now">{%$job_all_count%} 件中、<span class="display_job_number">10</span>件を表示しています</p>
+                        </a>
+                    </div>
+                </nav>
+                <!-- ////////END RENDER PAGINAITON////////// -->
+                <!-- ////////////////////////////////////// -->
+
+            {%/if%}
+
+            <nav class="btn mypage">
+                <a href="{%$base_url%}">再検索</a>
+            </nav>
+         </div>
+    </article>
+</section>
+<div class="searchbtn_station">
+<p id="go-search" class="btn btn01"><a href="{%$base_url%}#search">条件を変えて探す</a></p>
+</div>
+{%include file="sp/user/common/footer.html"%}
+
+<script src="{%$static_url%}user/js/apply.js"></script>
+<script src="{%$static_url%}common/js/jquery.darktooltip.js"></script>
+<script type="text/javascript">
+CSRF_TOKEN_NAME = '{%$csrf_token_name%}';
+CSRF_TOKEN_VALUE = '{%$csrf_token_value%}';
+BASE_URL = '{%$base_url%}';
+</script>
+<!-- Move code js search and all function into file user/js/search.js -->
+<script src="{%$static_url%}user/js/search.js"></script>
+
+<script>
+var page = {%$page%};
+var range = {%$range%};
+var display_job_number = page * range;
+function page_param(page){
+var search_url = location.href;
+    if(search_url.indexOf("page") != -1){
+        var nextpage = page ++;
+        search_url.replace('page='+page, 'page='+nextpage);
+        return search_url;
+    }else if(search_url.indexOf("?") != -1){
+        page ++;
+        return search_url+"&page="+page;
+    }else{
+        page ++;
+        return search_url+"?page="+page;
+    }
+}
+$("#readmore").on("click",function(){
+    $("#loading_layer").removeClass("display_none");
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        cache: false,
+        url: page_param(page),
+        data: {
+            "is_ajax" : "true",
+            {%$csrf_token_name%}: "{%$csrf_token_value%}"
+        },
+        success:function(response){
+            if(response.code == 1){
+                ++page;
+                display_job_number = page * range ;
+                $("#job_list").append(response.html);
+                $(".display_job_number").text(display_job_number);
+                $(".apply_btn").unbind('click').bind("click",function(e){apply_for_job($(this),"apply");});
+                $(".bookmark_btn").unbind('click').bind("click",function(e){apply_for_job($(this),"bookmark");});
+
+                if(display_job_number >= {%$job_all_count%})$("#readmore").remove();
+            }else{
+                $("#readmore").remove();
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+        },
+        complete:function(data){$("#loading_layer").addClass("display_none");}
+    });
+});
+</script>
+<script>
+$(function() {
+    var topBtn = $('#go-search');
+    topBtn.hide();
+    //スクロールが100に達したらボタン表示
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 200) {
+            topBtn.fadeIn();
+        } else {
+            topBtn.fadeOut();
+        }
+    });
+    //スクロールしてトップ
+//    topBtn.click(function () {
+//        $('body,html').animate({
+//            scrollTop: 0
+//        }, 500);
+//        return false;
+//    });
+});
+</script>
+</body>
+</html>

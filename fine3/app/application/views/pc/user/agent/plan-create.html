@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+<title>Fine!管理画面｜お問い合わせ</title>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<link rel="stylesheet" href="../assets/css/admin/module.admin.stylesheet-complete.min.css" />
+
+<script src="../assets/library/jquery/jquery.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/library/jquery/jquery-migrate.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/library/modernizr/modernizr.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_less-js/less.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/charts_flot/excanvas.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_browser/ie/ie.prototype.polyfill.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>    <script>if (/*@cc_on!@*/false && document.documentMode === 10) { document.documentElement.className+=' ie ie10'; }</script>
+
+</head>
+
+<body class="">
+<div class="container-fluid menu-hidden">
+<div id="menu" class="hidden-print hidden-xs">
+<div id="sidebar-fusion-wrapper">
+
+<div id="logoWrapper">
+<div class="media">
+<div class="media-body">
+<a href="" class="name">[agent_name]</a>
+<!-- media-body --></div>
+<!-- media --></div>
+<div class="widget-body">
+<textarea type="text" placeholder="[opinion|text]ご意見・ご要望をお聞かせください" class="form-control" rows="5"></textarea>
+<button class="btn btn-success">送信</button>
+<!-- widget --></div>
+<!-- logoWrapper --></div>
+<ul class="menu list-unstyled agent">
+<li class=""><a href="top.html" class="index"><i class="fa fa-home"></i><span>管理画面TOP</span></a></li>
+<li class=""><a href="job.html" class="pricing"><i class="fa fa-money"></i><span>求人管理</span></a></li>
+<li class=""><a href="nursary.html" class="pricing"><i class="fa fa-money"></i><span>運営園</span></a></li>
+<li class=""><a href="entry.html" class="pricing"><i class="fa fa-money"></i><span>応募管理</span></a></li>
+<li class=""><a href="regist.html" class="pricing"><i class="fa fa-pencil"></i><span>一括登録管理</span></a></li>
+<li class=""><a href="except-entry.html" class="pricing"><i class="fa fa-lock"></i><span>除外申請</span></a></li>
+<li class="hasSubmenu"><a href="#menu-32a39330e6c01f03d8a882833562cf27" data-toggle="collapse"><i class="fa fa-lock"></i><span>スカウト</span></a>
+<ul class="collapse" id="menu-32a39330e6c01f03d8a882833562cf27">
+<li class=""><a href="scout.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>スカウト履歴</span></a></li>
+<li class=""><a href="scout-search.html" class="no-ajaxify"><i class="fa fa-lock"></i><span>スカウトする</span></a></li>
+<li class=""><a href="scout-mail.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>スカウトメール編集</span></a></li>
+</ul>
+<li class="hasSubmenu"><a href="#menu-8ce3cf7ce8bcfb3b9fd3a702c33e0993" data-toggle="collapse"><i class="fa fa-lock"></i><span>登録情報</span></a>
+<ul class="collapse" id="menu-8ce3cf7ce8bcfb3b9fd3a702c33e0993">
+<li class=""><a href="agent.html" class="no-ajaxify"><i class="fa fa-lock"></i><span>企業情報</span></a></li>
+<li class=""><a href="ca.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>キャリアアドバイザー</span></a></li>
+<li class="active"><a href="plan.html" class="no-ajaxify"><i class="fa fa-pencil"></i><span>利用プラン確認・申請</span></a></li>
+</ul>
+</ul>
+</div>
+<!-- sidebar --></div>
+
+<div id="content">
+<div class="navbar hidden-print main navbar-default" role="navigation">
+<div class="user-action user-action-btn-navbar pull-right">
+<button class="btn btn-sm btn-navbar btn-inverse btn-stroke hidden-lg hidden-md"><i class="fa fa-bars fa-2x"></i></button>
+</div>
+<a href="index.html" class="logo">
+<img src="../assets/images/logo/logo.jpg" width="32" alt="SMART" />
+<span class="hidden-xs hidden-sm inline-block"><span>mosaic</span>pro</span>
+</a>
+<ul class="main pull-right">
+<li class="hidden-xs hidden-sm"><a href="inquiry.html" class="btn btn-info">お問い合わせ</a></li>
+<li class="dropdown username hidden-xs ">
+<a href="" class="dropdown-toggle" data-toggle="dropdown">[agent_name] <span class="caret"></span></a>
+
+<ul class="dropdown-menu pull-right">
+<li><a href="agent.html" class="glyphicons user"><i></i>登録情報</a></li>
+<li><a href="login.html" class="glyphicons lock no-ajaxify"><i></i>ログアウト</a></li>
+</ul>
+</li>
+</ul> 
+</div>
+<!-- // END navbar -->
+
+<div class="innerLR plan_form">
+
+<h2>プランのお申し込み</h2>
+
+<div class="widget widget-heading-simple widget-body-white" >
+<table class="plan_form">
+<tr>
+<th>ご利用プラン</th>
+<td>Package name</td>
+</tr>
+<tr>
+<th>料金</th>
+<td>Package fee</td>
+</tr>
+<tr>
+<th>開始日</th>
+<td><input class="form-control datepicker1" type="text" /></td>
+</tr>
+<tr>
+<th>利用期間</th>
+<td>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio1" checked="checked"><i class="fa fa-circle-o checked"></i> 1ヶ月</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio1"><i class="fa fa-circle-o checked"></i> 2ヶ月</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio1"><i class="fa fa-circle-o checked"></i> 3ヶ月</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio1"><i class="fa fa-circle-o checked"></i> 半年</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio1"><i class="fa fa-circle-o checked"></i> 1年</label></div>
+</td>
+</tr>
+<tr>
+<th>更新予定日</th>
+<td>plan End date</td>
+</tr>
+<tr>
+<th>課金タイプ</th>
+<td>plan Charge type</td>
+</tr>
+</table>
+<p>
+※プランは更新予定日になりますと自動延長されます。<br>
+延長されない場合は、マイページ「プランの確認」画面から更新日の7日前までに終了申請をしてください。
+</p>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<a href="plan-comp.html"><input class="btn btn-primary" type="submit" value="この内容で申し込む"></a>
+　<a href="package.html"><button class="btn btn-default">戻る</button></a></div>
+
+</div>
+
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+<div id="footer" class="hidden-print">
+<div class="copy">&copy; Copyright (C) Neo Career CO., LTD. All Rights Reserved.</div>
+<!-- footer --></div>
+
+</div>
+<!-- // Main Container Fluid END -->
+
+
+<!-- Global -->
+<script data-id="App.Config">
+var App = {};        var basePath = '',
+    commonPath = '../assets/',
+    rootPath = '../',
+    DEV = false,
+    componentsPath = '../assets/components/';
+
+var primaryColor = '#c72a25',
+    dangerColor = '#b55151',
+    successColor = '#609450',
+    infoColor = '#4a8bc2',
+    warningColor = '#ab7a4b',
+    inverseColor = '#45484d';
+
+var themerPrimaryColor = primaryColor;
+
+</script>
+
+<script src="../assets/library/bootstrap/js/bootstrap.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_nicescroll/jquery.nicescroll.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_breakpoints/breakpoints.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_preload/pace.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/core_preload/preload.pace.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_fuelux-checkbox/fuelux-checkbox.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/forms_elements_bootstrap-select/js/bootstrap-select.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_bootstrap-select/bootstrap-select.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/forms_elements_bootstrap-datepicker/js/bootstrap-datepicker.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_bootstrap-datepicker/bootstrap-datepicker.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/ui_modals/bootbox.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/ui_modals/modals.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/admin_notifications_gritter/js/jquery.gritter.min.js?v=v1.0.0-rc1"></script>
+<script src="../assets/components/admin_notifications_gritter/gritter.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/core/core.init.js?v=v1.0.0-rc1"></script>
+
+<script src="../assets/library/bootstrap/js/bootstrap.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_nicescroll/jquery.nicescroll.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_breakpoints/breakpoints.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/plugins/core_preload/pace.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/core_preload/preload.pace.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="../assets/components/forms_elements_fuelux-radio/fuelux-radio.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+.content .header label
+{
+    margin-bottom:22px;
+}
+
+.header-fr
+{
+    background-color: #999999;
+    height: 29px;
+    border-top: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #666666;
+
+}
+
+.header-fr .title
+{
+    width: 200px;
+}
+
+.header-fr .title h4
+{
+    margin: 7px 0px 0px 15px;
+    color: #000000;
+}
+
+.header-fr .l-btn button
+{
+    margin: 3px 18px 0px 0px;
+    padding: 0px 10px 0px 10px;
+}
+/*content layout show data*/
+.content-s
+{
+    border: 1px solid #000000;
+    /*float: left;*/
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/*table*/
+.header-tb
+{
+    background-color: #999999;
+    height: 29px;
+    border-top: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #666666;
+    float: left;
+    width: 100%;
+}
+
+.header-tb .title
+{
+    width: 200px;
+}
+
+.header-tb .title h4
+{
+    margin: 7px 0px 0px 15px;
+    color: #000000;
+}
+
+.header-tb .l-btn button
+{
+    margin: 3px 18px 0px 0px;
+    padding: 0px 10px 0px 10px;
+}
+/*custom btn change size*/
+.fixed-size-btn
+{
+    padding: 2px 14px;
+    margin-top: 5px;
+}
+
+/*custom table*/
+.custom-tb
+{
+    width: 100%;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+}
+
+.custom-tb tr td .btn {
+    padding: 2px 14px;
+    margin-top: 5px;
+}
+
+.custom-tb tr td .tb-tile
+{
+    line-height: 36px;
+}
+
+.custom-tb-bottom
+{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.custom-tb tr,td,th
+{
+    border: 1px solid #000000;
+}
+
+.custom-tb tr td,th{
+    height: 38px;
+    padding-left: 12px;
+}
+
+.custom-tb tr .td-text-center
+{
+    padding:0px;
+    text-align: center;
+    line-height: 38px;
+}
+
+.custom-tb tr .td-select-center
+{
+    padding:0px 5px 0px 5px;
+    text-align: center;
+    line-height: 38px;
+}
+
+.custom-tb tr td .td-select-center button
+{
+    width: 65px;
+}
+
+.custom-tb tr .first
+{
+    background-color: #cccccc;
+    color: #222222;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 14px;
+}
+
+.text-right
+{
+    text-align: right!important;
+}
+
+.text-left
+{
+    text-align:left!important;
+}
+
+.text-center{
+    text-align: center!important;
+}
+.custom-tb tr th
+{
+    background-color: #999999;
+}
+/*percent*/
+.custom-tb tr .row1
+{
+    width: 30%;
+}
+
+.custom-tb tr .row2
+{
+    width: 70%;
+}
+
+.custom-tb tr .row3
+{
+    width: 80%;
+}
+
+.custom-tb tr .row4
+{
+    width: 20%;
+}
+
+.custom-tb tr td input[type="text"]
+{
+    border: 1px solid #999999;
+    border-radius: 3px;
+    height: 22px;
+    /*width: 100%;*/
+}
+/*btn clear*/
+.btn-clear
+{
+    width: 100%;
+    padding-top: 14px;
+    text-align: center;
+}
+
+.btn-footer
+{
+    width: 100%;
+    height: 104px;
+    background-color: #cccccc;
+    text-align: center;
+    line-height: 104px;
+}
+
+.btn-footer .custom-size-btn
+{
+    width: 195px;
+    height: 54px;
+}
+/*custom tabs*/
+.tabs-container
+{
+    background-color: white;
+}
+
+.nav-tabs
+{
+    border-bottom:none;
+}
+
+.tabs-container .nav-tabs
+{
+    padding: 20px 0 0 20px;
+    border-bottom:none;
+}
+
+.tabs-container .nav-tabs li
+{
+    margin-bottom: 0px;
+}
+
+.tabs-container .nav-tabs li a
+{
+    border: 1px solid #999999;
+    border-radius: 10px 10px 0 0;
+}
+
+.tabs-container .nav-tabs li a
+{
+    background-color: #cccccc;
+    color: #282828;
+}
+
+.tabs-container .nav-tabs > li > a:hover
+{
+    background-color: #cccccc;
+    color: #282828;
+}
+
+.tabs-container .nav-tabs > li.active > a
+{
+    border: 1px solid #999999;
+    background-color: white;
+}
+
+.tabs-container .nav-tabs > li.active > a:hover
+{
+    border: 1px solid #999999;
+    background-color: white;
+}
+
+.tab-content .tab-pane .panel-body
+{
+    padding: 5px 20px 20px 20px;
+}
+
+.sub-row-select
+{
+    padding-right: 0;
+}
+.sub-row-select select
+{
+    height: 26px;
+    padding: 0px 12px;
+}
+
+.sub-row
+{
+    width: 100%;
+    padding-right: 12px;
+}
+
+.sub-row .fixed-size0
+{
+    height: 26px;
+    padding: 0px 12px;
+}
+
+.sub-row .fixed-size1
+{
+    height: 26px;
+    width: 144px;
+    padding: 0px 12px;
+}
+
+.sub-row .fixed-size2
+{
+    height: 26px;
+    width: 220px;
+    padding: 0px 12px;
+}
+
+
+.sub-row .fixed-size3
+{
+    height: 26px;
+    width: 87px;
+    padding: 0px 4px;
+    float: left;
+}
+
+
+.sub-row .fixed-size4
+{
+    height: 26px;
+    width: 60px;
+    padding: 0px 12px;
+    float: left;
+    margin-left: 7px;
+}
+
+.change-size-text-input
+{
+    width: 122px;
+    height: 22px;
+}
+
+.sub-row textarea
+{
+    margin: 15px 0 15px 0;
+}
+
+.sub-row .form-group .input-group .input-group-addon
+{
+    padding: 2px 8px;
+}
+
+/*custom table*/
+.margirn-top
+{
+    margin-top: 8px;
+}
+
+.margirn-tb-tab2
+{
+    margin-top: 20px;
+}
+
+.no-padding-right
+{
+    padding-right: 0px;
+    margin-top: 2px;
+}
+
+.float-left
+{
+    float: left;
+}
+
+.sub-row-footer
+{
+    width: 100%;
+}
+
+.sub-row-footer .fixed-size2
+{
+    height: 26px;
+    width: 220px;
+    padding: 0px 12px;
+}
+
+.margirn-left
+{
+    margin-left: 15px;
+}
+
+/*custom btn upload file*/
+.dz-default
+{
+    display: inline-block;
+    padding: 2px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border-radius: 3px;
+    color: inherit;
+    background: white;
+    border: 1px solid #e7eaec;
+}
+
+.ibox-content
+{
+    padding:0;
+    border-color:white;
+    border-style:none;
+}
+
+.fa-chevron-up
+{
+    padding-right: 10px;
+}
+
+.fa-chevron-down
+{
+    padding-right: 10px;
+}
+
+.form-control[readonly]
+{
+    background-color: white;
+}
+/*upload file*/
+.btn-upload
+{
+    margin-top: 0px!important;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    /*margin: 10px;*/
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}

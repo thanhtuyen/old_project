@@ -1,0 +1,87 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">新しいテキストリンク集の登録</h4>
+<!-- widget-head --></div>
+{%form_open('manager/ads/text/create')%}
+<table class="plan_form">
+<input type="hidden" name="global[group_id]" value="{%$group%}" />
+<input type="hidden" name="global[type]" value="{%$type%}" />
+<!-- <tr>
+<th>タイトル</th>
+<td><input type="text" placeholder="[text|title]" class="form-control plan_form" /></td>
+</tr> -->
+<tr>
+<th>エリア</th>
+<td>
+{%foreach from=$states item=state%}
+<div class="radio lined_div">
+<label class="radio-custom">
+    <input type="radio" name="area_id" value="{%$state['area_id']%}">
+    <i class="fa fa-fw fa-square-o"></i>{%$state['name']%}</label>
+</div>
+{%/foreach%}
+
+</tr>
+<tr>
+<th>開始日</th>
+<td><input name="global[start_date]" class="form-control datepicker1" type="text" value=""  data-validation = "required" data-validation-error-msg="<span style='color:red'>　開始日は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>終了日</th>
+<td><input name="global[end_date]" class="form-control datepicker1" type="text" value=""  data-validation = "required" data-validation-error-msg="<span style='color:red'>　終了日は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>表示非表示</th>
+<td><div class="make-switch" data-on="success" data-off="default"><input type="checkbox" name="global[status]"></div></td>
+</tr>
+</table>
+<!-- widget --></div>
+
+
+{%section name=form start=0 loop=3%}
+<div class="widget widget-heading-simple widget-body-white mini-div" >
+<table class="plan_form">
+<tr>
+<th>表示順</th>
+<td><select class="selectpicker col-md-6" data-style="btn-success" name="ordered[]">
+<option value="" >-</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select>
+</td>
+</tr>
+<tr>
+<th>テキスト</th>
+<td><input type="text" name="title[]" value="" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　テキストは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>リンク先URL</th>
+<td><input type="text" name="url[]" value="" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　リンク先URLは必須項目です.</span>"/></td>
+</tr>
+</table>
+<!-- widget --></div>
+{%/section%}
+
+
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+<input class="btn btn-default" type="reset" value="キャンセル">
+</div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

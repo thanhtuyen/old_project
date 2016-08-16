@@ -1,0 +1,87 @@
+/* CSS Document */
+
+.logo_enjin{
+	float:left !important;	
+	margin-top:15px;
+	margin-right:15px;
+}
+
+.select_option{
+	overflow: hidden;
+    background-color: #1ab394;
+  	border-color: #1ab394;
+    border-radius: 5px;
+    margin-top: 5px;
+    float: left;	
+	color:#fff;
+}
+
+.select_option select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+   padding: 8px; 
+    border: none;
+    background: #1ab394 url("../img/icon_select.png") no-repeat 43px 17px;
+}
+
+.wrapper-content-title{
+    color: #000;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.wrapper-content-large-border{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666666;
+    margin-top: 22px;
+}
+
+.csv .wrapper-content-large-border .form-submit-button {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.csv .wrapper-content-large-border .wraper-process-bar{
+    margin: 70px 20px 20px 20px;
+}
+
+.csv .wrapper-content-large-border .wraper-process-bar .proress-bar{
+    margin: 40px;
+}
+
+.csv .wrapper-content-large-border .wraper-process-bar .title-upload-progress{
+    text-align: center;
+    font-size: 35px;
+    color: #000;
+    font-weight: bold;
+}
+
+.csv .form-group-edit .upload-button{
+    width: auto;
+}
+
+.clear{
+    clear: both;
+}
+
+.csv .upload_content{
+    text-align: center;
+    margin-top: 25px;
+}
+
+.form-horizontal .form-group-edit{
+    margin-top: 30px;
+    margin-left: 50px;
+    text-align: center;
+    margin-right: 0px;
+}
+
+.csv .wrapper-content-large-border .wraper-process-bar .progress-textarea{
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+}
+
+

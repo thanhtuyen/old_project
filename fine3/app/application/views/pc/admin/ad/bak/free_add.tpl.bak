@@ -1,0 +1,58 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="pc/admin/ads/_ads_menu.html"%}
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">新しい料金プランの登録</h4>
+<!-- widget-head --></div>
+<table class="plan_form">
+<tbody>
+<tr>
+<th>position</th>
+<td>
+<select class="selectpicker col-md-6" data-style="btn-success" name="group_id">
+{%foreach from=$groups item=group%}
+    <option value="{%$group['group_id']%}">{%$group['name']%}</option>
+{%/foreach%}
+</select>
+</td>
+</tr>
+<tr>
+<th>料金プラン名</th>
+<td><input type="text" placeholder="[package|name]" class="form-control plan_form"></td>
+</tr>
+<tr>
+<th>単価（円）</th>
+<td><input type="text" placeholder="[package|price]" class="form-control plan_form"></td>
+</tr>
+<tr>
+<th>上限数</th>
+<td><input type="text" placeholder="[package|limit]" class="form-control plan_form"></td>
+</tr>
+<tr>
+<th>上限単位</th>
+<td><div class="radio lined_div"><label class="radio-custom checked">
+<input type="radio" name="radio2" checked="checked"><i class="fa fa-circle-o checked"></i> 登録ユーザー</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio2"><i class="fa fa-circle-o"></i> 求人票</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio2"><i class="fa fa-circle-o"></i> バナーリンク</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio2"><i class="fa fa-circle-o"></i> テキストリンク</label></div>
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="radio2"><i class="fa fa-circle-o"></i> メール</label></div></td>
+</tr>
+
+<tr>
+<th>ステータス</th>
+<td><div class="make-switch has-switch" data-on="success" data-off="default"><div class="switch-animate switch-on"><input type="checkbox" checked=""><span class="switch-left switch-success">ON</span><label>&nbsp;</label><span class="switch-right switch-default">OFF</span></div></div></td>
+</tr>
+</tbody></table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+　<input class="btn btn-default" type="submit" value="キャンセル"></div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

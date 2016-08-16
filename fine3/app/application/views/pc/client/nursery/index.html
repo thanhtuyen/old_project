@@ -1,0 +1,115 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<div class="main">
+  <!-- Left nav -->
+  {%include file="pc/client/common/left_nav.html"%}
+
+  <div class="contents inner">
+    <h2 class="tit_01">
+      運営園管理<span>：園一覧</span>
+    </h2>
+    <div class="searchbox">
+      {%form_open($base_url|cat:'client/nursery', ['id'=>'search_form', 'method'=>'get'])%}
+        <p class="tit_05">▼表示する園を絞り込む</p>
+        <p>
+          フリーワード：<input type="text" name="key_words" value="{%$params['key_words']%}">&#12288;<span>作成日：<input
+            type="text" name="start_time" class="search-date-calendar" value="{%$params['start_time']%}" placeholder="{%date('Y-m-d')%}"> ～ <input type="text" name="end_time" class="search-date-calendar" value="{%$params['end_time']%}" placeholder="{%date('Y-m-d')%}"></span>&#12288;<a
+            class="btn_white btn_auto" href="javascript:void(0);" id="search_button">検索</a>
+        </p>
+			{%form_close()%}
+    </div>
+    <p class="count_box">{%$result['nursery_count']%}件中 {%$result['start']+1%}～{%if $params['page_size']*$params['page']>$result['nursery_count']%}{%$result['nursery_count']%}{%else%}{%$params['page_size']*$params['page']%}{%/if%}件を表示</p>
+    <p class="newbtn">
+      <a class="btn_pink btn_190" href="{%$base_url%}client/nursery/input"><span
+        class="ico_arrow03">&gt;</span>新しい園を登録する</a>
+    </p>
+    <div class="box">
+      {%form_open('client/nursery/create_copy', ['id' => 'copy_check'])%}
+      <p class="before_table01">
+          ▼チェックした園を<a class="btn_pink btn_160" href="javascript:void(0);" id="copy_button"/>コピーして新規作成</a>
+        <a class="btn_white btn_160" id="export_csv" href="javascript:void(0);">CSV出力</a>
+      </p>
+      <table class="table01" id="nursery_table">
+        <tbody>
+          <tr>
+            <th nowrap=""><input type="checkbox" id="check_all" value=""></th>
+            <th nowrap="">園ID</th>
+            <th class="width130">園名</th>
+            <th>所在地</th>
+            <th nowrap="">状態</th>
+            <th nowrap="">操作</th>
+          </tr>
+          {%foreach $result['nursery_list'] as $nursery%}
+            <tr>
+              <td nowrap=""><input type="checkbox" name="nurseries[]" value="{%$nursery['nursery_id']%}"></td></form>
+              <td nowrap="">{%$nursery['nursery_id']%}</td>
+              <td><a href="{%$base_url%}client/nursery/edit/{%$nursery['nursery_id']%}">{%html_escape($nursery['name']|truncate:27:"...")%}</a></td>
+              <td>{%html_escape($nursery['address']|truncate:27:"...")%}</td>
+              <td nowrap="">{%status_text($nursery['status'])%}</td>
+              <td nowrap="">
+              <a class="btn_white btn_auto" href="{%$base_url%}client/nursery/edit/{%$nursery['nursery_id']%}">編集</a>
+              <a class="btn_gray btn_auto" href="javascript:void(0);" data-nursery-id="{%$nursery['nursery_id']%}">削除</a><br>
+              <a class="btn_pink btn_auto mt5" href="{%$base_url%}client/job/input/{%$nursery['nursery_id']%}/{%$nursery['own_nursery_id']%}">求人票を作成</a></td>
+            </tr>
+          {%/foreach%}
+        </tbody>
+      </table>
+      {%form_close()%}
+      <!-- /.box -->
+    </div>
+    <p class="pagenation">{%$pagination%}</p>
+    <!-- /.contents -->
+  </div>
+  <!-- /.main -->
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}
+{%include file="pc/client/common/_calendar.html"%}
+
+<script type="text/javascript">
+	//delete
+  $('a[data-nursery-id]').on('click', function(e){
+    var target = $(e.target)
+    if(confirm('削除してもよろしいですか？')){
+      window.location.href = "{%$base_url%}" + 'client/nursery/delete/' + target.attr('data-nursery-id')
+    }
+  })
+
+  //search
+  $('#search_button').on('click', function(){
+  	$('#search_form').submit()
+  })
+
+  //copy
+  $('#copy_button').on('click', function(){
+  	$('#copy_check').submit()
+  })
+
+  $('#check_all').on('click', function(){
+    $("#nursery_table input[type='checkbox']").attr("checked", this.checked)
+  })
+
+  $('#export_csv').on('click', function(){
+    var ids = '';
+    var checked_nursery = $("#nursery_table input[type='checkbox']:checked")
+    if(checked_nursery.length > 0) {
+      checked_nursery.each(function(){
+        val = this.value
+        if(val){
+          ids += ('_' + val)
+        }
+        
+        console.log(ids)
+        if(ids){
+          window.location.href = "{%$base_url%}client/nursery/export_csv?format=csv&nursery_ids=" + ids
+        }
+      })
+    } else {
+      console.log('ids is empty')
+      return;
+    }
+  })
+</script>

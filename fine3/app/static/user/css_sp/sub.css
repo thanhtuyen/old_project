@@ -1,0 +1,545 @@
+@charset "UTF-8";
+/*サブ*/
+#search_job{margin-bottom:0px;}
+#search_cross .footer,
+#cross_merit_window .footer{margin-top:50px;}
+/*　検索ページ　*/
+/*　検索ページのアコーディオン　*/
+.chbox .hasChilds{position:relative;padding:0;}
+
+/*　検索ページ検索ボタン　*/
+#chbox_btn{padding:10px 10px;margin:-40px 0px 0;clear:both;}
+.childList li{margin-left:20px;}
+
+/*　WEBメール・スカウトメール並び替えBOX　*/
+#sort_scout{margin-bottom:-1px;}
+#sort_scout p{width:25%;text-align:center;}
+#sort_scout ul{line-height:30px;}
+#sort_scout ul li{
+	padding:0;
+}
+#sort_scout ul li a{
+	height: auto;
+	line-height:29px;
+	padding:0;
+}
+
+/*  スカウトメールのアコーディオンのタイトル　※チェックボックスなし  */
+a.iconOpen,
+a.iconClose{
+	display:block;
+	line-height:50px;
+	padding:0px 0px 0 10px;
+}
+a.iconOpen span,
+a.iconClose span{display:block;}
+
+/*  検索ページ・メール配信のアコーディオンのタイトル　※チェックボックスあり  */
+.form_checkbox h5.open.hasChilds,
+.chbox.list li.open{
+	position:relative;
+}
+.form_checkbox h5.open.hasChilds label.open_text,
+.chbox li.open label.open_text{display:block;line-height:50px;}
+.form_checkbox h5.open.hasChilds p,
+.chbox li.open p{
+	position:absolute;
+	top:0;
+	right:0;
+	width:50px;
+}
+.form_checkbox h5.open.hasChilds a.iconOpen,
+.form_checkbox h5.open.hasChilds a.iconClose,
+.chbox li.open a.iconOpen,
+.chbox li.open a.iconClose{
+	display:block;
+	line-height:50px;
+	text-indent:-10000px;
+}
+
+/*  クロス検索  */
+#search_cross div.link_box a{
+	padding:0 0 0 15px;
+}
+#search_cross div.link_box a p{
+	padding:15px 20px 15px 0px;
+	margin:0;
+	overflow: hidden;
+	line-height: 20px;
+}
+
+/*  スカウト・WEBメールページ  */
+.member2_link{margin-top:0;padding-top:0;}
+.mail_box{clear:both;padding:5px 0;}
+.mail_box li a{line-height:50px;}
+
+.sub_container a.iconMailOpened,
+.sub_container a.iconMailNew{
+	position:relative;
+	display:block;
+	line-height:20px;
+}
+.sub_container a.iconMailNew div,
+.sub_container a.iconMailOpened div{
+	padding:4px 0px 4px 40px;
+}
+
+.scout_mail a p.title,
+.scout_mail a p.company{
+	line-height:20px;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.scout_mail p.icon_nosave,
+.scout_mail p.icon_save{width:42px;position:absolute;right:10px;top:8px;}
+
+.scout_mail p.icon_nosave a,
+.scout_mail p.icon_save a{display:block;height:42px;text-align:center;}
+
+/*------------メール詳細ページ------------*/
+table#mail_detail{width:100%;clear:both;border-collapse:collapse;margin:0 0px;}
+table#mail_detail th{font-size: 90%;line-height: 120%;padding: 5px 3px;}
+table#mail_detail td{font-size: 90%;line-height: 120%;text-align: left;padding: 3px;}
+
+.icon_save_box{clear:both;width:60%;margin:10px 15px;}
+.icon_save_box img{float:left; margin:7px 5px 0 5px;}
+.icon_save_box a{
+	display:block;
+	line-height:30px;
+}
+p.form_mail_detail{font-size:90%;margin:10px;}
+
+/*------------応募履歴ページ------------*/
+.form_apply{display:inline;margin:0px 10px 10px;padding:2px 10px;}
+
+/* --------------------------------------------------
+    仕事一覧
+-------------------------------------------------- */
+/*　並び替えボタン　*/
+#sort{margin-bottom:15px;}
+#sort ul{margin-top:0;}
+#sort ul li{margin:0px;}
+#sort ul li span{font-size:80%;display:block;}
+
+#sort ul li.sort_origin,
+#sort ul li.sort_new,
+#sort ul li.sort_fin,
+#sort ul li.sort_oiwai{
+	color:#333;
+}
+#sort ul li.sort_origin,
+#sort ul li.sort_new,
+#sort ul li.sort_fin,
+#sort ul li.sort_oiwai{
+	line-height:44px;
+}
+#sort ul li.sort_origin.active,
+#sort ul li.sort_new.active{
+	line-height:44px;
+}
+
+#sort ul li.sort_fin,
+#sort ul li.sort_oiwai{
+	line-height:20px;
+}
+#sort ul li.sort_fin a,
+#sort ul li.sort_oiwai a{
+	line-height:20px;
+}
+#sort ul li.sort_fin.active,
+#sort ul li.sort_oiwai.active{
+	line-height:26px;
+}
+#sort ul li.sort_fin.active span,
+#sort ul li.sort_oiwai.active span{
+	line-height:18px;
+}
+
+/*　仕事情報　*/
+.res_box,
+.ranking_box{margin:0px 0; }
+
+.detail_copyA,
+.detail_copyB,
+.detail_copyC{clear:both;margin:0;}
+.detail_copyA,
+.detail_copyB,
+.detail_copyC,
+.ranking_copy{margin-bottom:0px;}
+
+#result_ranking .form_ph{padding-bottom:15px;}
+
+/*　リンク　*/
+.detail_copyA a,
+.detail_copyB a,
+.detail_copyC a{
+	display:block;
+
+}
+.ranking_copy a{
+	display:block;
+	padding-bottom:15px;
+}
+
+.detail_copyA .list_title,
+.detail_copyB .list_title,
+.detail_copyC .list_title{
+	min-height:30px;margin:0 0px;padding:5px 0 0 0;
+}
+
+/*　NEWアイコン　*/
+.detail_copyA .new_icon,
+.detail_copyB .new_icon,
+.detail_copyC .new_icon{
+	display:block;
+	float:right;
+	width:30px;
+	margin:5px 10px 0 5px;
+	padding:0px 0px 0px 0;
+	font-size:80%;
+	line-height:120%;
+	text-align:center;
+}
+
+.detail_copyA .list_title h2,
+.detail_copyB .list_title h2,
+.detail_copyC .list_title h2{padding:5px 15px; line-height:120%; text-align:left;}
+
+/*　検索結果の給与・社名欄　*/
+.icon_box{min-height:20px;padding:0;}
+.icon_box:after{content:"."; display:block; height:0; clear:both; visibility:hidden; }
+
+.salary{display: block;font-size: 90%;padding:3px 15px;text-align:left;}
+.company{display: block;font-size: 90%;padding:3px 0px 0;}
+.detail_copyA .list_title .company,
+.detail_copyB .list_title .company,
+.detail_copyC .list_title .company{padding:3px 15px;}
+
+/*　検索結果のキャッチコピー　*/
+#detail .copy{margin:10px 15px 0;display:block;font-size:100%; clear:both;text-align:left;}
+.detail_copyA .copy,
+.detail_copyB .copy,
+.detail_copyC .copy,
+.ranking_copy .copy {margin:10px 15px 0;display:block;font-size:100%; clear:both;text-align:left;}
+
+/*　検索結果の画像　*/
+.detail_copyA .list_photo img{float: left;width:120px;height:auto;padding:2px;margin:15px 0px 5px 4px;}
+.detail_copyB .list_photo img,
+.detail_copyC .list_photo img{float: left;width:120px;height:auto;margin:10px;}
+
+.detail_copyA .list_photo,
+.detail_copyB .list_photo,
+.detail_copyC .list_photo{display:block;float: left;}
+
+/* 検索結果のコメント欄 */
+.detail_copyA .spec h4,
+.detail_copyB .spec h4,
+.detail_copyC .spec h4{font-size: 90%;font-weight: normal;text-align: left;line-height: 150%;margin:0px 0 0 15px;padding:10px 20px 10px 0;overflow:hidden;}
+.detail_copyC p.spec{
+font-size: 90%;
+font-weight: normal;
+text-align: left;
+line-height: 150%;
+margin: 5px 15px 15px;
+padding: 0;
+overflow:hidden;
+letter-spacing: 0;
+}
+
+.detail_copyA .more_job,
+.detail_copyB .more_job,
+.detail_copyC .more_job{padding:3px;background:#DDD;white-space: nowrap;margin-left:5px;}
+
+/*　検索結果のテーブル欄　*/
+.detail_copyA table,
+.detail_copyB table,
+.detail_copyC table{width:90%;clear:both;border-collapse:collapse;}
+.ranking_copy table{width:85%;clear:both;border-collapse:collapse;}
+
+.detail_copyA table,
+.detail_copyB table,
+.detail_copyC table,
+.ranking_copy table{margin:0 10px;}
+
+.detail_copyA th,
+.detail_copyB th,
+.detail_copyC th,
+.ranking_copy th{width:20%;font-size: 90%;line-height: 120%;padding: 5px 3px;}
+
+.detail_copyA td,
+.detail_copyB td,
+.detail_copyC td,
+.ranking_copy td{font-size: 90%;line-height: 120%;text-align: left;padding: 3px;}
+
+.detail_copyB p,
+.detail_copyC p{clear:both;}
+
+/*　次の10件　*/
+#continue{clear:both;}
+#continue a{
+	display:block;
+	text-align:center;
+	margin:0;
+	line-height:50px;
+}
+#continue a p.next{line-height:50px;font-size:140%;}
+#continue a p.now{line-height:20px;padding-bottom:10px;}
+
+/*　駅検索時の一覧　*/
+#station{padding:5px 10px;margin-bottom:10px;}
+#station .form_select_box{margin:0;padding:0;}
+#station .form_select_box .station_start,
+#station .form_select_box .station_end{width:38%;float:left;}
+#station .form_select_box span.station_to01,
+#station .form_select_box span.station_to02{
+	display:block;
+	float:left;
+	width:12%;
+	font-size:70%;
+	line-height:40px;
+}
+#station .btn{line-height:50px;margin:0;padding:0;}
+#station .btn input{clear:both;width:100%;line-height:30px;}
+
+/* --------------------------------------------------
+    仕事情報
+-------------------------------------------------- */
+#detail{clear:both; margin: 0 auto 10px;}
+#detail .contents_top{padding-bottom:10px;}
+#detail:after{content:"."; display:block; height:0; clear:both; visibility:hidden; }
+#detail .copy {margin:40px 15px 5px;clear:both;text-align:left;}
+.inner_top,
+.inner_middle{clear:both;}
+
+/*　一覧バー部分　*/
+.list_title,
+.detail_title,
+.detail_title2{padding:5px 15px;}
+
+.list_title:after,
+.detail_title:after,
+.detail_title2:after{content:"."; display:block; height:0; clear:both; visibility:hidden; }
+
+/*　一覧バーの文字部分　*/
+.list_title h2,
+.detail_title h2,
+.detail_title2 h2,
+.detail_title h1{font-size:100%;line-height:120%; text-align:left; }
+
+/*　画像箇所　*/
+#photo_detail{clear:both; float: right;max-width:270px;margin:10px 15px 10px 5px;}
+#photo_detail1{clear:both; float: right;max-width:270px;margin:10px 15px 10px 5px;}
+#photo_detail2{clear:both; float: right;max-width:270px;margin:10px 15px 10px 5px;}
+
+#photo_detail img:after,
+#photo_detail1 img:after,
+#photo_detail2 img:after{content:"."; display:block; height:0; clear:both; visibility:hidden; }
+
+#photo_detail img{width:100%;max-width:270px;}
+#photo_detail1 img{width:100%;max-width:270px;}
+#photo_detail2 img{width:100%;max-width:270px;}
+#photo_detail img,
+#photo_detail1 img,
+#photo_detail2 img{padding:2px;}
+
+#photo_sub{width:100%;margin: 0 auto;display:block;clear:both;}
+#photo_sub img{width:160px;}
+
+/*　コメント箇所　*/
+.spec_detail{width:100%;}
+.spec_detail h4{font-size: 100%;font-weight: normal;text-align: left;line-height: 150%;padding:10px 20px;display:block;}
+.spec_detail_pr{margin:0 10px;clear:both;}
+.spec_detail_pr .pr{
+	display:block;
+	clear:both;
+	text-align: left;
+	font-size: 16px;
+	font-weight: normal;
+	min-height:40px;
+	padding:30px 5px 5px;
+	line-height: 150%;
+}
+
+/*　応募ボタン下部　*/
+.extra{clear:both;margin-top:15px;}
+
+.extra p.clip{
+	width:49%;
+	float:left;
+}
+.extra div.clip_sumi{
+	width:49%;
+	float:left;
+}
+#co_header .send_work a,
+.extra .send_work a{
+	width:49%;
+	display:block;
+	float:right;
+}
+
+.extra div.clip_sumi,
+.extra p.clip a{
+	display:block;
+	padding-left:0px;
+	line-height:40px;
+}
+
+#co_header .send_work a,
+.extra .send_work a{
+	padding-left:0px;
+	line-height:32px;
+	display:block;
+}
+#co_header .send_work a{width:47%;line-height:22px;font-size:90%;text-align:center;}
+.extra div.clip_sumi{padding-left:0px;}
+
+#search_regist_btn,
+.condition_btn{padding-top:5px;}
+#search_regist_btn,
+.condition_btn p{
+	clear:both;
+	display:block;
+	margin:0px 15px 0;
+	text-align:center;
+	font-size:100%;
+}
+
+.extra .keisai{
+	width:49%;
+	float:right;
+	font-size:90%;
+	text-align:left;
+	line-height:16px;
+}
+.extra .keisai span{display:block;}
+.extra p div.clip_sumi{width:100%;}
+#result .extra .keisai{font-size:80%;}
+#detail .extra .keisai span{display:inline;}
+#detail .extra .keisai{width:auto;margin-top:5px;}
+
+/*　検索条件保存　*/
+#search_regist_btn{float:right;clear:none; }
+#search_regist_btn p a,
+.condition_btn p a{
+	display:block;
+	line-height:25px;
+}
+.condition_btn{clear:both;padding-top:10px;}
+.condition_btn p{
+	display:block;
+	margin:0px 0px 0;
+	text-align:center;
+	font-size:100%;
+}
+
+/*　応募ページ　*/
+h5.application_login a{line-height:15px;font-size:80%;padding-top:5px;padding-bottom:10px;}
+h5.application_login a:first-line{font-size:130%;line-height:25px;}
+h5.application_login a span{padding-right:45px;}
+
+/*　電話応募ページ　*/
+p.tel_number a{
+	display:block;
+	font-size:30px;
+	line-height:200%;
+	padding-left:60px;
+}
+
+/*　説明会ページ　*/
+.list dd.arrow .tel a{
+	display:block;
+	font-size:20px;
+	padding-left:45px;
+}
+
+/*お祝い金*/
+/*top about*/
+#inform .present_aboout{width:auto; float:none; margin:10px;}
+#inform .present_aboout a{
+	text-align:center;
+	line-height:32px;
+}
+
+/*result*/
+.present_A,
+.present_B,
+.present_C{
+	clear:both;
+	padding:0px;
+	margin:5px 10px 10px;
+	min-height:30px;
+}
+
+.price{
+	display:block;
+	padding:17px 10px 0 0;
+	text-align:right;
+	font-weight:bold;
+}
+
+
+/*detail*/
+.present_detail{
+	width:310px;
+	height:75px;
+	margin:0px auto;
+	text-align:right;
+}
+.price_detail{
+	display:block;
+	padding:5px 15px 0px 0px;
+	font-weight:bold;
+	font-size:38px;
+}
+
+/*present*/
+.oiwai_title{text-align:center;margin-top:10px;}
+
+
+/*------------ログイン------------*/
+#agree .text{font-size:90%;margin:10px;}
+#agree .image{text-align:center;}
+.login_attention_box .login_list{font-size:90%;margin:5px 10px;}
+
+/*------------FAQ------------*/
+.faq .text{font-size:90%;margin:10px;}
+.faq p.title{margin:10px;}
+.faq p.title span.number{margin-right:5px;padding:3px;}
+
+/*------------privacy/disclaimer------------*/
+.text_box_disclaimer{margin:10px;padding:5px;border:1px solid #CCC;}
+.list_style_decimal.disclaimer{margin:10px;}
+
+/*------------mail_regist------------*/
+.form_mail_veri span{
+	display:block;
+	padding:3px;
+	margin-bottom:2px;
+}
+.form_mail_veri_list li{
+	float:left;
+	margin-right:5px;
+}
+
+/*------------send_work_form------------*/
+#form_send_work_mobile,
+#form_reminder{margin:15px;}
+
+/*------------free_text/free_photo------------*/
+.box-hd,
+.box-hd-photo{clear:both;}
+.box-hd img.free_image,
+.box-hd .title_image img,
+.box-hd-photo img.free_image,
+.box-hd-photo .title_image img{margin:0px auto 5px;width:320px;}
+.box-a img.free_image{float:left;margin:10px 10px 10px 0;max-width:120px;}
+.box-b img.free_image{float:right;margin:10px 0 10px 10px;max-width:120px;}
+.box-hd p,
+.box-hd-photo p,
+.box-a p,
+.box-b p{margin:0px 10px 10px;}
+.box-hd p.title_image,
+.box-hd-photo p.title_image{text-align:center;margin:0px auto;}

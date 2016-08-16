@@ -1,0 +1,43 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<div class="main">
+
+    <!--login-->
+     <section>
+     	<h4 class="title_pink_bar">FINE！ログイン</h4>
+{%form_open($base_url|cat:"login/login_exe",["id"=>"login_form"])%}
+<input id="user_id" name="user_id" type="hidden" value="">
+        <dl class="job_detail_table form_table">
+        		<dt>ログインID</dt>
+        		<dd><input type="text" id="mail" name="mail" size="40" placeholder="Eメールアドレス">
+                <div class="message">
+                <div id="mail_err" class="error | success | warning display_none">正しいメールアドレスを入力してください。</div>
+                </div>
+             </dd>
+        		<dt>パスワード</dt>
+        		<dd class="link_border"><input type="password" id="password" name="password" size="40" placeholder="パスワード"><br><a href="{%$base_url%}user/password">パスワードを忘れた方はこちら</a>
+                <div class="message">
+                <div id="password_err" class="error | success | warning display_none">正しいパスワードを入力してください。</div>
+                <div class="{%if empty($errors['mail_not_exist']) || !$errors['mail_not_exist'] %}display_none{%/if%}" id="mail_not_exist_err">メールアドレスかパスワードが間違っています。</div>
+                </div>
+             </dd>
+        </dl>
+        <div class="form_button_area">
+            <p class="form_button"><a id="login_submit" href="javascript:void(0)" class="btn_white btn_190">ログインする</a></p>
+            <!--<p class="link_border fb_login_txt"><a href="#">Facebookでログインする</a></p>-->
+
+         </div>
+{%form_close()%}
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+<!-- /.content_wrapper --></div>
+{%include file="sp/user/common/footer.html"%}
+</body>
+<script src="{%$static_url%}user/js/login.js"></script>
+<script>
+$("html").keypress(function(e){if(e.which==13){login_valid();}});
+$("#login_submit").on("click",function(){login_valid();});
+</script>
+</html>

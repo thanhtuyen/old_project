@@ -1,0 +1,75 @@
+{%foreach $job_list as $key => $job%}
+<section class="job_list_box">
+    <section class="job_list">
+        <a href="{%$base_url%}detail_{%$job["job_detail"]["job"]["job_id"]%}/" class="job_linkarea">
+            <div class="job_linkarea_inbox">
+                <h4 class="job_list_title">{%html_escape($job["job_detail"]["job"]["title"])%}</h4>
+                <p class="job_list_img"><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt=""/></p>
+                <p class="job_list_txt">{%html_escape($job["job_detail"]["job"]["description"])%}</p>
+                <div class="job_detail_table_s">
+                    {%if !empty($job["nursery_detail"]['name'])%}
+                        <dl>
+                            <dt>勤務地</dt>
+                            <dd>{%html_escape($job["nursery_detail"]["name"])%} / {%html_escape($job["nursery_detail"]["address"])%}</dd>
+                        </dl>
+                    {%/if%}
+                    {%if !empty($job['job_detail']['tags']['type_employ'])%}
+                        <dl>
+                            <dt>勤務形態</dt>
+                            <dd>
+                                {%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+                                    {%html_escape($data['tag_detail']['name'])%}
+                                {%/foreach%}
+                            </dd>
+                        </dl>
+                    {%/if%}
+
+                    {%if !empty($job['job_detail']['tags']['type_job'])%}
+                        <dl>
+                            <dt>職種</dt>
+                            <dd>{%foreach $job['job_detail']['tags']['type_job'] as $data%}
+                            {%html_escape($data['tag_detail']['name'])%}{%/foreach%}</dd>
+                        </dl>
+                    {%/if%}
+                    {%if !empty($job['job_detail']['job']['worktime'])%}
+                        <dl>
+                            <dt>勤務時間</dt>
+                            <dd>{%html_escape($job["job_detail"]["job"]["worktime"])%}</dd>
+                        </dl>
+                    {%/if%}
+                    {%if !empty($job['job_detail']['job']['salary'])%}
+                        <dl>
+                            <dt>給与</dt>
+                            <dd>{%html_escape($job["job_detail"]["job"]["salary"])%}</dd>
+                        </dl>
+                    {%/if%}
+                </div>
+                <ul class="job_tag">
+                    {%if !empty($job['job_detail']['tags']['tag_job'])%}
+                        {%foreach $job['job_detail']['tags']['tag_job'] as $data%}
+                            <li>{%html_escape($data['tag_detail']['name'])%}</li>
+                        {%/foreach%}
+                    {%/if%}
+                    {%if !empty($job['nursery_detail']['tags']['tag_nursery'])%}
+                        {%foreach $job['nursery_detail']['tags']['tag_nursery'] as $data%}
+                            <li>{%html_escape($data['tag_detail']['name'])%}</li>
+                        {%/foreach%}
+                    {%/if%}
+                </ul>
+            </div>
+        </a>
+        {%if $job["user_info"]["apply_status"]%}
+            <p class="applied_button">応募済み</p>
+        {%else%}
+            <p class="apply_button apply_job_{%$job['job_detail']['job']['job_id']%}"><a href="javascript:void(0)" class="apply_btn" data-job_id="{%$job['job_detail']['job']['job_id']%}">今すぐ応募する</a></p>
+            <p class="applied_button apply_finished_job_{%$job['job_detail']['job']['job_id']%} display_none">応募済み</p>
+        {%/if%}
+        {%if $job["user_info"]["bookmark_status"]%}
+            <p class="clip_button_done">お気に入り追加済み</p>
+        {%else%}
+            <p class="clip_button bookmark_job_{%$job['job_detail']['job']['job_id']%}"><a class="bookmark_btn" data-job_id="{%$job['job_detail']['job']['job_id']%}" href="javascript:void(0)">お気に入りに追加</a></p>
+            <p class="clip_button_done bookmark_finished_job_{%$job['job_detail']['job']['job_id']%} display_none">お気に入りに追加しました</p>
+        {%/if%}
+    </section>
+</section>
+{%/foreach%}

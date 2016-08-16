@@ -1,0 +1,159 @@
+{%include file="pc/client/common/header.html"%}
+
+<div class="main">
+{%include file="pc/client/common/left_nav.html"%}
+
+
+<div class="contents inner">
+<h2 class="tit_01">求人票管理<span>：求人票の確認・編集</span></h2>
+<p class="newbtn"><a href="C_5_jobs_index.html" class="btn_white btn_190"><span class="ico_arrow02">&gt;</span>作成した求人票一覧</a></p>
+<div class="box">
+<table class="table02">
+<tbody>
+<tr>
+<th>園名<span class="ico_must">必須</span></th>
+<td><select class="widthfull">
+<option>選択してください</option>
+<option>さわやか幼稚園</option>
+<option>にこにこほいく園</option>
+</select>
+<p class="mt5 txt_attention">どの園の求人票を作成するかを選択してください。</p></td>
+</tr>
+<tr>
+<th>自社ID</th>
+<td><input type="text" class="width200"></td>
+</tr>
+<tr>
+<th>タイトル<span class="ico_must">必須</span></th>
+<td><input type="text">
+<p class="mt5 txt_attention">求人票タイトルを入力してください。</p></td>
+</tr>
+<tr>
+<th>仕事内容<span class="ico_must">必須</span></th>
+<td><textarea></textarea><p class="mt5 txt_attention">仕事内容を入力してください。</p></td>
+</tr>
+<tr>
+<th>PR文</th>
+<td><textarea></textarea></td>
+</tr>
+<tr>
+<th>募集職種<span class="ico_must">必須</span></th>
+<td><ul><!--
+--><li><label><input type="radio"> 保育士</label></li><!--
+--><li><label><input type="radio"> 幼稚園教諭</label></li><!--
+--><li><label><input type="radio"> 栄養士・調理師</label></li><!--
+--><li><label><input type="radio"> 看護師</label></li><!--
+--><li><label><input type="radio"> 学童</label></li><!--
+--><li><label><input type="radio"> 園長・主任</label></li><!--
+--><li><label><input type="radio"> その他</label></li><!--
+--></ul><p class="mt5 txt_attention">募集職種を選択してください。</p></td>
+</tr>
+<tr>
+<th>雇用形態<span class="ico_must">必須</span></th>
+<td><ul><!--
+--><li><label><input type="radio"> 正社員</label></li><!--
+--><li><label><input type="radio"> パート・アルバイト</label></li><!--
+--><li><label><input type="radio"> 契約社員</label></li><!--
+--><li><label><input type="radio"> 派遣</label></li><!--
+--><li><label><input type="radio"> 紹介予定派遣</label></li><!--
+--></ul><p class="mt5 txt_attention">雇用形態を選択してください。</p></td>
+</tr>
+<tr>
+<th>給与<span class="ico_must">必須</span></th>
+<td><input type="text" placeholder="例）月給18万～25万円 等"><p class="mt5 txt_attention">給与を入力してください。</p></td>
+</tr>
+<tr>
+<th>賞与</th>
+<td><input type="text" placeholder="例）昇給年1回（4月）、賞与年2回（夏季・冬季） 等"></td>
+</tr>
+<tr>
+<th>勤務時間<span class="ico_must">必須</span></th>
+<td><textarea placeholder="例）月～土のうち週5日、7:00～21:00のうち8時間 等"></textarea><p class="mt5 txt_attention">勤務時間を入力してください。</p></td>
+</tr>
+<tr>
+<th>応募可能人数</th>
+<td><input type="text" placeholder="半角数字のみ"><p class="mt5 txt_attention">半角数字で入力してください。</p></td>
+</tr>
+<tr>
+<th>休日</th>
+<td><input type="text" placeholder="例）土日・祝・年末年始 等"></td>
+</tr>
+<tr>
+<th>掲載終了日</th>
+<td><select>
+<option>2015</option>
+</select> 年 <select>
+<option>2</option>
+</select> 月 <select>
+<option>15</option>
+</select> 日</td>
+</tr>
+<tr>
+<th>登録タグ</th>
+<td><ul><!--
+--><li><label><input type="checkbox"> 新卒求人</label></li><!--
+--><li><label><input type="checkbox"> オープニング求人</label></li><!--
+--><li><label><input type="checkbox"> 園長求人</label></li><!--
+--><li><label><input type="checkbox"> 主任求人</label></li><!--
+--><li><label><input type="checkbox"> 経験者歓迎</label></li><!--
+--><li><label><input type="checkbox"> 未経験者歓迎</label></li><!--
+--><li><label><input type="checkbox"> ブランク歓迎</label></li><!--
+--><li><label><input type="checkbox"> 英語話せる人歓迎</label></li><!--
+--><li><label><input type="checkbox"> 年齢不問</label></li><!--
+--><li><label><input type="checkbox"> 無資格OK</label></li><!--
+--><li><label><input type="checkbox"> 車・バイク通勤OK</label></li><!--
+--><li><label><input type="checkbox"> 服装・髪型自由</label></li><!--
+--><li><label><input type="checkbox"> 残業なし（少なめ）</label></li><!--
+--><li><label><input type="checkbox"> 土日祝休み</label></li><!--
+--><li><label><input type="checkbox"> 土日祝のみOK</label></li><!--
+--><li><label><input type="checkbox"> 完全週休2日</label></li><!--
+--><li><label><input type="checkbox"> 週2～3勤務OK</label></li><!--
+--><li><label><input type="checkbox"> 短時間勤務OK</label></li><!--
+--><li><label><input type="checkbox"> 固定時間勤務OK</label></li><!--
+--><li><label><input type="checkbox"> 遅番勤務</label></li><!--
+--><li><label><input type="checkbox"> 早番勤務</label></li><!--
+--><li><label><input type="checkbox"> ゴールデンタイム勤務：9-15時</label></li><!--
+--></ul></td>
+</tr>
+<tr>
+<th>社会保険</th>
+<td><ul><!--
+--><li><label><input type="checkbox"> 労災保険</label></li><!--
+--><li><label><input type="checkbox"> 雇用保険</label></li><!--
+--><li><label><input type="checkbox"> 厚生保険</label></li><!--
+--><li><label><input type="checkbox"> 健康保険</label></li><!--
+--></ul></td>
+</tr>
+<tr>
+<th>必須資格</th>
+<td><input type="text" placeholder="例）保育士資格 等"></td>
+</tr>
+<tr>
+<th>公開状態</th>
+<td>
+<div class="flipswitch">
+<div class="either">
+<input type="radio" name="dummy" id="dummy_1" value="1" checked="checked" />
+<label for="dummy_1" data-label="公開">公開</label>
+<input type="radio" name="dummy" id="dummy_0" value="0" />
+<label for="dummy_0" data-label="非公開">非公開</label>
+</div>
+<!-- /.flipswitch --></div>
+</td>
+</tr>
+<tr>
+<th>イメージ画像<br><span class="txt_small txt_normal">※最大3枚</span></th>
+<td>
+<div class="imageselect"><p class="mb10"><img src="images/dummy/dummy_bnr_s.png" alt=""></p><p><a href="#" class="btn_130 btn_gray">画像を削除</a></p></div>
+<div class="imageselect"><p><a href="#" class="btn_130 btn_white">画像を追加</a></p></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="txt_center mt20"><a class="btn_pink btn_280" href="#"><span class="ico_arrow03">></span>この内容で登録する</a></p>
+<p class="mt5 txt_attention txt_center">必須項目で未入力の項目があります。</p>
+<!-- /.box --></div>
+<!-- /.contents --></div>
+<!-- /.main --></div>
+
+{%include file="pc/client/common/footer.html"%}

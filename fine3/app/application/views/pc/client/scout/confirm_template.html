@@ -1,0 +1,59 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%} 
+<script src="{%$static_url%}common/library/ckeditor/ckeditor.js"></script>
+{%include file="pc/client/common/top.html"%}
+<div class="main">
+	<!-- Left nav -->
+	{%include file="pc/client/common/left_nav.html"%}
+
+	<div class="contents inner">
+		<h2 class="tit_01">
+			スカウト<span>：テンプレートの確認・編集</span>
+		</h2>
+		<p class="newbtn">
+			<a class="btn_white btn_190" href="{%base_url()%}client/scout/template_list"><span
+				class="ico_arrow02">&gt;</span>テンプレート一覧</a>
+		</p>
+		<div class="box">
+			<p class="mb20">
+				※本文の後ろに、求人の詳細（勤務地、雇用条件等）が記載されます。<br> <a class="txt_line"
+					target="_blank" href="{%base_url()%}client/job/">求人票の内容を確認する</a>
+			</p>
+			<table class="table02">
+			{%form_open($base_url|cat:'client/scout/complete_template/',["id"=>"template_form"])%}
+				<tbody>
+					<tr>
+						<th>件名<span class="ico_must">必須</span></th>
+						<td><input id="subject" name="subject" type="text" value='{%if !empty($temp["title"])%}{%html_escape($temp["title"])%}{%/if%}'></td>
+					</tr>
+					<tr>
+						<th>本文<span class="ico_must">必須</span></th>
+						<td><textarea name="content" id="content" rows="10" cols="80">{%if $temp['content'] != '' %}{%$temp['content']%}{%/if%}</textarea></td>
+						<input type="hidden" name="template_id" value="{%if $temp['template_id'] != '' %}{%$temp['template_id']%}{%/if%}"
+					</tr>
+				</tbody>
+				{%form_close()%}
+			</table>
+			<p class="txt_center mt20">
+				<a id="form_submit" href="javascript:void(0)" class="btn_pink btn_280"><span class="ico_arrow03">&gt;</span>この内容で登録する</a>
+			</p>
+			<p id="error_mes" class="mt5 txt_attention txt_center display_none">必須項目で未入力の項目があります。</p>
+			<!-- /.box -->
+		</div>
+		<!-- /.contents -->
+	</div>
+	<!-- /.main -->
+</div>
+<script>
+	CKEDITOR.replace( 'content');
+	$("#form_submit").on("click",function(){
+	if(($("#content").val!="")&&($("#subject").val!="")){
+		//$(".black_back").removeClass("display_none");
+		$("#template_form").submit();
+	}else{
+        $("#error_mes").removeClass("display_none");
+    }
+});
+</script>
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

@@ -1,0 +1,7 @@
+.media-drop .drag-drop {
+   border: 10px dashed #CCC;
+	width: 120px;
+	min-height: 100px;
+	margin: 20px auto;
+	padding: 20px;
+}

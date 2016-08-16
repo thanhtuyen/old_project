@@ -1,0 +1,47 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">新しいプラン内容の登録</h4>
+<!-- widget-head --></div>
+{%form_open('manager/plan/create')%}
+<table class="plan_form">
+<tr>
+<th>プラン内容名</th>
+<td><input type="text" placeholder="[plan|name]" name="plan_name" value="" class="form-control plan_form" /></td>
+</tr>
+<tr>
+<th>プラン内容詳細</th>
+<td><input type="text" placeholder="[plan|description]" name="description" value="" class="form-control plan_form" /></td>
+</tr>
+<!-- <tr>
+<th>料金（円）</th>
+<td><input type="text" placeholder="[plan|price]" name="price" value="" class="form-control plan_form" /></td>
+</tr> -->
+<th>上限数</th>
+<td><input type="text" placeholder="[package|limit]" name="limit_num" value="" class="form-control plan_form" /></td>
+</tr>
+ <th>上限の種類</th>
+<td>
+{%foreach $limit_types as $name=>$value%}
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="limit_type" value="{%$value%}"><i class="fa fa-circle-o"></i> {%conversion_plan_limit_type($name)%}</label></div>
+{%/foreach%}
+</tr>
+
+</table>
+<!-- widget --></div>
+
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+　<a class="btn btn-default" href="{%base_url()%}manager/plan/">キャンセル</a>
+</div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}

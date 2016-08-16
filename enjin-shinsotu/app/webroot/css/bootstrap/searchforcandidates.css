@@ -1,0 +1,243 @@
+.no-padding-left
+{
+    /*padding:0px;*/
+}
+
+.l-margin-top
+{
+    margin-top: 10px;
+}
+.no-padding-select
+{
+    padding: 6px 6px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.content
+{
+    float: left;
+    width: 100%;
+}
+
+.header-fr
+{
+    background-color: #999999;
+    height: 29px;
+    border-top: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #666666;
+}
+
+.header-fr h4
+{
+    margin: 7px 0px 10px 15px;
+    color: #000000;
+    width: 200px;
+}
+
+.content-fr{
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
+
+.choose-time
+{
+
+}
+
+.choose-time .year
+{
+    width: 71px;
+    height: 23px;
+    float: left;
+}
+
+.choose-time .month
+{
+    width: 47px;
+    height: 23px;
+    float: left;
+}
+
+.choose-time .day
+{
+    width: 47px;
+    height: 23px;
+    float: left;
+}
+
+.choose-time .distance
+{
+    margin:5px;
+    float: left;
+}
+.choose-time .cross
+{
+    margin: 12px 12px 10px 15px;
+    float: left;
+}
+
+.bt-center
+{
+    text-align: center;
+    padding-bottom: 24px;
+}
+/*table*/
+.header-tb
+{
+    background-color: #999999;
+    height: 29px;
+    border-top: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #666666;
+
+}
+
+.header-tb .title
+{
+    width: 200px;
+}
+
+.header-tb .title h4
+{
+    margin: 7px 0px 0px 15px;
+    color: #000000;
+}
+
+.header-tb .l-btn button
+{
+    margin: 3px 18px 0px 0px;
+    padding: 0px 10px 0px 10px;
+}
+/*content table*/
+.content-tb
+{
+    border: 1px solid #000000;
+    float: left;
+    width: 100%;
+}
+.content-tb .filter-tb1
+{
+    width: 100%;
+    float: left;
+}
+
+.content-tb .filter-tb1 .con-left
+{
+    margin-top: 12px;
+}
+
+.content-tb .filter-tb1 .con-left .title
+{
+    margin: 0px 0px 4px 15px;
+}
+
+.content-tb .filter-tb1 .con-left .control-left select
+{
+    width: 173px;
+    float: left;
+    margin-right: 6px;
+}
+
+.content-tb .filter-tb1 .con-left .control-right
+{
+    text-align: right;
+}
+/*customer table*/
+.custom-tb
+{
+    width: 100%;
+}
+
+.custom-tb tr,td,th
+{
+    height: 38px;
+    border: 1px solid #000000;
+    text-align: center;
+    font-size: 10px;
+}
+
+.custom-tb tr th
+{
+    background-color: #999999;
+}
+
+.custom-tb tr .align-left
+{
+    text-align: left;
+}
+
+.custom-tb tr .align-left div
+{
+    margin-left: 10px;
+}
+.custom-tb tr .row1
+{
+    width: 3%;
+}
+
+.custom-tb tr .row2
+{
+    width: 6%;
+}
+
+.custom-tb tr .row3
+{
+    width: 6%;
+}
+
+.custom-tb tr .row4
+{
+    width: 13%;
+}
+
+.custom-tb tr .row5
+{
+    width: 6%;
+}
+
+.custom-tb tr .row6
+{
+    width: 6%;
+}
+
+.custom-tb tr .row7
+{
+    width: 6%;
+}
+
+.custom-tb tr .row8
+{
+    width: 13%;
+}
+
+.custom-tb tr .row9
+{
+    width: 13%;
+}
+
+.custom-tb tr .row10
+{
+    width: 13%;
+}
+
+.custom-tb tr .row11
+{
+    width: 6%;
+}
+
+.custom-tb tr .row12
+{
+    width: 9%;
+}
+
+/*customer checkbox*/
+.icheckbox_square-green
+{
+    background-color: white;
+}

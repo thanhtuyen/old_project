@@ -1,0 +1,49 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+
+     <!--regist-->
+     <section>
+         <h4 class="title_pink_bar">会員登録</h4>
+        <div class="form_txt">
+            <!--<p>次回からFacebookのアカウントを使ってログインできます。<br/><a href="#">Facebookアカウントを使って会員登録する</a></p>-->
+            <p><span class="tag_hissu">必須</span>マークのついている項目は会員登録に入力が必須の項目です。</p>
+        </div>
+         {%form_open("user/signup/register",["id"=>"register_form"])%}
+        {%include file="sp/user/signup/_signup_form.html"%}
+         <div class="form_txt">
+             <p class="font100"><label for="suport"><input type="checkbox" id="suport">無料転職サポート一括登録をする</label></p>
+             <p>チェックを入れると、会員時登録で入力した情報をFINE！に登録している、転職支援会社に同時登録ができます。</p>
+             <div class="free_suport">
+                 <p class="font100">無料転職サポートとは？</p>
+                 <p>キャリアコンサルタントがあなたの転職活動をサポート。非公開求人のご紹介や、応募書類や面接に対するサポートを受けながら、転職活動を進められます。</p>
+             </div>
+             <p>弊社の「<a href="http://www.neo-career.co.jp/policy.html" target="_blank">プライバシーポリシー</a>」と「<a href="{%$base_url%}user/statics/rule">利用規約</a>」を必ずご確認ください。ご同意いただける場合は「会員登録をする」ボタンをクリックして下さい。</p>
+         </div>
+
+         <div class="form_button_area">
+             <p class="form_button">
+                 <a href="javascript:void(0)" class="form_submit btn_pink">会員登録をする</a>
+             </p>
+             <!--<input type="submit" class="form_button" value="会員登録をする">-->
+         </div>
+         {%form_close()%}
+
+     </section>
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}common/js/email-autocomplete.js"></script>
+<script src="{%$static_url%}common/js/jpostal.js"></script>
+<script src="{%$static_url%}common/js/address_form.js"></script>
+<script src="{%$static_url%}common/js/jquery.autoKana.js"></script>
+<script src="{%$static_url%}common/js/date_format.js"></script>
+<script src="{%$static_url%}user/js/signup.js"></script>
+
+</body>
+</html>
+

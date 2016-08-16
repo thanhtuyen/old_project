@@ -1,0 +1,55 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="pc/admin/ad/_ads_menu.html"%}
+<div class="innerLR">
+<a href="{%base_url('manager/ad/partner/add')%}"><button class="btn btn-success btn-plancreate">新しいパートナーズサイトを登録する</button></a>
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+ {%include file="pc/admin/shared/_export.html"%}
+ {%include file="pc/admin/shared/_search.html"%}
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>ID</th>
+<th>バナー画像</th>
+<th>リンク先URL</th>
+<th>表示順</th>
+<th>公開非公開</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+
+
+{%foreach $ads as $ad%}
+<tr id="item{%$ad['ads_id']%}" class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" ></label></div></td>
+<td><a href="{%base_url('manager/ad/')%}/{%$type%}/edit/{%$ad['ads_id']%}">{%$ad['ads_id']%}</a></td>
+<td><img src="{%$ad['photo']%}" width="30" height="30"></td>
+<td>{%$ad['url']%}</td>
+<td>{%$ad['ordered']%}</td>
+<td>{%ad_status($ad['status'])%}</td>
+<td><a href="{%base_url('manager/ad/')%}/{%$type%}/edit/{%$ad['ads_id']%}"><button type="button" class="btn btn-primary">編集</button>
+</a>
+<a href="{%base_url('manager/ad/')%}/{%$type%}/del/{%$ad['ads_id']%}"><button type="button" class="btn btn-default" onClick="return confirmDelete()">削除</button></a>
+</td>
+</tr>
+{%/foreach%}
+
+</tbody>
+</table>
+
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+</div>
+</div>
+<!-- // Widget END -->
+
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

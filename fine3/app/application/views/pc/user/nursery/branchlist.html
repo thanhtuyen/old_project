@@ -1,0 +1,47 @@
+{%include file="pc/user/common/headbar.html"%} {%include
+file="pc/user/common/navbar.html"%} {%display_breadcrumb($breadcrumb)%}
+
+<script><!--serch-->
+$(function () {
+var b = $('.search_s_box');
+    $(".accordion .toggle").click(function () {
+    $(this).toggleClass("open");
+    $(this).next("div.accordion_inbox").slideToggle();
+    $(this).nextAll("p.search_txt:first").toggle();
+    });
+});
+</script>
+<script src="js/jquery.darktooltip.js"></script>
+<script>
+$(document).ready( function(){
+//Basic
+$('.light_m').darkTooltip({
+    size:"medium"
+});
+});
+</script>
+<div class="content_wrapper">
+<div class="content">
+
+<h1 class="tit_01">保育施設一覧</h1>
+<!--<div class="area_intro">
+<p>ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。ここにユニークな文章01が入ります。</p>
+</div>-->
+{%include file="pc/user/nursery/_phonetic_navi.html"%}
+
+<div class="box">
+<ul class="agencylist_nav">{%foreach $character as $c%}<!--
+--><li><a href="#list_{%$c['alphabet']%}"><span class="ico_arrow01">&gt;</span>{%$c['kana']%}</a></li><!--
+-->{%/foreach%}</ul>
+{%include file="pc/user/nursery/_phonetic_column.html"%}
+<!-- /.box --></div>
+
+<!-- /.content --></div>
+
+    {%include file="pc/user/common/right_nav.html"%}
+<!-- /.right_nav -->
+<!-- /.content_wrapper -->
+</div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

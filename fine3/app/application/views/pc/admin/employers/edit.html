@@ -1,0 +1,186 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<h2>{%$nursery['nursery_name']%}の情報の編集</h2>
+<div class="innerLR">
+<div class="form-group">
+<a href="company-detail.html"><input class="btn btn-default" type="submit" value="キャンセル"></a></div>
+<div class="row">
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">企業情報</h4>
+<!-- widget-head --></div>
+{%form_open('manager/employers/update')%}
+<table class="plan_form">
+<tr>
+<th>ID</th><td>{%$nursery['nursery_id']%}</td>
+<input type="hidden" name="nursery_id"  value="{%$nursery['nursery_id']%}" />
+<input type="hidden" name="headhunter_id"  value="{%$nursery['headhunter_id']%}" />
+</tr>
+<!-- <tr>
+<th>社内ID</th>
+<td><input type="text" name="customer_id" value="{%$nursery['neo_id']%}" class="form-control plan_form" /></td>
+</tr> -->
+<tr>
+<th>企業名</th>
+<td><input type="text" name="name" value="{%$nursery['nursery_name']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　企業名は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>部署名</th>
+<td><input type="text" name="department" value="{%$nursery['department']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　部署名は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>担当者名</th>
+<td><input type="text" name="contact_name" value="{%$nursery['person_name']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　担当者名は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>担当者メール</th>
+<td><input type="text" name="email" value="{%$nursery['person_email']%}" class="form-control plan_form" data-validation = "email" data-validation-error-msg="<span style='color:red'>　担当者メールは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><input type="text" name="phone" value="{%$nursery['nursery_phone']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　電話番号は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>郵便番号</th>
+<td><input type="text" name="postal_code" value="{%$nursery['nursery_postal_code']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　郵便番号は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>住所</th>
+<td><input type="text" name="address" value="{%$nursery['nursery_address']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　住所は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>企業URL</th>
+<td><input type="text" name="url" value="{%$nursery['nursery_url']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　企業URLは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>ステータス</th>
+<td><div class="make-switch" data-on="success" data-off="default"><input type="checkbox" name="status" checked></div></td>
+</tr>
+</table>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+{%form_close()%}
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">詳細情報</h4>
+<!-- widget-head --></div>
+{%form_open_multipart('manager/prs/update')%}
+<table class="plan_form">
+<tr>
+<th>創業</th>
+<td>
+<input type="hidden" name="pr_id" value="{%$pr['pr_id']%}" />
+<input type="hidden" name="nursery_id"  value="{%$nursery['nursery_id']%}" />
+<input type="text" name="establish_date" value="{%$pr['establish_date']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　創業は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>PR</th>
+<td><input name="description" type="text" value="{%$pr['description']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　PRは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>選考の流れ</th>
+<td><input name="process" type="text" value="{%$pr['process']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　選考の流れは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>備考</th>
+<td><input name="note" type="text" value="{%$pr['note']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　備考は必須項目です.</span>"/></td>
+</tr>
+
+{%foreach from=$pr['photo'] item=photo%}
+<tr>
+<th>画像({%$photo['ordered']%})</th>
+<td>
+<div class="fileupload fileupload-new margin-none lined-div" data-provides="fileupload">
+<span class="fileupload-preview"><img id="photoPreview{%$photo['ordered']%}" src="/uploads/avatar/{%$photo['name']%}" style="width: 100px; height: 100px;" ></span>
+<span class="btn btn-default btn-file">
+<span class="fileupload-new">ファイルを選択</span>
+<span class="fileupload-exists">Change</span>
+<input id="photo{%$photo['ordered']%}" type="file" class="margin-none" name="photo{%$photo['ordered']%}" onchange="PreviewImage({%$photo['ordered']%});" /></span>
+
+</div></td>
+</tr>
+{%/foreach%}
+
+</table>
+<div class="form-group">
+<a href="company-detail.html"><input class="btn btn-primary" type="submit" value="この内容で登録する"></a>
+{%form_close()%}
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+<div class="col-md-6 mini-30">
+<div class="widget innerAll half widget-primary widget-small">
+<div class="widget-head">
+<h4 class="heading">請求先情報</h4>
+<!-- widget-head --></div>
+{%form_open('manager/invoices/update')%}
+<table class="plan_form">
+<tr>
+<th>請求先企業名</th>
+<td>
+<input type="hidden" name="invoice_id"  value="{%$invoice['invoice_id']%}" />
+<input type="hidden" name="address_id"  value="{%$invoice['address_id']%}" />
+<input type="text" name="name" placeholder="[bill|company]" value="{%$invoice['name']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　請求先企業名は必須項目です.</span>"/>
+</td>
+</tr>
+<tr>
+<th>請求先郵便番号</th>
+<td><input type="text" name="postal_code" placeholder="[bill|postal_code]"  value="{%$invoice['postal_code']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　請求先郵便番号は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>住所</th>
+<td><input type="text" name="address" placeholder="[bill|adress]" value="{%$invoice['address']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　住所は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>請求先担当者名</th>
+<td><input type="text" name="contact_name" placeholder="[bill|name]" value="{%$invoice['contact_name']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　請求先担当者名は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>（かな）</th>
+<td><input type="text" name="kana" placeholder="[bill|name_kana]" value="{%$invoice['kana']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　（かな）は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>担当者メール</th>
+<td><input type="text" name="email"  placeholder="[bill|mail]" value="{%$invoice['email']%}" class="form-control plan_form" data-validation = "email" data-validation-error-msg="<span style='color:red'>　担当者メールは必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><input type="text" name="phone" placeholder="[bill|phone]" value="{%$invoice['phone']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　電話番号は必須項目です.</span>"/></td>
+</tr>
+<tr>
+<th>備考</th>
+<td><input type="text" name="note" placeholder="[bill|text]" value="{%$invoice['note']%}" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　備考は必須項目です.</span>"/></td>
+</tr>
+</table>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+{%form_close()%}
+<!-- form-group --></div>
+<!-- div.widget --></div>
+<!-- div.col-md-6 --></div>
+<!-- div.row --></div>
+
+<!-- Content --></div>
+
+
+<script type="text/javascript">
+function PreviewImage(id){
+    strId = "photo"+id;
+    preId = "photoPreview"+id;
+
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById(strId).files[0]);
+    oFReader.onload = function (oFREvent) {
+        document.getElementById(preId).src = oFREvent.target.result;
+    };
+}
+
+
+</script>
+{%include file="pc/admin/shared/_footer.html"%}
+

@@ -1,0 +1,695 @@
+@charset "utf-8";
+/* default
+======================================================================================================= */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+body {
+font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+font-size: 13px;
+line-height: 1.0em;
+color: #333333;
+}
+
+img { vertical-align: bottom; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+input, select { vertical-align: middle; }
+
+
+.sp { display: none; }
+
+/* header
+======================================================================================================= */
+header {
+	overflow: hidden;
+	width: 1050px;
+	height:40px;
+	margin: 0 auto;
+}
+
+header h1 {
+	float: left;
+	padding-top:5px;
+}
+header h1 p {
+	display: inline-block;
+	padding: 0 0 6px 15px;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+header .headTel {
+	float: right;
+	padding: 2px 0 0 0;
+}
+
+
+/* section main
+======================================================================================================= */
+/* main
+------------------------------------------------------------ */
+#main {
+	background-color: #fcf8c7;
+}
+
+#main .contents {
+	width: 1050px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+#main .contents .mainPic1 {
+	width: 530px;
+	position: relative;
+	background: url(../img/sec1_bg.png) no-repeat left top;
+	height: 474px;
+}
+#main .contents .mainPic2 {
+	width: 530px;
+	position: relative;
+	background: url(../img/sec1_bg.png) no-repeat left top;
+	height: 474px;
+}
+
+#main .contents .mainPic1 .text {
+	width: 223px;
+	height: 225px;
+	position: absolute;
+	top: 240px;
+	left: 40px;
+	text-align: center;
+	background: url(../img/bg_maintxt.png) no-repeat left top;
+}
+#main .contents .mainPic2 .text {
+	width: 223px;
+	height: 225px;
+	position: absolute;
+	top: 240px;
+	left: 20px;
+	text-align: center;
+	background: url(../img/bg_maintxt.png) no-repeat left top;
+}
+
+#main .contents .mainPic1 .text span.t1,
+#main .contents .mainPic2 .text span.t1 {
+	color: #663300;
+	display: inline-block;
+	line-height: 1.2em;
+	margin: 50px 0 0;
+}
+#main .contents .mainPic1 .text span.t2,
+#main .contents .mainPic2 .text span.t2 {
+	color: #663300;
+	display: inline-block;
+	line-height: 1.2em;
+}
+#main .contents .mainPic1 .text span.t3,
+#main .contents .mainPic2 .text span.t3 {
+	color: #663300;
+	display: inline-block;
+	line-height: 1.2em;
+}
+#main .contents .mainPic1 .text span.t4,
+#main .contents .mainPic2 .text span.t4 {
+	color: #663300;
+	display: inline-block;
+	line-height: 1.2em;
+	margin: 10px 0 0;
+}
+
+#main .contents .mainPic1_sp,
+#main .contents .mainPic2_sp { display: none; }
+
+
+
+#main .contents .formArea {
+	width: 510px;
+	height: 600px;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	z-index: 9999;
+	/*border: solid 1px #69F;*/
+}
+#main .contents .formArea .formTtl {
+	padding: 9px 0 7px 20px;
+	background-color: #333333;
+	border-radius: 5px 5px 0 0;
+}
+#main .contents .formArea .formTtl p {
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+}
+#main .contents .formArea .info1 {
+	float: left;
+	padding: 10px 0 0 20px;
+}
+#main .contents .formArea .info2 {
+	float: right;
+	padding: 10px 20px 0 0;
+}
+
+/* mainInfo
+------------------------------------------------------------ */
+#mainInfo {
+	background-color: #ffffff;
+}
+#mainInfo .contents {
+	width: 1050px;
+	margin: 0 auto;
+	padding: 20px 0 0 0;
+}
+
+#mainInfo .contents .flow {
+	margin: 47px 0 67px 0;
+}
+
+
+/* section area全体
+======================================================================================================= */
+.area1 h1,
+.area2 h1,
+.area3 h1,
+.area4 h1,
+.area5 h1,
+.area6 h1 {
+	font-size: 24px;
+	line-height: 47px;
+	background: url(../img/bg_areati.png) no-repeat left bottom;
+}
+
+.area1 .contents,
+.area2 .contents,
+.area3 .contents,
+.area4 .contents,
+.area5 .contents,
+.area6 .contents {
+	width: 1050px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+/* entry formへ
+----------------------------------------- */
+.toEntry {
+	text-align: center;
+}
+
+
+/* section area1
+======================================================================================================= */
+.area1 {
+	background-color: #ffe2e2;
+}
+
+.area1 .caseBox {
+	overflow: hidden;
+	width: 900px;
+	margin: 0 auto;
+}
+
+.area1 .caseBox .mrgR0 {
+	margin: 0 !important;
+}
+.area1 .caseBox li {
+	float: left;
+	margin: 0 12px 20px 0;
+	width: 216px;
+	min-height: 200px;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+.area1 .caseBox li .caseTtl {
+	margin: 0 0 0 0;
+	padding: 8px 0 7px;
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 18px;
+	text-align: center;
+	background-color: #f4a75b;
+	border-radius: 10px 10px 0 0;
+}
+.area1 .caseBox li p {
+	margin: 10px 0 0 0;
+	font-size: 17px;
+	line-height: 17px;
+}
+.area1 .caseBox li p span {
+	color: #f41c67;
+}
+
+.area1 .casePR {
+	width: 900px;
+	margin: 0 auto 30px;
+	text-align: center;
+	border-bottom: solid 1px #ffffff;
+}
+
+
+/* section area2
+======================================================================================================= */
+.area2 {}
+
+.area2 .pointBox {
+	overflow: hidden;
+	width: 900px;
+	margin: 0 auto;
+}
+
+.area2 .point1,
+.area2 .point2,
+.area2 .point3,
+.area2 .point4 {
+	width: 438px;
+	min-height: 185px;
+	margin: 0 0 20px 0;
+	padding: 10px 0;
+	border: solid 1px #333333;
+	border-radius: 10px;
+}
+.area2 .point1 { float: left; }
+.area2 .point2 { float: right; }
+.area2 .point3 { float: left; }
+.area2 .point4 { float: right; }
+
+.area2 .point1 .pic,
+.area2 .point2 .pic,
+.area2 .point3 .pic,
+.area2 .point4 .pic {
+	float: left;
+	margin: 0 10px 10px 10px;
+}
+.area2 .point1 .pointTtl,
+.area2 .point2 .pointTtl,
+.area2 .point3 .pointTtl,
+.area2 .point4 .pointTtl {
+	color: #f41c67;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.1em;
+	margin: 15px 0 10px;
+}
+.area2 .point1 .pointTxt,
+.area2 .point2 .pointTxt,
+.area2 .point3 .pointTxt,
+.area2 .point4 .pointTxt {
+	clear: both;
+	margin: 0 10px;
+	font-size: 14px;
+	line-height: 1.3em;
+}
+
+
+/* section area3
+======================================================================================================= */
+.area3 {
+	background-color: #ffe2e2;
+}
+
+.area3 .voiceBox {
+	overflow: hidden;
+	width: 900px;
+	margin: 0 auto;
+}
+
+.area3 .voiceBox .floatL { float: left; }
+.area3 .voiceBox .floatR { float: right; }
+.area3 .voiceBox .clear { clear: both; }
+
+.area3 .voice {
+	float: left;
+	width: 438px;
+	margin: 0 0 20px 0;
+	padding: 10px 0;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+.area3 .voice .pic {
+	float: left;
+	margin: 0 10px;
+}
+.area3 .voice dt {
+	margin: 0 0 5px 0;
+	color: #663300;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 1.2em;
+}
+.area3 .voice dd {
+	margin: 0 10px;
+	font-size: 13px;
+	line-height: 1.3em;
+}
+
+
+/* section area4
+======================================================================================================= */
+.area4 {}
+
+.area4 .consulBox {
+	overflow: hidden;
+	width: 910px;
+	margin: 0 auto 20px;
+	border-bottom: solid 1px #333333;
+}
+
+.area4 .consulBox .pic_consul_pc {
+	float: left;
+}
+.area4 .consulBox .pic_consul_sp {
+	display: none;
+}
+
+.area4 .consulBox .cPointBox {
+	float: left;
+	margin: 25px 0 0 10px;
+}
+.area4 .consulBox .cPointBox li.cPoint {
+	overflow: hidden;
+	float: left;
+	width: 210px;
+	margin: 0 5px 0 0;
+	padding: 5px;
+	background-color: #ffffff;
+	border: solid 1px #333333;
+	border-radius: 5px;
+}
+.area4 .consulBox .cPointBox li.last {
+	margin: 0;
+}
+
+.area4 .consulBox .cPointBox li.cPoint div.ttl {
+	color: #00aaeb;
+	font-size: 15px;
+	/*font-weight: bold;*/
+	line-height: 1.1em;
+}
+.area4 .consulBox .cPointBox li.cPoint div.ttl p.cNo {
+	float: left;
+	width: 24px;
+	margin: 0 5px 0 0;
+	padding: 4px 2px 2px;
+	color: #ffffff;
+	font-size: 20px;
+	line-height: 20px;
+	text-align: center;
+	background-color: #ff3c94;
+	border-radius: 5px;
+}
+
+.area4 .consulBox .cPointBox li.cPoint p.txt {
+	margin: 5px 0 0 0;
+	padding: 10px;
+	min-height: 154px;
+	font-size: 13px;
+	line-height: 1.4em;
+	background-color: #f8f8f8;
+	border-radius: 5px;
+}
+
+
+
+/* section area5
+======================================================================================================= */
+.area5 {
+	background-color: #ffeeb1;
+}
+
+.area5 .flowBox {
+	overflow: hidden;
+	width: 910px;
+	margin: 0 auto 20px;
+	padding: 15px 0;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 5px;
+}
+
+.area5 .flowBox2 { display: none; }
+
+
+/* section area6
+======================================================================================================= */
+.area6 {}
+
+.area6 .preBox {
+	overflow: hidden;
+	width: 910px;
+	margin: 0 auto 20px;
+	text-align: center;
+}
+
+.area6 .preBox2 { display: none; }
+
+
+/* section area7
+======================================================================================================= */
+.area7 {
+	background-color: #f3f1ef;
+}
+
+.area7 .telBox {
+	overflow: hidden;
+	width: 910px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+.area7 .telBox .info1 {
+	overflow: hidden;
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	border-bottom: dotted 1px #666666;
+}
+
+.area7 .telBox .info1 .ttl {
+	float: left;
+	margin: 0 0 0 55px;
+	text-align: center;
+}
+.area7 .telBox .info1 .ttl .telTtl {
+	margin: 0 0 5px 0;
+	padding: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	border: solid 1px #333333;
+	border-radius: 100px;
+}
+.area7 .telBox .info1 .ttl .free {
+	margin: 0 0 0 10px;
+	font-size: 12px;
+}
+
+.area7 .telBox .info1 li#telPC {
+	display: inline-block;
+	float: left;
+	margin: 0 0 0 15px;
+}
+.area7 .telBox .info1 li#telSP {
+	display: none;
+}
+
+.area7 .telBox .info1 li.txt {
+	float: left;
+	margin: 0 0 0 15px;
+	padding: 5px 0 0;
+	font-size: 11px;
+	line-height: 1.3em;
+}
+
+/* box
+-------------- */
+.area7 .telBox .box01 {
+	overflow: hidden;
+	float: left;
+}
+.area7 .telBox .box02 {
+	overflow: hidden;
+	float: right;
+}
+
+.area7 .telBox .box01 figure,
+.area7 .telBox .box02 figure {
+	float: left;
+	margin: 0 5px 0 0;
+	padding: 0;
+}
+.area7 .telBox .box01 .txtbox,
+.area7 .telBox .box02 .txtbox {
+	float: left;
+	width: 400px;
+}
+
+.area7 .telBox .box01 .txtbox h2,
+.area7 .telBox .box02 .txtbox h2 {
+	margin: 0 0 3px 0;
+	color: #ff3c94;
+	font-size: 13px;
+}
+.area7 .telBox .box01 .txtbox p,
+.area7 .telBox .box02 .txtbox p {
+	padding: 0 0 0 0px;
+	font-size: 12px;
+	line-height: 1.2em;
+}
+
+
+/* スマホ用
+----------------------------------------- */
+ #jobCategoryAreaSP {
+	display: none;
+}
+
+.toEntry_sp {
+	display:none;
+}
+
+#spform {
+	display:none;
+}
+
+#spheader {
+	display:none;
+}
+
+#thankssp {
+	display:none;
+}
+
+/* footer
+---------------------------------------------------------------------------- */
+footer {
+	width: 1050px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+/*scrollBox*/
+footer .scrollBox {
+	float: right;
+	width: 110px;
+}
+footer .scrollBox a {
+	display: block;
+	width: 110px;
+	margin: 0 0 10px 0;
+	padding: 3px 0;
+	color: #fff;
+	font-size: 10px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 100px;
+}
+footer .scrollBox a.bgc1 {
+	background-color: #333333;
+}
+footer .scrollBox a.bgc2 {
+	background-color: #f9407d;
+}
+
+footer .scrollBox a:hover {
+	text-decoration: none;
+	background: #999;
+}
+
+footer .copyright {
+	clear: both;
+	text-align: center;
+}
+
+footer li{
+	display: inline-block;
+	text-align:center;
+	margin:0 10px;
+	min-width:80px;
+	color:#000000;
+	font-weight:bold;
+	font-size:16px;
+}
+
+.lp_social{
+	margin:0 0 0 120px;
+	text-align:center;
+}
+.consult img{
+  width: 283px;
+  float: left;
+  height: 65px;
+  margin-right: 5px;
+}
+
+/* ----------------------------------------------------------------------------
+JOB CATEGORY PC
+---------------------------------------------------------------------------- */
+#jobCategoryOut {
+position:relative;
+}
+
+#jobCategory {
+background:url(../../img/bg_jobCategory.png) repeat;
+width:600px;
+margin:0 auto 0 -260px;
+padding:20px 40px 35px;
+position:absolute;
+bottom:50px;
+left:50%;
+z-index:9999;
+display:none;
+}
+
+#jobCategory p {
+margin:20px 0 0;
+}
+
+#jobCategory em {
+color:#FC0781;
+font-weight:bold;
+}
+
+#jobCategoryArrow {
+position:absolute;
+right:90px;
+bottom:-17px;
+}
+
+#jobCategoryLinkOut {
+	display: block;
+	margin: 0 0 15px 0;
+	text-align: right;
+	font-size:10px;
+}
+
+#jobCategoryLink {
+cursor:pointer;
+color:#FC0781;
+}
+

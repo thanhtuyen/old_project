@@ -1,0 +1,86 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+
+<h2>プランのお申し込み</h2>
+
+<div class="widget widget-heading-simple widget-body-white">
+{%form_open('manager/client/plan/create')%}
+<table class="plan_form">
+<tbody><tr>
+<th>ご利用プラン</th>
+
+<td>
+<input type="hidden" name="client_id" value="{%$client_id%}" />
+<select name="plan_group_id" class="selectpicker col-md-6 select-package" data-style="btn-success" style="display: none;">
+<option selected value="0">プラン名を選択</option>
+{%foreach $groups as $group%}
+<option value="{%$group['plan_group_id']%}">{%$group['name']%}</option>
+{%/foreach%}
+</select>
+</td>
+</tr>
+<tr>
+<th>利用期間</th>
+<td>
+    <input id="month" type="text" name="month" value="">ヶ月
+</td>
+</tr>
+<tr>
+<th>プラン内容</th>
+<td id="plan"></td>
+</tr>
+<tr>
+<th>自動延長の有無</th>
+<td>
+    <input type="text" name="auto_extend_flg"  id="auto_extend">
+</td>
+</tr>
+<tr>
+<th>料金</th>
+<td>
+    <input type="text" name="price"  id="price">
+</td>
+</tr>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で申し込む">
+<button class="btn btn-default">戻る</button></div>
+{%form_close()%}
+</div>
+
+<!-- Content --></div>
+  {%form_open('manager/client/plan/detail', ['id' => 'sign_up_form'])%}
+<input type="hidden" name="plan_group_id" id="plan_group_id">
+{%form_close()%}
+<script>
+$('document').ready(function(){
+    $("#sign_up_form").ajaxForm({
+          dataType: 'json',
+          success: function(obj) {
+            var i;
+            var plans = '';
+            for (i = 0; i < obj.plans.length; ++i) {
+                plans += '<li>' + obj.plans[i] + '</li>';
+            }
+            $('#month').val(obj.month);
+            $('#plan').html(plans);
+            $('#auto_extend').val(obj.auto_extend_flg);
+            $('#price').val(obj.price);
+
+          }
+        })
+
+    $('.select-package').change(function(){
+        var plan_group_id = parseInt( jQuery(this).val() );
+        $('#plan_group_id').val(plan_group_id);
+
+         $("#sign_up_form").trigger('submit');
+    });
+
+});
+</script>
+
+
+{%include file="pc/admin/shared/_footer.html"%}

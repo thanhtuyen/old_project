@@ -1,0 +1,97 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+<section class="top_container">
+    <article id="top_contents">
+
+        <h1 class="station_title">{%$pref['name']%}の駅・路線から探す</h1>
+
+        <ul class="accordion accordion_station">
+            {%foreach $companies as $company%}
+            <li><p><span>{%$company['company_name']%}</span></p>
+                <ul>
+                    {%foreach $company['lines'] as $line%}
+                   <li>
+                       <label {%if $line['total'] == 0 %} class="nocheck" {%/if%}>
+                           <input class="select_line" type="checkbox" value="{%$line['line_id']%}" {%if $line['total'] == 0 %} disabled="disabled" {%/if%}>{%$line['line_name_h']%}<span>({%$line['total']%})</span>
+                       </label>
+
+                   </li>
+                    {%/foreach%}
+                </ul>
+           {%/foreach%}
+        </ul>
+
+        <div class="searchbtn_station"  style="display: none;">
+            <p class="btn btn01"><a id ="line_search_submit" href="javascript:void(0)">選択した路線の駅を表示</a></p>
+        </div>
+
+    </article>
+</section>
+
+{%include file="sp/user/common/footer.html"%}
+
+<script type="text/javascript" charset="utf-8">
+    history.navigationMode = 'compatible';
+    $( document ).ready(function() {
+        var select ="";
+        if ($('.select_line:checked').length != 0) {
+            $('.select_line').each(function () {
+                if($(this).prop("checked") == true){
+                    $(this).parent().css( "background", "#ffccd9");
+                } else if($(this).prop("checked") == false){
+                    $(this).parent().css( "background", "#ffffff");
+                }
+            });
+            getCheckBoxesValue();
+
+        }
+
+        $('.select_line').click(function(){
+
+            if($(this).prop("checked") == true){
+                $(this).parent().css( "background", "#ffccd9");
+            } else if($(this).prop("checked") == false){
+                $(this).parent().css( "background", "#ffffff");
+            }
+            getCheckBoxesValue();
+
+        });
+
+        //get value list line
+        function getCheckBoxesValue() {
+
+            if ($('.select_line:checked').length==0){
+                $(".searchbtn_station").slideUp("fast");
+            }else {
+                $(".searchbtn_station").slideDown("fast");
+            }
+            select = select_line_list();
+        }
+
+        function select_line_list(){
+            var select = {select_line : "", num_line : ""};
+
+            $(".select_line:checked").map(function(){
+                if(select["select_line"] === ""){
+                    select["select_line"]  = $(this).val();
+                    select["num_line"] = 1;
+                }else{
+                    select["select_line"]  += ","+$(this).val();
+                    select["num_line"] = 2;
+                }
+            });
+
+            return select;
+        }
+        $("#line_search_submit").on("click",function(){
+            if(select["num_line"] == 1) {
+                $(location).attr("href",BASE_URL+"railway/line_"+select["select_line"]);
+            } else {
+                $(location).attr("href",BASE_URL+"station_select?line_id="+select["select_line"]);
+            }
+
+        });
+
+    });
+
+</script>

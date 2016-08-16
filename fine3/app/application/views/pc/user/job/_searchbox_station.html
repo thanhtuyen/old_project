@@ -1,0 +1,72 @@
+<h1 class="tit_01">{%$pref['name']%}の駅・路線から保育士求人・募集を探す</h1>
+<h2 id="search" class="tit_02 mt30"><span class="ico_train01">■</span><span class="title_text">{%foreach $stations_list as $key=>$station%} {%$station['station_name']%} {%if $key<count($stations_list)-1%},{%/if%} {%/foreach%}</span></h2>
+<ul class="station_searchflow flow01"><!--
+--><li class="done"><p><span>1</span><a href="{%$top_page%}#search">路線を選択</a></p><span class="ico_arrow09">&gt;</span></li><!--
+--><li class="done"><p><span>2</span><a href="{%$line_page%}">駅を選択</a></p><span class="ico_arrow09">&gt;</span></li><!--
+--><li class="current"><p><span>3</span>求人票を見る</p></li><!--
+--></ul>
+
+<div class="box serch_pink_box">
+<div class="accordion">
+
+    <div class="search_s_box">
+        <p class="search_tit"><span class="ico_train02">&gt;</span>駅</p>
+        <p class="toggle02 btn_60 btn_white_s2"><a href="{%$top_page%}#search">選択する</a></p>
+        <p class="search_txt"><span class="station_name_list">{%$pref['name']%}：《 {%foreach $stations_list as $key=>$station%} {%$station['station_name']%} {%if $key<count($stations_list)-1%},{%/if%} {%/foreach%}》</span></p>
+    </div>
+<div class="search_s_box">
+    <p class="tit_02 mt10" id="condition">追加条件</p>
+<p class="search_tit"><span class="ico_search04">&gt;</span>職種</p>
+<p class="toggle btn_60 btn_white_s2">変更する</p>
+    <div class="accordion_inbox search_box">
+<ul>{%foreach $tags["job"] as $job%}<!--
+--><li><label><input type="checkbox" class="select_job" name="select_job" value="{%$job['tag_id']%}" {%if !empty($selecter["job"][$job['tag_id']])%}checked{%/if%}>{%$job["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+    <p>【選択された項目】<span class="select_job_list">未選択</span></p>
+    </div><!--//area-->
+<p class="search_txt select_job_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search05">&gt;</span>施設形態</p>
+<p class="toggle btn_60 btn_white_s2">変更する</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["nursery"] as $nursery%}<!--
+--><li><label><input type="checkbox" class="select_nursery" name="select_nursery" value="{%$nursery['tag_id']%}" {%if !empty($selecter["nursery"][$nursery['tag_id']])%}checked{%/if%}>{%$nursery["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_nursery_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_nursery_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search07">&gt;</span>勤務形態</p>
+<p class="toggle btn_60 btn_white_s2">変更する</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["employee"] as $employee%}<!--
+--><li><label><input type="checkbox" class="select_employee" name="select_employee" value="{%$employee['tag_id']%}" {%if !empty($selecter["employee"][$employee['tag_id']])%}checked{%/if%}>{%$employee["name"]%}</li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_employee_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_employee_list">未選択</p>
+</div>
+
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search08">&gt;</span>こだわり条件</p>
+<p class="toggle btn_60 btn_white_s2">変更する</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["tag"] as $tag%}<!--
+--><li><label><input type="checkbox" class="select_tag" name="select_ag" value="{%$tag['tag_id']%}" {%if !empty($selecter["tag"][$tag['tag_id']])%}checked{%/if%}>{%$tag["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_tag_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_tag_list">未選択</p>
+</div>
+
+</div><!--//accordion-->
+<div class="search_put">この条件の求人は<span class="job_all_count">{%$job_all_count%}</span>件ありました。<a href="javascript:void(0)" id="job_search_submit" class="btn_pink btn_190"><span class="ico_search06">▼</span>この条件で検索する</a></p>
+<!-- /.box --></div>
+</div>

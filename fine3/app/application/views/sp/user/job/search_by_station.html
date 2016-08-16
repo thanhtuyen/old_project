@@ -1,0 +1,123 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+{%include file="sp/user/common/loading.html"%}
+
+<section class="sub_container">
+    <h1 class="toptitle">求人票検索結果</h1>
+    <article id="result">
+        <nav id="co_header">
+            <div class="title">
+                <p class="res_number"><span class="res_number_srong">{%$job_all_count%}</span>件あります</p>
+            </div>
+        </nav>
+
+        <div id="result_box">
+            <div id="job-list">
+
+            {%include file="sp/user/job/_job_list.html"%}
+
+            </div>
+            <nav id="continue">
+                <div id="continue_link">
+                    <a class="btn" id="readmore" href="javascript:void(0)">
+                        <p class="next">次の{%$range%}件を表示する</p><p class="now">{%$job_all_count%} 件中、<span id="current-total-job">{%$range%}</span>件を表示しています</p>
+                    </a>
+                </div>
+            </nav>
+
+
+            <nav class="btn mypage"><a href="{%$top_page%}">再検索</a></nav>
+        </div>
+    </article>
+</section>
+
+
+
+{%include file="sp/user/common/footer.html"%}
+<script type="text/javascript">
+    CSRF_TOKEN_NAME = CSRF_NAME = '{%$csrf_token_name%}';
+    CSRF_TOKEN_VALUE = CSRF_VALUE = '{%$csrf_token_value%}';
+    BASE_URL = '{%$base_url%}';
+</script>
+<script src="{%$static_url%}user/js_sp/apply.js"></script>
+<!-- Move code js search and all function into file user/js/search.js -->
+<script src="{%$static_url%}user/js/search.js"></script>
+<script>
+
+
+$(".btn-apply").on("click",function(e){apply_for_job($(this),"apply");});
+
+$(".btn-bookmark").on("click",function(e){apply_for_job($(this),"bookmark");});
+
+$(".accordion").map(function() {
+    var accordion = $(this);
+    accordion.find(".toggle").click(function(){
+        $("p.search_txt").removeClass("display_none");
+        var accordion_inbox = $(this).next("div.accordion_inbox");
+        if(accordion_inbox.css("display") === "none" ){
+            accordion.find("div.accordion_inbox").slideUp().find(".toggle.open").removeClass("open");
+            $(this).parent().children("p.search_txt").addClass("display_none");
+        }
+        accordion_inbox.slideToggle().toggleClass("open");
+    });
+});
+
+
+var page = {%$page%};
+var range = {%$range%};
+var display_job_number = page * range;
+function page_param(page){
+    var search_url = location.href;
+    if(search_url.indexOf("page") != -1){
+        var nextpage = page ++;
+        search_url.replace('page='+page, 'page='+nextpage);
+        return search_url;
+    }else if(search_url.indexOf("?") != -1){
+        page ++;
+        return search_url+"&page="+page;
+    }else{
+        page ++;
+        return search_url+"?page="+page;
+    }
+}
+
+display_job_number = page * range ;
+
+if(display_job_number >= {%$job_all_count%}) $("#readmore").remove();
+
+$("#readmore").on("click",function(){
+    $("#loading_layer").removeClass("display_none");
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: page_param(page),
+                data: {
+                    "is_ajax" : "▂▅▇█▓▒░(’ω’)░▒▓█▇▅▂うわああああああ",
+            {%$csrf_token_name%}: "{%$csrf_token_value%}"
+        },
+        success:function(response){
+    if(response.code == 1){
+        ++page;
+        display_job_number = page * range ;
+        $("#job-list").append(response.html);
+        $(".display_job_number").text(display_job_number);
+        $(".apply_btn").unbind('click').bind("click",function(e){apply_for_job($(this),"apply");});
+        $(".bookmark_btn").unbind('click').bind("click",function(e){apply_for_job($(this),"bookmark");});
+        $("#current-total-job").text (parseInt($("#current-total-job").text()) + response.total);
+        if(display_job_number >= {%$job_all_count%})$("#readmore").remove();
+    }else{
+        $("#readmore").remove();
+    }
+},
+error: function(XMLHttpRequest, textStatus, errorThrown){
+},
+complete:function(data){$("#loading_layer").addClass("display_none");}
+});
+});
+
+
+
+</script>
+</body>
+</html>

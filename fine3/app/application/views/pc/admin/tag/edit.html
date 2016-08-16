@@ -1,0 +1,39 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">タグの編集</h4>
+<!-- widget-head --></div>
+{%form_open('manager/tag/update')%}
+
+<table class="plan_form">
+<tr>
+<th>グループ</th>
+<td><select class="selectpicker col-md-6" data-style="btn-primary" name="group">
+{%foreach $groups as $group%}
+<option value="{%$group['tag_group_id']|cat:'*'|cat:$group['name']%}" {%if $group['tag_group_id'] eq $tag['tag_group_id']%} selected {%/if%}>{%$group['name']%}</option>
+{%/foreach%}
+</select></td>
+</tr>
+<tr>
+<th>タグ名</th>
+<td>
+<input type="hidden" value="{%$tag['tag_id']%}" name="tag_id" />
+<input type="text" placeholder="例）急募" value="{%$tag['name']%}" name="name" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　タグ名は必須項目です.</span>"/>
+</td>
+</tr>
+<tr>
+<th>表示順</th>
+<td><input type="text" value="{%$tag['ordered']%}" placeholder="例）1" name="ordered" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　表示順は必須項目です.</span>"/></td>
+</tr>
+</table>
+<!-- widget --></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する" />
+　<a class="btn btn-default" href="{%base_url('manager/group')%}">キャンセル</a>
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+{%include file="pc/admin/shared/_footer.html"%}
+

@@ -1,0 +1,24 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+    <div class="content_wrapper">
+        <h4 class="title_pink_bar">会員登録＆求人応募完了</h4>
+        <div class="form_txt">
+        会員登録及び求人「{%$job_detail["title"]%}」への応募が完了いたしました。</h1>
+            <p class="txt_center">ご登録ありがとうございます。<br>以降はご登録いただきましたメールアドレスとパスワードでログインいただけます</p>
+            <p class="form_button"><a href="{%$base_url%}login" class="btn_pink btn_200"><span class="ico_arrow03"></span>ログインページへ移動</a></p>
+            <p class="form_cancel_button"><a href="{%$base_url%}detail_{%$job_detail['job_id']%}" class=" btn_200"><span class="ico_arrow05"></span>応募した求人を見る</a></p>
+            <!-- /.box -->
+        </div>
+
+    <!--コラムカテゴリー一覧-->
+
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+</body>
+</html>

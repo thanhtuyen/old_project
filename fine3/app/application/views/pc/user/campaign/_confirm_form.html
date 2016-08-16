@@ -1,0 +1,166 @@
+<!-- name -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="formArea">
+	<tr>
+		<th valign="top" class="hissu" nowrap>お名前</th>
+		<td>
+			<p>
+				<input id="name" name="fullname" placeholder="お名前" type="text"
+					style="background-color: #ffdede;" size="30"
+					data-validation="required" 
+					value="{%$fullname%}"
+					data-validation-error-msg="<div style='color:red'>姓は必須項目です.</div>">
+				{%form_error('fullname')%}
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<th valign="top" class="hissu_niretu" nowrap>ふりがな</th>
+		<td class="niretu">
+			<p>
+				<input id="kana" name="name" placeholder="ふりがな" type="text"
+					style="background-color: #ffdede;" size="30"
+					data-validation="required"
+					value="{%$name%}"
+					data-validation-error-msg="<div style='color:red'>せいは必須項目です.</div>">
+				{%form_error('name')%}
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<th valign="top" class="hissu" nowrap>性別</th>
+		<td>
+			<p>
+				<input id="gender2" name="gender" type="radio" value="2" {%if $gender == 0 || $gender == 2%}checked{%/if%}><label for="gender2">男性</label>
+				<input id="gender1" name="gender" type="radio" value="1" {%if $gender == 1%}checked{%/if%}><label for="gender1">女性</label>
+				{%form_error('gender')%}
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<th valign="top" class="hissu_niretu" nowrap>生年月日</th>
+		<td class="niretu">
+			<p>
+				<input name="year" type="text" placeholder="1970"
+					style="width: 50px; background-color: #ffdede;" maxlength="4"
+					data-validation="required"
+					value="{%$year%}"
+					data-validation-error-msg="<div style='color:red'>年は必須項目です.</div>">
+
+				年 <select name="month" style="background-color: #ffdede;"
+					data-validation="required"
+					data-validation-error-msg="<div style='color:red'>月は必須項目です.</div>">
+					{%for $i=1 to 12%}
+						{%$selected = ''%}
+						{%if $i == $month%}
+							{%$selected = 'selected'%}
+						{%/if%}
+					    <option value="{%$i%}" {%$selected%}>{%$i%}</option>
+					{%/for%}
+				</select>
+				
+				月 <select name="day" style="background-color: #ffdede;"
+					data-validation="required"
+					data-validation-error-msg="<div style='color:red'>日は必須項目です.</div>">
+					{%for $i=1 to 31%}
+					    {%$selected = ''%}
+						{%if $i == $day%}
+							{%$selected = 'selected'%}
+						{%/if%}
+					    <option value="{%$i%}" {%$selected%}>{%$i%}</option>
+					{%/for%}
+				</select> 日
+				
+				{%form_error('year')%}
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<th valign="top" class="hissu" nowrap>電話番号</th>
+		<td>
+			<p>
+				<input name="phone" placeholder="08000000000" type="text" size="30"
+					style="background-color: #ffdede;" data-validation="required"
+					value="{%$phone%}"
+					data-validation-error-msg="<div style='color:red'>電話番号は必須項目です</div>">
+				{%form_error('phone')%}
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<th valign="top" class="hissu_niretu" nowrap>メールアドレス</th>
+		<td class="niretu">
+			<p>
+				<input id='email' placeholder="hoikkuma@fineday.me" name="email"
+					type="text" size="30" style="background-color: #ffdede;"
+					data-validation="email"
+					value="{%$email%}"
+					data-validation-error-msg="<div style='color:red'>メールアドレスは必須項目です</div>">
+				{%form_error('email')%}
+			</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<th valign="top" nowrap>お探しになる地域</th>
+		<td>
+			<p style="padding-bottom: 10px;">
+				都道府県 <select id="search_pc_select" name="province"
+					style="background-color: #ffdede;" data-validation="required"
+					data-validation-error-msg="<div style='color:red'>都道府県は必須項目です.</div>">
+					<option value="" id="pref_id">------</option>
+
+					{%foreach from=$all_provinces key=k item=v%}
+					<option value="{%$v['pref_id']%}" {%if $province == $v['pref_id']%}selected{%/if%}>{%$v['name']%}</option>
+					{%/foreach%}
+				</select>
+				{%form_error('province')%}
+			</p>
+			<p>
+				市区町村 <select id="search_cc_select" name="city"
+					style="background-color: #ffdede;" data-validation="required"
+					data-validation-error-msg="<div style='color:red'>市区町村は必須項目です.</div>">
+				</select>
+				{%form_error('city')%}
+				<!-- <input name="field_1172933" type="text" size="30" style="background-color:#ffdede;" data-validation = "required" data-validation-error-msg="<span style='color:red'>　市区町村は必須項目です.</span>"> -->
+			</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<th valign="top" class="hissu_niretu" nowrap>保有資格</th>
+		<td class="niretu">
+			<p>
+				{%if isset($tags_4) && !empty($tags_4)%}
+					{%foreach from=$tags_4 key=k item=v%}
+					<input id="certification{%$v['tag_id']%}" name="certifications[]" type="checkbox" value="{%$v['tag_id']%}" 
+						{%if is_array($certifications) && in_array($v['tag_id'], $certifications)%}checked{%/if%} 
+						data-validation="checkbox_group" data-validation-qty="min1">
+					<label for="certification{%$v['tag_id']%}">{%$v['name']%}</label>
+					{%/foreach%}
+				{%/if%}
+				{%form_error('certifications[]')%}
+			</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<th valign="top" class="hissu_niretu" nowrap>希望の雇用形態</th>
+		<td class="niretu">
+			<p>
+				{%if isset($tags_3) && !empty($tags_3)%}
+					{%foreach from=$tags_3 key=k item=v%}
+						{%$checked = ''%}
+						{%if intval(set_value('jobtype')) == 0 && $k==0%}
+							{%$checked = 'checked'%}
+						{%/if%}
+					<input id="jobtype{%$v['tag_id']%}" name="jobtype" type="radio" 
+						value="{%$v['tag_id']%}" {%$checked%} {%if $jobtype == $v['tag_id']%}checked{%/if%}>
+					<label for="jobtype{%$v['tag_id']%}">{%$v['name']%}</label>
+					{%/foreach%}
+				{%/if%}
+				{%form_error('jobtype')%}
+			</p>
+		</td>
+	</tr>

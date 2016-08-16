@@ -1,0 +1,1 @@
+ALTER TABLE `job_votes` CHANGE `wanted_year` `wanted_year` INT(11) NULL DEFAULT NULL;

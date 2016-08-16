@@ -1,0 +1,44 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+{%include file="pc/admin/excepts/except_shared/_menu.html"%}
+
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+ {%include file="pc/admin/shared/_export_and_search.html"%}
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th class="text-center">
+<div class="checkbox checkbox-single margin-none">
+<label class="checkbox-custom">
+<i class="fa fa-fw fa-square-o"></i>
+<input type="checkbox">
+</label>
+</div>
+</th>
+<th>申請ID</th>
+<th>ユーザー名</th>
+<th>申請日</th>
+<th>ステータス</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+
+{%foreach from=$result item=list%}
+<tr class="gradeX">
+<td class="text-center"><div class="checkbox checkbox-single margin-none"><label class="checkbox-custom"><i class="fa fa-fw fa-square-o"></i><input type="checkbox" checked="checked"></label></div></td>
+<td><a href="{%base_url('manager/excepts/detail_job')%}/{%$list['apply_id']%}">{%$list['apply_id']%}</a></td>
+<td><a href="{%base_url('manager/user/detail')%}/{%$list['user_id']%}">{%$list['user_name']%}</a></td>
+<td>{%$list['date']%}</td>
+<td>{%$list['status']%}</td>
+<td><a href="{%base_url('manager/excepts/detail_job')%}/{%$list['apply_id']%}">
+<button type="button" class="btn btn-default">詳細を確認</button></a></td>
+</tr>
+{%/foreach%}
+</tbody>
+</table>
+
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%}
+{%include file="pc/admin/shared/_footer.html"%}

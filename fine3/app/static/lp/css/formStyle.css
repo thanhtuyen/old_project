@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+#formArea {background-color:#f9f8ef;
+border-collapse:separate;
+	border:1px solid #cccccc; 
+	border-radius: 0 0 10px 10px;
+	}
+
+#formArea .niretu { background-color:#f2eee0; }
+#formArea td { padding:10px; line-height:1.5em; border-top:1px solid #cccccc;}
+#formArea th { padding:10px; border-right:1px solid #cccccc; border-top:1px solid #cccccc; font-weight:normal; text-align:left;}
+#formArea .hissu { background:url(../img/sec1_form_ico.png) no-repeat top right;}
+#formArea .hissu_niretu { background:url(../img/sec1_form_ico.png) no-repeat top right #f2eee0;}
+
+#formArea .at { text-align:center}
+#formArea pre {
+display: block;
+padding: 9.5px;
+margin: 0 0 10px;
+font-size: 13px;
+line-height: 1.42857143;
+color: #333;
+word-break: break-all;
+word-wrap: break-word;
+background-color: #f5f5f5;
+border: 1px solid #ccc;
+border-radius: 4px;
+text-align:left;
+width:450px;
+height:80px;
+overflow-y: scroll;
+overflow-x: hidden;}
+
+.display_none{
+	display:none;
+}
+.message_error{
+	color:red;
+}

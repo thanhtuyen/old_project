@@ -1,0 +1,34 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">パスワードの変更</h4>
+<!-- widget-head --></div>
+{%form_open('manager/admins/update-pass')%}
+<table class="plan_form">
+<tr>
+<th>今のパスワード</th>
+<td><input type="password" name="password" placeholder="現在のパスワード" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　今のパスワードを入力してください。</span>"/></td>
+</tr>
+<tr>
+<th>新しいパスワード</th>
+<td><input type="password" name="newPassword" placeholder="新しいパスワード" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　新しいパスワードを入力してください。</span>"/></td>
+</tr>
+<tr>
+<th>新しいパスワード<br>（確認用）</th>
+<td><input type="password" name="confirmPassword" placeholder="新しいパスワード" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　新しいパスワードと同じ文字列を入力してください。</span>"/></td>
+</tr>
+</table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="このパスワードに変更する">
+<input class="btn btn-default" type="reset" value="キャンセル"></div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+{%include file="pc/admin/shared/_footer.html"%}

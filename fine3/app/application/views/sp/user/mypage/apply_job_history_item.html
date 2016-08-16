@@ -1,0 +1,66 @@
+
+
+{%foreach $data.items as $item%}
+<section class="job_list">
+            <a href="{%$base_url%}detail_{%$item.job_id%}" class="job_linkarea">
+                <div class="job_linkarea_inbox">
+                        <h4 class="job_list_title">{%$item.title%}</h4>
+                        <p class="job_list_img">
+
+                            {%if $item.image %}
+                            <img width="120" height="89" src="{%getImageUrlFromS3($item.job_id, $image_type['job'], $item.image)%}" alt="">
+                            {%else%}
+                            <img width="120" height="89" src="{%$static_url%}user/img/dummy/dummy_job_detail02.jpg" alt="">
+                            {%/if%}
+
+                        </p>
+                        <p class="job_list_txt">{%$item.pr%}</p>
+
+
+                        <div class="job_detail_table_s">
+                            <dl>
+                                    <dt>勤務地</dt>
+                                 <dd>{%$item.nursery_name%} / {%$item.nursery_province%}{%$item.nursery_city%}{%$item.nursery_address%}</dd>
+                            </dl>
+                            <dl>
+                                    <dt>雇用形態</dt>
+                                 <dd>{%$item.tag_employ%}</dd>
+                            </dl>
+                            <dl>
+                                    <dt>職種</dt>
+                                 <dd>{%$item.type_job%}</dd>
+                            </dl>
+                            <dl>
+                                    <dt>勤務時間</dt>
+                                 <dd>{%$item.worktime%}</dd>
+                            </dl>
+                            <dl>
+                                    <dt>給与</dt>
+                                 <dd>{%$item.bonus%}</dd>
+                            </dl>
+                       </div>
+
+
+                   <ul class="job_tag">
+                       {%foreach $item.tags as $tag%}
+                        <li><a href="{%$base_url%}{%$tag.prefix%}{%$tag.link_name%}/">{%$tag.name%}</a></li>
+                        {%/foreach%}
+
+                   </ul>
+                   </div>
+        </a>
+        <p class="applied_button mb10">応募済み</p>
+        <!--
+        <p class="clip_button_done">
+{%$textBookmark = 'お気に入りに追加する'%}
+    {%$valueAdd = 0%}
+    {%if $item.bookmarked%}
+        {%$textBookmark = 'お気に入り追加済'%}
+        {%$valueAdd = 1%}
+    {%/if%}
+
+    <a href="javascript:void(0)" class="add-to-bookmark" data-value="{%$valueAdd%}" data-id="{%$item.job_id%}">{%$textBookmark%}</a>
+</p> -->
+     </section>
+
+     {%/foreach%}

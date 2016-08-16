@@ -1,0 +1,153 @@
+<!-- name -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="formArea">
+<input id="area_id" name="area_id" type="hidden" value="">
+    <tr>
+        <th valign="top" class="hissu" nowrap>お名前</th>
+    </tr>
+    <tr>
+        <td>
+            <input class="form_pink" id="name" name="name" type="text" size="30" placeholder="例）保育 育美">
+            <div class="message msgerror_name"><div id="name_err" class="display_none">※氏名を正しく入力して下さい</div></div>
+        </td>
+    </tr>
+    <tr>
+        <th valign="top" class="hissu_niretu" nowrap>フリガナ</th>
+    </tr>
+    <tr>
+        <td class="niretu">
+            <input id="kana" class="form_pink" name="kana" type="text" size="30" placeholder="例）ホイク イクミ">
+            <div class="message msgerror_kana"><div id="kana_err" class="display_none">※フリガナを正しく入力してください</div></div>
+        </td>
+    </tr>
+    <tr>
+        <th valign="top" class="hissu" nowrap>性別</th>
+    </tr>
+    <tr>
+        <td>
+            <label><input name="gender" value="1" type="radio" checked="checked">女性</label>
+            <label><input name="gender" value="2" type="radio">男性</label>
+        </td>
+    </tr>
+    <tr>
+        <th valign="top" class="hissu_niretu" nowrap>生年月日</th>
+    </tr>
+    <tr>
+        <td class="niretu">
+            <select name="birth_year" id="birth_year">
+            {%foreach $year as $val%}
+            <option {%if $val==1990%} selected="selected" {%/if%}value="{%$val%}">{%$val%}</option>
+            {%/foreach%}
+            </select><span>&nbsp;年&nbsp;</span>
+            <select id="birth_month" name="birth_month">
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select><span>&nbsp;月&nbsp;</span>
+            <select id="birth_day" name="birth_day">
+                {%for $i=1 to 31%}
+                <option value="{%$i%}">{%$i%}</option>
+                {%/for%}
+            </select><span>&nbsp;日</span>
+        </td>
+    </tr>
+    <tr>
+        <th valign="top" class="hissu" nowrap>電話番号</th>
+    </tr>
+    <tr>
+        <td>
+            <input id="tel" name="tel" type="text" class="form_size180 form_pink onlynum" maxlength="11" placeholder="例）0359088005">
+            <div class="message msgerror_tel">
+                <div id="tel_err" class="display_none">※入力してください</div>
+                <div id="tel_num_err" class="display_none">※電話番号は数字のみで入力してください</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <th valign="top" class="hissu_niretu" nowrap>メールアドレス</th>
+    </tr>
+    <tr>
+        <td class="niretu">
+            <input class="form_pink" id="mail" name="mail" type="text" size=40 placeholder="例）info-hoiku@fine.me" maxlength=256>
+            <div class="message msgerror_mail">
+                <div id="mail_err" class="display_none">※メールアドレスを正しく入力してください。</div>
+                <div id="mail_exist" class="display_none">※このメールアドレスは既に登録されています。
+                </div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <th id="address" valign="top" class="hissu" nowrap>住所</th>
+    </tr>
+    <tr>
+        <td>
+            <span>〒&nbsp;</span>
+            <input id="zip1" name="zip1" type="text" maxlength="3" class="form_pink" placeholder="例）160" style="width:60px;">
+            <span>&nbsp;-&nbsp;</span>
+            <input id="zip2" name="zip2" type="text" maxlength="4" class="form_pink" placeholder="例）0023" style="width:80px;">
+            <div class="message msgerror_zip1"><div id="zip_err" class="display_none">※郵便番号を正しく入力してください。</div></div>
+            <div style="margin:10px 0;"><span>都道府県</span>
+                <select id="address_pref" class="form_pink" style="width:150px;">
+                    <option value="">選択してください</option>
+                    {%foreach $area["pref"] as $pref%}
+                    <option value="{%$pref['name']%}" data-pref_id="{%$pref['pref_id']%}">{%$pref['name']%}</option>
+                    {%/foreach%}
+                </select>
+                <div class="message msgerror_address_pref">
+                    <div id="address_pref_err" class="display_none">※選択してください</div>
+                </div>
+            </div>
+            <div style="margin-bottom:10px;"><span>市区町村</span>
+                <select id="address_city" class="form_pink" style="width:150px;">
+                    <option value="">選択してください</option>
+                    {%foreach $area["city"] as $city%}
+                    <option class="city_pref_id_{%$city['pref_id']%}" value="{%$city['name']%}" data-city_area_id="{%$city['area_id']%}" data-pref_id="{%$city['city_id']%}">{%$city['name']%}</option>
+                    {%/foreach%}
+                </select>
+                <div class="message msgerror_address_city">
+                    <div id="address_city_err" class="display_none">※選択してください</div>
+                </div>
+            </div>
+            <span>　　　　</span>
+            <input id="address_detail" name="address_detail" type="text" size=35 placeholder="例）西新宿1-22-2 新宿サンエービル 2階">
+            <div class="message msgerror_address_detail">
+                <div id="address_detail_err" class="display_none">※番地、マンション名等を入力してください。</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <th id="license" valign="top" class="hissu_niretu" nowrap>保有資格</th>
+    </tr>
+    <tr>
+        <td class="niretu">
+            {%foreach $license item=name key=key%}
+            <label><input type="checkbox" class="license" name="license[]" value="{%$key%}">{%$name%}</label><br>
+            {%/foreach%}
+            <div class="message msgerror_license">
+                <div id="license_err" class="display_none">※最低一つチェックをしてください。<br>該当するものがない場合は無資格を選択してください。</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <th valign="top" class="hissu_niretu" nowrap>希望の雇用形態</th>
+    </tr>
+    <tr>
+        <td class="niretu">
+            {%html_options id=employee name=employee options=$employee%}
+            <div class="message msgerror_employee">
+                <div id="employee_err" class="display_none">希望する雇用形態を選択してください。</div>
+            </div>
+        </td>
+    </tr>

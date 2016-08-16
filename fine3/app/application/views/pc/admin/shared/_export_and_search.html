@@ -1,0 +1,26 @@
+<div class="row separator bottom">
+<div class="col-md-5">
+<div class="btn-group">
+<a class="btn btn-primary"><span>Copy</span></a>
+<a class="btn btn-primary" href="{%getExportUrlPath('csv')%}"><span>CSV</span></a>
+</div>
+</div>
+<div class="col-md-3 form-horizontal">
+<div  class="dataTables_length form-group margin-none">
+<label class="col-md-4 control-label"> Show</label>
+<div class="col-md-8">
+<select id="select-limit" class="form-control .selectpicker">
+<option value="10" {}>10</option>
+<option value="25" {}>25</option>
+<option value="50" {}>50</option>
+<option value="100" {}>100</option>
+</select>
+</div></div></div><div class="col-md-4 form-horizontal">
+<div class="dataTables_filter form-group margin-none">
+<label class="col-md-4 control-label">Search: </label>
+<div class="col-md-8">
+<form method="get">
+<input type="text" name="q[keyword]" class="form-control">
+<input type="submit" style="display:none">
+</div>
+</div></div></div>

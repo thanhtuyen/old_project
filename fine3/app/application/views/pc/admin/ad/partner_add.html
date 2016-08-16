@@ -1,0 +1,65 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="pc/admin/ads/_ads_menu.html"%}
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">新しいパートナーズサイトの登録</h4>
+<!-- widget-head --></div>
+{%form_open_multipart('manager/ads/create')%}
+
+<table class="plan_form">
+<input type="hidden" name="group_id" value="{%$group%}" />
+<input type="hidden" name="type" value="{%$type%}" />
+<tr>
+<th>リンク先URL</th>
+<td>
+<input type="text" name="url" class="form-control plan_form" />
+</td>
+</tr>
+<tr>
+<th>使用画像</th>
+<td>
+<div class="fileupload fileupload-new margin-none lined-div" data-provides="fileupload">
+<span class="fileupload-preview"><img id="photoPreview" width="60" height="60" ></span>
+<span class="btn btn-default btn-file">
+<span class="fileupload-new">ファイルを選択</span>
+<span class="fileupload-exists">Change</span>
+<input id="photo" type="file" class="margin-none" name="photo" onchange="PreviewPhoto()"/></span>
+</div>
+</td>
+</tr>
+<tr>
+<th>表示順</th>
+<td><input type="text" name="ordered" class="form-control plan_form" data-validation = "required" data-validation-error-msg="<span style='color:red'>　表示順は必須項目です.</span>"/></td>
+</tr>
+<tr>
+
+<th>公開非公開</th>
+<td><div class="make-switch" data-on="success" data-off="default">
+<input type="checkbox" name="status"></div></td>
+
+</tr>
+</table>
+<!-- widget --></div>
+<div class="separator"></div>
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+<input class="btn btn-default" type="reset" value="削除"></div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+
+<script type="text/javascript">
+        function PreviewPhoto(){
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("photo").files[0]);
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("photoPreview").src = oFREvent.target.result;
+            };
+        }
+    </script>
+{%include file="pc/admin/shared/_footer.html"%}
+

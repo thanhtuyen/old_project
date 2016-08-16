@@ -1,0 +1,90 @@
+<!--serch_menu more-->
+<div class="nav_serch_sec menu">
+	<label for="Panel1" class="area_menu">勤務地（エリア）</label> <input
+		type="checkbox" id="Panel1" class="on-off" />
+	<ul class="checkbox_serch area_serch_sec">
+		<!--
+         -->
+		<li class="mb10">
+			<!--
+             -->
+			<select id="select_pref" name="select_pref">
+				<option value="">選択してください</option> {%foreach $area["pref"] as
+				$pref%}
+				<option value="{%$pref['pref_id']%}"{%if !empty($selecter["pref"][$pref["area_id"]])%}selected{%/if%}>{%$pref["name"]%}</option>
+				{%/foreach%}
+		</select>
+		<!--
+         -->
+		</li>
+		<!--
+         -->
+		{%foreach $area["city"] as $city%}
+		<!--
+         -->
+		<li class="relate_pref_{%$city['pref_id']%} display_none"><label><input
+				type="checkbox" class="select_city" name="select_city"
+				value="{%$city['area_id']%}"{%if !empty($selecter["city"][$city['area_id']])%}checked{%/if%}>{%$city["name"]%}</label></li>
+		<!--
+         -->
+		{%/foreach%}
+		<!--
+     -->
+	</ul>
+</div>
+<div class="nav_serch_sec menu">
+	<label for="Panel2" class="area_menu">職種</label> <input type="checkbox"
+		id="Panel2" class="on-off" />
+	<ul class="checkbox_serch job">
+		{%foreach $tags["job"] as $job%}
+		<li><label for="select_job_{%$job['tag_id']%}"><input
+				type="checkbox" id="select_job_{%$job['tag_id']%}"
+				class="select_job" name="select_job" value="{%$job['tag_id']%}"{%if !empty($selecter["job"][$job['tag_id']])%}checked{%/if%}>{%$job["name"]%}</label></li>
+		{%/foreach%}
+	</ul>
+</div>
+<div class="nav_serch_sec menu">
+	<label for="Panel3" class="area_menu">施設形態</label> <input
+		type="checkbox" id="Panel3" class="on-off" />
+	<ul class="checkbox_serch job">
+		{%foreach $tags["nursery"] as $nursery%}
+		<li><label for="select_nursery_{%$nursery['tag_id']%}"><input
+				type="checkbox" id="select_nursery_{%$nursery['tag_id']%}"
+				class="select_nursery" name="select_nursery"
+				value="{%$nursery['tag_id']%}"{%if !empty($selecter["nursery"][$nursery['tag_id']])%}checked{%/if%}>{%$nursery["name"]%}</label></li>
+		{%/foreach%}
+	</ul>
+</div>
+<div class="nav_serch_sec menu">
+	<label for="Panel4" class="area_menu">勤務形態</label> <input
+		type="checkbox" id="Panel4" class="on-off" />
+	<ul class="checkbox_serch job">
+		{%foreach $tags["employee"] as $employee%}
+		<li><label for="select_employee_{%$employee['tag_id']%}"><input
+				type="checkbox" id="select_employee_{%$employee['tag_id']%}"
+				class="select_employee" name="select_employee"
+				value="{%$employee['tag_id']%}"{%if !empty($selecter["employee"][$employee['tag_id']])%}checked{%/if%}>{%$employee["name"]%}</label></li>
+		{%/foreach%}
+	</ul>
+</div>
+<div class="nav_serch_sec menu">
+	<label for="Panel5" class="area_menu">こだわり条件</label> <input
+		type="checkbox" id="Panel5" class="on-off" />
+	<ul class="checkbox_serch">
+		{%foreach $tags["tag"] as $tag%}
+		<li><label for="select_tag_{%$tag['tag_id']%}"><input
+				type="checkbox" id="select_tag_{%$tag['tag_id']%}"
+				class="select_tag" name="select_ag" value="{%$tag['tag_id']%}"{%if !empty($selecter["tag"][$tag['tag_id']])%}checked{%/if%}>{%$tag["name"]%}</label></li>
+		{%/foreach%}
+	</ul>
+</div>
+<div class="serch_count_top">
+	{%if isset($action_search)%}
+	<p>
+		この条件が該当する求人は<span class="job_all_count">{%$job_all_count%}</span>件ありました。
+	</p>
+	{%/if%}
+	<p class="form_button">
+		<a id="job_search_submit" href="javascript:void(0)">この条件で検索する</a>
+	</p>
+</div>

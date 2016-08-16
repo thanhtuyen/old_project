@@ -1,0 +1,70 @@
+<style>
+p.error{
+  color:red;
+  font-size:13px;
+}
+</style>
+{%include file="pc/admin/shared/_header.html"%}
+
+
+<div class="innerLR plan_form">
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">求人応募用URLの生成</h4>
+<!-- widget-head --></div>
+{%form_open($base_url|cat:'admin/session/generate_url')%}
+<p style="margin:10px;">送信したいユーザーのメールアドレスと、送信したい求人の求人IDを入力してください。</p>
+<table class="plan_form">
+<tr>
+<th>メールアドレス</th>
+<td><input type="text" value="{%$data['mail']%}" placeholder="user@xxxx.com" name="mail" class="form-control plan_form" />
+{%if isset($error['mail']) %}
+{%if $error['mail'] eq 'blank'%}
+<p class="error">メールアドレスを入力してください。</p>
+{%elseif $error['mail'] eq 'notexist'%}
+<p class="error">該当する会員ユーザーがいません。</p>
+{%/if%}{%/if%}
+</td>
+</tr>
+<tr>
+<th>求人ID</th>
+<td><input type="text" placeholder="123456" value="{%$data['job_id']%}" name="job_id" class="form-control plan_form" />
+{%if isset($error['job_id'])%}
+{%if $error['job_id'] eq 'blank'%}
+<p class="error">求人IDを入力してください。</p>
+{%elseif $error['job_id'] eq 'notexist'%}
+<p class="error">該当する公開中の求人がありません。</p>
+{%/if%}{%/if%}
+</td>
+</tr>
+<!--
+<tr>
+<th>utm_source</th>
+<td><input type="text" value="finedb" name="utm_source" class="form-control plan_form" />
+</td>
+</tr>
+<tr>
+<th>utm_medium</th>
+<td><input type="text" value="email" name="utm_medium" class="form-control plan_form" />
+</td>
+</tr>
+<tr>
+<th>utm_campaign</th>
+<td><input type="text" value="realmatch" name="utm_campaign" class="form-control plan_form" />
+</td>
+</tr>
+-->
+</table>
+<!-- widget --></div>
+
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="URLを生成する">
+</div>
+
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}

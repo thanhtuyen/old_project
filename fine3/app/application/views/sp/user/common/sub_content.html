@@ -1,0 +1,45 @@
+<!--sub_content-->
+    <!--column category list-->
+    {%if !empty($text_right_navi_name) && !empty($text_right_navi_name) && !empty($text_right_navi_content)%}
+    <section class="job_new user_job">
+    		<h4 class="title_joblist_user title_redbar">{%$text_right_navi_name%}</h4>
+         <ul>
+        {%foreach from=$text_right_navi_content key=count item=ads%}
+            <a href="{%$ads.url%}"><li class="job_detail_box colum_list">{%$ads.title%}</li></a>
+        {%/foreach%}
+         </ul>
+    </section>
+    {%/if%}
+
+    <!--column category list-->
+    <section class="job_new user_job">
+    		<h4 class="title_joblist_column title_redbar">コラムカテゴリー一覧</h4>
+         <ul>
+
+            {%foreach $wp_category as $category%}
+                <a href="{%$base_url%}contents/?cat={%$category['term_id']%}"><li class="job_detail_box colum_list"><span class="ico_arrow01">&gt;</span>{%$category['name']%}</li></a>
+            {%/foreach%}
+         </ul>
+    </section>
+    
+    <!--guide-->
+    <p class="guide_bnr"><a href="{%$base_url%}guide"><img src="{%$static_url%}user/img/guide_bnr.jpg" alt="ご利用ガイド" /></a></p>
+    
+    <!--partners site-->
+    {%if !empty($partner_name) && !empty($partner_name) && !empty($partner_banner)%}
+    <section class="job_new user_job">
+    		<h4 class="title_joblist_agency title_redbar">{%$partner_name%}</h4>
+            <ul class="partners_site">
+                {%foreach from=$partner_banner key=count item=partner%}
+                    <li><a href="{%$partner.url%}" target="_blank"><img src="{%$partner.path%}" alt=""/></a></li>
+                {%/foreach%}
+            </ul>
+    </section>
+    {%/if%}
+    
+    <!--facebook-->
+    	<div class="fb_box">
+        <iframe src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/%EF%BC%A6%EF%BC%A9%EF%BC%AE%EF%BC%A5/315073388697708?fref=nf&width=270&height=250&colorscheme=light&show_faces=false&header=true&stream=true&show_border=true" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width:100%; height: 250px;" allowTransparency="true"></iframe>
+    </div>
+    
+<!--/sub_content-->

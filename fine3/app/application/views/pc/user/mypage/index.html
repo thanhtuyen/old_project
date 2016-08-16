@@ -1,0 +1,55 @@
+{%include file="pc/user/common/headbar_logged.html"%}
+{%include file="pc/user/common/navbar_logged.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+
+<div class="content_wrapper">
+<div class="content">
+{%include file="pc/user/common/mypagemenu.html"%}
+<h1 class="tit_02"><span class="ico_folder01">▽</span>あなたにオススメの求人</h1>
+<div class="box jobbox_users">
+<div class="clear">
+{%if $job_list !== false%}
+{%foreach $job_list as $job%}
+<a class="jobbox" href="{%$base_url%}detail_{%$job["job_detail"]["job"]["job_id"]%}">
+<p class="tit_boxjob">{%if $job['job_detail']['job']['title']%}{%html_escape($job['job_detail']['job']['title'])%}{%/if%}</p>
+<p class="custom_job_img"><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt="" width="94" height="68"></p>
+<ul class="job_s_list">
+{%if $job['nursery_detail']['display_address']%}<li><span class="ico_arrow01">&gt;</span>{%html_escape($job['nursery_detail']['display_address'])%}
+{%if $job['nursery_detail']['station_name']%}
+/{%html_escape($job['nursery_detail']['station_name'])%}
+{%/if%}
+{%if $job['nursery_detail']['direction']%}
+{%html_escape($job['nursery_detail']['direction'])%}
+{%/if%}
+</li>{%/if%}
+
+{%if !empty($job['job_detail']['tags']['type_employ'])%}
+<li><span class="ico_arrow01">&gt;</span>{%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</li>
+{%/if%}
+
+{%if !empty($job['job_detail']['tags']['type_job'])%}
+<li><span class="ico_arrow01">&gt;</span>
+{%foreach $job['job_detail']['tags']['type_job'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}
+</li>
+{%/if%}
+</ul>
+</a>
+{%/foreach%}
+{%/if%}
+<!-- /.clear --></div><!-- 
+<p class="txt_center mt20"><a href="U_2_search.html" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>もっと求人を見る</a></p> -->
+<!-- /.box --></div>
+
+<!-- /.content --></div>
+
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+</body>
+</html>

@@ -1,0 +1,57 @@
+{%include file="pc/admin/shared/_header.html"%}
+
+<div class="innerLR plan_form">
+<button class="btn btn_primary">このプラン内容を削除する</button>
+<div class="separator"></div>
+<div class="widget widget-heading-simple widget-body-white" >
+<div class="widget-head">
+<h4 class="heading">プラン内容の編集</h4>
+<!-- widget-head --></div>
+{%form_open('manager/plan/update')%}
+<table class="plan_form">
+<tr>
+<th>プラン内容ID</th>
+<td>{%$plan['plan_id']%}
+<input type="hidden" value="{%$plan['plan_id']%}" name="plan_id">
+</td>
+</tr>
+<tr>
+<th>プラン内容名</th>
+<td><input type="text" name="plan_name" placeholder="[plan|name]" value="{%$plan['plan_name']%}" class="form-control plan_form" /></td>
+</tr>
+<tr>
+<th>プラン内容詳細</th>
+<td><input type="text" name="description" placeholder="[plan|description]" value="{%$plan['description']%}" class="form-control plan_form" /></td>
+</tr>
+<!-- <tr>
+<th>料金（円）</th>
+<td><input type="text" name="price" placeholder="[plan|price]" value="{$plan['price']}" class="form-control plan_form" /></td>
+</tr> -->
+<th>上限数</th>
+<td><input type="text" name="limit_num" placeholder="[package|limit]" value="{%$plan['limit_num']%}" class="form-control plan_form" /></td>
+</tr>
+<th>上限の種類</th>
+<td>
+{%foreach $limit_types as $name=>$value%}
+<div class="radio lined_div"><label class="radio-custom"><input type="radio" name="limit_type" value="{%$value%}" {%is_radio($value, $plan['limit_type'])%}><i class="fa fa-circle-o"></i> {%conversion_plan_limit_type($name)%}</label></div>
+{%/foreach%}</tr>
+<!-- <tr>
+<th>ステータス</th>
+<td><div class="make-switch" data-on="success" data-off="default"><input type="checkbox" checked></div></td>
+</tr> -->
+</table>
+<!-- widget --></div>
+<!-- <div class="separator"></div> -->
+<div class="form-group">
+<input class="btn btn-primary" type="submit" value="この内容で登録する">
+<a class="btn btn-default" href="{%base_url()%}manager/plan">キャンセル</a>
+{%form_close()%}
+<!-- separater --></div>
+
+<!-- innnerLR --></div>
+<!-- Content --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+
+

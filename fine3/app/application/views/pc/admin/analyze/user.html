@@ -1,0 +1,320 @@
+{%include file="pc/admin/shared/_header.html"%}
+<div class="innerLR">
+{%form_open('manager/statics/')%}
+<div>表示中のデータ：
+<input class="form-control datepicker1" {%if isset($date) && $date!=null%}value="{%$date%}"{%else%}value="{%date('Y-m-d')%}"{%/if%} name="date" type="text" placeholder="{%$date%}" style="display:inline-block;width:110px;" />
+<input class="btn btn-warning" type="submit" value="この日のデータを見る" style="display:inline-block;" />
+</div>
+{%form_close()%}
+
+{%if isset($date)%}
+<h4 class="heading" style="margin-bottom:10px;">求人・事業所について（{%$date%} 0:00時点）</h4>
+<div class="widget widget-heading-simple widget-body-white" style="background-color:#ffffff;">
+<div class="widget-body">
+<div class="row">
+<div class="col-md-3">
+<h4>公開求人数</h4>
+<p class="data"><span>{%$analyze_job['open_jobs_number']%}</span>件</p>
+</div>
+<div class="col-md-3">
+<h4>非公開求人数</h4>
+<p class="data"><span>{%$analyze_job['closed_jobs_number']%}</span>件</p>
+</div>
+<div class="col-md-3">
+<h4>求人公開中の事業所</h4>
+<p class="data"><span>{%$analyze_job['active_clients_number']%}</span>件</p>
+</div>
+<div class="col-md-3">
+<h4>公開求人なしの事業所</h4>
+<p class="data"><span>{%$analyze_job['passive_clients_number']%}</span>件</p>
+</div>
+</div>
+</div>
+</div>
+{%/if%}
+
+<h4 class="heading" style="margin-bottom:10px;">登録について　<span style="font-size:15px;">登録者数：退会者を除く、本登録が完了している人の数</span></h4>
+<div class="widget widget-heading-simple widget-body-white" style="background-color:#ffffff;">
+<div class="widget-body">
+{%if isset($date) && $date!=null%}
+<div class="row">
+<div class="col-md-4">
+<h4>{%$date%}の登録者数<span style="font-size:15px;"> (訪問UUに対する割合)</span></h4>
+<p class="data"><span>{%$register['day']%}</span>人（<span style="font-size:25px;">{%if $visitor['day'] eq 0%}0{%else%}{%round($register['day']/$visitor['day']*100)%}{%/if%}</span>%）</p>
+</div><!-- col-md-4 -->
+<div class="col-md-8">
+<h4>経路別　{%$date%}の登録者数</h4>
+<p>
+{%if $register['day'] eq 0%}
+データがありません
+{%else%}
+<dl class="lined_dl">
+{%foreach from=$register['day_service'] key=key item=val%}
+<dt>{%if $key eq ""%}本サイト{%else%}{%$key%}{%/if%}</dt>
+<dd class="data"><span>{%$val%}</span>人</dd><br>
+{%/foreach%}
+</dl>
+{%/if%}
+</p>
+</div><!-- col-md-8 -->
+</div><!-- row -->
+{%/if%}
+<div class="row">
+<div class="col-md-4">
+<h4>累計の登録者数<span style="font-size:15px;"> (訪問UUに対する割合)</span></h4>
+<p class="data"><span>{%$register['all']%}</span>人（<span style="font-size:25px;">{%if $visitor['all'] eq 0%}0{%else%}{%round($register['all']/$visitor['all']*100)%}{%/if%}</span>%）</p>
+</div><!-- col-md-4 -->
+<div class="col-md-8">
+<h4>経路別　累計の登録者数</h4>
+<p>
+<dl class="lined_dl">
+{%foreach from=$register['all_service'] key=key item=val%}
+<dt>{%if $key eq ""%}本サイト{%else%}{%$key%}{%/if%}</dt>
+<dd class="data"><span>{%$val%}</span>人</dd><br>
+{%/foreach%}
+</dl>
+</p>
+</div><!-- col-md-8 -->
+</div><!-- row -->
+<div class="row">
+<div class="col-md-4">
+<h4>月間登録者数<span style="font-size:15px;"> (訪問UUに対する割合)</span></h4>
+<p class="data"><span>{%$register['month']%}</span>人（<span style="font-size:25px;">{%if $visitor['month'] eq 0%}0{%else%}{%round($register['month']/$visitor['month']*100)%}{%/if%}</span>%）</p>
+</div><!-- col-md-4 -->
+<div class="col-md-8">
+<h4>経路別　月間登録者数</h4>
+<p>
+<dl class="lined_dl">
+{%foreach from=$register['month_service'] key=key item=val%}
+<dt>{%if $key eq ""%}本サイト{%else%}{%$key%}{%/if%}</dt>
+<dd class="data"><span>{%$val%}</span>人</dd><br>
+{%/foreach%}
+</dl>
+</p>
+</div><!-- col-md-8 -->
+</div><!-- row -->
+<div class="row">
+<div class="col-md-4">
+<h4>{%if $date!=null%}{%$date%}{%else%}累計{%/if%}のサイト訪問UU</h4>
+<p class="data"><span>{%$visitor['day']%}</span>人</p>
+</div><!-- col-md-4 -->
+<div class="col-md-8">
+<h4>経路別　{%if $date!=null%}{%$date%}{%else%}累計{%/if%}のサイト訪問UU</h4>
+<p>
+<dl class="lined_dl">
+<dt>本サイト</dt>
+<dd class="data"><span>{%if isset($visitor['day_service']['original'])%}{%$visitor['day_service']['original']%}{%else%}{%intval($visitor['day'])-intval($visitor['day_service']['proto_a'])%}{%/if%}</span>人</dd><br>
+<dt>proto_a</dt>
+<dd class="data"><span>{%$visitor['day_service']['proto_a']%}</span>人</dd><br>
+</dl>
+</p>
+</div><!-- col-md-8 -->
+</div><!-- row -->
+</div><!-- widget body -->
+</div><!-- // 2 Column / One Third & Two Third END -->
+
+{%if $date!=null%}
+<!-- Chart.js -->
+<h4 class="heading" style="margin-bottom:10px;">{%$date%}の訪問数と登録状況（時間帯別）</h4>
+<div class="widget widget-heading-simple widget-body-white" style="background-color:#ffffff;">
+<div class="widget-body">
+<ul>
+<li class="line_label line_data1">訪問数</li>
+<li class="line_label line_data2">登録者数</li>
+</ul>
+<canvas id="dayRV" height="300" width="1146"></canvas>
+</div><!-- body -->
+</div><!-- widget -->
+{%/if%}
+
+<h4 class="heading" style="margin-bottom:10px;">{%if $date!=null%}{%$date%}{%else%}累計{%/if%}の応募について</h4>
+<div class="widget widget-heading-simple widget-body-white" style="background-color:#ffffff;">
+<div class="widget-body">
+<div class="row">
+<div class="col-md-4">
+<h4>{%if $date!=null%}{%$date%}{%else%}累計{%/if%}の求人応募数<span style="font-size:15px;"> (全雇用形態)</span></h4>
+<p class="data"><span>{%$applicant['job_day']%}</span>応募</p>
+<h4>{%if $date!=null%}{%$date%}{%else%}累計{%/if%}の紹介会社応募数<span style="font-size:15px;"> (全雇用形態)</span></h4>
+<p class="data"><span>{%$applicant['agent_day']%}</span>応募</p>
+</div><!-- col-md-4 -->
+<div class="col-md-8">
+<h4>雇用形態別　求人応募数</h4>
+<p>
+{%if $applicant['job_day'] eq "0"%}
+データがありません
+{%else%}
+<dl class="lined_dl">
+{%foreach from=$applicant['day_job_employ'] key=key item=val%}
+<dt>{%if $key==""%}正社員以外{%else%}{%$key%}{%/if%}</dt>
+<dd class="data"><span>{%$val%}</span>人</dd><br>
+{%/foreach%}
+</dl>
+{%/if%}
+</p>
+</div><!-- col-md-8 -->
+</div><!-- row -->
+<div class="row">
+<div class="col-md-4">
+<h4>{%if $date!=null%}{%$date%}{%else%}累計{%/if%}の応募による売上<span style="font-size:15px;"> (全応募合計)</span></h4>
+<p class="data"><span>{%$sales['job']['total_sales'] + $sales['agent']['total_sales']%}</span>円</p>
+</div><!-- col-md-4 -->
+<div class="col-md-8">
+<h4>売上内訳</h4>
+<p>
+<dl class="lined_dl">
+<dt>求人への応募</dt>
+<dd class="data"><span>{%if $sales['job']['total_sales'] == ""%}0{%else%}{%$sales['job']['total_sales']%}{%/if%}</span>円</dd><br>
+<dt>紹介会社への応募</dt>
+<dd class="data"><span>{%if $sales['agent']['total_sales'] == ""%}0{%else%}{%$sales['agent']['total_sales']%}{%/if%}</span>円</dd>
+</dl>
+</p>
+<!--
+<h4>法人別　{%$date%}の応募による売上<span style="font-size:15px;"> (1応募あたりの送客単価)</span></h4>
+<p>
+<dl class="lined_dl">
+<dt>正社員</dt>
+<dd class="data"><span>123</span>人</dd><br>
+<dt>正社員以外</dt>
+<dd class="data"><span>123</span>人</dd><br>
+</dl>
+</p>
+-->
+</div><!-- col-md-8 -->
+</div><!-- row -->
+</div><!-- widget body -->
+</div><!-- // 2 Column / One Third & Two Third END -->
+
+<h4 class="heading" style="margin-bottom:10px;">{%if $date!=null%}{%$date%}{%else%}累計{%/if%}のメールについて</h4>
+<div class="widget widget-heading-simple widget-body-white" style="background-color:#ffffff;">
+<div class="widget-body">
+<div class="row">
+
+<div class="col-md-4">
+<h4>レコメンドメール配信UU</h4>
+<p class="data"><span>{%$mail['mail']%}</span>人</p>
+</div><!--col-md-4-->
+
+<div class="col-md-4">
+<h4>レコメンドメール配信求人数</h4>
+<p class="data"><span>{%$mail['job']%}</span>件</p>
+</div><!--col-md-4-->
+
+<div class="col-md-4">
+<h4>レコメンドメール求人クリック数</h4>
+<p class="data"><span>{%$mail['click']%}</span>件</p>
+</div><!--col-md-4-->
+
+</div><!--row-->
+</div><!--widget-body-->
+</div><!-- widget -->
+</div><!-- innserLR -->
+
+<!--footer-->
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+<div id="footer" class="hidden-print">
+<div class="copy">&copy; Copyright (C) Neo Career CO., LTD. All Rights Reserved.</div>
+<!-- footer --></div>
+
+</div>
+<!-- // Main Container Fluid END -->
+
+<!-- 昨日の訪問数と登録状況< -->
+<!-- chart.js -->
+<script src="{%base_url()%}static/admin/analyze/Chart.js"></script>
+<script>
+var lineChartData = {
+labels: [{%foreach from=$register_graph key=key item=val%}"{%$key%}時", {%/foreach%}],
+	datasets: [
+	{
+label: "訪問数",
+       fillColor: "rgba(220,220,220,0.2)",
+       strokeColor: "rgba(220,220,220,1)",
+       pointColor: "rgba(220,220,220,1)",
+       pointStrokeColor: "#fff",
+       pointHighlightFill: "#fff",
+       pointHighlightStroke: "rgba(220,220,220,1)",
+       data: [{%foreach from=$visitor_graph key=key item=val%}{%$val%}, {%/foreach%}]
+	},
+	{
+label: "登録者数",
+       fillColor: "rgba(151,187,205,0.2)",
+       strokeColor: "rgba(151,187,205,1)",
+       pointColor: "rgba(151,187,205,1)",
+       pointStrokeColor: "#fff",
+       pointHighlightFill: "#fff",
+       pointHighlightStroke: "rgba(151,187,205,1)",            
+       data: [{%foreach from=$register_graph key=key item=val%}{%$val%}, {%/foreach%}]
+	}
+	]
+};
+function show() {
+	var ctx = document.getElementById("dayRV").getContext("2d");
+	new Chart(ctx).Line(lineChartData);
+}
+show();
+</script>
+
+<!-- Global -->
+<script data-id="App.Config">
+var App = {};        var basePath = '',
+    commonPath = '{%$static_url%}admin/',
+    rootPath = '/',
+    DEV = false,
+    componentsPath = '{%$static_url%}admin/components/';
+
+var primaryColor = '#c72a25',
+    dangerColor = '#b55151',
+    successColor = '#609450',
+    infoColor = '#4a8bc2',
+    warningColor = '#ab7a4b',
+    inverseColor = '#45484d';
+
+var themerPrimaryColor = primaryColor;
+
+var confirmDelete = function () {
+	return confirm('削除しますか?');
+};
+
+jQuery('#select-limit').change(function(){
+		var num = parseInt( jQuery(this).val() );
+		window.location.href = window.location.href+'?limit='+num;
+		});
+
+</script>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
+
+<script>
+
+$.validate();
+
+</script>
+
+<script src="{%$static_url%}admin/library/bootstrap/js/bootstrap.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/core_nicescroll/jquery.nicescroll.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/core_breakpoints/breakpoints.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/core_preload/pace.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/core_preload/preload.pace.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_fuelux-checkbox/fuelux-checkbox.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_bootstrap-select/js/bootstrap-select.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_bootstrap-select/bootstrap-select.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_bootstrap-datepicker/js/bootstrap-datepicker.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_bootstrap-datepicker/bootstrap-datepicker.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/ui_modals/bootbox.min.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/ui_modals/modals.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/admin_notifications_gritter/js/jquery.gritter.min.js?v=v1.0.0-rc1"></script>
+<script src="{%$static_url%}admin/components/admin_notifications_gritter/gritter.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_bootstrap-switch/js/bootstrap-switch.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_bootstrap-switch/bootstrap-switch.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_fuelux-radio/fuelux-radio.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/plugins/forms_elements_multiselect/js/jquery.multi-select.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/forms_elements_multiselect/multiselect.init.js?v=v1.0.0-rc1&amp;sv=v0.0.1.2"></script>
+<script src="{%$static_url%}admin/components/core/core.init.js?v=v1.0.0-rc1"></script>
+
+
+
+</body>
+</html>

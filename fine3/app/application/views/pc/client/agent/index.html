@@ -1,0 +1,196 @@
+{%include file="pc/client/common/header.html"%} 
+{%include file="pc/client/common/top.html"%}
+
+<div class="main">
+{%include file="pc/client/common/left_nav.html"%}
+<div class="contents inner">
+<h2 class="tit_01">紹介への応募</h2>
+<div class="searchbox">
+<p class="tit_05">▼表示する応募を絞り込む</p>
+
+<p>
+{%form_open('', ['method' => 'GET', 'class' => 'frmsearch', 'id' => 'frmsearch'])%}
+フリーワード：<input type="text" name="keyword" value="{%$keyword%}" placeholder="フリーワードを入力してください。" > 
+<span>
+応募日：<input type="text" class="txt_calendar" name="start_date" value="{%$start_date_df%}"
+data-validation="length" 
+data-validation-length="10"
+data-validation-allowing="-"
+data-validation-error-msg="<div style='color:red'>応募日の始めの日付を正しく入力してください。</div>"
+maxlength="10"> ～ 
+<input type="text" class="txt_calendar" name="end_date" value="{%$end_date_df%}"
+data-validation="length" 
+data-validation-length="10"
+data-validation-allowing="-"
+data-validation-error-msg="<div style='color:red'>応募日の終わりの日付を正しく入力してください。</div>"
+maxlength="10">
+</span>
+<input value="{%$limit%}" name="limit" type="hidden">
+<a href="javascript:void(0)" class="btn_white btn_auto submit">検索</a>
+
+{%form_error('start_date')%}
+{%form_error('end_date')%}
+</form>
+</p>
+<!-- /.searchbox -->
+</div>
+
+{%if $total == 0%}
+<div id="message-exclude-fail" class="msg-error"><i class="fa fa-warning"></i>
+応募者がいません。
+</div>
+{%else%}
+<p class="count_box">{%$total%}件中 {%$from_item%}～{%$to_item%}件を表示</p>
+
+{%form_open('', ['method' => 'POST', 'class' => 'frmsubmit', 'id' => 'frmsubmit'])%}
+
+<div class="box">
+
+{%if $success %}
+<div class="msg-success">{%$success%}</div>
+{%/if%}
+
+{%if $error %}
+<div class="msg-error">{%$error%}</div>
+{%/if%}
+
+<div>
+<input type="hidden" name="applied[]" value="0" data-validation="checkbox_group number" data-validation-qty="min1" 
+data-validation-error-msg="<div class='msg-warning'><i class='fa fa-warning'></i>1つ以上のデータを選択してください。</div>"/>
+{%form_error('applied[]')%}
+</div>
+
+{%if isset($Records) && $Records && ! empty($Records)%}
+<p class="before_table01">
+▼チェックした応募を
+<a href="javascript:void(0)" class="btn_pink btn_160 submit">確定する</a>
+<a href="javascript:void(0)" class="btn_white btn_160" id="export_csv">CSV出力</a>
+<select name="show_num">
+<option value="10">10件表示</option>
+<option value="20">20件表示</option>
+</select>
+</p>
+
+<table class="table01" id="agency_table">
+<tbody>
+<tr>
+<th nowrap><input type="checkbox" id="check_all" name="checkall" value="0"></th>
+<th nowrap>ID</th>
+<th nowrap>応募者名<br><span class="txt_small">応募日時</span></th>
+<th nowrap>希望雇用形態<br><span class="txt_small">保有資格</span></th>
+<th nowrap>ステータス</th>
+<th nowrap>操作</th>
+</tr>
+
+{%foreach from=$Records key=k item=v%}
+<tr>
+<td nowrap>
+<input class="check_item" type="checkbox" name="applied[]" value="{%$v['applicant_agency_id']%}">
+</td>
+<td nowrap>{%$v['applicant_agency_id']%}</td>
+<td nowrap><a title="{%$v['name_kana']%}" href="{%$base_url%}client/agent_apply/detail/{%$v['applicant_agency_id']%}">{%$v['name_kana']%}</a><br>
+<span class="txt_small">{%$v['apply_created']%}</span></td>
+<td>{%$v['wish_job_name']%}
+<p class="txt_small">{%$v['user_license']%}</p></td>
+<td nowrap>{%status_text($v['apply_status'])%}</td>
+<td nowrap>
+<a title="{%$v['name_kana']%}" href="{%$base_url%}client/agent_apply/detail/{%$v['applicant_agency_id']%}" class="btn_white btn_auto">詳細</a>
+</td>
+</tr>
+{%/foreach%}
+
+</tbody>
+</table>
+
+<script>
+$("input[name='applied[]']:eq(0)")
+.valAttr('','validate_checkbox_group')
+.valAttr('qty','min1')
+.valAttr('error-msg',"<div style='color:red'>1つ以上のデータを選択してください。</div>");
+</script>
+
+{%/if%}
+
+<!-- /.box -->
+</div>
+
+<input type="hidden" name ="form" value ="confirm">
+</form>
+
+<!-- Pagination -->
+{%$pagination%}
+<!-- End pagination -->
+
+{%/if%}
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+</div>
+
+
+<script src="{%$static_url%}client/common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}common/js/jquery.form-validator.min.js"></script>
+<script src="{%$static_url%}client/common/js/jquery-ui.min.js"></script>
+<script src="{%$static_url%}client/common/js/ui.datepicker-ja.js"></script>
+<link href="{%$static_url%}client/common/css/jquery-ui.min.css" rel="stylesheet">
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<script type="text/javascript">$.validate();</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+		//export csv
+		$('#export_csv').on('click', function(){
+			var applieds = '';
+			var _checkall = $("#agency_table input[name='checkall']").val();
+			var checked_job = $("#agency_table input[name='applied[]']:checked");
+			if(checked_job.length > 0) {
+				checked_job.each(function(){
+					val = this.value;
+					if(val){
+						applieds += ('_' + val);
+					}
+					if(applieds){
+						window.location.href = "{%$base_url%}client/agent_apply/export_csv?fromat=csv&applieds=" + applieds + "&checkall=" + _checkall;
+					}
+				});
+			} else {
+				return;
+			}
+		});
+		$("#check_all").click(function(){
+			$('.check_item').not(this).prop('checked', this.checked);
+			if ($('#check_all').is(':checked')) {
+				$("#agency_table input[name='checkall']").val('1');
+			}else{
+				$("#agency_table input[name='checkall']").val('0');
+			}
+		});
+
+		$( ".txt_calendar" ).datepicker({
+			"dateFormat": "yy-mm-dd",
+			"regional":"jp",
+			changeMonth: true,
+			changeYear: true
+			});
+
+		$('a.submit').click(function(event){
+			event.preventDefault();
+			var action = jQuery(this).attr('href');
+			var form = jQuery(this).parents('form');
+			$(form).submit();
+			return false;
+			});
+
+		$("select[name='show_num']").on("change", function(){
+			var num = $(this).val()
+			$("input[name=limit]").val(num)
+			})
+		{%if isset($limit)%}
+		$("select[name='show_num']").val({%$limit%}) 
+		{%/if%}
+});
+</script>
+
+
+{%include file="pc/client/common/footer.html"%}

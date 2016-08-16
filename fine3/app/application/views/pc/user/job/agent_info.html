@@ -1,0 +1,118 @@
+{%include file="pc/user/common/headbar.html"%}
+{%include file="pc/user/common/navbar.html"%}
+
+{%display_breadcrumb($breadcrumb)%}
+
+<div class="content_wrapper">
+<div class="content">
+
+<ul class="job_sns">
+<li>ここにSNSボタン</li>
+<li>ここにSNSボタン</li>
+</ul>
+
+<ul class="job_tab"><!--
+--><li><a href="job.html">求人情報</a></li><!--
+--><li class="current"><a href="job2.html">紹介会社情報</a></li><!--
+--></ul>
+<div class="box jobbox_detail mb0">
+<h1 class="tit_04"><img src="{%$static_url%}common/images/dummy/dummy_company_s_logo.jpg" alt="" width="100" height="40">{%$agent_info['display_name']%}</h1>
+<div class="column_wrapper">
+<table class="column_l">
+<tr>
+<th nowrap>会社名</th>
+<td>{%$agent_info['display_name']%}</td>
+</tr>
+<tr>
+<th nowrap>得意エリア</th>
+<td>{%$agent_info['area_name']%}</td>
+</tr>
+<tr>
+<th nowrap>得意職種</th>
+<td>{%$agent_info['job_name']%}</td>
+</tr>
+<tr>
+<th nowrap>ひとこと</th>
+<td>{%$agent_info['description']%}</td>
+</tr>
+<tr>
+<th nowrap>有料職業紹介許可番号</th>
+<td>{%$agent_info['license_number']%}</td>
+</tr>
+<tr>
+<th nowrap>所在地</th>
+<td>{%$agent_info['address']%}</td>
+</tr>
+
+</table>
+<ul class="column_r">
+{%foreach $agent_info['images'] as $image%}
+  <li><img src="" alt="" width="270"></li>
+{%/foreach%}
+</ul>
+<!-- /.column_wrapper --></div>
+
+<div class="job_flow">
+<p class="tit_05"><span class="ico_house01">■</span>ご選考の流れ</p>
+<p>{%$agent_info['process']%}</p>
+</div>
+<div class="job_adviser">
+<p class="tit_05"><span class="ico_company02">□</span>この会社のキャリアアドバイザー</p>
+<ul>
+{%foreach $careeradviser_list as $careeradviser%}
+<li>
+<p><img src="{%$static_url%}common/images/dummy/dummy_adviser.jpg" alt="" height="127" width="127"></p>
+<dl><dt>{%$careeradviser['name']%}</dt>
+<dd><span>得意エリア</span>群馬県</dd>
+<dd>{%$careeradviser['message']%}</p></dd>
+</dl>
+</li>
+{%/foreach%}
+</ul>
+<!-- /.job_adviser --></div>
+<!-- /.box --></div>
+
+<div class="box jobbox_location">
+<ul class="jobbox_btm pt10 mb20"><!--
+--><li class="mt12 allhover">{%if $user_data['login']%}
+  <a href="javascript:void(0)" class="bookmark_box btn_litegray btn_175 mt0" id="operate_bookmark" data-job-id="{%$job_detail_info['job_detail']['job']['job_id']%}"><span class="ico_folder02">！</span>{%if $job_detail_info['user_info']['bookmark_status']%}お気に入り追加する終わった{%else%}お気に入り追加する{%/if%}</a>
+{%else%}
+<a href="#" class="bookmark_box btn_litegray btn_175 mt0"><span class="ico_folder02">！</span>お気に入りに追加</a>
+{%/if%}
+</li><!--
+--><li><a href="U_11_apply.html" class="btn_pink btn_full tip_job_apply light" data-tooltip="こちらをクリックすると応募が即完了します。<br/>応募完了後は応募先の園、または求人の紹介会社から連絡をさせて頂きます。"><span class="ico_arrow03">&gt;</span>今すぐ応募する</a></li><!--
+--></ul>
+<!-- /.box --></div>
+
+
+
+<p class="tit_02"><span class="ico_folder01">▽</span>このエリアの人気求人はこちら</p>
+<div class="box jobbox_users">
+<div class="clear">
+{%foreach $job_related_list as $related_job%}
+<a class="jobbox" href="job.html">
+<p class="tit_boxjob">{%$related_job['title']%}</p>
+<p class="custom_job_img"><img src="{%$static_url%}common/images/dummy/dummy_job2.png" alt="" width="94" height="68"></p>
+<ul class="job_s_list">
+<li><span class="ico_arrow01">&gt;</span>{%$related_job['address']%}</li>
+<li><span class="ico_arrow01">&gt;</span>{%get_job_tag_text($related_job['tags'], 'type_employ')%}</li>
+<li><span class="ico_arrow01">&gt;</span>{%get_job_tag_text($related_job['tags'], 'tag_job')%}</li>
+</ul>
+</a>
+{%/foreach%}
+<!-- /.clear --></div>
+<p class="txt_center mt20"><a href="search.html" class="btn_pink btn_190"><span class="ico_arrow03">&gt;</span>もっと求人を見る</a></p>
+<!-- /.box --></div>
+<!-- /.content --></div>
+
+<div class="right_nav">
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.right_nav --></div>
+
+<!-- /.content_wrapper --></div>
+
+<div id="footer">
+{%include file="pc/user/common/footer.html"%}
+<!-- /#footer --></div>
+</body>
+</html>

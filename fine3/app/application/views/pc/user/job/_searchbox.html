@@ -1,0 +1,243 @@
+<div class="box serch_pink_box">
+
+<div class="accordion">
+
+{%if empty($search_undisplay_column['area']) %}
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search03">&gt;</span>勤務地（エリア）</p>
+<p class="toggle btn_60 btn_white_s2">{%if empty($selecter["pref"])%}選択する{%else%}変更する{%/if%}</p>
+<div class="accordion_inbox search_box">
+<select id="select_pref" name="select_pref">
+<option value="">選択してください</option>
+{%foreach $area["pref"] as $pref%}
+<option value="{%$pref['pref_id']%}" {%if !empty($selecter["pref"][$pref["area_id"]])%}selected{%/if%}>{%$pref["name"]%}</option>
+{%/foreach%}
+</select>
+<ul id="city_selecter" class="display_none">{%foreach $area["city"] as $city%}<!--
+--><li class="relate_pref_{%$city['pref_id']%} display_none"><label><input type="checkbox" class="select_city" name="select_city" value="{%$city['area_id']%}" {%if !empty($selecter["city"][$city['area_id']])%}checked{%/if%}>{%$city["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_area_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_area_list">未選択</p>
+</div>
+{%/if%}
+
+{%if empty($search_undisplay_column['job']) %}
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search04">&gt;</span>職種</p>
+<p class="toggle btn_60 btn_white_s2">{%if empty($selecter["job"])%}選択する{%else%}変更する{%/if%}</p>
+    <div class="accordion_inbox search_box">
+<ul>{%foreach $tags["job"] as $job%}<!--
+--><li><label><input type="checkbox" class="select_job" name="select_job" value="{%$job['tag_id']%}" {%if !empty($selecter["job"][$job['tag_id']])%}checked{%/if%}>{%$job["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_job_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_job_list">未選択</p>
+</div>
+{%/if%}
+
+{%if empty($search_undisplay_column['nursery']) %}
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search05">&gt;</span>施設形態</p>
+<p class="toggle btn_60 btn_white_s2">{%if empty($selecter["nursery"])%}選択する{%else%}変更する{%/if%}</p>
+
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["nursery"] as $nursery%}<!--
+--><li><label><input type="checkbox" class="select_nursery" name="select_nursery" value="{%$nursery['tag_id']%}" {%if !empty($selecter["nursery"][$nursery['tag_id']])%}checked{%/if%}>{%$nursery["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_nursery_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_nursery_list">未選択</p>
+</div>
+{%/if%}
+
+{%if empty($search_undisplay_column['employee']) %}
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search07">&gt;</span>勤務形態</p>
+<p class="toggle btn_60 btn_white_s2">{%if empty($selecter["employee"])%}選択する{%else%}変更する{%/if%}</p>
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["employee"] as $employee%}<!--
+--><li><label><input type="checkbox" class="select_employee" name="select_employee" value="{%$employee['tag_id']%}" {%if !empty($selecter["employee"][$employee['tag_id']])%}checked{%/if%}>{%$employee["name"]%}</li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_employee_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_employee_list">未選択</p>
+</div>
+{%/if%}
+
+{%if empty($search_undisplay_column['tag']) %}
+<div class="search_s_box">
+<p class="search_tit"><span class="ico_search08">&gt;</span>こだわり条件</p>
+<p class="toggle btn_60 btn_white_s2">{%if empty($selecter["tag"])%}選択する{%else%}変更する{%/if%}</p>
+<div class="accordion_inbox search_box">
+<ul>{%foreach $tags["tag"] as $tag%}<!--
+--><li><label><input type="checkbox" class="select_tag" name="select_ag" value="{%$tag['tag_id']%}" {%if !empty($selecter["tag"][$tag['tag_id']])%}checked{%/if%}>{%$tag["name"]%}</label></li><!--
+-->{%/foreach%}</ul>
+<p>【選択された項目】<span class="select_tag_list">未選択</span></p>
+</div><!--//area-->
+<p class="search_txt select_tag_list">未選択</p>
+</div>
+{%/if%}
+
+</div><!--//accordion-->
+<div class="search_put">
+{%if empty($search_undisplay_column['count']) %}
+この条件の求人は<span class="job_all_count">{%$job_all_count%}</span>件ありました。
+{%/if%}
+<a href="javascript:void(0)" id="job_search_submit" class="btn_pink btn_190"><span class="ico_search06">▼</span>この条件で検索する</a>
+<!-- /.box --></div>
+</div>
+<script>
+var select = { select_pref : "" , select_city : "" , select_job : "" , select_nursery : "" , select_employee : "" , select_tag : "" };
+var select_str = "";
+
+/*area search logic*/
+if("{%empty($search_undisplay_column['area'])%}"){
+    select_pref();
+    select_city();
+    $("#select_pref").change(function(){
+        $(".select_area_list").removeClass("error_txt");
+        $(".select_city").prop('checked', false);
+        select["select_city"] = "";
+        select_pref();
+        get_job_count();
+    });
+    $(".select_city").on("click",function(){
+        select_city();
+        get_job_count();
+    });
+}
+
+/*job search logic*/
+if("{%empty($search_undisplay_column['job'])%}"){
+    common_search_selecter("select_job");
+    $(".select_job").on("click",function(){
+        common_search_selecter("select_job");
+        get_job_count();
+    });
+}
+
+/*nursery search logic*/
+if("{%empty($search_undisplay_column['nursery'])%}"){
+    common_search_selecter("select_nursery");
+    $(".select_nursery").on("click",function(){
+        common_search_selecter("select_nursery");
+        get_job_count();
+    });
+}
+
+/*employee search logic*/
+if("{%empty($search_undisplay_column['employee'])%}"){
+    common_search_selecter("select_employee");
+    $(".select_employee").on("click",function(){
+        common_search_selecter("select_employee");
+        get_job_count();
+    });
+}
+
+/*tag search logic*/
+if("{%empty($search_undisplay_column['tag'])%}"){
+    common_search_selecter("select_tag");
+    $(".select_tag").on("click",function(){
+        common_search_selecter("select_tag");
+        get_job_count();
+    });
+}
+
+$("#job_search_submit").on("click",function(){
+    var pref = select["select_pref"] === "" ? "" :select["select_pref"] * 1000;
+    var get_params = "pref="+ pref +"&city="+select["select_city"]+"&job="+select["select_job"]+"&nursery="+select["select_nursery"]+"&employee="+select["select_employee"]+"&tag="+select["select_tag"];
+    $(location).attr("href",BASE_URL+"search?"+get_params);
+});
+
+$(".accordion").map(function() {
+    var accordion = $(this);
+    accordion.find(".toggle").click(function(){
+        $("p.search_txt").removeClass("display_none");
+        var accordion_inbox = $(this).next("div.accordion_inbox");
+        if(accordion_inbox.css("display") === "none" ){
+            accordion.find("div.accordion_inbox").slideUp().find(".toggle.open").removeClass("open");
+            $(this).parent().children("p.search_txt").addClass("display_none");
+        }
+        accordion_inbox.slideToggle().toggleClass("open");
+    });
+});
+
+function select_pref(){
+    select["select_pref"] = $("#select_pref").val();
+    var pref_str = $("#select_pref option:selected").text();
+    if(select["select_pref"] === ""){
+        $("#city_selecter").addClass("display_none");
+    }else{
+        $("#city_selecter").removeClass("display_none");
+        select_str = pref_str;
+    }
+    $("[class^=relate_pref_]").addClass("display_none");
+    $(".relate_pref_" + select["select_pref"]).removeClass("display_none");
+    $(".select_area_list").html(pref_str);
+}
+
+function select_city(){
+    var select_city_list = "";
+    select["select_city"] = "";
+    $(".select_city:checked").map(function(){
+        if(select_city_list === ""){
+            select["select_city"] = $(this).val();
+            select_city_list = $(this).parent("label").text();
+        }else{
+            select["select_city"] += ","+$(this).val();
+            select_city_list += " , " + $(this).parent("label").text();
+        }
+    });
+    if(select_city_list !== ""){
+        select_str = select_city_list;
+        select_city_list = "：《 "+select_city_list+" 》";
+    }
+    $(".select_area_list").html($("#select_pref option:selected").text() + select_city_list);
+}
+
+function common_search_selecter(selecter){
+    var common_list = "";
+    select[selecter] = "";
+    $("."+selecter+":checked").map(function(){
+        if(common_list === ""){
+            select[selecter] = $(this).val();
+            common_list = $(this).parent("label").text();
+        }else{
+            select[selecter] += ","+$(this).val();
+            common_list += " , " + $(this).parent("label").text();
+        }
+    });
+    if(common_list === ""){
+        common_list = "未選択";
+    }else{
+        if(select_str === ""){
+            select_str = common_list;
+        }else{
+            select_str = select_str + " , "+common_list;
+        }
+
+    }
+    $("."+selecter+"_list").html(common_list);
+}
+
+function get_job_count(){
+    if("{%empty($search_undisplay_column['count'])%}"){
+        $.ajax({
+            type: "POST",
+            url : "{%$base_url%}user/ajax/get_job_count",
+            dataType : "json",
+            data: {
+                select: select,
+                {%$csrf_token_name%}: "{%$csrf_token_value%}"
+            },
+            success: function(res) {
+                $(".job_all_count").html(res);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                /*alert(XMLHttpRequest+textStatus+errorThrown)*/
+            }
+        });
+    }
+}
+</script>

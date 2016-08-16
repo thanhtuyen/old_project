@@ -1,0 +1,150 @@
+@charset "UTF-8";
+/* --------------------------------------------------
+    ボタン
+-------------------------------------------------- */
+.btn,
+.oubo,
+.oubo2 {
+	margin: 20px 15px;
+	text-align: center;
+}
+#result .oubo,
+#result .oubo2{margin: 10px;}
+
+.oubo .mail a,
+.oubo .tel a,
+.oubo2 .mail a,
+.oubo2 .tel a,
+.btn a,
+form .btn input[type="reset"],
+form .btn input[type="button"],
+form .btn input[type="submit"],
+form .btn button {
+	position: relative;
+	top: 0;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border: none;
+	border-radius: 3px;
+	font-size: 1em;
+	font-weight:bold;
+	text-decoration: none;
+	color:#FFF;
+	line-height:53px;
+	text-shadow: -1px -1px 1px #666;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+.top_free_btn:active,
+#search li a:active{
+	position: relative;
+	top: 0;
+}
+.top_free_btn:active,
+#search li a:active,
+.oubo .mail a:active,
+.oubo .tel a:active,
+.oubo2 .mail a:active,
+.oubo2 .tel a:active,
+.btn a:active,
+.btn input[type="reset"]:active,
+.btn input[type="button"]:active,
+.btn input[type="submit"]:active,
+.btn button:active {
+	top: 2px;
+	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.oubo_middle p.done {
+padding: 10px 0;
+background: #bbb;
+color: #ffffff;
+border-radius: 3px;
+}
+/* + ボタンの中が画像の場合 */
+.btn.img a {
+	border-radius: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.btn.img a img {
+	display: block;
+	width: 100%;
+}
+/* + 2カラム */
+.oubo .mail a,
+.oubo .tel a,
+.btn.c2 a,
+form .btn input[type="reset"],
+form .btn input[type="button"],
+form .btn input[type="submit"],
+form .btn button {
+	float: left;
+	width: 49%;
+	margin-bottom: 15px;
+}
+.oubo .tel a,
+form .btn a:nth-child(2n),
+form .btn input[type="reset"]:nth-child(2n),
+form .btn input[type="button"]:nth-child(2n),
+form .btn input[type="submit"]:nth-child(2n),
+form .btn button:nth-child(2n) {
+	float: right ;
+}
+
+/* + 会員登録専用 */
+#regist .btn a,
+.btn.regist a{
+	line-height:54px;
+}
+.btn.regist{line-height:20px;font-size:140%;}
+.btn.regist p.small{padding-top:18px;line-height:5px;font-size:60%;}
+
+/* + お祝い金専用 */
+#oiwai .btn a{
+	line-height:40px;
+}
+
+/* + Form専用 */
+form .btn input[type='reset'] ,
+form .btn input[type='button'] {width: 30%;}
+form .btn input[type='submit'] {width: 68%;}
+
+/* + Form応募・仕事情報転送専用 */
+form .btn.app_login input[type='submit'],
+form .btn.send input[type='submit']{width: 100%;}
+
+/* + Formメール配信スカウトメール設定 */
+form .btn.member2 input[type='reset'],
+form .btn.receive input[type='submit'] {width: 30%;}
+form .btn.member2 input[type='submit'],
+form .btn.member2 input[type='button'],
+form .btn.receive input[type='submit']:nth-child(2n) {width: 68%;}
+form .btn.no_receive input[type='button'] {width: 100%;}
+
+
+/* + Form検索条件一覧設定 */
+form .btn.delete input[type='submit'],
+form .btn.delete input[type='button'] {width: 30%;}
+form .btn.delete input[type='submit']:nth-child(2n) {width: 68%;}
+
+/* + Form検索条件一覧設定 */
+form .btn.mail_btn input[type='button'] {width: 30%;}
+form .btn.mail_btn input[type='button']:nth-child(2n) {	width: 68%;}
+
+/* + Formメール詳細 */
+form .btn.mail_btn.top{margin-top:10px;}
+form .btn.mail_btn.top input{line-height:30px;}
+
+/* + ログアウト */
+.btn.logout input[type='submit'],
+.btn.logout input[type='button']{width: 49%;}
+
+/* + 戻る */
+.btn.reset input[type='button'],
+.btn.inquiry a,
+.btn.mypage a,
+.btn.back a,
+.btn.back_gray input[type='button'],
+.btn.top a{width:100%;clexar:both;}

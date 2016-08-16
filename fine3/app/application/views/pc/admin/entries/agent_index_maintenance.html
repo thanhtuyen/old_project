@@ -1,0 +1,32 @@
+{%include file="pc/admin/shared/_header.html"%}
+{%include file="pc/admin/entries/_nav.html"%}
+
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+<p>開発中です。Coming Soon!</p>
+
+
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+<script src="{%$static_url%}admin/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="{%$static_url%}admin/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.ja.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('[data-datetimepicker]').datetimepicker({
+    language:  'ja',
+    format: 'yyyy-mm-dd',
+    startDate: '2015-01-01',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+  });
+});
+
+</script>

@@ -1,0 +1,27 @@
+<a href="javascript:void(0)" class="click_pagination" data-page="{%$count_view['offset']%}">
+	次の{%$count_view['limit']%}件を表示する<br/><span>{%$count_view['total']%}件中{%$count_view['to_item']%}件を表示しています</span>
+</a>
+<script type="text/javascript">
+	// Add Apply Job multiple button
+	$('.click_pagination').on('click', function(e){
+		var target = $(e.target);
+		var page = target.attr('data-page');
+		$.ajax({
+		  type: 'POST',
+		  dataType: 'json',
+		  url: '{%$base_url%}user/mypage/bookmark_ajax_page',
+		  data: {
+			  page: {%$count_view['offset']%},
+			  {%$csrf_token_name%}: '{%$csrf_token_value%}'
+		  },
+		  success:function(data){
+    			$('#load_page').append(data.content);
+    			$('#click_more_item').html(data.pagination);
+    			$('.serch_count_top').html(data.count_page);
+		  },
+		  error: function(XMLHttpRequest, textStatus, errorThrown) {
+		    console.log('error happend')
+		  }
+		});
+    });
+</script>

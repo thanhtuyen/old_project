@@ -1,0 +1,127 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+    <div class="main">
+    <!-- Left nav -->
+{%include file="pc/client/common/left_nav.html"%}
+
+<div class="contents inner">
+<h2 class="tit_01">企業情報</h2>
+<p class="newbtn">
+<a class="btn_white btn_190" href="{%base_url()%}client/profile/edit_info"><span
+class="ico_arrow02">&gt;</span>PR情報を変更する</a>
+</p>
+<div class="box">
+<p class="tit_04">企業情報<span style="float:right;font-size:small;color:#000;font-weight: normal;">※契約された企業情報の変更につきましては<a style="color:#ff3366;" href="{%$base_url%}client/inquiry">こちら</a>よりお問い合わせ下さい。</span></p>
+<table class="table02 mb20">
+<tbody>
+<tr>
+<th>ID</th>
+<td>{%$client['client_id']%}</td>
+</tr>
+<tr>
+<th>企業名</th>
+<td>{%$client['name']%}</td>
+</tr>
+<tr>
+<th>部署名</th>
+<td>{%$client['department']%}</td>
+</tr>
+<tr>
+<th>ご担当様者名</th>
+<td>{%$client['contact_name']%}</td>
+</tr>
+<tr>
+<th>メールアドレス</th>
+<td>{%$client['mail']%}</td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td>{%$client['phone']%}</td>
+</tr>
+<tr>
+<th>FAX</th>
+<td>{%$client['fax']%}</td>
+</tr>
+<tr>
+<th>住所</th>
+<td>{%$client['area_name']%}{%$client['address']%}</td>
+</tr>
+
+<tr>
+<th>パスワード</th>
+<td>********<a href="{%$base_url%}client/password/change_password" rel="leanModal" class="btn_190 btn_white ml15"><span class="ico_arrow02">&gt;</span>パスワードを変更する</a>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p class="tit_04">PR情報(ユーザー画面表示用)</p>
+<table class="table02">
+<tbody>
+<tr>
+<th>表示企業名</th>
+<td>{%$client['display_name']%}</td>
+</tr>
+<tr>
+<th>表示用住所</th>
+<td>{%$client['display_area_name']%}{%$client['display_address']%}</td>
+</tr>
+<tr>
+<th>有料職業紹介許可番号</th>
+<td>{%$client['license_number']%}</td>
+</tr>
+
+<tr>
+<th>PR</th>
+<td>{%html_escape($client['description'])|nl2br%}</td>
+</tr>
+<tr>
+<th>紹介の流れ</th>
+<td>{%html_escape($client['process'])|nl2br%}</td>
+</tr>
+<tr>
+<th>得意エリア</th>
+<td>{%if $client_area%}
+{%foreach from=$client_area key=key item="val"%}
+{%$val['area_detail']['name']%}　<!--space-->
+{%/foreach%}
+{%/if%}
+</td>
+</tr>
+<tr>
+<th>得意職種</th>
+<td>
+{%if isset($client['tags']['type_job'])%}
+{%foreach from=$client['tags']['type_job'] key=key item=val %}
+{%$val['tag_detail']['name']%}　<!--space-->
+{%/foreach%}
+{%/if%}
+</td>
+</tr>
+<tr>
+<th>イメージ画像</th>
+<td>
+{%if empty($client['image'])%}
+イメージは登録されていません。
+{%else%}
+<img src="{%getImageUrlFromS3($client['client_id'],$client['image']['type'],$client['image']['name'])%}" alt="企業イメージ画像">
+{%/if%}
+</td>
+</tr>
+</tbody>
+</table>
+<p class="txt_center mt20">
+<a class="btn_white btn_280" href="{%base_url()%}client/profile/edit_info"><span
+class="ico_arrow02">&gt;</span>PR情報を変更する</a>
+</p>
+<!-- /.box -->
+</div>
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+</div>
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

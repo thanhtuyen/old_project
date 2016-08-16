@@ -1,0 +1,66 @@
+{%include file="pc/client/common/header.html"%}
+<body class="beforelogin">
+<div class="content_s">
+<h1><img src="{%$static_url%}common/images/logo.png" alt="FINE！">管理画面</h1>
+<h2 class="tit_02 mb20">パスワード再発行</h2>
+<p class="mb40">パスワードを再設定します。<br>ご登録のメールアドレス宛にパスワードを再設定するURLを送りますので、下記に登録したメールアドレスを入力してください。</p>
+{%form_open($base_url|cat:"client/password/password_reset_check",["id"=>"password_form"])%}
+<input id="client_id" name="client_id" type="hidden" value="">
+<input id="client_name" name="client_name" type="hidden" value="">
+<div class="login">
+<dl>
+<dt>メールアドレス</dt>
+<dd>
+<input id="mail_form" name="mail" type="text" class="mb5">
+<p id="mail_form_err" class="display_none" style="color: #ff0000;">正しくメールアドレスを入力してください。</p>
+<p id="account_not_exist" class="message display_none" style="color: #ff0000;">このメールアドレスは登録されていません。</p>
+</dd>
+</dl>
+<!-- /.login --></div>
+<p class="txt_center"><a href="javascript:void(0)" id="submit" class="btn_pink btn_280"><span class="ico_arrow03">&gt;</span>パスワード再設定</a></p>
+{%form_close()%}
+<!-- /.content_s --></div>
+<p class="mt15 mb40 txt_center"><a href="{%base_url()%}client/login" class="txt_line">&gt; ログイン画面へ戻る</a></p>
+{%include file="pc/client/common/footer.html"%}<script>
+$("html").keypress(function(e){if(e.which==13){mail_valid();return false;}});
+$("#submit").on("click",function(){mail_valid()});
+function mail_valid(){
+    $("#account_not_exist").addClass("display_none");
+    mail = $("#mail_form").val();
+    if(mail !== "" && mail_style_valid(mail)){
+        $("#mail_form_err").addClass("display_none");
+        check_client_exist(mail)
+    }else{
+        $("#mail_form_err").removeClass("display_none");
+    }
+}
+
+function check_client_exist(mail){
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: BASE_URL+"client/ajax/check_client_exist",
+        data: {
+            mail: mail,
+            unique: true,
+            {%$csrf_token_name%}: "{%$csrf_token_value%}"
+        },
+        success:function(data){
+            if(data["code"] === 0){
+                /*$(location).attr("href",BASE_URL+"server_error");*/
+            }else{
+                if(typeof(data["result"][0]) === "undefined"){
+                    $("#account_not_exist").removeClass("display_none");
+                }else{
+                    $("#client_name").val(data["result"][0]["name"]);
+                    $("#client_id").val(data["result"][0]["client_id"]);
+                    $("#password_form").submit();
+                }
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            /*$(location).attr("href",Base_URL+"server_error");*/
+        }
+    });
+}
+</script>

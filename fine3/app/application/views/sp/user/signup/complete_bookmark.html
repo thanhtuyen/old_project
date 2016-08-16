@@ -1,0 +1,33 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+
+<!--main_content-->
+<div class="main">
+    <section class="sub_container">
+        <article>
+            <section>
+
+                <h1 class="toptitle">会員登録及び求人「{%$job_detail["title"]%}」のお気に入り登録が完了いたしました。</h1>
+                <article id="login">
+                    <p class="form_ph">ご登録ありがとうございます。<br>以降はご登録いただきましたメールアドレスとパスワードでログインいただけます</p>
+                </article>
+                <nav class="btn inquiry"><a href="{%$base_url%}login"">ログインページへ移動</a></nav>
+                <nav class="btn inquiry"><a href="{%$base_url%}detail_{%$job_detail['job_id']%}">お気に入り登録した求人を見る</a></nav>
+        </article>
+    </section>
+
+</div>
+<!--/main_content-->
+
+{%include file="sp/user/common/footer.html"%}
+
+<script>
+    jQuery(document).ready(
+        function() {
+            ga('set','dimension1','login');
+            ga('send','pageview','/detail?{%$job_detail["job_id"]%}/apply?complete/signup');
+        }
+    );
+</script>
+</body>
+</html>

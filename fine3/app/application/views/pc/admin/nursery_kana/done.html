@@ -1,0 +1,50 @@
+{%include file="pc/admin/shared/_header.html"%} 
+{%include file="pc/admin/shared/_nursery_kana_menu.html"%}
+<div class="innerLR">
+<div class="widget widget-body-white widget-heading-simple">
+<div class="widget-body">
+<h3>ふりがな登録済園</h3>
+<p>事業所クライアントが有効、かつ園のステータスが有効・未削除のもので、ふりがなが既に登録されている運営園を表示しています。<br>
+変更したい場合、全角ひらがなで入力してください。</p>
+{%if isset($error)%}
+<p style="color:red;margin-top:5px;">{%$error%}</p>
+{%/if%}
+<div class="row separator bottom">
+<div class="col-md-5">
+</div>
+<table class="dynamicTable tableTools table table-striped checkboxs exceptuser">
+<thead>
+<tr>
+<th style="width:100px;">運営園ID</th>
+<th style="width:300px;">事業所名</th>
+<th style="width:300px;">園名</th>
+<th style="width:500px;">園名（かな）</th>
+<th style="width:100px;"></th>
+</tr>
+</thead>
+<tbody>
+
+
+{%if isset($nursery_list) && $nursery_list && !empty($nursery_list) %}
+
+{%foreach from=$nursery_list item=item %}
+{%form_open('manager/nursery_kana/done')%}
+<input type="hidden" name="nursery_id" value="{%$item['nursery_id']%}">
+<input type="hidden" name="page" value="done">
+<tr class="gradeX">
+<td>{%$item['nursery_id']%}</td>
+<td>{%$item['client_name']%}</td>
+<td>{%$item['name']%}</td>
+<td><input type="text" name="furigana" value="{%$item['name_furigana']%}"></td>
+<td><input type="submit" class="btn btn-primary" value="変更"></td>
+</tr>
+{%form_close()%}
+{%/foreach%}
+
+{%/if%}
+
+</tbody>
+</table>
+
+{%include file="pc/admin/shared/_pagerfantaHtml.html"%} 
+{%include file="pc/admin/shared/_footer.html"%}

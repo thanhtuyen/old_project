@@ -1,0 +1,65 @@
+
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+<div class="main">
+{%include file="pc/client/common/left_nav.html"%}
+<div class="contents inner">
+<h2 class="tit_01">管理画面トップ<span>：新着応募{%$data['count']%}件</span></h2>
+<div class="box">
+<table class="table01">
+<tbody>
+<tr>
+<th nowrap>種類</th>
+<th nowrap>ID</th>
+<th>応募者名　<span class="txt_small">応募日時</span></th>
+<th nowrap>保有資格</th>
+<th nowrap>年齢</th>
+<th nowrap>ステータス</th>
+<th nowrap>操作</th>
+</tr>
+{%if $data['count'] > 0%}
+{%foreach $data['data'] as $row%}
+<tr>
+<td nowrap>{%if $row['user_data']['type'] == 'job'%}求人{%/if%}{%if $row['user_data']['type'] == 'agency'%}紹介{%/if%}</td>
+<td nowrap>{%html_escape($row['user_data']['id'])%}</td>
+<td><a href="
+{%if $row['user_data']['type'] == 'job'%}
+{%$base_url%}client/job_apply/detail/{%$row['user_data']['id']%}/
+{%/if%}
+{%if $row['user_data']['type'] == 'agency'%}
+{%$base_url%}client/agent_apply/detail/{%$row['user_data']['id']%}/
+{%/if%}">{%html_escape($row['user_data']['name'])%}</a><br>
+<span class="txt_small">{%$row['user_data']['apply_date']%}</span></td>
+<!--
+<span class="txt_small">{%$created = explode(' ',$row['user_data']['apply_date'])%}
+{%html_escape($created[0])%}</span></td>
+-->
+<td>
+{%foreach $row['tag'] as $tag%}
+{%if $tag['tag_detail']['tag_group_id'] == 4%}
+<p class="txt_small">・{%$tag['tag_detail']['name']%}</p>{%/if%}
+{%/foreach%}
+</td>
+<td nowrap>{%html_escape(get_age($row['user_data']['birthdate']))%}</td>
+<td nowrap>{%status_text($row['user_data']['applicant_status'])%}</td>
+<td nowrap><a href="{%if $row['user_data']['type'] == 'job'%}
+{%$base_url%}client/job_apply/detail/{%$row['user_data']['id']%}/
+{%/if%}
+{%if $row['user_data']['type'] == 'agency'%}
+{%$base_url%}client/agent_apply/detail/{%$row['user_data']['id']%}/
+{%/if%}
+" class="btn_white btn_auto">詳細</a></td>
+</tr>
+{%/foreach%}
+</tbody>
+</table>
+{%else%}
+<div id="message-exclude-fail" class="msg-error"><i class="fa fa-warning"></i>
+応募者がいません。
+</div>
+{%/if%}
+<!-- /.box --></div>
+<!-- /.contents --></div>
+<!-- /.main --></div>
+{%include file="pc/client/common/footer.html"%}
+

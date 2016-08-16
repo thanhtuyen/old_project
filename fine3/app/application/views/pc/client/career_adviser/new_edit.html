@@ -1,0 +1,100 @@
+<!-- Header -->
+{%include file="pc/client/common/header.html"%}
+{%include file="pc/client/common/top.html"%}
+
+<div class="main">
+<!-- Left nav -->
+{%include file="pc/client/common/left_nav.html"%}
+
+<div class="contents inner">
+<h2 class="tit_01">
+キャリアアドバイザー<span>：アドバイザー情報を編集</span>
+</h2>
+<p class="newbtn">
+<a class="btn_white btn_190" href="{%$base_url%}client/profile/career_adviser/"><span
+class="ico_arrow02">&gt;</span>アドバイザー一覧</a>
+</p>
+<div class="box">
+{%if !empty($error) %}
+<div class="msg-error"> <i class="fa fa-times-circle"></i>{%$error%}</div>
+{%else%}
+
+{%form_open($base_url|cat:"client/profile/agent/edit/", ['method' => 'POST', 'class' =>'create-career-adviser', 'id' => 'create-career-adviser','enctype'=>"multipart/form-data"])%}
+
+<table class="table02">
+<tbody>
+<tr>
+<th>名前<span class="ico_must">必須</span></th>
+<td><input type="text" class="width200 required" name="name" value="{%$career_adviser['name']%}">
+<div class="message">
+</div></td>
+</tr>
+<tr>
+<th>メッセージ<span class="ico_must">必須</span></th>
+<td><textarea placeholder="例）あなたに一番合う職場をご提案します！" class="required" name="message">{%$career_adviser['message']%}</textarea>
+<div class="message">
+</div></td>
+</tr>
+<!-- <tr>
+<th>写真<span class="ico_must">必須</span></th>
+<td class="media-drop">
+<div class="imageselect ">
+<div class="mb10 image-box">
+{%if $image_url %}
+     <img alt="" width="150" src="{%$image_url%}">
+{%else%}
+        <div class="drag-drop">写真をこちらにドラッグ&ドロップするか、「写真を追加」ボタンを押して登録してください。</div>
+{%/if%}
+</div>
+<div class="message">
+<div class="success" style="color: #8AB953"></div>
+</div>
+<p>
+<a class="btn_130 btn_gray delete-image" href=""
+>画像を削除</a>
+</p>
+</div>
+<div class="imageselect">
+<div>
+<a class="btn_130 btn_white update-image" href=""
+onclick="document.getElementById('upload').click(); return false">写真を追加</a>
+</div>
+<input type="file" id="upload" name="image_file"
+style="visibility: hidden; width: 1px; height: 1px" multiple />
+<input type="hidden" name="image_id" id="image_id" value="{%$image_id%}">
+<input type="hidden" name="image" id="image" value="">
+
+</div>
+</td>
+</tr> -->
+</tbody>
+</table>
+<input type="hidden" name="career_adviser_id" value="{%$career_adviser['career_adviser_id']%}">
+<p class="txt_center mt20">
+<a href="" class="btn_pink btn_280 submit"><span class="ico_arrow03">&gt;</span>この内容で登録する</a>
+</p>
+{%form_close()%}
+{%/if%}
+
+
+<!-- /.box -->
+</div>
+<!-- /.contents -->
+</div>
+<!-- /.main -->
+</div>
+
+<!-- BEGIN SCRIPT -->
+
+<script src="{%$static_url%}client/common/js/jquery-1.11.2.min.js"></script>
+<script src="{%$static_url%}client/career-adviser/js/edit.js"></script>
+<script src="{%$static_url%}client/js/jquery.html5uploader-1.1.js"></script>
+<script src="{%$static_url%}client/js/exif.js"></script>
+<script src="{%$static_url%}client/career-adviser/js/upload.js"></script>
+<link href="{%$static_url%}client/career-adviser/css/ca.css" rel="stylesheet">
+<link href="{%$static_url%}client/css/message.css" rel="stylesheet">
+
+<!-- END SCRIPT -->
+
+<!-- Footer -->
+{%include file="pc/client/common/footer.html"%}

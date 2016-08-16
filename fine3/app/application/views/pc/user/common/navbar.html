@@ -1,0 +1,26 @@
+{%if $login%}
+{%include file="pc/user/common/navbar_logged.html"%}
+{%else%}
+<div class="head_nav">
+<header>
+<ul class="head_logo">
+<li><a href="{%$base_url%}"><img src="{%$static_url%}common/images/header_logo.png" alt="FINE！（ファイン）"></a></li>
+<li>国内最大級の保育士求人サイト</li>
+</ul>
+<div class="head_right">
+<ul class="login_register"><!--
+--><li><a class="btn_130 btn_pink" href="{%$base_url%}signup"><span class="ico_arrow03">&gt;</span>新規会員登録</a></li><!--
+--><li><a class="btn_130 btn_white" href="{%$base_url%}login"><span class="ico_arrow02">&gt;</span>ログイン</a></li><!--
+--></ul>
+<p class="login_agency"><a href="{%$base_url%}client/login" class="txt_small">採用担当者様ログイン</a></p>
+<div class="count_job">
+<dl><dt>掲載中の求人</dt><dd><span>{%$common_job_info["count"]%}</span>件</dd></dl>
+<dl><dt>最終更新：</dt><dd>{%$common_job_info["last_update"]%}</dd></dl>
+<!-- /.count_job --></div>
+<!-- /.head_right --></div>
+</header>
+
+<!-- /.head_nav --></div>
+{%include file="pc/user/common/global_nav.html"%}
+
+{%/if%}

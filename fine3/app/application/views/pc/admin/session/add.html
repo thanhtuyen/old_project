@@ -1,0 +1,78 @@
+{%include file="pc/admin/shared/_head.html"%}
+
+<body class=" loginWrapper">
+<div class="container-fluid menu-hidden">
+<div id="content">
+{%getFlashInfo()%}
+<div class="widget innerlogin innerB">
+
+<h3 class="innerTB text-center">Fine!管理画面</h3>
+<div class="lock-container">
+<div class=" text-center">
+<!--
+<img src="" alt="Fine!のロゴ" class=""/>
+-->
+{%form_open('admin/session/create')%}
+<div class="innerAll">
+    <input class="form-control text-center bg-gray" type="text" name='email' placeholder="Eメールアドレス" />
+    <input class="form-control text-center bg-gray" type="password" name='password' placeholder="パスワード" />
+    <input type="hidden" name="valid_count" value="{%$valid_count%}">
+    {%if $valid_count > 3%}
+    <p>画像認証</p>
+    <div>
+    <p id="captcha_image">{%$captcha['image']%}</p>
+    <input class="form-control text-center bg-gray" type="text" name='captcha_code' placeholder="画像の英数字を入力してください" >
+    <!-- <a id="captcha_reload" href="javascript:void(0)" >画像変更</a> -->
+    <input type="hidden" id="captcha_word" name="captcha_word" value="{%$captcha['word']%}">
+    </div>
+    {%/if%}
+<!-- div.innerAll -->
+</div>
+
+<input type="submit" value="ログイン" class="btn btn-primary">
+<!--
+<button stype="submit"  class="btn btn-primary">ログイン <i class="fa fa-fw fa-unlock-alt"></i></button>
+-->
+{%form_close()%}
+
+<!-- div.text-center --></div>
+<!-- div.lock-container --></div>
+<!-- div.widget innerLR innerB margin-none --></div>
+<!-- div.innerT inner-2x --></div>
+<div class="text-right innerT half">
+<!--
+パスワードをお忘れの方はこちら→<a href="#forgetpass.html" class=" strong margin-none">パスワードの再発行</a>
+-->
+<!-- div.content --></div>
+<!-- div.container-fluid menu-hidden --></div>
+
+
+<div id="footer" class="hidden-print">
+<div class="copy">&copy; Copyright (C) Neo Career CO., LTD. All Rights Reserved.</div>
+<!-- div.footer --></div>
+
+{%include file="pc/admin/shared/_footer.html"%}
+
+<script>
+$('#captcha_reload').on('click',function(){
+    var post_data = {};
+    post_data[CSRF_NAME] = CSRF_VALUE;
+    post_data["option"] = '{%json_encode($captcha_opt)%}';
+
+    alert(BASE_URL)
+
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: BASE_URL+"user/ajax/reload_captcha",
+        data: post_data,
+        success:function(data){
+            $('#captcha_image').html(data['image']);
+            $('#captcha_word').val(data['word']);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+        }
+    });
+});
+</script>
+

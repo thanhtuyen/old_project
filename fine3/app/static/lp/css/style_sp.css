@@ -1,0 +1,804 @@
+@charset "utf-8";
+/* ===================================================================
+ style info : mobile用
+=================================================================== */
+/* default
+======================================================================================================= */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 13px;
+	line-height: 1.0em;
+	color: #333333;
+}
+img { vertical-align: bottom; }
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+input, select { vertical-align: middle; }
+
+body { -webkit-text-size-adjust: none; }
+a { -webkit-tap-highlight-color: rgba(0,0,0,0.2); }/*タップ時ハイライト指定 transparent=初期値（透明）*/
+img { max-width: 100%; height: auto; }
+
+.pc {	display: none; }
+/*#jobCategory { display: none; }*/
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------
+contents
+----------------------------------------------------------------------------------------------------------------------------------------- */
+/* header
+---------------------------------------------------------------------------- */
+header {
+	overflow: hidden;
+	width: 100%;
+}
+
+header h1 {
+	float: left;
+	padding: 0 0 0 5px;
+}
+header h1 img {
+	width: 80px;
+	height: auto;
+	padding:10px 0 10px 10px;
+}
+header h1 p {
+	display: inline-block;
+	padding: 0 0 10px 5px;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+header .headTel { display: none; }
+
+
+/* section main
+======================================================================================================= */
+/* main
+------------------------------------------------------------ */
+#main {}
+
+#main .contents {
+	overflow: hidden;
+	width: 100%;
+}
+
+
+#main .contents .mainPic1,
+#main .contents .mainPic2 { display: none; }
+
+
+#main .contents .mainPic1_sp,
+#main .contents .mainPic2_sp {
+	width: 100%;
+	position: relative;
+}
+#main .contents .mainPic1_sp img,
+#main .contents .mainPic2_sp img {
+	width: 100%;
+	height: auto;
+}
+
+/* text
+----------------------- */
+#main .contents .mainPic1_sp .text {
+	width: 37%;
+	height: 45%;
+	text-align: center;
+	background: url(../img/bg_maintxt.png) no-repeat left top;
+	background-size: contain;
+	position: absolute;
+	bottom: 10px;
+	left: 40px;
+}
+#main .contents .mainPic2_sp .text {
+	width: 42%;
+	height: 45%;
+	text-align: center;
+	background: url(../img/bg_maintxt.png) no-repeat left top;
+	background-size: contain;
+	position: absolute;
+	bottom: 15px;
+	left: 5px;
+	/*border: solid 1px #F60;*/
+}
+
+#main .contents .mainPic1_sp .text span.t1,
+#main .contents .mainPic2_sp .text span.t1 {
+	display: block;
+	margin: 20% 0 0 0;
+	color: #663300;
+	line-height: 1.2em;
+}
+#main .contents .mainPic1_sp .text span.t2,
+#main .contents .mainPic2_sp .text span.t2 {
+	display: block;
+	color: #663300;
+	line-height: 1.2em;
+}
+#main .contents .mainPic1_sp .text span.t3,
+#main .contents .mainPic2_sp .text span.t3 {
+	display: block;
+	color: #663300;
+	line-height: 1.2em;
+}
+#main .contents .mainPic1_sp .text span.t4,
+#main .contents .mainPic2_sp .text span.t4 {
+	display: block;
+	margin: 10px 0 0 0;
+	color: #663300;
+	line-height: 1.2em;
+}
+
+
+
+
+
+
+/* form	 */
+#main .contents .formArea {
+	width: 100%;
+}
+#main .contents .formArea .formTtl {
+	padding: 9px 0 7px 20px;
+	background-color: #333333;
+	border-radius: 5px 5px 0 0;
+}
+#main .contents .formArea .formTtl p {
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+/* mainInfo
+------------------------------------------------------------ */
+#mainInfo {
+	background-color: #ffffff;
+}
+#mainInfo .contents {
+	overflow: hidden;
+	width: 98%;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+#mainInfo .contents .flow {
+	margin: 0 0 15px 0;
+}
+
+#mainInfo .contents .info1 {
+	float: left;
+	width: 45%;
+	padding: 10px 0 0 0;
+}
+#mainInfo .contents .info2 {
+	float: right;
+	width: 45%;
+	padding: 10px 0 0 0;
+}
+#mainInfo .contents .info1 img,
+#mainInfo .contents .info2 img {
+	width: 100%;
+	height: auto;
+}
+
+
+/* section area全体
+======================================================================================================= */
+.area1 h1,
+.area2 h1,
+.area3 h1,
+.area5 h1,
+.area6 h1 {
+	padding: 0 0 0 5px;
+	font-size: 22px;
+	line-height: 40px;
+	background: url(../img/bg_areati.png) no-repeat left bottom;
+	background-size: contain;
+}
+.area4 h1 {
+	padding: 0 0 0 5px;
+	font-size: 22px;
+	line-height: 22px;
+	background: url(../img/bg_areati.png) no-repeat left bottom;
+	background-size: contain;
+}
+
+.area1 .contents,
+.area2 .contents,
+.area3 .contents,
+.area4 .contents,
+.area5 .contents,
+.area6 .contents {
+	/*width: 98%;*/
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+/* entry formへ
+----------------------------------------- */
+.toEntry {
+	width: 98%;
+	margin: 0 auto;
+	text-align: center;
+}
+.toEntry img {
+	width: 100%;
+	height: auto;
+}
+
+
+
+/* section area1
+======================================================================================================= */
+.area1 {
+	background-color: #ffe2e2;
+}
+
+.area1 .caseBox {
+	overflow: hidden;
+	width: 98%;
+	margin: 0 auto;
+}
+
+.area1 .caseBox .mrgR0 {
+	margin-right: 0 !important;
+}
+.area1 .caseBox li {
+	float: left;
+	margin: 0 12px 20px 0;
+	width: 46%;
+	min-height: 220px;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+.area1 .caseBox li .caseTtl {
+	margin: 0 0 0 0;
+	padding: 8px 0 7px;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 18px;
+	text-align: center;
+	background-color: #f4a75b;
+	border-radius: 10px 10px 0 0;
+}
+.area1 .caseBox li p {
+	margin: 10px 0 0 0;
+	font-size: 15px;
+	line-height: 17px;
+}
+.area1 .caseBox li p span {
+	color: #f41c67;
+}
+
+.area1 .casePR {
+	width: 100%;
+	margin: 0 auto 15px;
+	text-align: center;
+	border-bottom: solid 1px #ffffff;
+}
+.area1 .casePR img {
+	width: 80%;
+	height: auto;
+}
+
+
+
+/* section area2
+======================================================================================================= */
+.area2 {}
+
+.area2 .pointBox {
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto;
+}
+
+.area2 .point1,
+.area2 .point2,
+.area2 .point3,
+.area2 .point4 {
+	width: 98%;
+	margin: 0 auto 10px;
+	padding: 10px 0;
+	border: solid 1px #333333;
+	border-radius: 10px;
+}
+/*
+.area2 .point1 { float: left; }
+.area2 .point2 { float: right; }
+.area2 .point3 { float: left; }
+.area2 .point4 { float: right; }
+*/
+.area2 .point1 .pic,
+.area2 .point2 .pic,
+.area2 .point3 .pic,
+.area2 .point4 .pic {
+	float: left;
+	margin: 0 10px 10px 10px;
+}
+.area2 .point1 .pointTtl,
+.area2 .point2 .pointTtl,
+.area2 .point3 .pointTtl,
+.area2 .point4 .pointTtl {
+	color: #f41c67;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.1em;
+	margin: 15px 0 10px;
+}
+.area2 .point1 .pointTxt,
+.area2 .point2 .pointTxt,
+.area2 .point3 .pointTxt,
+.area2 .point4 .pointTxt {
+	margin: 0 10px;
+	font-size: 14px;
+	line-height: 1.3em;
+}
+
+
+/* section area3
+======================================================================================================= */
+.area3 {
+	background-color: #ffe2e2;
+}
+
+.area3 .voiceBox {
+	overflow: hidden;
+	width: 95%;
+
+	margin: 0 auto;
+}
+
+/*.area3 .voiceBox .floatL { float: left; }
+.area3 .voiceBox .floatR { float: right; }
+.area3 .voiceBox .clear { clear: both; }*/
+
+.area3 .voice {
+	/*float: left;*/
+	width: 100%;
+	margin: 0 auto 10px;
+	padding: 10px 0;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+.area3 .voice .pic {
+	float: left;
+	margin: 0 10px;
+}
+.area3 .voice .pic img {
+	width: 80%;
+	height: auto;
+}
+
+.area3 .voice dt {
+	margin: 0 0 5px 0;
+	color: #663300;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 1.2em;
+}
+.area3 .voice dd {
+	margin: 0 10px;
+	font-size: 13px;
+	line-height: 1.3em;
+}
+
+
+/* section area4
+======================================================================================================= */
+.area4 {}
+
+.area4 .consulBox {
+	overflow: hidden;
+	width: 98%;
+	margin: 0 auto 20px;
+	border-bottom: solid 1px #333333;
+}
+
+.area4 .consulBox .pic_consul_pc {
+	display: none;
+}
+
+/* max-width:480px以上 */
+.area4 .consulBox .pic_consul_sp {
+	float: left;
+	width: 25%;
+	margin: 10px 0 0 10px;
+	/*border: solid 1px #00F;*/
+}
+.area4 .consulBox .pic_consul_sp img {
+	float: left; 
+	margin: 0 5px 5px 0;
+	width: 45%;
+	max-width: 62px;
+}
+
+.area4 .consulBox .cPointBox {
+	float: right;
+	width: 71%;
+	margin: 5px 5px 0 0;
+	/*border: solid 1px #F00;*/
+}
+
+	@media screen and (max-width: 479px){
+.area4 .consulBox .pic_consul_sp {
+	overflow: hidden;
+	float: left;
+	width: 62px;
+	margin: 5px 0 0 10px;
+	/*border: solid 1px #FC0;*/
+}
+.area4 .consulBox .pic_consul_sp img {
+	float: none;
+	margin: 0 0 5px 0;
+	width: 100%;
+	max-width: 62px;
+}
+
+.area4 .consulBox .cPointBoxt {
+	float: right;
+	width: 70%;
+	margin: 5px 5px 0 0;
+	/*border: solid 1px #F00;*/
+}
+	}
+
+.area4 .consulBox .cPointBox li.cPoint {
+	overflow: hidden;
+	float: left;
+	margin: 0 0 10px 0;
+	padding: 5px;
+	background-color: #ffffff;
+	border: solid 1px #333333;
+	border-radius: 5px;
+}
+.area4 .consulBox .cPointBox li.last {
+	margin: 0 0 5px 0;
+}
+
+.area4 .consulBox .cPointBox li.cPoint div.ttl {
+	color: #00aaeb;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 1.1em;
+}
+.area4 .consulBox .cPointBox li.cPoint div.ttl p.cNo {
+	float: left;
+	width: 24px;
+	margin: 0 5px 0 0;
+	padding: 4px 2px 2px;
+	color: #ffffff;
+	font-size: 20px;
+	line-height: 20px;
+	text-align: center;
+	background-color: #ff3c94;
+	border-radius: 5px;
+}
+
+.area4 .consulBox .cPointBox li.cPoint p.txt {
+	margin: 5px 0 0 0;
+	padding: 10px;
+	font-size: 13px;
+	line-height: 1.4em;
+	background-color: #f8f8f8;
+	border-radius: 5px;
+}
+
+
+/* section area5
+======================================================================================================= */
+.area5 {
+	background-color: #ffeeb1;
+}
+
+.area5 .flowBox {
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto 20px;
+	padding: 15px 0;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 5px;
+}
+.area5 .flowBox img {
+	width: 95%;
+	height: auto;
+}
+
+.area5 .flowBox2 { display: none; }
+
+	@media screen and (max-width: 540px){
+.area5 .flowBox {
+	display: none;
+}
+.area5 .flowBox2 {
+	display: block;
+}
+.area5 .flowBox2 {
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto 20px;
+	padding: 15px 0;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 5px;
+}
+.area5 .flowBox2 img {
+	width: 95%;
+	height: auto;
+}
+	}
+
+
+/* section area6
+======================================================================================================= */
+.area6 {}
+
+.area6 .preBox {
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto 20px;
+	text-align: center;
+}
+.area6 .preBox img {
+	width: 95%;
+	height: auto;
+}
+
+.area6 .preBox2 { display: none; }
+
+	@media screen and (max-width: 540px){
+.area6 .preBox {
+	display: none;
+}
+.area6 .preBox2 {
+	display: block;
+}
+.area6 .preBox2 {
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto 20px;
+	text-align: center;
+}
+.area6 .preBox2 img {
+	width: 95%;
+	height: auto;
+}
+	}
+
+
+/* section area7
+======================================================================================================= */
+.area7 {
+	background-color: #f3f1ef;
+}
+
+.area7 .telBox {
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+.area7 .telBox .info1 {
+	overflow: hidden;
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	border-bottom: dotted 1px #666666;
+}
+
+.area7 .telBox .info1 .ttl {
+	text-align: center;
+}
+.area7 .telBox .info1 .ttl .telTtl {
+	margin: 0 0 5px 0;
+	padding: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	border: solid 1px #333333;
+	border-radius: 100px;
+}
+.area7 .telBox .info1 .ttl .free {
+	margin: 0 0 0 10px;
+	font-size: 12px;
+}
+
+.area7 .telBox .info1 li#telPC {
+	display: none;
+}
+.area7 .telBox .info1 li#telSP {
+	padding: 10px 0;
+	text-align: center;
+}
+
+.area7 .telBox .info1 li.txt {
+	margin: 0 0 0 15px;
+	padding: 5px 0 0;
+	font-size: 11px;
+	line-height: 1.3em;
+	text-align: center;
+}
+
+/* box
+-------------- */
+.area7 .telBox .box01 {
+	overflow: hidden;
+}
+.area7 .telBox .box02 {
+	overflow: hidden;
+}
+
+.area7 .telBox .box01 figure,
+.area7 .telBox .box02 figure {
+	float: left;
+	margin: 0 5px 0 0;
+	padding: 0;
+}
+.area7 .telBox .box01 .txtbox,
+.area7 .telBox .box02 .txtbox {
+	float: left;
+	width: 80%;
+}
+
+.area7 .telBox .box01 .txtbox h2,
+.area7 .telBox .box02 .txtbox h2 {
+	margin: 0 0 3px 0;
+	color: #ff3c94;
+	font-size: 12px;
+}
+.area7 .telBox .box01 .txtbox p,
+.area7 .telBox .box02 .txtbox p {
+	padding: 0 0 0 0px;
+	font-size: 11px;
+	line-height: 1.2em;
+}
+
+
+/* footer
+---------------------------------------------------------------------------- */
+footer {
+	width: 98%;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+/*scrollBox*/
+footer .scrollBox {
+	display:none;
+	float: right;
+	width: 110px;
+}
+footer .scrollBox a {
+	display: block;
+	width: 110px;
+	margin: 0 0 10px 0;
+	padding: 3px 0;
+	color: #fff;
+	font-size: 10px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 100px;
+}
+footer .scrollBox a.bgc1 {
+	background-color: #333333;
+}
+footer .scrollBox a.bgc2 {
+	background-color: #f9407d;
+}
+
+footer .scrollBox a:hover {
+	text-decoration: none;
+	background: #999;
+}
+
+footer .copyright {
+	clear: both;
+	text-align: center;
+}
+
+footer li{
+	display: inline-block;
+	margin:0px 5px;
+	min-width:40px;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.lp_social{
+	margin:0 0 12px 15px;
+	text-align:center;
+}
+
+/* PC用
+----------------------------------------- */
+#jobCategory,
+#jobCategoryLinkOut {
+	display: none;
+}
+
+.toEntry {
+	display:none;
+}
+
+#pcform {
+	display:none;
+}
+
+#pcheader {
+	display:none;
+}
+#thankspc {
+	display:none;
+}
+
+/* ----------------------------------------------------------------------------
+JOB CATEGORY SP
+---------------------------------------------------------------------------- */
+#jobCategoryAreaSP {
+	width: 96%;
+	margin: 0 auto 20px;
+	border: solid 1px #333333;
+	border-radius: 10px;
+}
+#jobCategoryAreaSP dt.ttl {
+	padding: 5px;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #333333;
+	border-radius: 10px 10px 0 0;
+}
+
+#jobCategoryAreaSP dl.areabox dt {
+	margin: 0 0 2px 5px;
+	font-size: 105%;
+	font-weight: bold;
+	color: #ff3c94;
+}
+#jobCategoryAreaSP dl.areabox dd {
+	margin: 0 0 3px 0;
+	padding:5px;
+	border-bottom: dotted 1px #999;
+}
+#jobCategoryAreaSP dl.areabox dd.cvtxt {
+	padding: 5px 0;
+	text-align: center;
+}
+.display_none{
+	display:none;
+}
+.message_error{
+	color:red;
+}

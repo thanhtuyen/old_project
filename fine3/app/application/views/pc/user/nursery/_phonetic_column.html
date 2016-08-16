@@ -1,0 +1,11 @@
+{%foreach $character as $c%}
+{%if !empty($c['nursery'])%}
+<div id="list_{%$c['alphabet']%}" class="agencylist_box">
+<p class="agencylist_tit">{%$c['kana']%}</p>
+<ul>{%foreach $c['nursery'] as $row%}<!--
+--><li><a href="{%$base_url%}shisetsu/{%$row['nursery_id']%}/"><span class="ico_arrow01">&gt;</span>{%html_escape($row['name']|truncate:24:"...")%}</a></li><!--
+-->{%/foreach%}</ul>
+<p class="agencylist_bktp"><a href="#agencylist_top">▲TOP</a></p>
+<!-- /.agencylist_box --></div>
+{%/if%}
+{%/foreach%}

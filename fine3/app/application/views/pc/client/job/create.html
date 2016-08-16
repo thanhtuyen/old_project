@@ -1,0 +1,380 @@
+{%include file="pc/client/common/header.html"%}{%include
+file="pc/client/common/top.html"%}
+<div class="main">
+{%include file="pc/client/common/left_nav.html"%}
+
+{%$month_option = [1,2,3,4,5,6,7,8,9,10,11,12]%}
+{%$day_option = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,
+25,26,27,28,29,30,31]%}
+
+<div class="contents inner">
+<h2 class="tit_01">求人票管理<span>：新規求人票作成</span></h2>
+<p class="newbtn"><a href="{%$base_url%}client/job" class="btn_white btn_190"><span class="ico_arrow02">&gt;</span>作成した求人票一覧</a></p>
+{%form_open_multipart('client/job/create',['id' => 'job_form'])%}
+{%if $operation=='edit'%}
+  <input type="hidden" name="edit_job_id" id="edit_job_id" value="{%$job_info['job_id']%}">
+{%/if%}
+<div class="box">
+<table class="table02">
+<tbody>
+<tr>
+<th>園名<span class="ico_must">必須</span></th>
+<td>
+  <select name="nursery_id" class="widthfull">
+    <option value="">選択してください</option>
+    {%foreach $necessary_info['nursery'] as $value%}
+      <option value="{%$value['nursery_id']%}" {%if (isset($job_info['nursery_id']) && $job_info['nursery_id']==$value['nursery_id']) || ($nurseryId==$value['nursery_id'])%} selected="true" {%else%}{%set_select('nursery_id', $value['nursery_id'])%}{%/if%}>{%$value['name']%}</option>
+    {%/foreach%}
+  </select>
+  <p class="mt5 txt_attention">{%form_error('nursery_id')%}</p>
+</td>
+</tr>
+<tr>
+<th>自社ID</th>
+<td><input type="text" name="own_job_id" value="{%if isset($job_info['own_job_id'])%}{%html_escape($job_info['own_job_id'])%}{%elseif isset($ownNurseryId)%}{%html_escape($ownNurseryId)%}{%else%}{%set_value('own_job_id')%}{%/if%}" class="width200">
+<p class="mt5 txt_attention">{%form_error('own_job_id')%}</p></td>
+</tr>
+<tr>
+<th>タイトル<span class="ico_must">必須</span></th>
+<td><input type="text" name="title" value="{%if isset($job_info['title'])%}{%html_escape($job_info['title'])%}{%else%}{%set_value('title')%}{%/if%}">
+<p class="mt5 txt_attention">{%form_error('title')%}</p></td>
+</tr>
+<tr>
+<th>仕事内容<span class="ico_must">必須</span></th>
+<td><textarea name="description">{%if isset($job_info['description'])%}{%html_escape($job_info['description'])%}{%else%}{%set_value('description')%}{%/if%}</textarea><p class="mt5 txt_attention">{%form_error('description')%}</p></td>
+</tr>
+<tr>
+<th>PR文</th>
+<td><textarea name="pr">{%if isset($job_info['pr'])%}{%html_escape($job_info['pr'])%}{%else%}{%set_value('pr')%}{%/if%}</textarea>
+<p class="mt5 txt_attention">{%form_error('pr')%}</p></td>
+</tr>
+<tr>
+<th>募集職種<span class="ico_must">必須</span></th>
+<td>
+  <ul>
+    {%foreach $necessary_info['type_job'] as $value%}
+      <li><label><input type="radio" name="type_job" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%else%}{%set_radio('type_job', $value['tag_id'])%}{%/if%}>{%html_escape($value['name'])%}</label></li>
+    {%/foreach%}
+  </ul>
+  <p class="mt5 txt_attention">{%form_error('type_job')%}</p>
+</td>
+</tr>
+<tr>
+<th>雇用形態<span class="ico_must">必須</span></th>
+<td>
+  <ul>
+    {%foreach $necessary_info['type_employ'] as $value%}
+      <li><label><input type="radio" name="type_employ" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%else%}{%set_radio('type_employ', $value['tag_id'])%}{%/if%}>{%html_escape($value['name'])%}</label></li>
+    {%/foreach%}
+  </ul>
+  <p class="mt5 txt_attention">{%form_error('type_employ')%}</p>
+</td>
+</tr>
+<tr>
+<th>給与<span class="ico_must">必須</span></th>
+<td><input type="text" name="salary" value="{%if isset($job_info['salary'])%}{%$job_info['salary']%}{%else%}{%set_value('salary')%}{%/if%}" placeholder="例）月給18万～25万円 等">
+<p class="mt5 txt_attention">{%form_error('salary')%}</p></td>
+</tr>
+<tr>
+<th>賞与</th>
+<td><input type="text" name="bonus" value="{%if isset($job_info['bonus'])%}{%$job_info['bonus']%}{%else%}{%set_value('bonus')%}{%/if%}" placeholder="例）昇給年1回（4月）、賞与年2回（夏季・冬季） 等">
+<p class="mt5 txt_attention">{%form_error('bonus')%}</p></td>
+</tr>
+<tr>
+<th>勤務時間<span class="ico_must">必須</span></th>
+<td><textarea name="worktime" placeholder="例）月～土のうち週5日、7:00～21:00のうち8時間 等">{%if isset($job_info['worktime'])%}{%$job_info['worktime']%}{%else%}{%set_value('worktime')%}{%/if%}</textarea><p class="mt5 txt_attention">{%form_error('worktime')%}</p></td>
+</tr>
+<tr>
+<th>応募可能人数</th>
+<td><input type="text" name="employees" value="{%if isset($job_info['employees'])%}{%$job_info['employees']%}{%else%}{%set_value('employees')%}{%/if%}" placeholder="半角数字のみ">
+<p class="mt5 txt_attention">{%form_error('employees')%}</p></td>
+</tr>
+<tr>
+<th>休日</th>
+<td><input type="text" name="holiday" value="{%if isset($job_info['holiday'])%}{%$job_info['holiday']%}{%else%}{%set_value('holiday')%}{%/if%}" placeholder="例）土日・祝・年末年始 等">
+<p class="mt5 txt_attention">{%form_error('holiday')%}</p></td>
+</tr>
+<tr>
+<th>掲載終了日</th>
+<td><select name="year">
+{%foreach $necessary_info['year_list'] as $value%}
+  <option value="{%$value%}" {%if isset($job_info['year']) && $job_info['year']==$value%}selected="true"{%else%}{%set_select('year', $value)%}{%/if%}>{%$value%}</option>
+{%/foreach%}
+</select> 年 <select name="month">
+{%foreach $month_option as $value%}
+<option value="{%$value%}" {%if isset($job_info['month']) && $job_info['month']==$value%}selected="true"{%else%}{%set_select('month', $value)%}{%/if%}>{%$value%}</option>
+{%/foreach%}
+</select> 月 <select name="day">
+{%foreach $day_option as $value%}
+<option value="{%$value%}" {%if isset($job_info['day']) && $job_info['day']==$value%}selected="true"{%else%}{%set_select('day', $value)%}{%/if%}>{%$value%}</option>
+{%/foreach%}
+</select> 日</td>
+</tr>
+<tr>
+<th>登録タグ</th>
+<td>
+  <ul>
+    {%foreach $necessary_info['tag_job'] as $value%}
+      <li><label><input type="checkbox" name="tag_job[]" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%else%}{%set_checkbox('tag_job[]', $value['tag_id'])%}{%/if%}>{%$value['name']%}</label></li>
+    {%/foreach%}
+  </ul>
+</td>
+</tr>
+<tr>
+<th>社会保険</th>
+<td>
+  <ul>
+    {%foreach $necessary_info['insurance'] as $value%}
+      <li><label><input type="checkbox" name="insurance[]" value="{%$value['tag_id']%}" {%if isset($value['should_checked']) and $value['should_checked']%}checked="true"{%else%}{%set_checkbox('insurance[]', $value['tag_id'])%}{%/if%}>{%$value['name']%}</label></li>
+    {%/foreach%}
+  </ul>
+</td>
+</tr>
+<tr>
+<th>必須資格</th>
+<td><input type="text" name="requirement" value="{%if isset($job_info['requirement'])%}{%$job_info['requirement']%}{%else%}{%set_value('requirement')%}{%/if%}" placeholder="例）保育士資格 等">
+<p class="mt5 txt_attention">{%form_error('requirement')%}</p></td>
+</tr>
+<tr>
+<th>公開状態</th>
+<td>
+<div class="flipswitch">
+<div class="either">
+{%if !empty($job_info)%}
+  {%if $job_info['status']==0%}
+    {%$opened_value = 1%}
+    {%$closed_value = 0%}
+  {%elseif $job_info['status']==1%}
+    {%$opened_value = 1%}
+    {%$closed_value = 2%}
+  {%elseif $job_info['status']==2%}
+    {%$opened_value = 1%}
+    {%$closed_value = 2%}
+  {%elseif $job_info['status']==9%}
+    {%$opened_value = 1%}
+    {%$closed_value = 9%}
+  {%/if%}
+{%else%}
+    {%$opened_value = 1%}
+    {%$closed_value = 0%}
+{%/if%}
+  <input type="radio" {%if ($operation=='edit' and $job_info['status']==1) or $operation=='add'%}checked="checked"{%/if%} value="{%$opened_value%}" id="dummy_1" name="status">
+  <label data-label="公開" for="dummy_1">公開</label>
+  <input type="radio" {%if $operation=='edit' and $job_info['status']!=1%}checked="checked"{%/if%} value="{%$closed_value%}" id="dummy_0" name="status">
+  <label data-label="非公開" for="dummy_0">非公開</label>
+</div>
+<!-- /.flipswitch --></div>
+</td>
+</tr>
+<tr>
+<th>イメージ画像<br><span class="txt_small txt_normal">※最大3枚,最大アップロードサイズ2MB</span></th>
+<td>
+{%if !empty($images)%}
+  <input type="hidden" id="delete_image_id" name="delete_image_ids" value="">
+  <div class="imageselect">
+    {%foreach $images as $key => $img%}
+    <div id="image_div_{%$img['image_id']%}">
+      <p class="mb10">
+        <img alt="" src="{%getImageUrlFromS3($job_info['job_id'],$image_type,$img['name'])%}">
+      </p>
+      <p>
+        <a class="btn_130 btn_gray delete_image_link" href="javascript:void(0);"data-image-id="{%$img['image_id']%}" data-image-key="{%$key+1%}">画像を削除</a>
+      </p>
+    </div>
+    {%/foreach%}
+  </div>
+{%/if%}
+<div class="imageselect">
+  <p>
+    <input type="file" name="job_photo_1" id="job_photo_1" class="input-file not-show">
+    <p class="mt5 txt_attention"></p>
+  </p>
+  <p>
+    <input type="file" name="job_photo_2" id="job_photo_2" class="input-file not-show">
+    <p class="mt5 txt_attention"></p>
+  </p>
+  <p>
+    <input type="file" name="job_photo_3" id="job_photo_3" class="input-file not-show">
+    <p class="mt5 txt_attention"></p>
+  </p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<input value="" name="is_preview" type="hidden">
+<input value="" name="preview_job_id" type="hidden">
+<p class="txt_center mt20"><a class="btn_pink btn_280" href="javascript:void(0);" id="add_link"><span class="ico_arrow03">></span>この内容で登録する</a>
+<a href="javascript:void(0);" class="btn_white btn_280" id="gotopreview"><span class="ico_arrow02">></span>プレビュー</a>
+</p>
+{%if validation_errors()%}
+<p class="mt5 txt_attention txt_center">必須項目で未入力の項目があります。</p>
+{%/if%}
+<!-- /.box --></div>
+{%form_close()%}
+<!-- /.contents --></div>
+<!-- /.main --></div>
+
+{%include file="pc/client/common/footer.html"%}
+<script type="text/javascript" src="{%$static_url%}user/library/jquery-form_v3.51.0/jquery.form.js"></script>
+<style type="text/css">
+  .error{
+    color: #ff0000;
+    font-size: 11px;
+  }
+  .input-file {
+    border:0px
+  }
+  .not-show{
+    display: none;
+  }
+</style>
+<script type="text/javascript">
+$('document').ready(function(){
+  // form validation
+  var form = $('form')
+  form.validate({
+    rules: {
+      nursery_id: {
+        required: true,
+      },
+      own_job_id:{
+        maxlength: 255
+      },
+      title: {
+        required: true,
+        maxlength: 255
+      },
+      description: {
+        required: true,
+        maxlength: 3000
+      },
+      pr: {
+        maxlength: 2000
+      },
+      salary: {
+        required: true,
+        maxlength: 255
+      },
+      bonus: {
+        maxlength: 255
+      },
+      worktime: {
+        required:true,
+        maxlength: 255
+      },
+      employees: {
+        digits:true,
+        maxlength: 9
+      },
+      holiday: {
+        maxlength: 255
+      },
+      type_job: {
+        required: true
+      },
+      type_employ: {
+        required: true
+      },
+      requirement: {
+        maxlength: 255
+      },
+      job_photo_1: {
+        can_not_too_large: true
+      },
+      job_photo_2: {
+        can_not_too_large: true
+      },
+      job_photo_3: {
+        can_not_too_large: true
+      },
+    },
+    errorPlacement: function(error, element) {
+      if (element.attr('type') == 'radio') {
+        error.insertAfter(element.parents('ul'));
+      } else if (element.attr('type') == 'file') {
+        console.log('file type')
+        error.insertAfter(element.parents('p'));
+      }else {
+        error.appendTo(element.next());
+      }
+    }
+  });
+
+  $('#add_link').on('click', function(){
+    if(form.valid()){
+        $("input[name=is_preview]").val(0)
+      form.submit()
+    }
+  })
+
+  $("#gotopreview").on("click", function(e){
+    e.preventDefault();
+
+
+    if(form.valid()){
+      $("input[name=is_preview]").val(1)
+      console.log("job_form")
+
+      $("#job_form").ajaxSubmit({
+        dataType: 'json',
+        success: function(data) {
+          console.log("success")
+          $("input[name=preview_job_id]").val(data.job_id)
+          window.open("{%$base_url%}user/job/preview/"+data.job_id)
+        },
+        error: function(xhr) {
+          console.log("error")
+        }
+      })
+    }
+  })
+
+  // $('#add_link').on('click', function(){
+  //     form.submit()
+  // })
+
+
+  var job_id = $('#edit_job_id').val()
+  if(job_id){
+    form.attr('action', "{%$base_url%}" + 'client/job/update_job')
+  }
+
+  //delete image
+  $('.delete_image_link').on('click', function(e){
+    var target = $(e.target)
+    var image_id = target.attr('data-image-id')
+    $('#image_div_' + image_id).remove()
+
+    var delete_image_ids = $('#delete_image_id').val()
+    if(delete_image_ids){
+      delete_image_ids += "_" + image_id
+    } else {
+      delete_image_ids += image_id
+    }
+    $('#delete_image_id').val(delete_image_ids)
+
+    var delete_image_key = target.attr('data-image-key')
+    $('#job_photo_' + delete_image_key).show()
+  });
+
+
+  for(i="{%count($images)%}";i<3;i++){
+    $('#job_photo_' + (parseInt(i)+1)).show()
+  }
+
+  //check image
+  jQuery.validator.addMethod("can_not_too_large", function(value, element, params) {
+    console.log(element.files[0])
+    if(element.files[0]){
+      console.log(element.files[0].size)
+      //upload image max size is 2M
+      var file_size = element.files[0].size
+      var max_size = 2 * 1024 * 1024
+      return file_size < max_size
+    }else {
+      return true;
+    }
+  }, '画像サイズが大きすぎます');
+})
+</script>

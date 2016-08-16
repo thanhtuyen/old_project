@@ -1,0 +1,67 @@
+{%include file="pc/user/common/headbar_logged.html"%}
+{%include file="pc/user/common/navbar_logged.html"%}
+{%display_breadcrumb($breadcrumb)%}
+
+<div class="content_wrapper">
+<div class="content">
+
+{%include file="pc/user/common/mypagemenu.html"%}
+
+<h1 class="tit_01">求人への応募履歴</h1>
+{%if !empty($data.items)%}
+<p class="count_box">{%$data.total%}件中 {%$data.item_start%}～{%$data.item_end%}件を表示</p>
+
+
+{%include file="pc/user/mypage/apply_job_history_item.html"%}
+
+
+
+<p class="count_box">{%$data.total%}件中 {%$data.item_start%}～{%$data.item_end%}件を表示</p>
+
+<p class="pagenation">{%$pagination%}</p>
+{%else%}
+<p>これまでに応募した求人はありません。</p>
+{%/if%}
+<!-- /.content --></div>
+
+{%include file="pc/user/common/right_nav.html"%}
+<!-- /.content_wrapper --></div>
+{%include file="pc/user/common/footer.html"%}
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    // add to bookmark
+    $('.add-to-bookmark').on('click', function(e){
+
+        var job_id = parseInt($(this).attr('data-id'));
+        var valueAdd = parseInt($(this).attr('data-value'));
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "{%$base_url%}" + 'user/ajax/ajax_add_bookmark',
+            data: {job_id: job_id, {%$csrf_token_name%}: '{%$csrf_token_value%}'},
+            success:function(response){
+                if(response.operation == 'add' && response.status == 1) {
+                    $(e.target).html('お気に入り追加済');
+                    $(e.target).attr('data-value', 1);
+                    //alert('Add job into bookmark success');
+                }
+                if(response.operation == 'update' && response.status == 1) {
+                    $(e.target).html('お気に入りに追加する');
+                    $(e.target).attr('data-value', 0);
+                    //alert('Removed job out bookmark success');
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log('error happend')
+            }
+        });
+
+    });
+});
+</script>
+</body>
+</html>

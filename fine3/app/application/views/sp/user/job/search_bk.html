@@ -1,0 +1,126 @@
+{%include file="sp/user/common/headbar.html"%}
+{%include file="sp/user/common/navbar.html"%}
+{%include file="sp/user/common/loading.html"%}
+<!--main_content-->
+<div class="main">
+    <h4 class="title_pink_bar">検索結果を絞り込む</h4>
+    
+    <!-- /////////////////////////////// -->
+    <!-- Include Search box -->
+    {%include file="sp/user/job/_searchbox.html"%}
+    <!-- Include Search box -->
+    <!-- /////////////////////////////// -->
+
+    <!--serch count-->
+{%if $job_all_count !== 0%}
+    <div class="serch_count_top">
+            <p>検索結果<span>{%$job_all_count%}</span>件</p>
+            <p class="serch_count">{%$job_all_count%}件中 {%$limit_from + 1%}～{%$limit_to%}件を表示</p>
+    </div>
+{%/if%}
+    {%if $job_list !== false%}
+            <!--job detail-->
+                <section id="job_list" class="job_list_box">
+                {%include file="sp/user/common/_job_list.html"%}
+              </section>
+  {%if $pagination%}
+         <!--more button-->
+     <p class="continue_link"><a id="readmore" href="javascript:void(0)">次の10件を表示する<br/><span>{%$job_all_count%}件中<span class="display_job_number">10</span>件を表示しています</span></a></p>
+ {%/if%}
+     {%/if%}
+
+    <!--Recommend job-->
+{%if $job_recommend_list !== false%}
+    <section class="job_new user_job">
+            <h4 class="title_joblist_user title_redbar">あなたにオススメの求人</h4>
+         <!--job-->
+        {%foreach $job_recommend_list as $job%}
+         <a href="{%$base_url%}detail_{%$job['job_detail']['job']['job_id']%}">
+         <section class="job_detail_box">
+             <div class="job_detail_img"><img src="{%getImageUrlFromS3($job['job_detail']['job']['job_id'],$image_type,$job['job_detail']['images'][0]['name'])%}" alt=""/></div>
+             <div class="job_detail">
+                 <h5 class="job_detail_title">{%if $job['job_detail']['job']['title']%}{%html_escape($job['job_detail']['job']['title'])%}{%/if%}</h5>
+                 {%if $job['nursery_detail']['display_address']%}
+                 <dl>
+                    <dt>勤務地</dt>
+                    <dd>{%html_escape($job['nursery_detail']['name'])%} / {%html_escape($job['nursery_detail']['display_address'])%}</dd>
+                 </dl>
+             {%/if%}
+{%if !empty($job['job_detail']['tags']['type_employ'])%}
+                 <dl>
+                    <dt>雇用形態</dt>
+                    <dd>{%foreach $job['job_detail']['tags']['type_employ'] as $data%}
+{%html_escape($data['tag_detail']['name'])%}
+{%/foreach%}</dd>
+                 </dl>
+                 {%/if%}
+             </div>
+             <i class="icon_arrow"></i>
+         </section>
+         </a>
+         {%/foreach%}
+         <!--more button-->
+    </section>
+    {%/if%}
+{%include file="sp/user/common/sub_content.html"%}
+</div>
+<!--/main_content-->
+{%include file="sp/user/common/footer.html"%}
+<script src="{%$static_url%}user/js/apply.js"></script>
+<script src="{%$static_url%}common/js/jquery.darktooltip.js"></script>
+<script type="text/javascript">
+CSRF_TOKEN_NAME = '{%$csrf_token_name%}'; 
+CSRF_TOKEN_VALUE = '{%$csrf_token_value%}';
+BASE_URL = '{%$base_url%}';
+</script>
+<!-- Move code js search and all function into file user/js/search.js -->
+<script src="{%$static_url%}user/js/search.js"></script>
+
+<script>
+var page = {%$page%};
+var range = {%$range%};
+var display_job_number = page * range;
+function page_param(page){
+var search_url = location.href;
+    if(search_url.indexOf("page") != -1){
+        var nextpage = page ++;
+        search_url.replace('page='+page, 'page='+nextpage);
+        return search_url;
+    }else if(search_url.indexOf("?") != -1){
+        page ++;
+        return search_url+"&page="+page;
+    }else{
+        page ++;
+        return search_url+"?page="+page;        
+    }
+}
+$("#readmore").on("click",function(){
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        cache: false,
+        url: page_param(page),
+        data: {
+            "is_ajax" : "▂▅▇█▓▒░(’ω’)░▒▓█▇▅▂うわああああああ",
+            {%$csrf_token_name%}: "{%$csrf_token_value%}"
+        },
+        success:function(response){
+            if(response.code == 1){
+                ++page;
+                display_job_number = page * range ;
+                $("#job_list").append(response.html);
+                $(".display_job_number").text(display_job_number);
+                if(display_job_number >= {%$job_all_count%})$("#readmore").remove();
+            }else{
+                $("#readmore").remove();
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+        }
+    });
+});
+
+
+</script>
+</body>
+</html>
